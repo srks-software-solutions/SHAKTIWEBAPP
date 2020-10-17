@@ -1,0 +1,301 @@
+﻿@model i_facilitylibrary.DAL.HoldList
+@{
+    ViewBag.Title = "UnitWorks - IdleList";
+    var slno = 1;
+    if (ViewBag.roleid == 3)
+    {
+        Layout = "~/Views/Shared/_SuperTable.cshtml";
+    }
+}
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>setTimeout(function () { window.location.reload(); }, 60000)</script>
+
+<h2></h2>@* induces gap between button and container top*@
+<div style="width: 2%; display: inline-block; height: inherit"></div>
+
+@*@Html.ActionLink("Back To HMIScreen", "Index", new { }, new { @class = "btn orange btn-lg ", @style = "color:black;width:20%;height:70%;backgroundcolor:red;font-size:90%" })*@
+<div style="width: 100%">
+    @Html.ActionLink("Back To HMIScreen", "Index", "ManualHMIScreen", new { }, new { @class = "btn orange btn-lg ", @style = "margin-left:2%;color:black;width:15vw;height:70%;backgroundcolor:red;font-size:1vw" })
+    <div style="margin-left: 15vw; display: inline"></div>
+    @{ if (ViewBag.roleid == 3)
+        { <span style="font-size: 1.5vw; color: orange">@ViewBag.macDispName</span>}
+    else
+    { <span style="font-size: 1.5vw; color: black">@ViewBag.macDispName</span>
+}
+    }
+</div>
+
+
+<div class="wrp clearfix">
+    <div class="fluid">
+        <div class="widget grid12">
+            <div class="widget-header">
+                <div class="widget-title" style="font-size: 125%">
+                    Idle List
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content pad20f">
+                <div class="widget__content table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="text-centre" style="background-color: orange">
+                                <th style="text-align: center; font-size: 95%">Sl.No.</th>
+                                <th style="font-size: 95%">Reason Level-1</th>
+                                <th style="font-size: 95%">Reason Level-2</th>
+                                <th style="font-size: 95%">Reason Level-3</th>
+                                <th style="font-size: 95%">Start Time</th>
+                                <th style="font-size: 95%">End Time</th>
+                                <th style="font-size: 95%">Duration</th>
+                                @*<th style="text-align: center; font-size: 95%">End Time</th> *@
+                                @* <th style="text-align: center; font-size: 95%">Duration(HH:MM:ss)</th>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="spacer"></tr>
+                            <tr class="spacer"></tr>
+                            @foreach (var item in Model.HoldListDetailsWC)
+                            {
+                                <tr>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @slno
+                                    </td>
+                                    @{
+
+                                        SRKSDemo.Server_Model.i_facility_shaktiEntities1 db6 = new SRKSDemo.Server_Model.i_facility_shaktiEntities1();
+                                        var msgCode = @item.MessageCodeID;
+                                        <td style="display:none">@msgCode</td>
+                                        var dte = db6.tbllossescodes.Where(m => m.LossCodeID == msgCode).SingleOrDefault();
+
+                                        if (Convert.ToInt32(dte.LossCodesLevel) == 1)
+                                        {
+                                            if (dte.LossCode == "999")
+                                            {
+                                                <td style="width: auto; font-family: Helvetica; font-size: 85%;">
+                                                    @Html.DisplayFor(modelItem => dte.MessageType)
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td style="width: auto; font-family: Helvetica; font-size: 85%;">
+                                                    @Html.DisplayFor(modelItem => dte.LossCode)
+                                                </td>
+                                            }
+                                            <td></td>
+                                            <td></td>
+                                        }
+                                    }
+
+                                    @{
+                                        if (Convert.ToInt32(dte.LossCodesLevel) == 2)
+                                        {
+
+                                            if (Convert.ToString(dte.LossCodesLevel1ID) != null)
+                                            {
+                                                int losscodeid = Convert.ToInt32(dte.LossCodesLevel1ID);
+                                                SRKSDemo.Server_Model.i_facility_shaktiEntities1 db = new SRKSDemo.Server_Model.i_facility_shaktiEntities1();
+                                                var lossdetailsDesc = db.tbllossescodes.Where(m => m.LossCodeID == losscodeid).Select(m => m.LossCode).SingleOrDefault();
+                                                <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                    @lossdetailsDesc
+                                                </td>
+                                                <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                    @Html.DisplayFor(modelItem => dte.LossCode)
+                                                </td>
+
+                                            }
+                                            <td></td>
+                                        }
+                                    }
+
+                                    @{
+                                        if (Convert.ToInt32(dte.LossCodesLevel) == 3)
+                                        {
+                                            if (Convert.ToString(dte.LossCodesLevel1ID) != null)
+                                            {
+                                                int losscodeid = Convert.ToInt32(dte.LossCodesLevel1ID);
+                                                SRKSDemo.Server_Model.i_facility_shaktiEntities1 db = new SRKSDemo.Server_Model.i_facility_shaktiEntities1();
+                                                var lossdetailsDesc = db.tbllossescodes.Where(m => m.LossCodeID == losscodeid).Select(m => m.LossCode).SingleOrDefault();
+                                                <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                    @lossdetailsDesc
+                                                </td>
+                                            }
+                                            if (Convert.ToString(dte.LossCodesLevel2ID) != null)
+                                            {
+                                                int losscodeid1 = Convert.ToInt32(dte.LossCodesLevel2ID);
+                                                SRKSDemo.Server_Model.i_facility_shaktiEntities1 db1 = new SRKSDemo.Server_Model.i_facility_shaktiEntities1();
+                                                var lossdetailsDesc1 = db1.tbllossescodes.Where(m => m.LossCodeID == losscodeid1).Select(m => m.LossCode).SingleOrDefault();
+                                                <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                    @lossdetailsDesc1
+                                                </td>
+                                            }
+                                            <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                @Html.DisplayFor(modelItem => dte.LossCode)
+                                            </td>
+                                        }
+                                    }
+
+                                    <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.StartDateTime)
+                                    </td>
+
+                                    @*<td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.EndDateTime)
+                                        </td>*@
+
+                                    <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.EndDateTime)
+                                    </td>
+                                    <td style="width: auto;font-family: Helvetica; font-size: 85%">
+                                        @{
+                                            var STime = Convert.ToDateTime(item.StartDateTime);
+                                            var ETime = Convert.ToDateTime(item.EndDateTime);
+                                            var Duration = ETime.Subtract(STime);
+                                            @Duration
+                                        }
+                                    </td>
+
+
+                                </tr>
+                                slno = slno + 1;
+                            }
+
+
+                            @* @foreach (var item in Model.HoldListDetailsWO)
+                                {
+                                    <tr>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                            @slno
+                                        </td>
+                                        @{
+
+                                    i_facility.Models.i_facility_tsalEntities db6 = new i_facility.Models.i_facility_tsalEntities();
+                                    var msgCode = @item.MessageCodeID;
+                                     <td style="display:none">@msgCode</td>
+                                    var dte = db6.tbllossescodes.Where(m => m.LossCodeID == msgCode).SingleOrDefault();
+
+                                        if (Convert.ToInt32(dte.LossCodesLevel) == 1)
+                                    {
+                                        if (dte.LossCode == "999")
+                                        {
+                                            <td style="width: auto; font-family: Helvetica; font-size: 85%;">
+                                                @Html.DisplayFor(modelItem => dte.MessageType)
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td style="width: auto; font-family: Helvetica; font-size: 85%;">
+                                                @Html.DisplayFor(modelItem => dte.LossCode)
+                                            </td>
+                                        }
+                                            <td></td>
+                                        <td></td>
+                                        }
+                                        }
+                                        @{
+                                    if (Convert.ToInt32(dte.LossCodesLevel) == 2)
+                                    {
+                                        if (Convert.ToString(dte.LossCodesLevel1ID) != null)
+                                        {
+                                            int losscodeid = Convert.ToInt32(dte.LossCodesLevel1ID);
+                                            i_facility.Models.i_facility_tsalEntities db = new i_facility.Models.i_facility_tsalEntities();
+                                            var lossdetailsDesc = db.tbllossescodes.Where(m => m.LossCodeID == losscodeid).Select(m => m.LossCode).SingleOrDefault();
+                                            <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                @lossdetailsDesc
+                                            </td>
+                                            <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                @Html.DisplayFor(modelItem => dte.LossCode)
+                                            </td>
+
+                                        }
+                                            <td></td>
+                                    }
+                                        }
+                                        @{
+                                    if (Convert.ToInt32(dte.LossCodesLevel) == 3)
+                                    {
+                                        if (Convert.ToString(dte.LossCodesLevel1ID) != null)
+                                        {
+                                            int losscodeid = Convert.ToInt32(dte.LossCodesLevel1ID);
+                                            i_facility.Models.i_facility_tsalEntities db = new i_facility.Models.i_facility_tsalEntities();
+                                            var lossdetailsDesc = db.tbllossescodes.Where(m => m.LossCodeID == losscodeid).Select(m => m.LossCode).SingleOrDefault();
+                                            <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                @lossdetailsDesc
+                                            </td>
+                                        }
+                                        if (Convert.ToString(dte.LossCodesLevel2ID) != null)
+                                        {
+                                            int losscodeid1 = Convert.ToInt32(dte.LossCodesLevel2ID);
+                                            i_facility.Models.i_facility_tsalEntities db1 = new i_facility.Models.i_facility_tsalEntities();
+                                            var lossdetailsDesc1 = db1.tbllossescodes.Where(m => m.LossCodeID == losscodeid1).Select(m => m.LossCode).SingleOrDefault();
+                                            <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                @lossdetailsDesc1
+                                            </td>
+                                        }
+                                            <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                @Html.DisplayFor(modelItem => dte.LossCode)
+                                            </td>
+                                    }
+                                        }
+
+                                        <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.StartDateTime)
+                                        </td>
+                                         <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.EndDateTime)
+                                        </td>
+                                        <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.WONo)
+                                        </td>
+                                    </tr>
+                                    slno = slno + 1;
+                                }*@
+
+                            <tr class="spacer"></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /widget-content -->
+        </div>
+        <!-- /widget -->
+    </div>
+</div>
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+@*<script type="text/javascript">
+        function myFunction() {
+            window.focus();
+           // alert("GotIt!")//now doesn't work in chrome.
+       } setInterval(myFunction, 300000);
+    </script>*@
+
+<script type="text/javascript">
+    var roleid = parseInt('@Session["RoleID"]');
+    //alert(roleid)
+    if (roleid == 3) {
+        function checkShiftEnd() {
+            var j = "idlelist";
+            debugger;
+            var path = ' @Url.Action("checkShiftEnd", "ManualHMIScreen")';
+
+            $.getJSON(path, { rep: j }, function (data) {
+                if (data != null) {
+                    var MsgData = $.parseJSON(data);
+                    if (MsgData == "yes") {
+                        //alert("yes")
+                        window.open('http://www.google.com', '_blank').close();
+                    }
+                    else {
+                        //alert("no")
+                    }
+                }
+                else {
+                    // alert("Not Found");
+                }
+            });
+
+        } setInterval(checkShiftEnd, 59000);
+    }
+</script>

@@ -1,0 +1,161 @@
+﻿@model  SRKSDemo.Models.sensormachinemodel
+@{
+    ViewBag.Title = "Sensor Machine";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Sensor Machine </h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        @using (Html.BeginForm("CreateMachineSensor", "MachineSensor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <form class="form-horizontal form-label-left" id="fromDiv" novalidate>
+                                <div class="control-group" id="fields">
+                                    <div class="controls">
+                                        <div class="row row-space">
+                                            @Html.HiddenFor(model => model.machinesensor.MSID, new { @id = "msid" })
+
+                                           
+                                            <label class="col-sm-3 control-label">Machine Name</label>
+                                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                                @Html.DropDownList("MachineName", null, "--Select MachineName--", new { @id = "machine", @class = "form-control1 machine", @name = "machine", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['MachineName']", @onchange = "getdat();" })
+                                                @Html.HiddenFor(model => model.machinesensor.MachineId, new { @id = "machineid" })
+                                            </div>
+                                            </div>
+                                        <div class="row">
+                                            <label class="col-sm-3 control-label">Sensor Group Name</label>
+                                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                                @Html.DropDownList("SensorGroupName", null, "--Select SensorGroupName--", new { @id = "sensor", @class = "form-control1 sensor", @name = "sensor", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['SensorGroupName']", @onchange = "sensornameDuplicateCheck();" })
+                                                @Html.HiddenFor(model => model.machinesensor.Sid, new { @id = "sid" })
+                                                <span id="errorPlant" style="color:red"></span>
+                                            </div>
+
+                                        </div>
+                                        <div class="row row-space">
+                                            <label class="col-sm-3 control-label">Sensor Module IP Address</label>
+                                            <div class="col-sm-3">
+                                                @Html.TextBoxFor(model => model.machinesensor.IPAddress, new { @id = "EditIPAddress", @class = "form-control", style = "width:89.7%", @placeholder = "Enter sensor IP Address", @required = "required" })
+                                                @Html.HiddenFor(model => model.machinesensor.IPAddress, new { @id = "IPAddress" })
+                                            </div>
+                                        </div>
+                                        <div class="row row-space">
+                                            <label class="col-sm-3 control-label">Port Number</label>
+                                            <div class="col-sm-3">
+                                                @*<input type="text" class="form-control1" id="" placeholder="Plant Display Name">*@
+                                                @Html.TextBoxFor(model => model.machinesensor.PortNo, new { @id = "EditPortNo", @class = "form-control", style = "width:89.7%", @placeholder = "Enter Port Number", @required = "required" })
+                                                @Html.HiddenFor(model => model.machinesensor.PortNo, new { @id = "PortNo" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="generate-btn">
+                                        <a id="" href="/MachineSensor/IndexMachineSensor" type="submit" class="btn btn-new"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                                        <button type="submit" class="btn btn-new float-right save"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+
+                                    </div>
+                                </div>
+                            </form>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+
+@*<script>
+    function sensornameDuplicateCheck() {
+        var sensor = $("#sensor").val();
+        var machine = $("#machine").val();
+        $.ajax({
+            type: "POST",
+            data: { 'sensor': sensor, machine: machine },
+            url: "/MachineSensor/sensornameDuplicateCheck",
+            async: false,
+            success: function (data) {
+                if (data === "notok") {
+                    $("#errorPlant").html('Sensor Group Name already exists');
+                    $("#save").attr('disabled', 'disabled');
+                } else {
+                    $("#errorMessage").html('');
+                    $("#save").removeAttr('disabled', 'disabled');
+                }
+            },
+
+            error: function (jqXHR, textStatus) {
+                alert("", "There is some issue in network");
+            }
+        })
+    }
+    
+    </script>*@
+
+@if (TempData["Message"] != null)
+{
+    <input type="hidden" id="Message" value="@TempData["Message"]" />
+    <script type="text/javascript">
+        $(function () {
+            var message = $("#Message").val();
+            if (message !== "") {
+                $("#errorMessage").html(message);
+
+
+            }
+        });
+</script>
+}
+<script>
+    function getdat() {
+        var machineid = $("#machine").val();
+        $("#machineid").val(machineid);
+    }
+</script>
+<script>
+    function getdata() {
+        var machineid = $("#sensor").val();
+        $("#sid").val(machineid);
+    }
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $(document).on('click', ".save", function (e) {
+            var machineid = $("#machine").val();
+            var sid = $("#sensor").val();
+            var ip = $("#EditIPAddress").val();
+            var portno = $("#EditPortNo").val();
+            $.post("/MachineSensor/InsertData", {
+                machineid: machineid, sid: sid, ip: ip, portno: portno
+
+            }, function (msg) {
+                if (msg == 'success') {
+                    
+                    window.location.href = "/MachineSensor/IndexMachineSensor";
+                }
+                
+                //TempData["toaster_success"] = "Data Saved successfully";
+                });
+          
+        });
+
+
+    })
+</script>

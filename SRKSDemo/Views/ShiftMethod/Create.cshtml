@@ -1,0 +1,66 @@
+﻿@model SRKSDemo.Server_Model.tblshiftmethod
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="wrp clearfix">
+        @*style="background-color:red" box outside create role*@
+        <div class="fluid">
+            <div class="widget col-md- grid12">
+                <div class="widget-header" style="background-color:red">
+                    <div class="widget-title">
+                        <span style="font-style:oblique;font-size:100%">Create Shift Method</span>
+                    </div>
+                </div>
+                <!-- /widget-header -->
+                <div id="Error">
+                    @if (TempData["Error"] != null)
+                {
+                        <pre>
+<span style="font-family:Calibri">@TempData["Error"]</span>
+                    </pre>
+                    }
+                </div>
+                <div class="widget-content pad20f">
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color:blue;font-style:oblique">Shift Method Name</label>
+                    @Html.TextBoxFor(model => model.ShiftMethodName, new { @id = "ShiftMethodName", @class = "form-control", @name = "ShiftMethodName", style = "width:89.7%", @placeholder = "Enter ShiftMethod Name", @required = "required" })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color:blue;font-style:oblique">Shift Method Description</label>
+                    @Html.TextBoxFor(model => model.ShiftMethodDesc, new { @id = "ShiftMethodDesc", @class = "form-control", @name = "ShiftMethodDesc", style = "width:89.7%", @placeholder = "Enter ShiftMethod Description", @required = "required" })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color:blue;font-style:oblique">No. of Shift</label>
+                    @Html.TextBoxFor(model => model.NoOfShifts, new { @id = "NoOfShifts", @class = "form-control j_int", @name = "NoOfShifts", style = "width:89.7%", @placeholder = "Enter No. of Shifts", @required = "required" })
+
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Create" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit;margin-top:2%;background-color:orange;color:black;font-size:95%" />
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div> <!-- /Class-fluid-->
+    </div>
+    @Html.HiddenFor(Model => Model.ShiftMethodID)
+}
+
+<style>
+    input {
+        font-style: oblique;
+        color: blue;
+    }
+</style>
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/js/jValidations.js"></script>
+<script>
+    setTimeout(function () {
+        $('#Error').fadeOut('slow');
+    }, 15000); // <-- time in milliseconds
+</script>

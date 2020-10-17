@@ -1,0 +1,152 @@
+﻿@model IEnumerable<SRKSDemo.Server_Model.tblmultipleworkorder>
+@{
+    ViewBag.Title = "UnitWorks - MultiWorkOrder Index";
+    Layout = "~/Views/Shared/_LayoutForMaster.cshtml";
+    var slno = 1;
+}
+
+<h2></h2>@* induces gap between button and container top*@
+<div style="width: 2%; display: inline-block; height: inherit"></div>
+@if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+{
+    @Html.ActionLink("Enable New Work-Centre", "Create", new { }, new { @class = "btn orange btn-lg ", @style = "color:black;width:30%;height:70%;backgroundcolor:red;font-size:90%" })
+    <div style="width: 5%; display: inline"></div>
+    @Html.ActionLink("Import Data From Excel", "ImportEnabledMultiWODetails", new { }, new { @class = "btn orange btn-lg ", @style = "color:black;width:20%;height:70%;backgroundcolor:red;font-size:90%;display:inline" })
+    <div style="width: 5%; display: inline"></div>
+    @Html.ActionLink("Export MultiWOData To Excel", "ExportEnabledMultiWODetails", new { }, new { @class = "btn orange btn-lg ", @style = "color:black;width:20%;height:70%;backgroundcolor:red;font-size:90%;display:inline" })
+}
+
+<div class="wrp clearfix">
+    <div class="fluid">
+        <div class="widget grid12">
+            <div class="widget-header">
+                <div class="widget-title" style="font-size: 125%">
+                    Multi-WorkOrder Details
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content pad20f">
+                <div class="widget__content table-responsive ">
+                    <div id="ErrorBlock">
+                        @if (Session["MachErrDetails"] != null)
+                        {
+                            <pre>
+<span style="font-family:Calibri">@Session["MachErrDetails"]</span>
+                    </pre>
+
+                        }
+                        @{ Session["MachErrDetails"] = null; }
+                    </div>
+                    <table class="table">
+                        <tr class="text-centre">
+                            <th style="text-align: center; font-size: 95%">Sl No.</th>
+                            <th style="text-align: center; font-size: 95%">Plant Name</th>
+                            <th style="text-align: center; font-size: 95%">Shop Name</th>
+                            <th style="text-align: center; font-size: 95%">Cell Name</th>
+                            <th style="text-align: center; font-size: 95%">Work Centre Name</th>
+                            <th style="text-align: center; font-size: 95%">Enable</th>
+
+                            @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+                            {
+                                <th style="text-align: center; font-size: 95%">Edit</th>
+                                @*<th style="text-align: center; font-size: 95%">Stop Plan</th>*@
+                                <th style="text-align: center; font-size: 95%">Delete</th>
+                            }
+                        </tr>
+                        <tbody>
+                            <tr class="spacer"></tr>
+                            <tr class="spacer"></tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @slno
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.tblplant.PlantName)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.tblshop.ShopName)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.tblcell.CellName)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.tblmachinedetail.MachineDisplayName).
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @if (item.IsEnabled == 1)
+                                        {
+                                            <p>Enabled</p>
+                                        }
+                                        else
+                                        {
+                                            <p>Disabled</p>
+                                        }
+
+                                        @*@Html.DisplayFor(modelItem => item.IsEnabled)*@
+                                    </td>
+                                    @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+                                    {
+                                        <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Edit">
+                                            @Html.ActionLink(" ", "Edit", new { id = item.MWOID }, new { @class = " blue  btn-lg fa fa-edit shiftPlannerToEdit", @style = "color:white;text-decoration:none;" })
+                                            @Html.HiddenFor(modelItem => item.MWOID, new { @id = "ShiftPlannerid" })
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Delete">
+                                            @{var id = item.MWOID;
+                                                @Html.ActionLink(" ", "Delete", new { id = item.MWOID }, new { @id = id, @class = "DeleteModel red btn-lg fa fa-trash", @style = "color:white;text-decoration:none" })
+                                            }
+                                        </td>
+                                    }
+                                </tr>
+                                slno = slno + 1;
+                            }
+                            <tr class="spacer"></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+            <!-- /widget-content -->
+
+        </div>
+        <!-- /widget -->
+    </div>
+    <div id="dialog-confirm" title=" Delete Confirmation ?" style="height: 5%;">
+        <p>
+        </p>
+    </div>
+
+</div>
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+    setTimeout(function () {
+        $('#ErrorBlock').fadeOut('slow');
+    }, 30000); // <-- time in milliseconds
+</script>
+
+<script>
+    //This model window is from https://jqueryui.com/dialog/#modal-confirmation
+    $(".DeleteModel").on("click", (function (e) {
+        var MyHref = $(this).prop('href');
+        e.preventDefault();
+        $("#dialog-confirm").dialog({
+            resizable: true,
+            height: 50,
+            width: 400,
+            modal: true,
+            buttons: {
+                "Delete Multi-WO Enabled": function () {
+                    window.location.href = MyHref;
+                },
+                Cancel: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    }));
+</script>
+

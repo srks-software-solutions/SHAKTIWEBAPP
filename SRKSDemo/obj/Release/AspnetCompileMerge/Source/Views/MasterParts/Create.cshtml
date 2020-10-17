@@ -1,0 +1,152 @@
+﻿@model SRKSDemo.Server_Model.tblmasterparts_st_sw
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutForMaster.cshtml";
+}
+
+@{
+    List<SelectListItem> TimeUnit = new List<SelectListItem>();
+    TimeUnit.Add(new SelectListItem
+    {
+        Text = "Minutes",
+        Value = "Min",
+    });
+    TimeUnit.Add(new SelectListItem
+    {
+        Text = "Hours",
+        Value = "Hrs",
+    });
+
+    TimeUnit.Add(new SelectListItem
+    {
+        Text = "Seconds",
+        Value = "Sec",
+    });
+
+    List<SelectListItem> WeightUnit = new List<SelectListItem>();
+    WeightUnit.Add(new SelectListItem
+    {
+        Text = "Grams",
+        Value = "g",
+    });
+    WeightUnit.Add(new SelectListItem
+    {
+        Text = "Kilograms",
+        Value = "Kg",
+    });
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="wrp clearfix">
+        <div class="fluid">
+
+
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title">
+                        Create Master Parts Standard Time & Weights
+                    </div>
+                </div>
+                <!-- /widget-header -->
+                <div id="ErrorBlock">
+                    @if (Session["Error"] != null)
+                    {
+                        <pre>
+<span style="font-family:Calibri">@Session["Error"]</span>
+                    </pre>
+                        Session["Error"] = null;
+                    }
+                </div>
+                <div class="widget-content pad20f">
+
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%">Part Number</label>
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; margin-left: 2%">Op Number</label>
+                    <br />
+                    @Html.TextBoxFor(model => model.PartNo, new { @id = "PartNo", @class = "stacked-label", @name = "PartNo", style = "width:20%", @placeholder = "Enter Part No", @required = "required" })
+                    @Html.TextBoxFor(model => model.OpNo, new { @id = "OpNo", @class = "stacked-label", @name = "OpNo", style = "width:20%;margin-left:2%", @placeholder = "Enter Op Number", @required = "required" })
+                    <br />
+
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%">Std Setup_Time</label>
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; margin-left: 2%">Std Setup_Time Unit</label>
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; margin-left: 2%">Std Cutting_Time</label>
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; margin-left: 2%">Std Cutting_Time Unit</label>
+
+                    <br />
+                    @Html.TextBoxFor(model => model.StdSetupTime, new { @id = "StdSetupTime", @class = "stacked-label j_decimal", @name = "StdSetupTime", style = "width:20%", @placeholder = "Enter Std Setup_Time", @required = "required" })
+                    @Html.DropDownListFor(model => model.StdSetupTimeUnit, TimeUnit, new { @id = "StdSetupTimeUnit", @name = "StdSetupTimeUnit", @class = "second", @style = "font-size:75%;width:20%;margin-left:2%", @required = "required", @value = ViewData["StdSetupTimeUnit"] })
+                    @Html.TextBoxFor(model => model.StdCuttingTime, new { @id = "StdCuttingTime", @class = "stacked-label j_decimal", @name = "StdCuttingTime", style = "width:20%;margin-left:2%", @placeholder = "Enter StdCutting_Time", @required = "required" })
+                    @Html.DropDownListFor(model => model.StdCuttingTimeUnit, TimeUnit, new { @id = "StdCuttingTimeUnit", @name = "StdCuttingTimeUnit", @class = "second", @style = "font-size:75%;width:20%;margin-left:2%", @required = "required", @value = ViewData["StdCuttingTimeUnit"] })
+                    <br />
+
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%">Std Changeover_Time</label>
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; margin-left: 2%">Std Changeover_Time Unit</label>
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; margin-left: 2%">Input Weight</label>
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; margin-left: 2%">Input Weight Unit</label>
+                    <br />
+                    @Html.TextBoxFor(model => model.StdChangeoverTime, new { @id = "StdCOT", @class = "stacked-label j_decimal", @name = "StdCOT", style = "width:20%", @placeholder = "Enter Changeover_Time", @required = "required" })
+                    @Html.DropDownListFor(model => model.StdChangeoverTimeUnit, TimeUnit, new { @id = "StdChangeoverTimeUnit", @name = "StdChangeoverTimeUnit", @class = "second", @style = "font-size:75%;width:20%;margin-left:2%", @required = "required", @value = ViewData["StdChangeoverTimeUnit"] })
+                    @Html.TextBoxFor(model => model.InputWeight, new { @id = "InputWeight", @class = "stacked-label j_decimal", @name = "InputWeight", style = "width:20%;margin-left:2%", @placeholder = "Enter Input Weight", @required = "required" })
+                    @Html.DropDownListFor(model => model.InputWeightUnit, WeightUnit, new { @id = "InputWeightUnit", @name = "InputWeightUnit", @class = "second", @style = "font-size:75%;width:20%;margin-left:2%", @required = "required", @value = ViewData["InputWeightUnit"] })
+                    <br />
+
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%">Output Weight</label>
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; margin-left: 2%">Output Weight Unit</label>
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; margin-left: 2%">Materials Removed Qty</label>
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; margin-left: 2%">Materials Removed Qty Unit</label>
+                    <br />
+                    @Html.TextBoxFor(model => model.OutputWeight, new { @id = "OutputWeight", @class = "stacked-label", @name = "OutputWeight", style = "width:20%", @placeholder = "Enter Output Weight", @required = "required" })
+                    @Html.DropDownListFor(model => model.OutputWeightUnit, WeightUnit, new { @id = "OutputWeightUnit j_decimal", @name = "OutputWeightUnit", @class = "second", @style = "font-size:75%;width:20%;margin-left:2%", @required = "required", @value = ViewData["OutputWeightUnit"] })
+                    @Html.TextBoxFor(model => model.MaterialRemovedQty, new { @id = "MaterialsRemoved", @class = "stacked-label j_decimal", @name = "MaterialsRemoved", style = "width:20%;margin-left:2%", @placeholder = "Enter Materials Remove Quantity", @required = "required" })
+                    @Html.DropDownListFor(model => model.MaterialRemovedQtyUnit, WeightUnit, new { @id = "MaterialRemovedQtyUnit", @name = "MaterialRemovedQtyUnit", @class = "second", @style = "font-size:75%;width:20%;margin-left:2%", @required = "required", @value = ViewData["MaterialRemovedQtyUnit"] })
+
+                    <div style="width: 100%; display: block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Create" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit; margin-top: 2%; background-color: orange; color: black; font-size: 95%" />
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+    </div>
+
+}
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/js/jValidations.js"></script>
+<script>
+    setTimeout(function () {
+        $('#ErrorBlock').fadeOut('slow');
+    }, 15000); // <-- time in milliseconds
+</script>
+<script>
+    ////allows only to enter numerics and two digit decimal
+    //$('.j_decimal').keypress(function (event) {
+    //    var $this = $(this);
+    //    if ((event.which != 46 || $this.val().indexOf('.') != -1) &&
+    //       ((event.which < 48 || event.which > 57) &&
+    //       (event.which != 0 && event.which != 8))) {
+    //        alert("Integers only");
+    //        event.preventDefault();
+    //    }
+
+    //    var text = $(this).val();
+    //    if ((event.which == 46) && (text.indexOf('.') == -1)) {
+    //        setTimeout(function () {
+    //            if ($this.val().substring($this.val().indexOf('.')).length > 3) {
+    //                $this.val($this.val().substring(0, $this.val().indexOf('.') + 3));
+    //            }
+    //        }, 1);
+    //    }
+
+    //    if ((text.indexOf('.') != -1) && (text.substring(text.indexOf('.')).length > 2) && (event.which != 0 && event.which != 8) && ($(this)[0].selectionStart >= text.length - 2)) {
+    //        alert("Integers only");
+    //        event.preventDefault();
+    //    }
+    //});
+</script>

@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "ImportMailDetails";
+}
+
+<link href="~/css/fileinput.css" rel="stylesheet" />
+<link href="~/css/fileinput.min.css" rel="stylesheet" />
+@using (Html.BeginForm("ImportMailDetails", "MailIDs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="wrp clearfix">
+        <div class="fluid">
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title">
+                        Import Mail Details  from Excel
+                    </div>
+                </div>
+                <!-- /widget-header -->
+                <div class="widget-content pad20f">
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 40%">Select Excel File</label>
+                    <input id="file" name="file" type="file" accept="xlsx/*" data-show-upload="false" data-show-remove="false" required="required">
+
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply btn-aqua fa-1x", @style = "text-decoration:none;display:inline-block" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Upload" class="" style="display: inline-block;color:white;background-color:#ea4335; margin-top: 3%; width: 30%;font-size:1.2vw" />
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+    </div>
+}
+<script src="~/js/jquery-2.1.4.min.js"></script>
+@*<script src="~/js/bootstrap.min.js"></script>*@
+<script src="~/js/fileinput.js"></script>
+<script src="~/js/fileinput.min.js"></script>
+<script>
+    /* Initialize your widget via javascript as follows */
+    $("#file").fileinput({
+        previewFileType: "xlsx",
+        allowedFileExtensions: ["xls","xlsx"],          //validate
+        maxFileSize: 4000,                                              //maxFileSize in KB's
+        browseClass: "btn btn-primary btn-md",
+        browseLabel: "Select Excel File",
+        browseIcon: '<i class="fa fa-file-excel-o"></i>',
+        previewClass: "bg-warning",
+        msgInvalidFileExtension: "Select Only (xls or xlsx) Formats."
+    });
+</script>

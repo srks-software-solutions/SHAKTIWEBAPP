@@ -1,0 +1,476 @@
+﻿@model IList<i_facilitylibrary.DAL.tblddl>
+@{
+    ViewBag.Title = "M-HMI_DDL List";
+
+    var slno = 1;
+    if (ViewBag.roleid == 3)
+    {
+        Layout = "~/Views/Shared/_SuperTable.cshtml";
+    }
+    int mcid = Convert.ToInt32(ViewBag.mcnid);
+    int opid = Convert.ToInt32(ViewBag.opid);
+    int roleid = Convert.ToInt32(Session["RoleID"]);
+    string date = ViewBag.coretddt;
+    var a = Session["VError"];
+    var b = a;
+}
+
+@*<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.css">
+    <script src="~/Content1/SuperTable/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.js"></script>*@
+
+<link href="~/Content1/SuperTable/jquery-ui.css" rel="stylesheet" />
+<link href="~/Content1/SuperTable/dataTables.jqueryui.css" rel="stylesheet" />
+
+
+
+
+@*@Styles.Render("~/Content/datatables")*@
+
+<style type="text/css">
+    [hidden] {
+        display: none;
+    }
+
+    .pull-left {
+        float: left !important;
+    }
+
+    /*.visuallyhidden {
+            position: absolute;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            height: 1px; width: 1px;
+            margin: -1px; padding: 0; border: 0;
+        }*/
+</style>
+
+<style type="text/css">
+    th {
+        background-color: orange;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @*<div id="ErrorDiv" style="z-index: 1000; top: 0; left: 0; width: auto; position: absolute; margin-left: 60%">
+             @if (Session["Error"] != null)
+                    {
+                        <pre>
+        <span style="font-family:Calibri;font-size:3vh;color:red">@Session["Error"]</span>
+                            </pre>
+                        Session["Error"] = null;
+                    }
+                 </div>
+    *@
+
+    <div class="wrp clearfix">
+        <div class="fluid">
+            <div class="wrapper">
+                <section class="content">
+
+                    <div class="row" style="padding-top: .1%">
+                        <div style="width: 100%">
+                            @*@Html.ActionLink("Back To HMIScreen", "Index", new { }, new { @class = "btn orange btn-lg ", @style = "margin-left:2%;color:black;width:15vw;height:70%;backgroundcolor:red;font-size:1vw" })*@
+                            <div style="margin-left: 15vw; display: inline"></div>
+                            <span style="font-size: 1.9vw; color: orange; margin-left: 15%">@Session["macDispName"]</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div id="ErrorDiv" style="z-index: 1000; top: 7%; left: 0; width: auto; position: absolute; margin-left: 60%; color: black; background-color: white">
+                            @if (Session["Error"] != null)
+                            {
+                                <p>
+                                    <span style="font-family: Calibri; font-size: 3vh;">@Session["Error"]</span>
+                                </p>
+                                Session["Error"] = null;
+                            }
+                            @if (Session["VError"] != null)
+                            {
+                                <p>
+                                    <span style="font-family: Calibri; font-size: 3vh;">@Session["VError"]</span>
+                                </p>
+                                Session["VError"] = null;
+                            }
+                        </div>
+                        <div class="col-md-2" style="float: left; margin-left: .1%">
+                            <article class="widget widget__form">
+                                <div class="widget__content" style="text-align: center;">
+                                    <div style="width: 100%; margin-top: 2%; height: auto">
+                                        @*<button class="btn blue inverse" onclick="ClearlyToPFList(event)" style="font-size: 1.0vw;">PartialFinished WO List</button>*@
+                                        <span class="btn blue inverse" style="font-size: 1.0vw;" id="Multiwo">Multi-WorkOrder</span>
+                                        <span class="btn blue inverse" style="margin-top: .5em; font-size: 1.0vw;" id="ALLPFWOs">Select All Prv WO's</span>
+                                        <span style="font-size: .2vw; margin-top: .5em; display: block" id="SelectMultipleWOButtonINverser">&nbsp</span>
+                                        <span class="btn blue inverse" style="font-size: 1.0vw;" id="SelectMultipleWOButton" hidden>Select WO</span>
+                                        <input type="hidden" id="HiddenMultiWOValue" name="HiddenMultiWOValue" value="0" hidden />
+                                        <input type="hidden" id="ToHMI" name="ToHMI" hidden />
+                                        <input type="hidden" id="data" name="data" hidden />
+                                    </div>
+                                    <hr />
+                                    <span style="font-weight: 900; font-size: large">WorkCenter List</span>
+                                    <div id="WorkCenterList" style="height: auto; overflow: hidden; margin-top: 1%; -webkit-align-content: center">
+                                        <input type="hidden" id="MacInvNo" name="MacInvNo" hidden />
+                                        <br />
+                                        @foreach (var row in ViewBag.machineData)
+                                        {
+                                        <button class='BringWO btn btn-lg orange inverse' style="width: inherit; width: 94%">
+                                            @row.MachineName
+                                        </button>
+                                            <hr />
+                                        }
+                                    </div>
+
+                                </div>
+                            </article>
+                        </div>
+                        <div class="widget-content pad20f" style="float: right; width: 82%">
+                            <article class="widget widget__form">
+                                <div class="widget-header">
+                                    <div class="widget-title" style="font-size: 125%">
+                                        DDL List for <span style="font-size: 1.2vw; font-weight: 700; color: black;">@ViewBag.MacInvNo </span>
+                                    </div>
+                                </div>
+                                <!-- /widget-header -->
+                                <div class="widget-content pad20f">
+                                    <div class="widget__content table-responsive">
+                                        @if (Model != null)
+                                        {
+                                            <table id="jqueryTable" class="table table-condensed table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sl No.</th>
+                                                        @*<th style="display: none" class="cp">CB</th> removed on 2017-01-02 *@
+                                                        <th class="cp">CB</th>
+                                                        <th>Project</th>
+                                                        <th>WO No.</th>
+                                                        <th>PartNo </th>
+                                                        <th>OP No. </th>
+                                                        <th>Target Qty </th>
+                                                        <th>Days Ageing </th>
+                                                        <th>Flag Rush </th>
+                                                        <th>MAD Date Ind </th>
+                                                        <th>MAD Date </th>
+                                                        <th>Split WO </th>
+                                                        <th style="text-align: center; font-size: 95%" class="StartButtons">Start</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <tr>
+                                                            <td>@slno </td>
+                                                            @*<td class="HiddenDDLIDtd" style="display: none">*@
+                                                            <td class="HiddenDDLIDtd">
+                                                                <input type="checkbox" class="HiddenDDLID" id='@item.DDLID' />
+                                                            </td>
+                                                            <td>@Html.DisplayFor(modelItem => item.Project) </td>
+                                                            <td id="workOrderNo">@Html.DisplayFor(modelItem => item.WorkOrder) </td>
+                                                            <td>@Html.DisplayFor(modelItem => item.MaterialDesc) </td>
+                                                            <td>@Html.DisplayFor(modelItem => item.OperationNo) </td>
+                                                            <td>@Html.DisplayFor(modelItem => item.TargetQty)  </td>
+
+                                                            <td>@Html.DisplayFor(modelItem => item.DaysAgeing) </td>
+                                                            <td>@Html.DisplayFor(modelItem => item.FlagRushInd) </td>
+                                                            <td>@Html.DisplayFor(modelItem => item.MADDateInd) </td>
+                                                            <td>
+                                                                @{
+                                                                    if ((item.MADDate.ToString().Trim() != ""))
+                                                                    {
+                                                                        if ((item.MADDate.ToString().Trim() != null))
+                                                                        {
+                                                                            string dateValue = Convert.ToDateTime(item.MADDate).ToString("dd-MM-yyyy");
+                                                                            @dateValue
+                                                                        }
+                                                                    }
+                                                                }
+                                                            </td>
+
+                                                            <td>@Html.DisplayFor(modelItem => item.SplitWO)  </td>
+
+                                                            <td class="StartButtons">
+                                                                @*@Html.ActionLi00nk(" ", "DDLList", new { DDLID = item.DDLID }, new { @class = " red btn-lg fa fa-arrow-circle-right fa-2x ", @style = "float:left;color:white;text-decoration:none" })*@
+                                                                <input type="hidden" name="DDLID" id="InnerDDLID" class='@item.DDLID' />
+                                                                <button type="button" name="start" id="start" class="start red" style="border-radius:6px"><i class="fa fa-arrow-circle-right fa-2x"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                        slno = slno + 1;
+                                                    }
+
+                                                </tbody>
+                                            </table>
+                                        }
+                                        else
+                                        {
+                                            <p style="color: red">No Data is Available</p>
+                                        }
+                                    </div>
+                                </div>
+
+
+
+                                <input type="checkbox" id="TogglePrvWOSelection" style="visibility:hidden" />
+                                <!-- /widget-content -->
+                            </article>
+                        </div>
+                    </div>
+                    <!-- /widget -->
+                </section>
+            </div>
+        </div>
+    </div>
+}
+
+<form style="display:none" action="/HMIScree/DDLList" method="POST" id="PostMethodForDDL">
+    <input type="hidden" id="data1" name="data1" value="" />
+    <input type="hidden" id="selectedValues" value="@ViewBag.selectedValues" name="selectedValue" />
+</form>
+
+<script type="text/javascript" src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/Content1/SuperTable/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/jquery.dataTables.js"></script>
+
+@*On clicking SelectMultipleWOButton go to post method if there are checked checkboxes.*@
+<script type="text/javascript">
+    var arr = [];
+    var uncheckedarr = [];
+    $(".HiddenDDLID").on('change', function () {
+
+        var checkedval = (this.checked ? this.id : 0);
+        var unchekedval = (this.checked ? 0 : this.id);
+        arr.push(checkedval);
+        // uncheckedarr.push(unchekedval);
+        if (unchekedval != '') {
+            arr.splice(arr.indexOf(unchekedval), 1);
+        }
+
+    });
+
+    $("#SelectMultipleWOButton").on("click", function (e) {
+        //alert("blah")
+
+        //var arr = $('.HiddenDDLID').filter(':checked').map(function () {
+        //    return this.id;
+        //}).get();
+        //alert(arr)
+        var columnNames = {};
+        $.each(arr, function (key, value) {
+            if (value == 0)
+                arr.splice(arr.indexOf(value), 1);
+        })
+        columnNames = arr;
+        $.each(arr, function (key, value) {
+            //alert(key + ": " + value);
+            columnNames[key] = value;
+            //alert(columnNames[key]);
+        });
+        //location.href('@Url.Action("Action", "Controller", new { })');
+        if (arr != "" || arr != undefined) {
+            //alert(arr); SiblingValidation
+
+            //$.post('/NewHMIScreen/SiblingValidation', $.param({ data: arr }, true), function (retVal) {
+            //    //var url = '/NewHMIScreen/Index/';
+            //    //window.location.href = url;
+
+            //    if (retVal == "valid") {
+            //        $.post('/NewHMIScreen/DDLList', $.param({ data: arr }, true), function (retVal) {
+            //            var url = '/NewHMIScreen/Index/';
+            //            window.location.href = url;
+            //        });
+            //    }
+            //    else {
+            //        alert(retVal)
+            //    }
+            //});
+
+            columnNames = JSON.stringify(columnNames);
+            $("#data1").val(columnNames);
+            var searchIDs = $(".HiddenDDLID:checkbox:checked").map(function () {
+                return $(this).attr('id');
+            }).get(); // <----
+           // console.log(searchIDs);
+            var ids = "";
+            for (var i = 0; i < searchIDs.length; i++) {
+                if (ids == "") {
+                    ids = searchIDs[i];
+                } else {
+                    ids = ids + "," + searchIDs[i];
+                }
+
+            }
+
+            $("#selectedValues").val(ids);
+            ////alert($("#data1").val());
+            $("#PostMethodForDDL").submit();
+            arr = [];
+        }
+        else {
+            alert("Select atleast 1 WorkOrder");
+        }
+    });
+
+    $(".start").on("click", function (e) {
+        var DDLID = $(this).siblings("#InnerDDLID").attr('class');
+        //alert("DDLID "+DDLID);
+        var columnNames = new Array();
+        columnNames.push(DDLID);
+        columnNames = JSON.stringify(columnNames);
+        $("#data1").val(columnNames);
+        $("#PostMethodForDDL").submit();
+    });
+
+</script>
+
+@*This one is to go to PartialFinishedList*@
+<script>
+    function ClearlyToPFList(e) {
+        e.preventDefault();
+        $("#ToHMI").val(1);
+        // alert($("#ToHMI").val())
+        window.location.href = '@Url.Action("PartialFinishedList", "HMIScree")';
+    }
+</script>
+
+@*This one is to Display WO of particular Work Center*@
+<script>
+    $(".BringWO").on("click", function (e) {
+        //alert($(this).text())
+        e.preventDefault();
+        var mcval = $(this).text();
+        //alert($.trim(mcval.replace(/[\t\n]+/g, ' ')));
+        mcval = $.trim(mcval.replace(/[\t\n]+/g, ' '));
+        $("#MacInvNo").val(mcval);
+        // window.location.href = '@Url.Action("DDLList", "HMIScree") + "&MacInvNo=" + encodeURIComponent(mcval)';
+        window.location.href = '@Url.Action("DDLList", "HMIScree", new { MacInvNo = "mcval" })'.replace("mcval", mcval);
+    });
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        var table = $('#jqueryTable').dataTable({
+            //"bPaginate": false,
+            //"paging": false,
+        });
+        table.api().column(1).visible(false);// CheckBox Column //Initially Hidden
+        //$(".HiddenDDLID", table.fnGetNodes()).each(function () {
+        //    //alert($(this).attr('id'));
+        //    $(this).attr("checked", "checked");
+        //});
+
+        $("#ALLPFWOs").on("click", function (e) {
+            //$("#TogglePrvWOSelection").val(parseInt( $("#TogglePrvWOSelection").toggle()));
+            //alert($("#TogglePrvWOSelection").val())
+            var selectedID = '@ViewBag.MacInvNo';
+           // $.getJSON("/NewHMIScreen/IsMultiWOAllowable", { id: selectedID }, function (data) {
+                var data = "yes";
+                if (data == "yes") {
+                    table.api().column(1).visible(true);// CheckBox Column
+                    $("#HiddenMultiWOValue").val(1);
+                    $("#SelectMultipleWOButton").show();
+                    $(".StartTitle").hide();
+                    table.api().column(12).visible(false);// Start button
+                    $(".HiddenDDLID").prop("checked", false);
+
+                    $.getJSON("/HMIScree/GetAllPFWOs", { id: selectedID }, function (data) {
+                        //$.each(data, function (index, item) {
+                        //    alert(item)
+                        //});
+                        //var blah = '2758209';
+                        //alert(blah);
+                        $(".HiddenDDLID", table.fnGetNodes()).each(function () {
+                            //alert($(this).attr('id'));
+                            var DDLIDTable = $(this).attr('id');
+                            $.each(data, function (index, item) {
+                                //alert("In Table Loop :" + item)
+                                //alert("In Table Loop Local:" + DDLIDTable)
+                                var DataTableDDLID = parseInt(DDLIDTable);
+                                var fromControllerDDLID = parseInt(item);
+                                //alert("both DDL " + DataTableDDLID + " " + fromControllerDDLID)
+                                if (DataTableDDLID == fromControllerDDLID) {
+                                    //var DDLIDElement = document.getElementById(DataTableDDLID);
+                                    $("#" + DataTableDDLID).prop("checked", "checked");
+                                    //alert(DataTableDDLID)
+                                    //$('[id$=' + DataTableDDLID + ']').each(function () {
+                                    //    alert("Finally Got it :" + $(this).attr('id'));
+                                    //    $(this).attr("checked", "checked");
+                                    //    //document.getElementById($(this).attr('id')).attr("checked", "checked");
+                                    //});
+                                }
+                            });
+
+
+                        });
+
+                    });
+                }
+                else {
+                    alert("Multi WorkOrder for this Machine is not Enabled");
+                }
+            //});
+        });
+
+        //$('.dataTables_filter').addClass('pull-left');
+
+        $("#Multiwo").click(function (e) {
+            e.preventDefault();
+            //var table = $('#example').DataTable();
+            //table.api().column(0).visible(false);
+
+            var MyMultiwoValue = $("#HiddenMultiWOValue").val();
+            //alert(MyMultiwoValue)
+            if (parseInt(MyMultiwoValue) == 0) {
+                var selectedID = '@ViewBag.MacInvNo';
+                //$.getJSON("/NewHMIScreen/IsMultiWOAllowable", { id: selectedID }, function (data) {
+                    var data = "yes";
+                    if (data == "yes") {
+                        //$(".cp").show();
+                        //$(".HiddenDDLIDtd").show();
+                        //$(".HiddenDDLID").show();
+                        table.api().column(1).visible(true);// CheckBox Column
+                        $("#HiddenMultiWOValue").val(1);
+                        //$("#SelectMultipleWOButton").removeClass("visuallyhidden");
+                        $("#SelectMultipleWOButton").show();
+                        $(".StartTitle").hide();
+                        //$(".StartButtons").hide();
+                        table.api().column(12).visible(false);// Start button
+                        $(".HiddenDDLID").prop("checked", false);
+                    }
+                    else {
+                        alert("Multi WorkOrder for this Machine is not Enabled");
+                    }
+                //});
+            }
+            else {
+                //$(".cp").hide();
+                //$(".HiddenDDLIDtd").hide();
+                //$(".HiddenDDLID").hide();
+                //alert("In Else")
+                table.api().column(1).visible(false);// CheckBox Column
+                //$("#SelectMultipleWOButton").addClass("visuallyhidden");
+                $("#SelectMultipleWOButton").hide();
+                //$(".StartTitle").show();
+                //$(".StartButtons").show();
+                table.api().column(12).visible(true);// Start button
+                $("#HiddenMultiWOValue").val(0);
+                $(".HiddenDDLID").prop("checked", false);
+            }
+        });
+
+    });
+</script>
+
+@*Close Error Div*@
+<script>
+        setTimeout(function () {
+            $('#ErrorDiv').fadeOut('slow');
+        }, 15000); // <-- time in milliseconds
+</script>
+
+

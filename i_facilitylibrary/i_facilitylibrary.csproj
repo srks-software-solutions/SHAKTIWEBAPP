@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EA16AE1F-7084-482C-B355-2EE2151039CF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>i_facilitylibrary</RootNamespace>
+    <AssemblyName>i_facilitylibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.0\lib\net451\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="ConnectionFactory.cs" />
+    <Compile Include="DAL\alarm_history_master.cs" />
+    <Compile Include="DAL\alarm_master.cs" />
+    <Compile Include="DAL\alarm_report.cs" />
+    <Compile Include="DAL\book.cs" />
+    <Compile Include="DAL\HistoryHMI.cs" />
+    <Compile Include="DAL\HoldList.cs" />
+    <Compile Include="DAL\ManualBatching.cs" />
+    <Compile Include="DAL\message_code_master.cs" />
+    <Compile Include="DAL\message_history_master.cs" />
+    <Compile Include="DAL\operationlog.cs" />
+    <Compile Include="DAL\parameters_master.cs" />
+    <Compile Include="DAL\recipientmailid.cs" />
+    <Compile Include="DAL\shift_master.cs" />
+    <Compile Include="DAL\tblbreakdown.cs" />
+    <Compile Include="DAL\tblcell.cs" />
+    <Compile Include="DAL\tbldailyprodstatu.cs" />
+    <Compile Include="DAL\tbldaytiming.cs" />
+    <Compile Include="DAL\tblddl.cs" />
+    <Compile Include="DAL\tblemailescalation.cs" />
+    <Compile Include="DAL\tblemailreporttype.cs" />
+    <Compile Include="DAL\tblgenericworkcode.cs" />
+    <Compile Include="DAL\tblgenericworkentry.cs" />
+    <Compile Include="DAL\tblhmiscreen.cs" />
+    <Compile Include="DAL\tblholdcode.cs" />
+    <Compile Include="DAL\tbllivedailyprodstatu.cs" />
+    <Compile Include="DAL\tbllivehmiscreen.cs" />
+    <Compile Include="DAL\tbllivehmiscreenrep.cs" />
+    <Compile Include="DAL\tbllivelossofentry.cs" />
+    <Compile Include="DAL\tbllivelossofentryrep.cs" />
+    <Compile Include="DAL\tbllivemanuallossofentry.cs" />
+    <Compile Include="DAL\tbllivemanuallossofentryrep.cs" />
+    <Compile Include="DAL\tbllivemode.cs" />
+    <Compile Include="DAL\tbllivemodedb.cs" />
+    <Compile Include="DAL\tbllivemultiwoselection.cs" />
+    <Compile Include="DAL\tbllossescode.cs" />
+    <Compile Include="DAL\tbllossofentry.cs" />
+    <Compile Include="DAL\tblmachineallocation.cs" />
+    <Compile Include="DAL\tblmachinecategory.cs" />
+    <Compile Include="DAL\tblmachinedetail.cs" />
+    <Compile Include="DAL\tblmachinedetailsnew.cs" />
+    <Compile Include="DAL\tblmachine_master.cs" />
+    <Compile Include="DAL\tblmailid.cs" />
+    <Compile Include="DAL\tblmanuallossofentry.cs" />
+    <Compile Include="DAL\tblmasterparts_st_sw.cs" />
+    <Compile Include="DAL\tblmimic.cs" />
+    <Compile Include="DAL\tblmode.cs" />
+    <Compile Include="DAL\tblmodulehelper.cs" />
+    <Compile Include="DAL\tblmodulemaster.cs" />
+    <Compile Include="DAL\tblmultipleworkorder.cs" />
+    <Compile Include="DAL\tblnetworkdetailsforddl.cs" />
+    <Compile Include="DAL\tbloeedashboardfinalvariable.cs" />
+    <Compile Include="DAL\tbloeedashboardvariable.cs" />
+    <Compile Include="DAL\tbloeedashboardvariablestoday.cs" />
+    <Compile Include="DAL\tblpart.cs" />
+    <Compile Include="DAL\tblpartwisesp.cs" />
+    <Compile Include="DAL\tblpartwiseworkcenter.cs" />
+    <Compile Include="DAL\tblplannedbreak.cs" />
+    <Compile Include="DAL\tblplant.cs" />
+    <Compile Include="DAL\tblpriorityalarm.cs" />
+    <Compile Include="DAL\tblprodplanMaster.cs" />
+    <Compile Include="DAL\tblreportholder.cs" />
+    <Compile Include="DAL\tblrole.cs" />
+    <Compile Include="DAL\tblroleplaymaster.cs" />
+    <Compile Include="DAL\tblsendermailid.cs" />
+    <Compile Include="DAL\tblshiftdetail.cs" />
+    <Compile Include="DAL\tblshiftdetails_machinewise.cs" />
+    <Compile Include="DAL\tblshiftmethod.cs" />
+    <Compile Include="DAL\tblshiftplanner.cs" />
+    <Compile Include="DAL\tblshift_breaks.cs" />
+    <Compile Include="DAL\tblshift_mstr.cs" />
+    <Compile Include="DAL\tblshop.cs" />
+    <Compile Include="DAL\tbltosapfilepath.cs" />
+    <Compile Include="DAL\tbltosapshopname.cs" />
+    <Compile Include="DAL\tblunit.cs" />
+    <Compile Include="DAL\tbluser.cs" />
+    <Compile Include="DAL\tblwolossess.cs" />
+    <Compile Include="DAL\tblworeport.cs" />
+    <Compile Include="DAL\tbl_autoreportbasedon.cs" />
+    <Compile Include="DAL\tbl_autoreportsetting.cs" />
+    <Compile Include="DAL\tbl_autoreporttime.cs" />
+    <Compile Include="DAL\tbl_autoreport_log.cs" />
+    <Compile Include="DAL\tbl_multiwoselection.cs" />
+    <Compile Include="DAL\tbl_PrevOperationCancel.cs" />
+    <Compile Include="DAL\tbl_reportmaster.cs" />
+    <Compile Include="DAL\UnIdentifiedLossCorrection.cs" />
+    <Compile Include="DAL\user_master.cs" />
+    <Compile Include="DAO\Dao.cs" />
+    <Compile Include="DAO\Dao1.cs" />
+    <Compile Include="DAO\ReportsDao.cs" />
+    <Compile Include="DAO\Repository.cs" />
+    <Compile Include="IConnectionFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DAL\DAL.zip" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

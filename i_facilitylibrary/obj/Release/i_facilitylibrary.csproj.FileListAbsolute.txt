@@ -1,0 +1,54 @@
+G:\Vignesh\Shakthi WeApplication20200108\i_facilitylibrary\bin\Release\i_facilitylibrary.dll
+G:\Vignesh\Shakthi WeApplication20200108\i_facilitylibrary\bin\Release\i_facilitylibrary.pdb
+G:\Vignesh\Shakthi WeApplication20200108\i_facilitylibrary\bin\Release\Dapper.dll
+G:\Vignesh\Shakthi WeApplication20200108\i_facilitylibrary\bin\Release\Dapper.xml
+G:\Vignesh\Shakthi WeApplication20200108\i_facilitylibrary\obj\Release\i_facilitylibrary.csprojAssemblyReference.cache
+G:\Vignesh\Shakthi WeApplication20200108\i_facilitylibrary\obj\Release\i_facilitylibrary.csproj.CoreCompileInputs.cache
+G:\Vignesh\Shakthi WeApplication20200108\i_facilitylibrary\obj\Release\i_facilitylibrary.csproj.CopyComplete
+G:\Vignesh\Shakthi WeApplication20200108\i_facilitylibrary\obj\Release\i_facilitylibrary.dll
+G:\Vignesh\Shakthi WeApplication20200108\i_facilitylibrary\obj\Release\i_facilitylibrary.pdb
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\i_facilitylibrary\bin\Release\i_facilitylibrary.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\i_facilitylibrary\bin\Release\i_facilitylibrary.pdb
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\i_facilitylibrary\bin\Release\Dapper.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\i_facilitylibrary\bin\Release\Dapper.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\i_facilitylibrary\obj\Release\i_facilitylibrary.csprojAssemblyReference.cache
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\i_facilitylibrary\obj\Release\i_facilitylibrary.csproj.CoreCompileInputs.cache
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\i_facilitylibrary\obj\Release\i_facilitylibrary.csproj.CopyComplete
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\i_facilitylibrary\obj\Release\i_facilitylibrary.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\i_facilitylibrary\obj\Release\i_facilitylibrary.pdb
+D:\Aswini\shakthi\Shakthi WeApplication20200213\i_facilitylibrary\bin\Release\i_facilitylibrary.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\i_facilitylibrary\bin\Release\i_facilitylibrary.pdb
+D:\Aswini\shakthi\Shakthi WeApplication20200213\i_facilitylibrary\bin\Release\Dapper.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\i_facilitylibrary\bin\Release\Dapper.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\i_facilitylibrary\obj\Release\i_facilitylibrary.csprojAssemblyReference.cache
+D:\Aswini\shakthi\Shakthi WeApplication20200213\i_facilitylibrary\obj\Release\i_facilitylibrary.csproj.CoreCompileInputs.cache
+D:\Aswini\shakthi\Shakthi WeApplication20200213\i_facilitylibrary\obj\Release\i_facilitylibrary.csproj.CopyComplete
+D:\Aswini\shakthi\Shakthi WeApplication20200213\i_facilitylibrary\obj\Release\i_facilitylibrary.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\i_facilitylibrary\obj\Release\i_facilitylibrary.pdb
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\i_facilitylibrary\bin\Release\i_facilitylibrary.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\i_facilitylibrary\bin\Release\i_facilitylibrary.pdb
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\i_facilitylibrary\bin\Release\Dapper.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\i_facilitylibrary\bin\Release\Dapper.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\i_facilitylibrary\obj\Release\i_facilitylibrary.csprojAssemblyReference.cache
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\i_facilitylibrary\obj\Release\i_facilitylibrary.csproj.CoreCompileInputs.cache
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\i_facilitylibrary\obj\Release\i_facilitylibrary.csproj.CopyComplete
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\i_facilitylibrary\obj\Release\i_facilitylibrary.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\i_facilitylibrary\obj\Release\i_facilitylibrary.pdb
+D:\Ashok\Shakti\Github\i_facilitylibrary\bin\Release\i_facilitylibrary.dll
+D:\Ashok\Shakti\Github\i_facilitylibrary\bin\Release\i_facilitylibrary.pdb
+D:\Ashok\Shakti\Github\i_facilitylibrary\bin\Release\Dapper.dll
+D:\Ashok\Shakti\Github\i_facilitylibrary\bin\Release\Dapper.xml
+D:\Ashok\Shakti\Github\i_facilitylibrary\obj\Release\i_facilitylibrary.csprojAssemblyReference.cache
+D:\Ashok\Shakti\Github\i_facilitylibrary\obj\Release\i_facilitylibrary.csproj.CoreCompileInputs.cache
+D:\Ashok\Shakti\Github\i_facilitylibrary\obj\Release\i_facilitylibrary.csproj.CopyComplete
+D:\Ashok\Shakti\Github\i_facilitylibrary\obj\Release\i_facilitylibrary.dll
+D:\Ashok\Shakti\Github\i_facilitylibrary\obj\Release\i_facilitylibrary.pdb
+D:\Github_Ashok\Shakti\shakti_web\i_facilitylibrary\bin\Release\i_facilitylibrary.dll
+D:\Github_Ashok\Shakti\shakti_web\i_facilitylibrary\bin\Release\i_facilitylibrary.pdb
+D:\Github_Ashok\Shakti\shakti_web\i_facilitylibrary\bin\Release\Dapper.dll
+D:\Github_Ashok\Shakti\shakti_web\i_facilitylibrary\bin\Release\Dapper.xml
+D:\Github_Ashok\Shakti\shakti_web\i_facilitylibrary\obj\Release\i_facilitylibrary.csprojAssemblyReference.cache
+D:\Github_Ashok\Shakti\shakti_web\i_facilitylibrary\obj\Release\i_facilitylibrary.csproj.CoreCompileInputs.cache
+D:\Github_Ashok\Shakti\shakti_web\i_facilitylibrary\obj\Release\i_facilitylibrary.csproj.CopyComplete
+D:\Github_Ashok\Shakti\shakti_web\i_facilitylibrary\obj\Release\i_facilitylibrary.dll
+D:\Github_Ashok\Shakti\shakti_web\i_facilitylibrary\obj\Release\i_facilitylibrary.pdb

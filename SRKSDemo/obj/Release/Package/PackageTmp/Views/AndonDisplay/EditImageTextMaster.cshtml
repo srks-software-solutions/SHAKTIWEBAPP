@@ -1,0 +1,460 @@
+﻿@model SRKSDemo.Server_Model.tblAndonImageTextScheduledDisplay
+@{
+    ViewBag.Title = "EditImageTextMaster";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{ string flagStart = ViewBag.FlagStart;}
+<!-- page content -->
+<div class="container body">
+    <div class="main_container">
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Image Text Andon</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                @using (Html.BeginForm("EditImageTextMaster", "AndonDisplay", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal bordered-row" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="item form-group">
+                                                <label class="control-label col-sm-4 col-xs-12" for="type">
+                                                    Plant
+                                                </label>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    @Html.HiddenFor(m => m.TextImageAndonId, new { @id = "TextImageAndonId" })
+                                                    @if (flagStart == "1")
+                                                    {
+                                                        @Html.DropDownList("plant", null, "--Select Plant--", new { @id = "plantID", @class = "form-control Plant", @name = "plant", @required = "required", @value = ViewData["plant"], @onchange = "changeplantstatus();", @disabled = "disabled" })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DropDownList("plant", null, "--Select Plant--", new { @id = "plantID", @class = "form-control Plant", @name = "plant", @required = "required", @value = ViewData["plant"], @onchange = "changeplantstatus();" })
+                                                    }
+
+                                                    @Html.HiddenFor(m => m.PlantID, new { @id = "PlantID" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="item form-group">
+                                                <label class="control-label col-sm-4 col-xs-12" for="type">
+                                                    Section
+                                                </label>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    @if (flagStart == "1")
+                                                    {
+                                                        @Html.DropDownList("dept", null, "--Select Section--", new { @id = "DepartmentID", @class = "form-control DepartmentID", @name = "DepartmentID", @required = "required", @value = ViewData["dept"], @onchange = "changedeptstatus();", @disabled = "disabled" })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DropDownList("dept", null, "--Select Section--", new { @id = "DepartmentID", @class = "form-control DepartmentID", @name = "DepartmentID", @required = "required", @value = ViewData["dept"], @onchange = "changedeptstatus();" })
+                                                    }
+                                                    @Html.HiddenFor(m => m.ShopID, new { @id = "ShopID" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="item form-group">
+                                                <label class="control-label col-sm-4 col-xs-12" for="type">
+                                                    Cell
+                                                </label>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    @if (flagStart == "1")
+                                                    {
+                                                        @Html.DropDownList("cell", null, "--Select Cell--", new { @id = "MachineCategoryID", @class = "form-control MachCat", @name = "MachineCategory", @required = "required", @value = ViewData["cell"], @onchange = "changecellstatus();", @disabled = "disabled" })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DropDownList("cell", null, "--Select Cell--", new { @id = "MachineCategoryID", @class = "form-control MachCat", @name = "MachineCategory", @required = "required", @value = ViewData["cell"], @onchange = "changecellstatus();" })
+                                                    }
+                                                    @Html.HiddenFor(m => m.CellID, new { @id = "CellID" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-sm-4">
+                                            <label class="control-label col-sm-4 col-xs-12" for="type">Start Date</label>
+                                            <div class="col-sm-8">
+                                                <div class="form-group">
+                                                    @Html.HiddenFor(m => m.StartDateTime, new { @id = "StartDateTime" })
+                                                    <div class='input-group date' id='datetimepicker1' onchange="startdate()" oninput="enddate()">
+                                                        @if (flagStart == "1")
+                                                        {
+                                                            <input type='text' id="std" class="form-control" disabled required />
+                                                            <span class="input-group-addon" onclick="startdate()">
+                                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                            </span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <input type='text' id="std" class="form-control" required />
+                                                            <span class="input-group-addon" onclick="startdate()">
+                                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                            </span>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label class="control-label col-sm-4 col-xs-12" for="type">End Date</label>
+                                            <div class="col-sm-8">
+                                                <div class="form-group">
+                                                    @Html.HiddenFor(m => m.EndDateTime, new { @id = "EndDateTime" })
+                                                    <div class='input-group date' id='datetimepicker2' onchange="enddate()" oninput="enddate()">
+                                                        <input type='text' id="endt" class="form-control" required />
+                                                        <span class="input-group-addon" onclick="enddate()">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @Html.HiddenFor(m => m.TextToDisplay, new { @id = "TextToDisplay" })
+                                        <div class="col-sm-4">
+                                            <label class="control-label col-sm-7 col-xs-12" for="type">Show Default ANDON Screens</label>
+                                            <div class="col-sm-5">
+                                                @if (flagStart == "1")
+                                                {
+                                                    <select class="form-control1" tabindex="2" id="DefaultAndon" onchange="defaultandon()" disabled required>
+                                                        <option value="" selected disabled>Select option</option>
+                                                        <option value="1">Yes</option>
+                                                        <option value="0">No</option>
+                                                    </select>
+                                                }
+                                                else
+                                                {
+                                                    <select class="form-control1" tabindex="2" id="DefaultAndon" onchange="defaultandon()" required>
+                                                        <option value="" selected disabled>Select option</option>
+                                                        <option value="1">Yes</option>
+                                                        <option value="0">No</option>
+                                                    </select>
+                                                }
+                                                @Html.HiddenFor(m => m.DefaultScreenVisible, new { @id = "DefaultScreenVisible" })
+                                            </div>
+                                        </div>
+                                        @* using this to detect weather file is changed or not *@
+                                        @Html.HiddenFor(m => m.IPAddress, new { @id = "IPAddress", @value = "0" })
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4" style="margin-top: -13px;">
+                                            <div class="item form-group">
+                                                <label class="control-label col-sm-4 col-xs-12">Display Items</label>
+                                                <div class="col-sm-8 col-xs-12" style="padding-top: 4px;">
+                                                    @if (flagStart == "1")
+                                                    {
+                                                        if (ViewBag.AndonText != null && ViewBag.AndonImages != null)
+                                                        {
+                                                            <span><input type="radio" name="cars" value="1" class="car" disabled required>&nbsp;&nbsp;Image&nbsp;&nbsp;</span>
+                                                            <span><input type="radio" name="cars" value="2" class="car" disabled>&nbsp;&nbsp;Text&nbsp;&nbsp;</span>
+                                                            <span><input type="radio" name="cars" value="3" class="car" checked="checked" disabled>&nbsp;&nbsp;Image & Text</span>
+                                                        }
+                                                        else if (ViewBag.AndonText != null)
+                                                        {
+                                                            <span><input type="radio" name="cars" value="1" class="car" disabled required>&nbsp;&nbsp;Image&nbsp;&nbsp;</span>
+                                                            <span><input type="radio" name="cars" value="2" class="car" checked="checked" disabled>&nbsp;&nbsp;Text&nbsp;&nbsp;</span>
+                                                            <span><input type="radio" name="cars" value="3" class="car" disabled>&nbsp;&nbsp;Image & Text</span>
+                                                        }
+                                                        else if (ViewBag.AndonImages != null)
+                                                        {
+                                                            <span><input type="radio" name="cars" value="1" class="car" required checked="checked" disabled>&nbsp;&nbsp;Image&nbsp;&nbsp;</span>
+                                                            <span><input type="radio" name="cars" value="2" class="car" disabled>&nbsp;&nbsp;Text&nbsp;&nbsp;</span>
+                                                            <span><input type="radio" name="cars" value="3" class="car" disabled>&nbsp;&nbsp;Image & Text</span>
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        if (ViewBag.AndonText != null && ViewBag.AndonImages != null)
+                                                        {
+                                                            <span><input type="radio" name="cars" value="1" class="car" required>&nbsp;&nbsp;Image&nbsp;&nbsp;</span>
+                                                            <span><input type="radio" name="cars" value="2" class="car">&nbsp;&nbsp;Text&nbsp;&nbsp;</span>
+                                                            <span><input type="radio" name="cars" value="3" class="car" checked="checked">&nbsp;&nbsp;Image & Text</span>
+                                                        }
+                                                        else if (ViewBag.AndonText != null)
+                                                        {
+                                                            <span><input type="radio" name="cars" value="1" class="car" required>&nbsp;&nbsp;Image&nbsp;&nbsp;</span>
+                                                            <span><input type="radio" name="cars" value="2" class="car" checked="checked">&nbsp;&nbsp;Text&nbsp;&nbsp;</span>
+                                                            <span><input type="radio" name="cars" value="3" class="car">&nbsp;&nbsp;Image & Text</span>
+                                                        }
+                                                        else if (ViewBag.AndonImages != null)
+                                                        {
+                                                            <span><input type="radio" name="cars" value="1" class="car" required checked="checked">&nbsp;&nbsp;Image&nbsp;&nbsp;</span>
+                                                            <span><input type="radio" name="cars" value="2" class="car">&nbsp;&nbsp;Text&nbsp;&nbsp;</span>
+                                                            <span><input type="radio" name="cars" value="3" class="car">&nbsp;&nbsp;Image & Text</span>
+                                                        }
+                                                    }
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-offset-1 col-sm-10">
+                                            <div id="and1" class="desc" style="display: none; padding: 10px 0px 10px 40px;">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <img id="preview1" alt="your image" width="210" height="210" style="max-width: 100%;display:inline-table" class="fileinput-preview thumbnail">
+                                                    <img id="preview2" alt="your image" width="210" height="210" style="max-width: 100%;display:inline-table" class="fileinput-preview thumbnail">
+                                                    <img id="preview3" alt="your image" width="210" height="210" style="max-width: 100%;display:inline-table" class="fileinput-preview thumbnail">
+
+                                                    <input type="hidden" id="getImages" name="getAllImages" />
+                                                    <div>
+                                                        <span>
+                                                            <input value="@ViewBag.AndonImages" type="hidden" id="AndonImages" />
+                                                            <input type="file" accept='image/*' class="form-control" id="imageFile" name="imageFile" onchange="imageFileChange(this); imageChangeNotifier();" style="width: 21%" multiple>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-offset-1 col-sm-10">
+                                            <div id="and2" class="desc" style="display: none; padding:10px 0px 10px 40px;">
+                                                <textarea id="txtEditor"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <a role="button" href="/AndonDisplay/ImageText" class="btn btn-new" style="margin-top: 10px; margin-left: 5px;"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                                    if (flagStart == "1")
+                                    {
+                                        <a role="button" href="#" id="buttonStop" class="btn btn-new" style="margin-top: 10px; margin-left: 5px;"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Stop Andon Screen</a>
+                                    }
+                                    <button type="submit" class="btn btn-new float-right" style="margin-top: 10px;" onclick="lastclick()"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->
+<!-- jQuery -->
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+@if (ViewBag.AndonImages == null || ViewBag.AndonImages == "")
+{
+    <script>
+        $(function () {
+            var basesf = 'no-image-icon-6.png';
+            //basesf = 'http://.com/AndonImages/' + basesf;
+            basesf = '../images/' + basesf;
+            if (basesf.length > 0) {
+                $("#preview1").attr('src', basesf);
+            }
+        });
+    </script>
+}
+else
+{
+    <script>
+        $(function () {
+            var basesf = $("#AndonImages").val();
+            var arry = basesf.split('#');
+            if (arry.length != 0) {
+                for (i = 0; i < arry.length; i++) {
+                    if (i == 0) {//for first image
+                        basesf = '../AndonImages/' + arry[0];
+                        if (basesf.length > 0) {
+                            $("#preview1").attr('src', basesf);
+                        }
+                    }
+                    else if (i == 1) {//for second image
+                        basesf = '../AndonImages/' + arry[1];
+                        if (basesf.length > 0) {
+                            $("#preview2").attr('src', basesf);
+                        }
+                    }
+                    else if (i == 2) {//for third image
+                        basesf = '../AndonImages/' + arry[2];
+                        if (basesf.length > 0) {
+                            $("#preview3").attr('src', basesf);
+                        }
+                    }
+                }
+            }
+            //basesf = 'http://.com/AndonImages/' + basesf;
+        });
+    </script>
+}
+<script>
+    $(document).ready(function () {
+        $("#txtEditor").Editor();
+        $("#IPAddress").val(0);
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var test = $("input[name='cars']:checked").val();
+        $(".desc").hide();
+        if (test == 3) {
+            $("#and1").show();
+            $("#and2").show();
+        } else {
+            $("#and" + test).show();
+        }
+
+        var itemUpdateText = $("#TextToDisplay").val();
+        $(".Editor-editor").html('');
+        $(".Editor-editor").html(itemUpdateText);
+
+        var DefaultScreenVisible = $("#DefaultScreenVisible").val();
+        $("#DefaultAndon").val(DefaultScreenVisible);
+
+        var TextImageAndonId = $("#TextImageAndonId").val();
+        $("#buttonStop").attr('href', '/AndonDisplay/EndFlag?id=' + TextImageAndonId + '');
+
+    });
+</script>
+<script>
+
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+
+        });
+    });
+    $(function () {
+        $('#datetimepicker2').datetimepicker({
+
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".car").click(function () {
+            var test = $(this).val();
+            $(".desc").hide();
+            if (test == 3) {
+                $("#and1").show();
+                $("#and2").show();
+            } else {
+                $("#and" + test).show();
+            }
+
+        });
+    });
+</script>
+<script>
+    function imageChangeNotifier() {
+        $("#IPAddress").val(1);
+    }
+</script>
+<script>
+    $(".Plant").on("change", function (e) {
+        var PID = $(this).val();
+        //alert(PID)
+        //debugger;
+        $.getJSON("/Machines/FetchDept", { PID: PID }, function (data) {
+            $(".DepartmentID").empty();
+            $(".DepartmentID").append("<option value = ''> --Select Shop-- </option>");
+            $.each(data, function (index, item) {
+                $(".DepartmentID").append("<option value = '" + item.Value + "'>" + item.Text + "</option>");
+            });
+        });
+    });
+
+    $(".DepartmentID").on("change", function (e) {
+        var DeptID = $(this).val();
+        //alert(DeptID)
+        $.getJSON("/Machines/FetchCat", { DeptID: DeptID }, function (data) {
+            $(".MachCat").empty();
+            $(".MachCat").append("<option value = ''> --Select Cell-- </option>");
+            $.each(data, function (index, item) {
+                $(".MachCat").append("<option value = '" + item.Value + "'>" + item.Text + "</option>");
+            });
+        });
+    });
+</script>
+<script>
+    function changeplantstatus() {
+        var plantID = $("#plantID").val();
+        $("#PlantID").val(plantID);
+    }
+    function changedeptstatus() {
+        var DepartmentID = $("#DepartmentID").val();
+        $("#ShopID").val(DepartmentID);
+    }
+    function changecellstatus() {
+        var MachineCategoryID = $("#MachineCategoryID").val();
+        $("#CellID").val(MachineCategoryID);
+    }
+    function startdate() {
+        var startdate = $("#datetimepicker1").val();
+        $("#StartDateTime").val(startdate);
+    }
+    function enddate() {
+        var enddate = $("#datetimepicker2").val();
+        $("#EndDateTime").val(enddate);
+    }
+    function defaultandon() {
+        var DefaultAndon = $("#DefaultAndon").val();
+        $("#DefaultScreenVisible").val(DefaultAndon);
+        if (DefaultAndon == "0") {
+            $(".car").attr('required', 'required');
+        } else {
+            $(".car").removeAttr('required', 'required');
+        }
+    }
+    function lastclick() {
+        var htmlVal = $(".Editor-editor").html();
+        $("#TextToDisplay").val(htmlVal);
+    }
+
+    $(function () {
+        var sd = $("#StartDateTime").val();
+        var ed = $("#EndDateTime").val();
+        $("#std").val(sd);
+        $("#endt").val(ed);
+        //var DefaultAndon = '0';
+        //$("#DefaultScreenVisible").val(DefaultAndon);
+    });
+
+    $(function () {
+        var val1 = document.getElementById('preview1').src.split('/');
+        var image1 = val1[4];
+        var val2 = document.getElementById('preview2').src.split('/');
+        var image2 = val2[4];
+        var val3 = document.getElementById('preview3').src.split('/');
+        var image3 = val3[4];
+        var image = image1 + "%" + image2 + "%" + image3;
+        $("#getImages").val(image);
+    });
+</script>
+<script>
+    function imageFileChange(val) {
+        document.getElementById('preview1').src = window.URL.createObjectURL(val.files[0]);
+        document.getElementById('preview2').src = window.URL.createObjectURL(val.files[1]);
+        document.getElementById('preview3').src = window.URL.createObjectURL(val.files[2]);
+    }
+</script>
+
+<script>
+    $('.fileinput').change(function () {
+        $("#IPAddress").val(1);
+    });
+</script>
+
+@*<script>
+        function imageChange() {
+            var val1 = document.getElementById('preview1').src.split('/');
+            var image1 = val1[4];
+            var val2 = document.getElementById('preview2').src.split('/');
+            var image2 = val2[4];
+            var val3 = document.getElementById('preview3').src.split('/');
+            var image3 = val3[4];
+            var image = image1 + "%" + image2 + "%" + image3;
+            $("#getImages").val(image);
+        }
+    </script>*@

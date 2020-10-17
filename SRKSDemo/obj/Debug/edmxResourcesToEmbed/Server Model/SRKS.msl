@@ -1,0 +1,2763 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="unitworksccsModelStoreContainer" CdmEntityContainer="unitworksccsEntities1">
+    <EntitySetMapping Name="alarm_history_master">
+      <EntityTypeMapping TypeName="unitworksccsModel.alarm_history_master">
+        <MappingFragment StoreEntitySet="alarm_history_master">
+          <ScalarProperty Name="Abs_Pos" ColumnName="Abs_Pos" />
+          <ScalarProperty Name="Axis_Num" ColumnName="Axis_Num" />
+          <ScalarProperty Name="Axis_No" ColumnName="Axis_No" />
+          <ScalarProperty Name="AlarmNo" ColumnName="AlarmNo" />
+          <ScalarProperty Name="SystemHead" ColumnName="SystemHead" />
+          <ScalarProperty Name="InterferedPart" ColumnName="InterferedPart" />
+          <ScalarProperty Name="DetailCode3" ColumnName="DetailCode3" />
+          <ScalarProperty Name="DetailCode2" ColumnName="DetailCode2" />
+          <ScalarProperty Name="DetailCode1" ColumnName="DetailCode1" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ErrorNum" ColumnName="ErrorNum" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="AlarmDateTime" ColumnName="AlarmDateTime" />
+          <ScalarProperty Name="AlarmMessage" ColumnName="AlarmMessage" />
+          <ScalarProperty Name="AlarmID" ColumnName="AlarmID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="configuration_tblpmchecklist">
+      <EntityTypeMapping TypeName="unitworksccsModel.configuration_tblpmchecklist">
+        <MappingFragment StoreEntitySet="configuration_tblpmchecklist">
+          <ScalarProperty Name="How" ColumnName="How" />
+          <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Isdeleted" ColumnName="Isdeleted" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="CheckList" ColumnName="CheckList" />
+          <ScalarProperty Name="pmcpID" ColumnName="pmcpID" />
+          <ScalarProperty Name="pmcid" ColumnName="pmcid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="configuration_tblpmcheckpoint">
+      <EntityTypeMapping TypeName="unitworksccsModel.configuration_tblpmcheckpoint">
+        <MappingFragment StoreEntitySet="configuration_tblpmcheckpoint">
+          <ScalarProperty Name="How" ColumnName="How" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Isdeleted" ColumnName="Isdeleted" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="frequency" ColumnName="frequency" />
+          <ScalarProperty Name="CheckList" ColumnName="CheckList" />
+          <ScalarProperty Name="TypeofCheckpoint" ColumnName="TypeofCheckpoint" />
+          <ScalarProperty Name="pmcpID" ColumnName="pmcpID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="configuration_tblprimitivemaintainancescheduling">
+      <EntityTypeMapping TypeName="unitworksccsModel.configuration_tblprimitivemaintainancescheduling">
+        <MappingFragment StoreEntitySet="configuration_tblprimitivemaintainancescheduling">
+          <ScalarProperty Name="MonthID" ColumnName="MonthID" />
+          <ScalarProperty Name="WeekID" ColumnName="WeekID" />
+          <ScalarProperty Name="shopname" ColumnName="shopname" />
+          <ScalarProperty Name="plantName" ColumnName="plantName" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="CellName" ColumnName="CellName" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Week" ColumnName="Week" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="pmid" ColumnName="pmid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="configuration_tblsensorgroup">
+      <EntityTypeMapping TypeName="unitworksccsModel.configuration_tblsensorgroup">
+        <MappingFragment StoreEntitySet="configuration_tblsensorgroup">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="SensorDesc" ColumnName="SensorDesc" />
+          <ScalarProperty Name="SensorGroupName" ColumnName="SensorGroupName" />
+          <ScalarProperty Name="SID" ColumnName="SID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="configurationtblmachinesensors">
+      <EntityTypeMapping TypeName="unitworksccsModel.configurationtblmachinesensor">
+        <MappingFragment StoreEntitySet="configurationtblmachinesensor">
+          <ScalarProperty Name="PortNo" ColumnName="PortNo" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Sid" ColumnName="Sid" />
+          <ScalarProperty Name="MachineId" ColumnName="MachineId" />
+          <ScalarProperty Name="MSID" ColumnName="MSID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="configurationtblsensordatalinks">
+      <EntityTypeMapping TypeName="unitworksccsModel.configurationtblsensordatalink">
+        <MappingFragment StoreEntitySet="configurationtblsensordatalink">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsCycle" ColumnName="IsCycle" />
+          <ScalarProperty Name="LogFreqUnitID" ColumnName="LogFreqUnitID" />
+          <ScalarProperty Name="LogFrequency" ColumnName="LogFrequency" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="USL" ColumnName="USL" />
+          <ScalarProperty Name="LSL" ColumnName="LSL" />
+          <ScalarProperty Name="IsSensor" ColumnName="IsSensor" />
+          <ScalarProperty Name="AxisID" ColumnName="AxisID" />
+          <ScalarProperty Name="IsAxis" ColumnName="IsAxis" />
+          <ScalarProperty Name="ParameterDesc" ColumnName="ParameterDesc" />
+          <ScalarProperty Name="ParameterName" ColumnName="ParameterName" />
+          <ScalarProperty Name="Deterioration" ColumnName="Deterioration" />
+          <ScalarProperty Name="SubElement" ColumnName="SubElement" />
+          <ScalarProperty Name="Element" ColumnName="Element" />
+          <ScalarProperty Name="ParameterTypeID" ColumnName="ParameterTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="configurationtblsensormasters">
+      <EntityTypeMapping TypeName="unitworksccsModel.configurationtblsensormaster">
+        <MappingFragment StoreEntitySet="configurationtblsensormaster">
+          <ScalarProperty Name="parametertypeid" ColumnName="parametertypeid" />
+          <ScalarProperty Name="sensorlimitHigh" ColumnName="sensorlimitHigh" />
+          <ScalarProperty Name="sensorlimitLow" ColumnName="sensorlimitLow" />
+          <ScalarProperty Name="CountHigh" ColumnName="CountHigh" />
+          <ScalarProperty Name="CountLow" ColumnName="CountLow" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="scalingFactor" ColumnName="scalingFactor" />
+          <ScalarProperty Name="SensorDesc" ColumnName="SensorDesc" />
+          <ScalarProperty Name="Unitid" ColumnName="Unitid" />
+          <ScalarProperty Name="MemoryAddress" ColumnName="MemoryAddress" />
+          <ScalarProperty Name="ChannelNo" ColumnName="ChannelNo" />
+          <ScalarProperty Name="Sid" ColumnName="Sid" />
+          <ScalarProperty Name="IsAnalog" ColumnName="IsAnalog" />
+          <ScalarProperty Name="SMID" ColumnName="SMID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="frommails">
+      <EntityTypeMapping TypeName="unitworksccsModel.frommail">
+        <MappingFragment StoreEntitySet="frommail">
+          <ScalarProperty Name="domain" ColumnName="domain" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FromEmailAdd" ColumnName="FromEmailAdd" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Graph_Data">
+      <EntityTypeMapping TypeName="unitworksccsModel.Graph_Data">
+        <MappingFragment StoreEntitySet="Graph_Data">
+          <ScalarProperty Name="YeildQty" ColumnName="YeildQty" />
+          <ScalarProperty Name="PerformanceFactor" ColumnName="PerformanceFactor" />
+          <ScalarProperty Name="ScrapQty" ColumnName="ScrapQty" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="LossTime" ColumnName="LossTime" />
+          <ScalarProperty Name="MinorLossTime" ColumnName="MinorLossTime" />
+          <ScalarProperty Name="MinTime" ColumnName="MinTime" />
+          <ScalarProperty Name="PowerOFF" ColumnName="PowerOFF" />
+          <ScalarProperty Name="OperatingTime" ColumnName="OperatingTime" />
+          <ScalarProperty Name="Gid" ColumnName="Gid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="handle_no_ping">
+      <EntityTypeMapping TypeName="unitworksccsModel.handle_no_ping">
+        <MappingFragment StoreEntitySet="handle_no_ping">
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="NoPingID" ColumnName="NoPingID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="jobcard_details">
+      <EntityTypeMapping TypeName="unitworksccsModel.jobcard_details">
+        <MappingFragment StoreEntitySet="jobcard_details">
+          <ScalarProperty Name="Fromdatetime" ColumnName="Fromdatetime" />
+          <ScalarProperty Name="JobCardDate" ColumnName="JobCardDate" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="MachineInvNumber" ColumnName="MachineInvNumber" />
+          <ScalarProperty Name="Totalhours" ColumnName="Totalhours" />
+          <ScalarProperty Name="Totime" ColumnName="Totime" />
+          <ScalarProperty Name="Fromtime" ColumnName="Fromtime" />
+          <ScalarProperty Name="QtyRej" ColumnName="QtyRej" />
+          <ScalarProperty Name="QtyAccp" ColumnName="QtyAccp" />
+          <ScalarProperty Name="Qtyprod" ColumnName="Qtyprod" />
+          <ScalarProperty Name="Compcode" ColumnName="Compcode" />
+          <ScalarProperty Name="Workorderno" ColumnName="Workorderno" />
+          <ScalarProperty Name="OpnIdleCode" ColumnName="OpnIdleCode" />
+          <ScalarProperty Name="EmpNo" ColumnName="EmpNo" />
+          <ScalarProperty Name="slno" ColumnName="slno" />
+          <ScalarProperty Name="JobcardID" ColumnName="JobcardID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LossDetails">
+      <EntityTypeMapping TypeName="unitworksccsModel.LossDetail">
+        <MappingFragment StoreEntitySet="LossDetails">
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="losscodeid" ColumnName="losscodeid" />
+          <ScalarProperty Name="Lid" ColumnName="Lid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mailmasters">
+      <EntityTypeMapping TypeName="unitworksccsModel.mailmaster">
+        <MappingFragment StoreEntitySet="mailmaster">
+          <ScalarProperty Name="BCCAdd" ColumnName="BCCAdd" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CCAdd" ColumnName="CCAdd" />
+          <ScalarProperty Name="TOAdd" ColumnName="TOAdd" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="message_code_master">
+      <EntityTypeMapping TypeName="unitworksccsModel.message_code_master">
+        <MappingFragment StoreEntitySet="message_code_master">
+          <ScalarProperty Name="ColourCode" ColumnName="ColourCode" />
+          <ScalarProperty Name="ReportDispName" ColumnName="ReportDispName" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+          <ScalarProperty Name="MessageDescription" ColumnName="MessageDescription" />
+          <ScalarProperty Name="MessageMCode" ColumnName="MessageMCode" />
+          <ScalarProperty Name="MessageCode" ColumnName="MessageCode" />
+          <ScalarProperty Name="MessageCodeID" ColumnName="MessageCodeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="message_history_master">
+      <EntityTypeMapping TypeName="unitworksccsModel.message_history_master">
+        <MappingFragment StoreEntitySet="message_history_master">
+          <ScalarProperty Name="IsProgLock" ColumnName="IsProgLock" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="MessageShift" ColumnName="MessageShift" />
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+          <ScalarProperty Name="MessageCode" ColumnName="MessageCode" />
+          <ScalarProperty Name="MessageNo" ColumnName="MessageNo" />
+          <ScalarProperty Name="MessageDateTime" ColumnName="MessageDateTime" />
+          <ScalarProperty Name="MessageTime" ColumnName="MessageTime" />
+          <ScalarProperty Name="MessageDate" ColumnName="MessageDate" />
+          <ScalarProperty Name="Meassage" ColumnName="Meassage" />
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="monthdatas">
+      <EntityTypeMapping TypeName="unitworksccsModel.monthdata">
+        <MappingFragment StoreEntitySet="monthdata">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Isdeleted" ColumnName="Isdeleted" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="MonthID" ColumnName="MonthID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="operationlogs">
+      <EntityTypeMapping TypeName="unitworksccsModel.operationlog">
+        <MappingFragment StoreEntitySet="operationlog">
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="OpReason" ColumnName="OpReason" />
+          <ScalarProperty Name="OpDateTime" ColumnName="OpDateTime" />
+          <ScalarProperty Name="OpTime" ColumnName="OpTime" />
+          <ScalarProperty Name="OpDate" ColumnName="OpDate" />
+          <ScalarProperty Name="OpMsg" ColumnName="OpMsg" />
+          <ScalarProperty Name="idoperationlog" ColumnName="idoperationlog" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="parameters">
+      <EntityTypeMapping TypeName="unitworksccsModel.parameter">
+        <MappingFragment StoreEntitySet="parameters">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ParameterType" ColumnName="ParameterType" />
+          <ScalarProperty Name="ParameterID" ColumnName="ParameterID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="parameters_master">
+      <EntityTypeMapping TypeName="unitworksccsModel.parameters_master">
+        <MappingFragment StoreEntitySet="parameters_master">
+          <ScalarProperty Name="AutoMode" ColumnName="AutoMode" />
+          <ScalarProperty Name="CuttingTime" ColumnName="CuttingTime" />
+          <ScalarProperty Name="PartsTotal" ColumnName="PartsTotal" />
+          <ScalarProperty Name="Total_CutTime" ColumnName="Total_CutTime" />
+          <ScalarProperty Name="AutoCutTime" ColumnName="AutoCutTime" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="PartsCount" ColumnName="PartsCount" />
+          <ScalarProperty Name="PowerOnTime" ColumnName="PowerOnTime" />
+          <ScalarProperty Name="OperatingTime" ColumnName="OperatingTime" />
+          <ScalarProperty Name="SetupTime" ColumnName="SetupTime" />
+          <ScalarProperty Name="ParameterID" ColumnName="ParameterID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pcb_details">
+      <EntityTypeMapping TypeName="unitworksccsModel.pcb_details">
+        <MappingFragment StoreEntitySet="pcb_details">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="PCBMACAddress" ColumnName="PCBMACAddress" />
+          <ScalarProperty Name="PCBIPAddress" ColumnName="PCBIPAddress" />
+          <ScalarProperty Name="PCBNo" ColumnName="PCBNo" />
+          <ScalarProperty Name="PCBID" ColumnName="PCBID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pcb_parameters">
+      <EntityTypeMapping TypeName="unitworksccsModel.pcb_parameters">
+        <MappingFragment StoreEntitySet="pcb_parameters">
+          <ScalarProperty Name="IsPulse" ColumnName="IsPulse" />
+          <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+          <ScalarProperty Name="HighValue" ColumnName="HighValue" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="LogFile" ColumnName="LogFile" />
+          <ScalarProperty Name="PinNumber" ColumnName="PinNumber" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ParameterType" ColumnName="ParameterType" />
+          <ScalarProperty Name="ParameterID" ColumnName="ParameterID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pcbdaqs">
+      <EntityTypeMapping TypeName="unitworksccsModel.pcbdaq">
+        <MappingFragment StoreEntitySet="pcbdaq">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="PCBDateTime" ColumnName="PCBDateTime" />
+          <ScalarProperty Name="ParamValue" ColumnName="ParamValue" />
+          <ScalarProperty Name="PinNumber" ColumnName="PinNumber" />
+          <ScalarProperty Name="PCBIPAddress" ColumnName="PCBIPAddress" />
+          <ScalarProperty Name="PCBDAQID" ColumnName="PCBDAQID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pcbdaqin_tbl">
+      <EntityTypeMapping TypeName="unitworksccsModel.pcbdaqin_tbl">
+        <MappingFragment StoreEntitySet="pcbdaqin_tbl">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ParamValue" ColumnName="ParamValue" />
+          <ScalarProperty Name="ParamPIN" ColumnName="ParamPIN" />
+          <ScalarProperty Name="PCBIPAddress" ColumnName="PCBIPAddress" />
+          <ScalarProperty Name="DAQINID" ColumnName="DAQINID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pcbdps_master">
+      <EntityTypeMapping TypeName="unitworksccsModel.pcbdps_master">
+        <MappingFragment StoreEntitySet="pcbdps_master">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ColorValue" ColumnName="ColorValue" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="Pin26" ColumnName="Pin26" />
+          <ScalarProperty Name="Pin25" ColumnName="Pin25" />
+          <ScalarProperty Name="Pin24" ColumnName="Pin24" />
+          <ScalarProperty Name="Pin23" ColumnName="Pin23" />
+          <ScalarProperty Name="Pin22" ColumnName="Pin22" />
+          <ScalarProperty Name="Pin20" ColumnName="Pin20" />
+          <ScalarProperty Name="Pin19" ColumnName="Pin19" />
+          <ScalarProperty Name="Pin18" ColumnName="Pin18" />
+          <ScalarProperty Name="Pin17" ColumnName="Pin17" />
+          <ScalarProperty Name="PcbDpsMasterID" ColumnName="PcbDpsMasterID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="program_master">
+      <EntityTypeMapping TypeName="unitworksccsModel.program_master">
+        <MappingFragment StoreEntitySet="program_master">
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="PartsRejected3" ColumnName="PartsRejected3" />
+          <ScalarProperty Name="PartsRejected2" ColumnName="PartsRejected2" />
+          <ScalarProperty Name="PartsRejected1" ColumnName="PartsRejected1" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="PartsAccepted3" ColumnName="PartsAccepted3" />
+          <ScalarProperty Name="PartsProduced3" ColumnName="PartsProduced3" />
+          <ScalarProperty Name="OpnCode3" ColumnName="OpnCode3" />
+          <ScalarProperty Name="PartsAccepted2" ColumnName="PartsAccepted2" />
+          <ScalarProperty Name="PartsProduced2" ColumnName="PartsProduced2" />
+          <ScalarProperty Name="OpnCode2" ColumnName="OpnCode2" />
+          <ScalarProperty Name="PartsAccepted1" ColumnName="PartsAccepted1" />
+          <ScalarProperty Name="PartsProduced1" ColumnName="PartsProduced1" />
+          <ScalarProperty Name="OpnCode1" ColumnName="OpnCode1" />
+          <ScalarProperty Name="ProgramDateTime" ColumnName="ProgramDateTime" />
+          <ScalarProperty Name="ProgramTime" ColumnName="ProgramTime" />
+          <ScalarProperty Name="ProgramDate" ColumnName="ProgramDate" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="WorkOrderNo3" ColumnName="WorkOrderNo3" />
+          <ScalarProperty Name="WorkOrderNo2" ColumnName="WorkOrderNo2" />
+          <ScalarProperty Name="WorkOrderNo1" ColumnName="WorkOrderNo1" />
+          <ScalarProperty Name="OperationDescription" ColumnName="OperationDescription" />
+          <ScalarProperty Name="ComponentCode" ColumnName="ComponentCode" />
+          <ScalarProperty Name="ComponentDescription" ColumnName="ComponentDescription" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sharathtables">
+      <EntityTypeMapping TypeName="unitworksccsModel.sharathtable">
+        <MappingFragment StoreEntitySet="sharathtable">
+          <ScalarProperty Name="TabSharathID" ColumnName="TabSharathID" />
+          <ScalarProperty Name="MCID" ColumnName="MCID" />
+          <ScalarProperty Name="syncid" ColumnName="syncid" />
+          <ScalarProperty Name="sharathvalue" ColumnName="sharathvalue" />
+          <ScalarProperty Name="sharathname" ColumnName="sharathname" />
+          <ScalarProperty Name="sharathid" ColumnName="sharathid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="smtpdetails">
+      <EntityTypeMapping TypeName="unitworksccsModel.smtpdetail">
+        <MappingFragment StoreEntitySet="smtpdetails">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Certificate" ColumnName="Certificate" />
+          <ScalarProperty Name="UseDefaultCredentials" ColumnName="UseDefaultCredentials" />
+          <ScalarProperty Name="EnableSsl" ColumnName="EnableSsl" />
+          <ScalarProperty Name="Host" ColumnName="Host" />
+          <ScalarProperty Name="Port" ColumnName="Port" />
+          <ScalarProperty Name="smtpID" ColumnName="smtpID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_autoreport_log">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_autoreport_log">
+        <MappingFragment StoreEntitySet="tbl_autoreport_log">
+          <ScalarProperty Name="ExcelCreatedTime" ColumnName="ExcelCreatedTime" />
+          <ScalarProperty Name="CompletedOn" ColumnName="CompletedOn" />
+          <ScalarProperty Name="MailSent" ColumnName="MailSent" />
+          <ScalarProperty Name="ExcelCreated" ColumnName="ExcelCreated" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="AutoReportID" ColumnName="AutoReportID" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="AutoReportLogID" ColumnName="AutoReportLogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_autoreportbasedon">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_autoreportbasedon">
+        <MappingFragment StoreEntitySet="tbl_autoreportbasedon">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="BasedOn" ColumnName="BasedOn" />
+          <ScalarProperty Name="BasedOnID" ColumnName="BasedOnID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_autoreportsetting">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_autoreportsetting">
+        <MappingFragment StoreEntitySet="tbl_autoreportsetting">
+          <ScalarProperty Name="NextRunDate" ColumnName="NextRunDate" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CCMailList" ColumnName="CCMailList" />
+          <ScalarProperty Name="ToMailList" ColumnName="ToMailList" />
+          <ScalarProperty Name="AutoReportTimeID" ColumnName="AutoReportTimeID" />
+          <ScalarProperty Name="BasedOn" ColumnName="BasedOn" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="AutoReportID" ColumnName="AutoReportID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_autoreporttime">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_autoreporttime">
+        <MappingFragment StoreEntitySet="tbl_autoreporttime">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AutoReportTime" ColumnName="AutoReportTime" />
+          <ScalarProperty Name="AutoReportTimeID" ColumnName="AutoReportTimeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_axisdet">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_axisdet">
+        <MappingFragment StoreEntitySet="tbl_axisdet">
+          <ScalarProperty Name="SpindlePath" ColumnName="SpindlePath" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="AxisName" ColumnName="AxisName" />
+          <ScalarProperty Name="AxisID" ColumnName="AxisID" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="AxisDetID" ColumnName="AxisDetID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_axisdetails1">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_axisdetails1">
+        <MappingFragment StoreEntitySet="tbl_axisdetails1">
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="DistPos" ColumnName="DistPos" />
+          <ScalarProperty Name="MacPos" ColumnName="MacPos" />
+          <ScalarProperty Name="RelPos" ColumnName="RelPos" />
+          <ScalarProperty Name="AbsPos" ColumnName="AbsPos" />
+          <ScalarProperty Name="Axis" ColumnName="Axis" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="ADID" ColumnName="ADID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_axisdetails2">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_axisdetails2">
+        <MappingFragment StoreEntitySet="tbl_axisdetails2">
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="SpindleSpeed" ColumnName="SpindleSpeed" />
+          <ScalarProperty Name="SpindleLoad" ColumnName="SpindleLoad" />
+          <ScalarProperty Name="FeedRate" ColumnName="FeedRate" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="AD2ID" ColumnName="AD2ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_CycleTimeAnalysis">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_CycleTimeAnalysis">
+        <MappingFragment StoreEntitySet="tbl_CycleTimeAnalysis">
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="LossTimeUnit" ColumnName="LossTimeUnit" />
+          <ScalarProperty Name="LossTime" ColumnName="LossTime" />
+          <ScalarProperty Name="TotalLoadTimeUnit" ColumnName="TotalLoadTimeUnit" />
+          <ScalarProperty Name="TotalLoadTime" ColumnName="TotalLoadTime" />
+          <ScalarProperty Name="Std_LoadTimeUnit" ColumnName="Std_LoadTimeUnit" />
+          <ScalarProperty Name="Std_LoadTime" ColumnName="Std_LoadTime" />
+          <ScalarProperty Name="AvgOperatingTimeUnit" ColumnName="AvgOperatingTimeUnit" />
+          <ScalarProperty Name="AvgOperatingTime" ColumnName="AvgOperatingTime" />
+          <ScalarProperty Name="OperatingTimeUnit" ColumnName="OperatingTimeUnit" />
+          <ScalarProperty Name="OperatingTime" ColumnName="OperatingTime" />
+          <ScalarProperty Name="AvgLoadTimeinMinutes" ColumnName="AvgLoadTimeinMinutes" />
+          <ScalarProperty Name="Std_CycleTimeUnit" ColumnName="Std_CycleTimeUnit" />
+          <ScalarProperty Name="Std_CycleTime" ColumnName="Std_CycleTime" />
+          <ScalarProperty Name="PartsCount" ColumnName="PartsCount" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="PartNum" ColumnName="PartNum" />
+          <ScalarProperty Name="CTAID" ColumnName="CTAID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_deletedProgDet">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_deletedProgDet">
+        <MappingFragment StoreEntitySet="tbl_deletedProgDet">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifedOn" ColumnName="ModifedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="ProgramData" ColumnName="ProgramData" />
+          <ScalarProperty Name="ProgramNo" ColumnName="ProgramNo" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="ProgDeletedID" ColumnName="ProgDeletedID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_genericfilepath">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_genericfilepath">
+        <MappingFragment StoreEntitySet="tbl_genericfilepath">
+          <ScalarProperty Name="TypeofFilePath" ColumnName="TypeofFilePath" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="FilePathDet" ColumnName="FilePathDet" />
+          <ScalarProperty Name="FilePathDesc" ColumnName="FilePathDesc" />
+          <ScalarProperty Name="CompleteFilePath" ColumnName="CompleteFilePath" />
+          <ScalarProperty Name="FilePathID" ColumnName="FilePathID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_livecbmparameters">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_livecbmparameters">
+        <MappingFragment StoreEntitySet="tbl_livecbmparameters">
+          <ScalarProperty Name="IsConverted" ColumnName="IsConverted" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="SensorValue" ColumnName="SensorValue" />
+          <ScalarProperty Name="MemoryAddress" ColumnName="MemoryAddress" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="SensorGroupID" ColumnName="SensorGroupID" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="cbmpID" ColumnName="cbmpID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_OEEDetails">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_OEEDetails">
+        <MappingFragment StoreEntitySet="tbl_OEEDetails">
+          <ScalarProperty Name="TotalTimeInMinutes" ColumnName="TotalTimeInMinutes" />
+          <ScalarProperty Name="PowerOnTimeInMinutes" ColumnName="PowerOnTimeInMinutes" />
+          <ScalarProperty Name="PowerOffTimeInMinutes" ColumnName="PowerOffTimeInMinutes" />
+          <ScalarProperty Name="TotalIDLETimeinMin" ColumnName="TotalIDLETimeinMin" />
+          <ScalarProperty Name="PerformanceFactor" ColumnName="PerformanceFactor" />
+          <ScalarProperty Name="TotalPartsCount" ColumnName="TotalPartsCount" />
+          <ScalarProperty Name="OperatingTimeinMin" ColumnName="OperatingTimeinMin" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="OEE" ColumnName="OEE" />
+          <ScalarProperty Name="Quality" ColumnName="Quality" />
+          <ScalarProperty Name="Performance" ColumnName="Performance" />
+          <ScalarProperty Name="Availability" ColumnName="Availability" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="OEEID" ColumnName="OEEID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_oeereportasdivision">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_oeereportasdivision">
+        <MappingFragment StoreEntitySet="tbl_oeereportasdivision">
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="LossDuration" ColumnName="LossDuration" />
+          <ScalarProperty Name="LossID" ColumnName="LossID" />
+          <ScalarProperty Name="FGCode" ColumnName="FGCode" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="LID" ColumnName="LID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ProdOrderLosses">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_ProdOrderLosses">
+        <MappingFragment StoreEntitySet="tbl_ProdOrderLosses">
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="LossCodeL2ID" ColumnName="LossCodeL2ID" />
+          <ScalarProperty Name="LossCodeL1ID" ColumnName="LossCodeL1ID" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="LossDuration" ColumnName="LossDuration" />
+          <ScalarProperty Name="LossID" ColumnName="LossID" />
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="ProdOrderlossID" ColumnName="ProdOrderlossID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_reportmaster">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_reportmaster">
+        <MappingFragment StoreEntitySet="tbl_reportmaster">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ReportTemplatePath" ColumnName="ReportTemplatePath" />
+          <ScalarProperty Name="ReportDispName" ColumnName="ReportDispName" />
+          <ScalarProperty Name="ReportDescription" ColumnName="ReportDescription" />
+          <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_SaveNCProgVer">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_SaveNCProgVer">
+        <MappingFragment StoreEntitySet="tbl_SaveNCProgVer">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="ProgramData" ColumnName="ProgramData" />
+          <ScalarProperty Name="VersionNo" ColumnName="VersionNo" />
+          <ScalarProperty Name="ProgramNo" ColumnName="ProgramNo" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="NCProgVerID" ColumnName="NCProgVerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_servodetails">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_servodetails">
+        <MappingFragment StoreEntitySet="tbl_servodetails">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Insertedby" ColumnName="Insertedby" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="LoadCurrentAmp" ColumnName="LoadCurrentAmp" />
+          <ScalarProperty Name="LoadCurrent" ColumnName="LoadCurrent" />
+          <ScalarProperty Name="ServoLoadMeter" ColumnName="ServoLoadMeter" />
+          <ScalarProperty Name="ServoAxis" ColumnName="ServoAxis" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="SDID" ColumnName="SDID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_UtilReport">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_UtilReport">
+        <MappingFragment StoreEntitySet="tbl_UtilReport">
+          <ScalarProperty Name="SetupMinorTime" ColumnName="SetupMinorTime" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="UtilPercent" ColumnName="UtilPercent" />
+          <ScalarProperty Name="PowerOffTime" ColumnName="PowerOffTime" />
+          <ScalarProperty Name="BDTime" ColumnName="BDTime" />
+          <ScalarProperty Name="LossTime" ColumnName="LossTime" />
+          <ScalarProperty Name="MinorLossTime" ColumnName="MinorLossTime" />
+          <ScalarProperty Name="SetupTime" ColumnName="SetupTime" />
+          <ScalarProperty Name="OperatingTime" ColumnName="OperatingTime" />
+          <ScalarProperty Name="TotalTime" ColumnName="TotalTime" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="UtilReportID" ColumnName="UtilReportID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblactivitylogs">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblactivitylog">
+        <MappingFragment StoreEntitySet="tblactivitylog">
+          <ScalarProperty Name="OpDateTime" ColumnName="OpDateTime" />
+          <ScalarProperty Name="OpDate" ColumnName="OpDate" />
+          <ScalarProperty Name="OpTime" ColumnName="OpTime" />
+          <ScalarProperty Name="Idoperationlog" ColumnName="Idoperationlog" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Controller" ColumnName="Controller" />
+          <ScalarProperty Name="CompleteModificationDetails" ColumnName="CompleteModificationDetails" />
+          <ScalarProperty Name="ClientSystemName" ColumnName="ClientSystemName" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="TrackID" ColumnName="TrackID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAndonDispDets">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblAndonDispDet">
+        <MappingFragment StoreEntitySet="tblAndonDispDet">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="ANDONDISPID" ColumnName="ANDONDISPID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAndonImageTextScheduledDisplays">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblAndonImageTextScheduledDisplay">
+        <MappingFragment StoreEntitySet="tblAndonImageTextScheduledDisplay">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="DefaultScreenVisible" ColumnName="DefaultScreenVisible" />
+          <ScalarProperty Name="TextToDisplay" ColumnName="TextToDisplay" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="FlagEnd" ColumnName="FlagEnd" />
+          <ScalarProperty Name="FlagStart" ColumnName="FlagStart" />
+          <ScalarProperty Name="ScreenType" ColumnName="ScreenType" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="TextImageAndonId" ColumnName="TextImageAndonId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblapp_paths">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblapp_paths">
+        <MappingFragment StoreEntitySet="tblapp_paths">
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="AppPath" ColumnName="AppPath" />
+          <ScalarProperty Name="AppName" ColumnName="AppName" />
+          <ScalarProperty Name="AppPathsID" ColumnName="AppPathsID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblatccounters">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblatccounter">
+        <MappingFragment StoreEntitySet="tblatccounter">
+          <ScalarProperty Name="PartCount" ColumnName="PartCount" />
+          <ScalarProperty Name="CycleEndTime" ColumnName="CycleEndTime" />
+          <ScalarProperty Name="CycleStartTime" ColumnName="CycleStartTime" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="Counter" ColumnName="Counter" />
+          <ScalarProperty Name="ToolNo" ColumnName="ToolNo" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="ATCID" ColumnName="ATCID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblbottelnecks">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblbottelneck">
+        <MappingFragment StoreEntitySet="tblbottelneck">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="cpid" ColumnName="cpid" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="plantID" ColumnName="plantID" />
+          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+          <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+          <ScalarProperty Name="CellName" ColumnName="CellName" />
+          <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+          <ScalarProperty Name="PlantName" ColumnName="PlantName" />
+          <ScalarProperty Name="Bid" ColumnName="Bid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblbreakdowns">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblbreakdown">
+        <MappingFragment StoreEntitySet="tblbreakdown">
+          <ScalarProperty Name="DoneWithRow" ColumnName="DoneWithRow" />
+          <ScalarProperty Name="MessageCode" ColumnName="MessageCode" />
+          <ScalarProperty Name="MessageDesc" ColumnName="MessageDesc" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="BreakDownCode" ColumnName="BreakDownCode" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="BreakdownID" ColumnName="BreakdownID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBreakdowncodes">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblBreakdowncode">
+        <MappingFragment StoreEntitySet="tblBreakdowncodes">
+          <ScalarProperty Name="TargetPercent" ColumnName="TargetPercent" />
+          <ScalarProperty Name="ServerTabFlagSync" ColumnName="ServerTabFlagSync" />
+          <ScalarProperty Name="ServerTabCheck" ColumnName="ServerTabCheck" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="EndCode" ColumnName="EndCode" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ContributeTo" ColumnName="ContributeTo" />
+          <ScalarProperty Name="BreakdownLevel2ID" ColumnName="BreakdownLevel2ID" />
+          <ScalarProperty Name="BreakdownLevel1ID" ColumnName="BreakdownLevel1ID" />
+          <ScalarProperty Name="BreakdownLevel" ColumnName="BreakdownLevel" />
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+          <ScalarProperty Name="BreakdownDesc" ColumnName="BreakdownDesc" />
+          <ScalarProperty Name="BreakdownCode" ColumnName="BreakdownCode" />
+          <ScalarProperty Name="BreakdownID" ColumnName="BreakdownID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBreakDownTickects">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblBreakDownTickect">
+        <MappingFragment StoreEntitySet="tblBreakDownTickect">
+          <ScalarProperty Name="maintRejId" ColumnName="maintRejId" />
+          <ScalarProperty Name="prodRejId" ColumnName="prodRejId" />
+          <ScalarProperty Name="ProdFinished" ColumnName="ProdFinished" />
+          <ScalarProperty Name="MaintFinished" ColumnName="MaintFinished" />
+          <ScalarProperty Name="MaintFlage" ColumnName="MaintFlage" />
+          <ScalarProperty Name="AcceptFlage" ColumnName="AcceptFlage" />
+          <ScalarProperty Name="correctedDate" ColumnName="correctedDate" />
+          <ScalarProperty Name="woId" ColumnName="woId" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="createdOn" ColumnName="createdOn" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="prodRemarks" ColumnName="prodRemarks" />
+          <ScalarProperty Name="prodStatus" ColumnName="prodStatus" />
+          <ScalarProperty Name="prodAcp_RejDateTime" ColumnName="prodAcp/RejDateTime" />
+          <ScalarProperty Name="mntClosureOpId" ColumnName="mntClosureOpId" />
+          <ScalarProperty Name="tktClosingTime" ColumnName="tktClosingTime" />
+          <ScalarProperty Name="mntRemarks" ColumnName="mntRemarks" />
+          <ScalarProperty Name="mntAcp_RejDateTime" ColumnName="mntAcp/RejDateTime" />
+          <ScalarProperty Name="mntRrejectReason" ColumnName="mntRrejectReason" />
+          <ScalarProperty Name="mntStatus" ColumnName="mntStatus" />
+          <ScalarProperty Name="bdTktDateTime" ColumnName="bdTktDateTime" />
+          <ScalarProperty Name="prodOpId" ColumnName="prodOpId" />
+          <ScalarProperty Name="mntOpId" ColumnName="mntOpId" />
+          <ScalarProperty Name="operatorId" ColumnName="operatorId" />
+          <ScalarProperty Name="reasonId" ColumnName="reasonId" />
+          <ScalarProperty Name="machineId" ColumnName="machineId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblcells">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblcell">
+        <MappingFragment StoreEntitySet="tblcell">
+          <ScalarProperty Name="CelldisplayName" ColumnName="CelldisplayName" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+          <ScalarProperty Name="CellDesc" ColumnName="CellDesc" />
+          <ScalarProperty Name="CellName" ColumnName="CellName" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblcellparts">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblcellpart">
+        <MappingFragment StoreEntitySet="tblcellpart">
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="PartDescription" ColumnName="PartDescription" />
+          <ScalarProperty Name="partNo" ColumnName="partNo" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="cpID" ColumnName="cpID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblcustomers">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblcustomer">
+        <MappingFragment StoreEntitySet="tblcustomer">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CPMobileNO" ColumnName="CPMobileNO" />
+          <ScalarProperty Name="CPEmailID" ColumnName="CPEmailID" />
+          <ScalarProperty Name="CPDepartment" ColumnName="CPDepartment" />
+          <ScalarProperty Name="CPDesignation" ColumnName="CPDesignation" />
+          <ScalarProperty Name="CPName" ColumnName="CPName" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="EmailID2" ColumnName="EmailID2" />
+          <ScalarProperty Name="EmailID1" ColumnName="EmailID1" />
+          <ScalarProperty Name="Landline2" ColumnName="Landline2" />
+          <ScalarProperty Name="Landline1" ColumnName="Landline1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="CustomerShortName" ColumnName="CustomerShortName" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbldailyprodstatus">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbldailyprodstatu">
+        <MappingFragment StoreEntitySet="tbldailyprodstatus">
+          <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbldaytimings">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbldaytiming">
+        <MappingFragment StoreEntitySet="tbldaytiming">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbldowntimecategories">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbldowntimecategory">
+        <MappingFragment StoreEntitySet="tbldowntimecategory">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="DTCategoryDesc" ColumnName="DTCategoryDesc" />
+          <ScalarProperty Name="DTCategory" ColumnName="DTCategory" />
+          <ScalarProperty Name="DTC_ID" ColumnName="DTC_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbldowntimedetails">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbldowntimedetail">
+        <MappingFragment StoreEntitySet="tbldowntimedetails">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="DTDesc" ColumnName="DTDesc" />
+          <ScalarProperty Name="DTReason" ColumnName="DTReason" />
+          <ScalarProperty Name="DTCategoryID" ColumnName="DTCategoryID" />
+          <ScalarProperty Name="DT_ID" ColumnName="DT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblemailescalations">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblemailescalation">
+        <MappingFragment StoreEntitySet="tblemailescalation">
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CcList" ColumnName="CcList" />
+          <ScalarProperty Name="ToList" ColumnName="ToList" />
+          <ScalarProperty Name="Minutes" ColumnName="Minutes" />
+          <ScalarProperty Name="Hours" ColumnName="Hours" />
+          <ScalarProperty Name="WorkCenterID" ColumnName="WorkCenterID" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+          <ScalarProperty Name="ReasonLevel3" ColumnName="ReasonLevel3" />
+          <ScalarProperty Name="ReasonLevel2" ColumnName="ReasonLevel2" />
+          <ScalarProperty Name="ReasonLevel1" ColumnName="ReasonLevel1" />
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+          <ScalarProperty Name="EMailEscalationName" ColumnName="EMailEscalationName" />
+          <ScalarProperty Name="EMailEscalationID" ColumnName="EMailEscalationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblendcodes">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblendcode">
+        <MappingFragment StoreEntitySet="tblendcodes">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="EndCodeLDesc" ColumnName="EndCodeLDesc" />
+          <ScalarProperty Name="EndCodeSDesc" ColumnName="EndCodeSDesc" />
+          <ScalarProperty Name="EndCode" ColumnName="EndCode" />
+          <ScalarProperty Name="EndCodeID" ColumnName="EndCodeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblescalationlogs">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblescalationlog">
+        <MappingFragment StoreEntitySet="tblescalationlog">
+          <ScalarProperty Name="WCID" ColumnName="WCID" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="EscalationSentOn" ColumnName="EscalationSentOn" />
+          <ScalarProperty Name="IsIdle" ColumnName="IsIdle" />
+          <ScalarProperty Name="LossCodeID" ColumnName="LossCodeID" />
+          <ScalarProperty Name="EscalationID" ColumnName="EscalationID" />
+          <ScalarProperty Name="ELID" ColumnName="ELID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblgenericworkcodes">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblgenericworkcode">
+        <MappingFragment StoreEntitySet="tblgenericworkcodes">
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="EndCode" ColumnName="EndCode" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="GWCodesLevel2ID" ColumnName="GWCodesLevel2ID" />
+          <ScalarProperty Name="GWCodesLevel1ID" ColumnName="GWCodesLevel1ID" />
+          <ScalarProperty Name="GWCodesLevel" ColumnName="GWCodesLevel" />
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+          <ScalarProperty Name="GenericWorkDesc" ColumnName="GenericWorkDesc" />
+          <ScalarProperty Name="GenericWorkCode" ColumnName="GenericWorkCode" />
+          <ScalarProperty Name="GenericWorkID" ColumnName="GenericWorkID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblgenericworkentries">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblgenericworkentry">
+        <MappingFragment StoreEntitySet="tblgenericworkentry">
+          <ScalarProperty Name="DoneWithRow" ColumnName="DoneWithRow" />
+          <ScalarProperty Name="GWCode" ColumnName="GWCode" />
+          <ScalarProperty Name="GWCodeDesc" ColumnName="GWCodeDesc" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="GWCodeID" ColumnName="GWCodeID" />
+          <ScalarProperty Name="GWEntryID" ColumnName="GWEntryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblhistpms">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblhistpm">
+        <MappingFragment StoreEntitySet="tblhistpms">
+          <ScalarProperty Name="Cellid" ColumnName="Cellid" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="workdone" ColumnName="workdone" />
+          <ScalarProperty Name="Pmchecklistname" ColumnName="Pmchecklistname" />
+          <ScalarProperty Name="Pmcheckpointid" ColumnName="Pmcheckpointid" />
+          <ScalarProperty Name="pmsid" ColumnName="pmsid" />
+          <ScalarProperty Name="Machineid" ColumnName="Machineid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblholdcodes">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblholdcode">
+        <MappingFragment StoreEntitySet="tblholdcodes">
+          <ScalarProperty Name="Sync" ColumnName="Sync" />
+          <ScalarProperty Name="ServerTabCheck" ColumnName="ServerTabCheck" />
+          <ScalarProperty Name="ServerTabFlagSync" ColumnName="ServerTabFlagSync" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="EndCode" ColumnName="EndCode" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ContributeTo" ColumnName="ContributeTo" />
+          <ScalarProperty Name="HoldCodesLevel2ID" ColumnName="HoldCodesLevel2ID" />
+          <ScalarProperty Name="HoldCodesLevel1ID" ColumnName="HoldCodesLevel1ID" />
+          <ScalarProperty Name="HoldCodesLevel" ColumnName="HoldCodesLevel" />
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+          <ScalarProperty Name="HoldCodeDesc" ColumnName="HoldCodeDesc" />
+          <ScalarProperty Name="HoldCode" ColumnName="HoldCode" />
+          <ScalarProperty Name="HoldCodeID" ColumnName="HoldCodeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblHolidayManagments">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblHolidayManagment">
+        <MappingFragment StoreEntitySet="tblHolidayManagment">
+          <ScalarProperty Name="daysDuration" ColumnName="daysDuration" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="HolidayType" ColumnName="HolidayType" />
+          <ScalarProperty Name="HolidayManagmentDesc" ColumnName="HolidayManagmentDesc" />
+          <ScalarProperty Name="HolidayManagmentName" ColumnName="HolidayManagmentName" />
+          <ScalarProperty Name="HolidayManagmentId" ColumnName="HolidayManagmentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblholidays">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblholiday">
+        <MappingFragment StoreEntitySet="tblholidays">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="HolidayDate" ColumnName="HolidayDate" />
+          <ScalarProperty Name="HolidayId" ColumnName="HolidayId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblHolidayTypeMasters">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblHolidayTypeMaster">
+        <MappingFragment StoreEntitySet="tblHolidayTypeMasters">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="HolidayTypeColorCode" ColumnName="HolidayTypeColorCode" />
+          <ScalarProperty Name="HolidayTypeName" ColumnName="HolidayTypeName" />
+          <ScalarProperty Name="HolidayTypeId" ColumnName="HolidayTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbllivedailyprodstatus">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbllivedailyprodstatu">
+        <MappingFragment StoreEntitySet="tbllivedailyprodstatus">
+          <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbllivemodes">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbllivemode">
+        <MappingFragment StoreEntitySet="tbllivemode">
+          <ScalarProperty Name="breakDownCodeID" ColumnName="breakDownCodeID" />
+          <ScalarProperty Name="IsShiftEnd" ColumnName="IsShiftEnd" />
+          <ScalarProperty Name="CuttingDuration" ColumnName="CuttingDuration" />
+          <ScalarProperty Name="TotalPartsCount" ColumnName="TotalPartsCount" />
+          <ScalarProperty Name="IsInserted" ColumnName="IsInserted" />
+          <ScalarProperty Name="LossCodeEnteredBy" ColumnName="LossCodeEnteredBy" />
+          <ScalarProperty Name="LossCodeEnteredTime" ColumnName="LossCodeEnteredTime" />
+          <ScalarProperty Name="StartIdle" ColumnName="StartIdle" />
+          <ScalarProperty Name="ModeTypeEnd" ColumnName="ModeTypeEnd" />
+          <ScalarProperty Name="ModeType" ColumnName="ModeType" />
+          <ScalarProperty Name="BreakdownID" ColumnName="BreakdownID" />
+          <ScalarProperty Name="LossCodeID" ColumnName="LossCodeID" />
+          <ScalarProperty Name="DurationInSec" ColumnName="DurationInSec" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="MacMode" ColumnName="MacMode" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="ModeID" ColumnName="ModeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbllossescodes">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbllossescode">
+        <MappingFragment StoreEntitySet="tbllossescodes">
+          <ScalarProperty Name="TargetPercent" ColumnName="TargetPercent" />
+          <ScalarProperty Name="ServerTabFlagSync" ColumnName="ServerTabFlagSync" />
+          <ScalarProperty Name="ServerTabCheck" ColumnName="ServerTabCheck" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="EndCode" ColumnName="EndCode" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ContributeTo" ColumnName="ContributeTo" />
+          <ScalarProperty Name="LossCodesLevel2ID" ColumnName="LossCodesLevel2ID" />
+          <ScalarProperty Name="LossCodesLevel1ID" ColumnName="LossCodesLevel1ID" />
+          <ScalarProperty Name="LossCodesLevel" ColumnName="LossCodesLevel" />
+          <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+          <ScalarProperty Name="LossCodeDesc" ColumnName="LossCodeDesc" />
+          <ScalarProperty Name="LossCode" ColumnName="LossCode" />
+          <ScalarProperty Name="LossCodeID" ColumnName="LossCodeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbllossofentries">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbllossofentry">
+        <MappingFragment StoreEntitySet="tbllossofentry">
+          <ScalarProperty Name="HMIID" ColumnName="HMIID" />
+          <ScalarProperty Name="ForRefresh" ColumnName="ForRefresh" />
+          <ScalarProperty Name="IsScreen" ColumnName="IsScreen" />
+          <ScalarProperty Name="IsStart" ColumnName="IsStart" />
+          <ScalarProperty Name="DoneWithRow" ColumnName="DoneWithRow" />
+          <ScalarProperty Name="IsUpdate" ColumnName="IsUpdate" />
+          <ScalarProperty Name="MessageCode" ColumnName="MessageCode" />
+          <ScalarProperty Name="MessageDesc" ColumnName="MessageDesc" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
+          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="MessageCodeID" ColumnName="MessageCodeID" />
+          <ScalarProperty Name="LossID" ColumnName="LossID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmachineaxisdetails">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblmachineaxisdetail">
+        <MappingFragment StoreEntitySet="tblmachineaxisdetails">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="AxisName" ColumnName="AxisName" />
+          <ScalarProperty Name="AxisNo" ColumnName="AxisNo" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="MacAxisID" ColumnName="MacAxisID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmachinecategories">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblmachinecategory">
+        <MappingFragment StoreEntitySet="tblmachinecategory">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmachinedetails">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblmachinedetail">
+        <MappingFragment StoreEntitySet="tblmachinedetails">
+          <ScalarProperty Name="LossFlag" ColumnName="LossFlag" />
+          <ScalarProperty Name="IsShiftWise" ColumnName="IsShiftWise" />
+          <ScalarProperty Name="OperationNumber" ColumnName="OperationNumber" />
+          <ScalarProperty Name="IsLastMachine" ColumnName="IsLastMachine" />
+          <ScalarProperty Name="IsFirstMachine" ColumnName="IsFirstMachine" />
+          <ScalarProperty Name="IsBottelNeck" ColumnName="IsBottelNeck" />
+          <ScalarProperty Name="EnableToolLife" ColumnName="EnableToolLife" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="ServerTabCheck" ColumnName="ServerTabCheck" />
+          <ScalarProperty Name="ServerTabFlagSync" ColumnName="ServerTabFlagSync" />
+          <ScalarProperty Name="EnableLockLogic" ColumnName="EnableLockLogic" />
+          <ScalarProperty Name="MachineIdleMin" ColumnName="MachineIdleMin" />
+          <ScalarProperty Name="MachineIdleBit" ColumnName="MachineIdleBit" />
+          <ScalarProperty Name="MachineUnlockBit" ColumnName="MachineUnlockBit" />
+          <ScalarProperty Name="MachineToolLifeBit" ColumnName="MachineToolLifeBit" />
+          <ScalarProperty Name="MachineMaintBit" ColumnName="MachineMaintBit" />
+          <ScalarProperty Name="MachineSetupBit" ColumnName="MachineSetupBit" />
+          <ScalarProperty Name="MachineLockBit" ColumnName="MachineLockBit" />
+          <ScalarProperty Name="TabIPAddress" ColumnName="TabIPAddress" />
+          <ScalarProperty Name="SpindleAxis" ColumnName="SpindleAxis" />
+          <ScalarProperty Name="MacConnName" ColumnName="MacConnName" />
+          <ScalarProperty Name="MachineModelType" ColumnName="MachineModelType" />
+          <ScalarProperty Name="ProgDBit" ColumnName="ProgDBit" />
+          <ScalarProperty Name="ProgramNum" ColumnName="ProgramNum" />
+          <ScalarProperty Name="CurrentControlAxis" ColumnName="CurrentControlAxis" />
+          <ScalarProperty Name="MacType" ColumnName="MacType" />
+          <ScalarProperty Name="NoOfAxis" ColumnName="NoOfAxis" />
+          <ScalarProperty Name="ManualWCID" ColumnName="ManualWCID" />
+          <ScalarProperty Name="IsNormalWC" ColumnName="IsNormalWC" />
+          <ScalarProperty Name="IsLevel" ColumnName="IsLevel" />
+          <ScalarProperty Name="IsPCB" ColumnName="IsPCB" />
+          <ScalarProperty Name="ShopNo" ColumnName="ShopNo" />
+          <ScalarProperty Name="IsParameters" ColumnName="IsParameters" />
+          <ScalarProperty Name="ModelType" ColumnName="ModelType" />
+          <ScalarProperty Name="MachineMake" ColumnName="MachineMake" />
+          <ScalarProperty Name="MachineModel" ColumnName="MachineModel" />
+          <ScalarProperty Name="ControllerType" ColumnName="ControllerType" />
+          <ScalarProperty Name="MachineType" ColumnName="MachineType" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="CellOrderNo" ColumnName="CellOrderNo" />
+          <ScalarProperty Name="MachineDisplayName" ColumnName="MachineDisplayName" />
+          <ScalarProperty Name="MachineDescription" ColumnName="MachineDescription" />
+          <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmailids">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblmailid">
+        <MappingFragment StoreEntitySet="tblmailids">
+          <ScalarProperty Name="EmployeeDesignation" ColumnName="EmployeeDesignation" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="EmployeeContactNum" ColumnName="EmployeeContactNum" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="MailIDsID" ColumnName="MailIDsID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmaintainanceProdBrDetails">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblmaintainanceProdBrDetail">
+        <MappingFragment StoreEntitySet="tblmaintainanceProdBrDetails">
+          <ScalarProperty Name="modifiedOn" ColumnName="modifiedOn" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="createdOn" ColumnName="createdOn" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="rejectReason" ColumnName="rejectReason" />
+          <ScalarProperty Name="closureTime" ColumnName="closureTime" />
+          <ScalarProperty Name="acceptanceTime" ColumnName="acceptanceTime" />
+          <ScalarProperty Name="productionStatus" ColumnName="productionStatus" />
+          <ScalarProperty Name="maintainanceStatus" ColumnName="maintainanceStatus" />
+          <ScalarProperty Name="productionRemarks" ColumnName="productionRemarks" />
+          <ScalarProperty Name="maintainanceRemarks" ColumnName="maintainanceRemarks" />
+          <ScalarProperty Name="breakdownReasonDateTime" ColumnName="breakdownReasonDateTime" />
+          <ScalarProperty Name="maintainanceOperatorName" ColumnName="maintainanceOperatorName" />
+          <ScalarProperty Name="operatorName" ColumnName="operatorName" />
+          <ScalarProperty Name="reasonName" ColumnName="reasonName" />
+          <ScalarProperty Name="machineName" ColumnName="machineName" />
+          <ScalarProperty Name="roleId" ColumnName="roleId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmasterparts_st_sw">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblmasterparts_st_sw">
+        <MappingFragment StoreEntitySet="tblmasterparts_st_sw">
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="MaterialRemovedQtyUnit" ColumnName="MaterialRemovedQtyUnit" />
+          <ScalarProperty Name="OutputWeightUnit" ColumnName="OutputWeightUnit" />
+          <ScalarProperty Name="InputWeightUnit" ColumnName="InputWeightUnit" />
+          <ScalarProperty Name="StdChangeoverTimeUnit" ColumnName="StdChangeoverTimeUnit" />
+          <ScalarProperty Name="StdCuttingTimeUnit" ColumnName="StdCuttingTimeUnit" />
+          <ScalarProperty Name="StdSetupTimeUnit" ColumnName="StdSetupTimeUnit" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="MaterialRemovedQty" ColumnName="MaterialRemovedQty" />
+          <ScalarProperty Name="OutputWeight" ColumnName="OutputWeight" />
+          <ScalarProperty Name="InputWeight" ColumnName="InputWeight" />
+          <ScalarProperty Name="StdChangeoverTime" ColumnName="StdChangeoverTime" />
+          <ScalarProperty Name="StdCuttingTime" ColumnName="StdCuttingTime" />
+          <ScalarProperty Name="StdSetupTime" ColumnName="StdSetupTime" />
+          <ScalarProperty Name="OpNo" ColumnName="OpNo" />
+          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+          <ScalarProperty Name="PARTSSTSWID" ColumnName="PARTSSTSWID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmimics">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblmimic">
+        <MappingFragment StoreEntitySet="tblmimics">
+          <ScalarProperty Name="IsSync" ColumnName="IsSync" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="BreakdownTime" ColumnName="BreakdownTime" />
+          <ScalarProperty Name="MachineOffTime" ColumnName="MachineOffTime" />
+          <ScalarProperty Name="IdleTime" ColumnName="IdleTime" />
+          <ScalarProperty Name="SetupTime" ColumnName="SetupTime" />
+          <ScalarProperty Name="OperatingTime" ColumnName="OperatingTime" />
+          <ScalarProperty Name="MachineOnTime" ColumnName="MachineOnTime" />
+          <ScalarProperty Name="mid" ColumnName="mid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmodes">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblmode">
+        <MappingFragment StoreEntitySet="tblmode">
+          <ScalarProperty Name="Sync" ColumnName="Sync" />
+          <ScalarProperty Name="IsPiWeb" ColumnName="IsPiWeb" />
+          <ScalarProperty Name="IsInserted" ColumnName="IsInserted" />
+          <ScalarProperty Name="LossCodeEnteredBy" ColumnName="LossCodeEnteredBy" />
+          <ScalarProperty Name="LossCodeEnteredTime" ColumnName="LossCodeEnteredTime" />
+          <ScalarProperty Name="StartIdle" ColumnName="StartIdle" />
+          <ScalarProperty Name="ModeTypeEnd" ColumnName="ModeTypeEnd" />
+          <ScalarProperty Name="ModeType" ColumnName="ModeType" />
+          <ScalarProperty Name="BreakdownID" ColumnName="BreakdownID" />
+          <ScalarProperty Name="LossCodeID" ColumnName="LossCodeID" />
+          <ScalarProperty Name="DurationInSec" ColumnName="DurationInSec" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="MacMode" ColumnName="MacMode" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="ModeID" ColumnName="ModeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmodetemps">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblmodetemp">
+        <MappingFragment StoreEntitySet="tblmodetemp">
+          <ScalarProperty Name="IsInserted" ColumnName="IsInserted" />
+          <ScalarProperty Name="TabModeID" ColumnName="TabModeID" />
+          <ScalarProperty Name="LossCodeEnteredBy" ColumnName="LossCodeEnteredBy" />
+          <ScalarProperty Name="LossCodeEnteredTime" ColumnName="LossCodeEnteredTime" />
+          <ScalarProperty Name="StartIdle" ColumnName="StartIdle" />
+          <ScalarProperty Name="ModeTypeEnd" ColumnName="ModeTypeEnd" />
+          <ScalarProperty Name="ModeType" ColumnName="ModeType" />
+          <ScalarProperty Name="BreakdownID" ColumnName="BreakdownID" />
+          <ScalarProperty Name="LossCodeID" ColumnName="LossCodeID" />
+          <ScalarProperty Name="DurationInSec" ColumnName="DurationInSec" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="MacMode" ColumnName="MacMode" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="ModeID" ColumnName="ModeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmodulehelpers">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblmodulehelper">
+        <MappingFragment StoreEntitySet="tblmodulehelper">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+          <ScalarProperty Name="IsReadonly" ColumnName="IsReadonly" />
+          <ScalarProperty Name="IsRemoved" ColumnName="IsRemoved" />
+          <ScalarProperty Name="IsEdited" ColumnName="IsEdited" />
+          <ScalarProperty Name="IsAdded" ColumnName="IsAdded" />
+          <ScalarProperty Name="IsAll" ColumnName="IsAll" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmodulemasters">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblmodulemaster">
+        <MappingFragment StoreEntitySet="tblmodulemaster">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="EnableDelete" ColumnName="EnableDelete" />
+          <ScalarProperty Name="EnableEdit" ColumnName="EnableEdit" />
+          <ScalarProperty Name="EnableAdd" ColumnName="EnableAdd" />
+          <ScalarProperty Name="EnableReport" ColumnName="EnableReport" />
+          <ScalarProperty Name="IsSuperAdmin" ColumnName="IsSuperAdmin" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmodules">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblmodule">
+        <MappingFragment StoreEntitySet="tblmodules">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="ModuleDispName" ColumnName="ModuleDispName" />
+          <ScalarProperty Name="ModuleDesc" ColumnName="ModuleDesc" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblmultipleworkorders">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblmultipleworkorder">
+        <MappingFragment StoreEntitySet="tblmultipleworkorder">
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="MultipleWODesc" ColumnName="MultipleWODesc" />
+          <ScalarProperty Name="MultipleWOName" ColumnName="MultipleWOName" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="WCID" ColumnName="WCID" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+          <ScalarProperty Name="MWOID" ColumnName="MWOID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblNcProgramTransferMains">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblNcProgramTransferMain">
+        <MappingFragment StoreEntitySet="tblNcProgramTransferMain">
+          <ScalarProperty Name="FromCNC" ColumnName="FromCNC" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ProgramData" ColumnName="ProgramData" />
+          <ScalarProperty Name="VersionNumber" ColumnName="VersionNumber" />
+          <ScalarProperty Name="ProgramNumber" ColumnName="ProgramNumber" />
+          <ScalarProperty Name="McId" ColumnName="McId" />
+          <ScalarProperty Name="NcProgramTransferId" ColumnName="NcProgramTransferId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbloeedashboardfinalvariables">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbloeedashboardfinalvariable">
+        <MappingFragment StoreEntitySet="tbloeedashboardfinalvariables">
+          <ScalarProperty Name="IsToday" ColumnName="IsToday" />
+          <ScalarProperty Name="IsOverallCellWise" ColumnName="IsOverallCellWise" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="Loss5Value" ColumnName="Loss5Value" />
+          <ScalarProperty Name="Loss5Name" ColumnName="Loss5Name" />
+          <ScalarProperty Name="Loss4Value" ColumnName="Loss4Value" />
+          <ScalarProperty Name="Loss4Name" ColumnName="Loss4Name" />
+          <ScalarProperty Name="Loss3Value" ColumnName="Loss3Value" />
+          <ScalarProperty Name="Loss3Name" ColumnName="Loss3Name" />
+          <ScalarProperty Name="Loss2Value" ColumnName="Loss2Value" />
+          <ScalarProperty Name="Loss2Name" ColumnName="Loss2Name" />
+          <ScalarProperty Name="Loss1Value" ColumnName="Loss1Value" />
+          <ScalarProperty Name="Loss1Name" ColumnName="Loss1Name" />
+          <ScalarProperty Name="IsOverallWCWise" ColumnName="IsOverallWCWise" />
+          <ScalarProperty Name="IsOverallShopWise" ColumnName="IsOverallShopWise" />
+          <ScalarProperty Name="IsOverallPlantWise" ColumnName="IsOverallPlantWise" />
+          <ScalarProperty Name="Quality" ColumnName="Quality" />
+          <ScalarProperty Name="Performance" ColumnName="Performance" />
+          <ScalarProperty Name="Availability" ColumnName="Availability" />
+          <ScalarProperty Name="OEE" ColumnName="OEE" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="WCID" ColumnName="WCID" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+          <ScalarProperty Name="OEEDashboardID" ColumnName="OEEDashboardID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbloeedashboardvariables">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbloeedashboardvariable">
+        <MappingFragment StoreEntitySet="tbloeedashboardvariables">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Loss5Value" ColumnName="Loss5Value" />
+          <ScalarProperty Name="Loss5Name" ColumnName="Loss5Name" />
+          <ScalarProperty Name="Loss4Value" ColumnName="Loss4Value" />
+          <ScalarProperty Name="Loss4Name" ColumnName="Loss4Name" />
+          <ScalarProperty Name="Loss3Value" ColumnName="Loss3Value" />
+          <ScalarProperty Name="Loss3Name" ColumnName="Loss3Name" />
+          <ScalarProperty Name="Loss2Value" ColumnName="Loss2Value" />
+          <ScalarProperty Name="Loss2Name" ColumnName="Loss2Name" />
+          <ScalarProperty Name="Loss1Value" ColumnName="Loss1Value" />
+          <ScalarProperty Name="Loss1Name" ColumnName="Loss1Name" />
+          <ScalarProperty Name="ReWOTime" ColumnName="ReWOTime" />
+          <ScalarProperty Name="ScrapQtyTime" ColumnName="ScrapQtyTime" />
+          <ScalarProperty Name="SummationOfSCTvsPP" ColumnName="SummationOfSCTvsPP" />
+          <ScalarProperty Name="DownTimeBreakdown" ColumnName="DownTimeBreakdown" />
+          <ScalarProperty Name="ROALossess" ColumnName="ROALossess" />
+          <ScalarProperty Name="SettingTime" ColumnName="SettingTime" />
+          <ScalarProperty Name="Green" ColumnName="Green" />
+          <ScalarProperty Name="Blue" ColumnName="Blue" />
+          <ScalarProperty Name="MinorLosses" ColumnName="MinorLosses" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="WCID" ColumnName="WCID" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+          <ScalarProperty Name="OEEVariablesID" ColumnName="OEEVariablesID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbloeedashboardvariablestodays">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbloeedashboardvariablestoday">
+        <MappingFragment StoreEntitySet="tbloeedashboardvariablestoday">
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="IsToday" ColumnName="IsToday" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Loss5Value" ColumnName="Loss5Value" />
+          <ScalarProperty Name="Loss5Name" ColumnName="Loss5Name" />
+          <ScalarProperty Name="Loss4Value" ColumnName="Loss4Value" />
+          <ScalarProperty Name="Loss4Name" ColumnName="Loss4Name" />
+          <ScalarProperty Name="Loss3Value" ColumnName="Loss3Value" />
+          <ScalarProperty Name="Loss3Name" ColumnName="Loss3Name" />
+          <ScalarProperty Name="Loss2Value" ColumnName="Loss2Value" />
+          <ScalarProperty Name="Loss2Name" ColumnName="Loss2Name" />
+          <ScalarProperty Name="Loss1Value" ColumnName="Loss1Value" />
+          <ScalarProperty Name="Loss1Name" ColumnName="Loss1Name" />
+          <ScalarProperty Name="ReWOTime" ColumnName="ReWOTime" />
+          <ScalarProperty Name="ScrapQtyTime" ColumnName="ScrapQtyTime" />
+          <ScalarProperty Name="SummationOfSCTvsPP" ColumnName="SummationOfSCTvsPP" />
+          <ScalarProperty Name="DownTimeBreakdown" ColumnName="DownTimeBreakdown" />
+          <ScalarProperty Name="ROALossess" ColumnName="ROALossess" />
+          <ScalarProperty Name="SettingTime" ColumnName="SettingTime" />
+          <ScalarProperty Name="Green" ColumnName="Green" />
+          <ScalarProperty Name="Blue" ColumnName="Blue" />
+          <ScalarProperty Name="MinorLosses" ColumnName="MinorLosses" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="WCID" ColumnName="WCID" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+          <ScalarProperty Name="OEEVariablesID" ColumnName="OEEVariablesID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOperatorDashboards">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblOperatorDashboard">
+        <MappingFragment StoreEntitySet="tblOperatorDashboard">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="TotalDurationinMin" ColumnName="TotalDurationinMin" />
+          <ScalarProperty Name="MessageEndTime" ColumnName="MessageEndTime" />
+          <ScalarProperty Name="MessageStartTime" ColumnName="MessageStartTime" />
+          <ScalarProperty Name="MessageDescription" ColumnName="MessageDescription" />
+          <ScalarProperty Name="MessageCode" ColumnName="MessageCode" />
+          <ScalarProperty Name="SlNo" ColumnName="SlNo" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="OperatorDashboardID" ColumnName="OperatorDashboardID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOperatorHeaders">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblOperatorHeader">
+        <MappingFragment StoreEntitySet="tblOperatorHeader">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="MachineMode" ColumnName="MachineMode" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="ServerConnecStatus" ColumnName="ServerConnecStatus" />
+          <ScalarProperty Name="TabConnecStatus" ColumnName="TabConnecStatus" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOperatorLoginDetails">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblOperatorLoginDetail">
+        <MappingFragment StoreEntitySet="tblOperatorLoginDetails">
+          <ScalarProperty Name="reasons" ColumnName="reasons" />
+          <ScalarProperty Name="operatorName" ColumnName="operatorName" />
+          <ScalarProperty Name="operatorId" ColumnName="operatorId" />
+          <ScalarProperty Name="roleId" ColumnName="roleId" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="modifiedOn" ColumnName="modifiedOn" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="createdOn" ColumnName="createdOn" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="operatorEmailId" ColumnName="operatorEmailId" />
+          <ScalarProperty Name="operatorMobileNo" ColumnName="operatorMobileNo" />
+          <ScalarProperty Name="NumOfMachines" ColumnName="NumOfMachines" />
+          <ScalarProperty Name="operatorPwd" ColumnName="operatorPwd" />
+          <ScalarProperty Name="operatorUserName" ColumnName="operatorUserName" />
+          <ScalarProperty Name="operatorLoginId" ColumnName="operatorLoginId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOperatorMachineDetails">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblOperatorMachineDetail">
+        <MappingFragment StoreEntitySet="tblOperatorMachineDetails">
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="modifiedOn" ColumnName="modifiedOn" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="createdOn" ColumnName="createdOn" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="machineId" ColumnName="machineId" />
+          <ScalarProperty Name="operatorLoginId" ColumnName="operatorLoginId" />
+          <ScalarProperty Name="opertorMacDetId" ColumnName="opertorMacDetId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblpartlearningreports">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblpartlearningreport">
+        <MappingFragment StoreEntitySet="tblpartlearningreport">
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="TotalStdMinorLoss" ColumnName="TotalStdMinorLoss" />
+          <ScalarProperty Name="StdMinorLoss" ColumnName="StdMinorLoss" />
+          <ScalarProperty Name="WOEfficiency" ColumnName="WOEfficiency" />
+          <ScalarProperty Name="TotalStdCycleTime" ColumnName="TotalStdCycleTime" />
+          <ScalarProperty Name="StdCycleTime" ColumnName="StdCycleTime" />
+          <ScalarProperty Name="AvgCuttingTime" ColumnName="AvgCuttingTime" />
+          <ScalarProperty Name="TotalNCCuttingTime" ColumnName="TotalNCCuttingTime" />
+          <ScalarProperty Name="Breakdown" ColumnName="Breakdown" />
+          <ScalarProperty Name="PowerOff" ColumnName="PowerOff" />
+          <ScalarProperty Name="MinorLoss" ColumnName="MinorLoss" />
+          <ScalarProperty Name="Idle" ColumnName="Idle" />
+          <ScalarProperty Name="SettingTime" ColumnName="SettingTime" />
+          <ScalarProperty Name="ScrapQty" ColumnName="ScrapQty" />
+          <ScalarProperty Name="YieldQty" ColumnName="YieldQty" />
+          <ScalarProperty Name="TotalQty" ColumnName="TotalQty" />
+          <ScalarProperty Name="TargetQty" ColumnName="TargetQty" />
+          <ScalarProperty Name="OpNo" ColumnName="OpNo" />
+          <ScalarProperty Name="FGCode" ColumnName="FGCode" />
+          <ScalarProperty Name="WorkOrderNo" ColumnName="WorkOrderNo" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="HMIID" ColumnName="HMIID" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="PLReportID" ColumnName="PLReportID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblpartscountandcuttings">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblpartscountandcutting">
+        <MappingFragment StoreEntitySet="tblpartscountandcutting">
+          <ScalarProperty Name="woTargetQty" ColumnName="woTargetQty" />
+          <ScalarProperty Name="CuttingTimeInSec" ColumnName="CuttingTimeInSec" />
+          <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+          <ScalarProperty Name="WoPartCount" ColumnName="WoPartCount" />
+          <ScalarProperty Name="PartsPerCyscleEnteredTime" ColumnName="PartsPerCyscleEnteredTime" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Isdeleted" ColumnName="Isdeleted" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="TargetQuantity" ColumnName="TargetQuantity" />
+          <ScalarProperty Name="CuttingTime" ColumnName="CuttingTime" />
+          <ScalarProperty Name="PartCount" ColumnName="PartCount" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="pcid" ColumnName="pcid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblplannedbreaks">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblplannedbreak">
+        <MappingFragment StoreEntitySet="tblplannedbreak">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+          <ScalarProperty Name="BreakDuration" ColumnName="BreakDuration" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="BreakReason" ColumnName="BreakReason" />
+          <ScalarProperty Name="BreakID" ColumnName="BreakID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblplants">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblplant">
+        <MappingFragment StoreEntitySet="tblplant">
+          <ScalarProperty Name="PlantDisplayName" ColumnName="PlantDisplayName" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="PlantDesc" ColumnName="PlantDesc" />
+          <ScalarProperty Name="PlantName" ColumnName="PlantName" />
+          <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblpmsdetails">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblpmsdetail">
+        <MappingFragment StoreEntitySet="tblpmsdetails">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsSubmitted" ColumnName="IsSubmitted" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="PMEndDate" ColumnName="PMEndDate" />
+          <ScalarProperty Name="PMStartDate" ColumnName="PMStartDate" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="pmsid" ColumnName="pmsid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPrecentColours">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblPrecentColour">
+        <MappingFragment StoreEntitySet="tblPrecentColour">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Max" ColumnName="Max" />
+          <ScalarProperty Name="Min" ColumnName="Min" />
+          <ScalarProperty Name="Colour" ColumnName="Colour" />
+          <ScalarProperty Name="ColourID" ColumnName="ColourID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPresentTools">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblPresentTool">
+        <MappingFragment StoreEntitySet="tblPresentTool">
+          <ScalarProperty Name="PresentToolNum" ColumnName="PresentToolNum" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="PreToolID" ColumnName="PreToolID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblpriorityalarms">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblpriorityalarm">
+        <MappingFragment StoreEntitySet="tblpriorityalarms">
+          <ScalarProperty Name="isMailSent" ColumnName="isMailSent" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="PriorityNumber" ColumnName="PriorityNumber" />
+          <ScalarProperty Name="AlarmGroup" ColumnName="AlarmGroup" />
+          <ScalarProperty Name="AxisNo" ColumnName="AxisNo" />
+          <ScalarProperty Name="AlarmDesc" ColumnName="AlarmDesc" />
+          <ScalarProperty Name="AlarmNumber" ColumnName="AlarmNumber" />
+          <ScalarProperty Name="AlarmID" ColumnName="AlarmID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblProdPlanMasters">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblProdPlanMaster">
+        <MappingFragment StoreEntitySet="tblProdPlanMasters">
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="QtyUnit" ColumnName="QtyUnit" />
+          <ScalarProperty Name="SplitOrderQty" ColumnName="SplitOrderQty" />
+          <ScalarProperty Name="OrderQty" ColumnName="OrderQty" />
+          <ScalarProperty Name="FGCode" ColumnName="FGCode" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="OperationNo" ColumnName="OperationNo" />
+          <ScalarProperty Name="Prod_Order_No" ColumnName="Prod_Order_No" />
+          <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+          <ScalarProperty Name="ProdPlanID" ColumnName="ProdPlanID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblprogramtransferhistories">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblprogramtransferhistory">
+        <MappingFragment StoreEntitySet="tblprogramtransferhistory">
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ReturnDesc" ColumnName="ReturnDesc" />
+          <ScalarProperty Name="ReturnStatus" ColumnName="ReturnStatus" />
+          <ScalarProperty Name="ReturnTime" ColumnName="ReturnTime" />
+          <ScalarProperty Name="UploadedTime" ColumnName="UploadedTime" />
+          <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="PTHID" ColumnName="PTHID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblrejectqties">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblrejectqty">
+        <MappingFragment StoreEntitySet="tblrejectqty">
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="RejectQty" ColumnName="RejectQty" />
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="isFinished" ColumnName="isFinished" />
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="RID" ColumnName="RID" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="RQID" ColumnName="RQID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblrejectreasons">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblrejectreason">
+        <MappingFragment StoreEntitySet="tblrejectreason">
+          <ScalarProperty Name="Machineid" ColumnName="Machineid" />
+          <ScalarProperty Name="Cellid" ColumnName="Cellid" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="RejectNameDesc" ColumnName="RejectNameDesc" />
+          <ScalarProperty Name="RejectName" ColumnName="RejectName" />
+          <ScalarProperty Name="RID" ColumnName="RID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblreportholders">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblreportholder">
+        <MappingFragment StoreEntitySet="tblreportholder">
+          <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+          <ScalarProperty Name="ShopNo" ColumnName="ShopNo" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="RHID" ColumnName="RHID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblReworkReasons">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblReworkReason">
+        <MappingFragment StoreEntitySet="tblReworkReason">
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ReworkName" ColumnName="ReworkName" />
+          <ScalarProperty Name="ReWorkID" ColumnName="ReWorkID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblrolemodulelinks">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblrolemodulelink">
+        <MappingFragment StoreEntitySet="tblrolemodulelink">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="IsSuperAdmin" ColumnName="IsSuperAdmin" />
+          <ScalarProperty Name="EnableReport" ColumnName="EnableReport" />
+          <ScalarProperty Name="EnableReadOnly" ColumnName="EnableReadOnly" />
+          <ScalarProperty Name="EnableDelete" ColumnName="EnableDelete" />
+          <ScalarProperty Name="EnableEdit" ColumnName="EnableEdit" />
+          <ScalarProperty Name="EnableAdd" ColumnName="EnableAdd" />
+          <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="MRMLID" ColumnName="MRMLID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblroles">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblrole">
+        <MappingFragment StoreEntitySet="tblroles">
+          <ScalarProperty Name="RoleDesc" ColumnName="RoleDesc" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="RoleDisplayName" ColumnName="RoleDisplayName" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSAPInputs">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblSAPInput">
+        <MappingFragment StoreEntitySet="tblSAPInput">
+          <ScalarProperty Name="PathType" ColumnName="PathType" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="PathLocation" ColumnName="PathLocation" />
+          <ScalarProperty Name="SapInputID" ColumnName="SapInputID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblsendermailids">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblsendermailid">
+        <MappingFragment StoreEntitySet="tblsendermailid">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="AutoEmailType" ColumnName="AutoEmailType" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PrimaryMailID" ColumnName="PrimaryMailID" />
+          <ScalarProperty Name="SE_ID" ColumnName="SE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSetupMaints">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblSetupMaint">
+        <MappingFragment StoreEntitySet="tblSetupMaint">
+          <ScalarProperty Name="ServerSetMainID" ColumnName="ServerSetMainID" />
+          <ScalarProperty Name="Sync" ColumnName="Sync" />
+          <ScalarProperty Name="MinorLossTime" ColumnName="MinorLossTime" />
+          <ScalarProperty Name="DurationInSec" ColumnName="DurationInSec" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="IsSetup" ColumnName="IsSetup" />
+          <ScalarProperty Name="IsStarted" ColumnName="IsStarted" />
+          <ScalarProperty Name="ModeID" ColumnName="ModeID" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="LossCodeID" ColumnName="LossCodeID" />
+          <ScalarProperty Name="SetMainID" ColumnName="SetMainID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblshift_breaks">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblshift_breaks">
+        <MappingFragment StoreEntitySet="tblshift_breaks">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+          <ScalarProperty Name="BreakDuration" ColumnName="BreakDuration" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="BreakReason" ColumnName="BreakReason" />
+          <ScalarProperty Name="BreakID" ColumnName="BreakID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblshift_mstr">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblshift_mstr">
+        <MappingFragment StoreEntitySet="tblshift_mstr">
+          <ScalarProperty Name="ServerTabCheck" ColumnName="ServerTabCheck" />
+          <ScalarProperty Name="ServerTabFlagSync" ColumnName="ServerTabFlagSync" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblshiftdetails">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblshiftdetail">
+        <MappingFragment StoreEntitySet="tblshiftdetails">
+          <ScalarProperty Name="IsGShift" ColumnName="IsGShift" />
+          <ScalarProperty Name="ShiftDetailsEditedDate" ColumnName="ShiftDetailsEditedDate" />
+          <ScalarProperty Name="IsShiftDetailsEdited" ColumnName="IsShiftDetailsEdited" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="NextDay" ColumnName="NextDay" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="ShiftEndTime" ColumnName="ShiftEndTime" />
+          <ScalarProperty Name="ShiftStartTime" ColumnName="ShiftStartTime" />
+          <ScalarProperty Name="ShiftMethodID" ColumnName="ShiftMethodID" />
+          <ScalarProperty Name="ShiftDetailsDesc" ColumnName="ShiftDetailsDesc" />
+          <ScalarProperty Name="ShiftDetailsName" ColumnName="ShiftDetailsName" />
+          <ScalarProperty Name="ShiftDetailsID" ColumnName="ShiftDetailsID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblshiftdetails_machinewise">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblshiftdetails_machinewise">
+        <MappingFragment StoreEntitySet="tblshiftdetails_machinewise">
+          <ScalarProperty Name="ShiftDetailsID" ColumnName="ShiftDetailsID" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="ShiftDetailsMacID" ColumnName="ShiftDetailsMacID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblshiftmethods">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblshiftmethod">
+        <MappingFragment StoreEntitySet="tblshiftmethod">
+          <ScalarProperty Name="EditedDate" ColumnName="EditedDate" />
+          <ScalarProperty Name="IsShiftMethodEdited" ColumnName="IsShiftMethodEdited" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="NoOfShifts" ColumnName="NoOfShifts" />
+          <ScalarProperty Name="ShiftMethodDesc" ColumnName="ShiftMethodDesc" />
+          <ScalarProperty Name="ShiftMethodName" ColumnName="ShiftMethodName" />
+          <ScalarProperty Name="ShiftMethodID" ColumnName="ShiftMethodID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblshiftplanners">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblshiftplanner">
+        <MappingFragment StoreEntitySet="tblshiftplanner">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsPlanRemoved" ColumnName="IsPlanRemoved" />
+          <ScalarProperty Name="PlanStoppedDate" ColumnName="PlanStoppedDate" />
+          <ScalarProperty Name="IsPlanStopped" ColumnName="IsPlanStopped" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+          <ScalarProperty Name="ShiftMethodID" ColumnName="ShiftMethodID" />
+          <ScalarProperty Name="ShiftPlannerDesc" ColumnName="ShiftPlannerDesc" />
+          <ScalarProperty Name="ShiftPlannerName" ColumnName="ShiftPlannerName" />
+          <ScalarProperty Name="ShiftPlannerID" ColumnName="ShiftPlannerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblShiftUtilReports">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblShiftUtilReport">
+        <MappingFragment StoreEntitySet="tblShiftUtilReport">
+          <ScalarProperty Name="shift" ColumnName="shift" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="CuttingTimePrecent" ColumnName="CuttingTimePrecent" />
+          <ScalarProperty Name="PowerOnTimePrecent" ColumnName="PowerOnTimePrecent" />
+          <ScalarProperty Name="OperatingTimePrecent" ColumnName="OperatingTimePrecent" />
+          <ScalarProperty Name="CuttingTime" ColumnName="CuttingTime" />
+          <ScalarProperty Name="PowerOnTime" ColumnName="PowerOnTime" />
+          <ScalarProperty Name="OperatingTime" ColumnName="OperatingTime" />
+          <ScalarProperty Name="TotalTime" ColumnName="TotalTime" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="ShiftUtilReportID" ColumnName="ShiftUtilReportID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblshops">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblshop">
+        <MappingFragment StoreEntitySet="tblshop">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+          <ScalarProperty Name="Shopdisplayname" ColumnName="Shopdisplayname" />
+          <ScalarProperty Name="ShopDesc" ColumnName="ShopDesc" />
+          <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblStdToolLives">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblStdToolLife">
+        <MappingFragment StoreEntitySet="tblStdToolLife">
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="StdToolLife" ColumnName="StdToolLife" />
+          <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+          <ScalarProperty Name="CTCode" ColumnName="CTCode" />
+          <ScalarProperty Name="ToolNo" ColumnName="ToolNo" />
+          <ScalarProperty Name="OperationNo" ColumnName="OperationNo" />
+          <ScalarProperty Name="FGCode" ColumnName="FGCode" />
+          <ScalarProperty Name="StdToolLifeId" ColumnName="StdToolLifeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblToolCounters">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblToolCounter">
+        <MappingFragment StoreEntitySet="tblToolCounter">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="ResetCounter" ColumnName="ResetCounter" />
+          <ScalarProperty Name="IsReset" ColumnName="IsReset" />
+          <ScalarProperty Name="TotalLifeCounter" ColumnName="TotalLifeCounter" />
+          <ScalarProperty Name="LifeCounter" ColumnName="LifeCounter" />
+          <ScalarProperty Name="ToolNum" ColumnName="ToolNum" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="ToolCounterID" ColumnName="ToolCounterID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbltoollifeoperators">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbltoollifeoperator">
+        <MappingFragment StoreEntitySet="tbltoollifeoperator">
+          <ScalarProperty Name="ResetReason" ColumnName="ResetReason" />
+          <ScalarProperty Name="IsCycleStart" ColumnName="IsCycleStart" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="Sync" ColumnName="Sync" />
+          <ScalarProperty Name="HMIID" ColumnName="HMIID" />
+          <ScalarProperty Name="ResetCounter" ColumnName="ResetCounter" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsReset" ColumnName="IsReset" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="toollifecounter" ColumnName="toollifecounter" />
+          <ScalarProperty Name="StandardToolLife" ColumnName="StandardToolLife" />
+          <ScalarProperty Name="ToolIDAdmin" ColumnName="ToolIDAdmin" />
+          <ScalarProperty Name="ToolCTCode" ColumnName="ToolCTCode" />
+          <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+          <ScalarProperty Name="ToolNo" ColumnName="ToolNo" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="ToolLifeID" ColumnName="ToolLifeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbltosapfilepaths">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbltosapfilepath">
+        <MappingFragment StoreEntitySet="tbltosapfilepath">
+          <ScalarProperty Name="tbltosapfilepathcol" ColumnName="tbltosapfilepathcol" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="PathName" ColumnName="PathName" />
+          <ScalarProperty Name="toSAPFilePathID" ColumnName="toSAPFilePathID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbltosapshopnames">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbltosapshopname">
+        <MappingFragment StoreEntitySet="tbltosapshopnames">
+          <ScalarProperty Name="isSetupShown" ColumnName="isSetupShown" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+          <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+          <ScalarProperty Name="toSAPShopNamesID" ColumnName="toSAPShopNamesID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblunits">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblunit">
+        <MappingFragment StoreEntitySet="tblunit">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="UnitDesc" ColumnName="UnitDesc" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="U_ID" ColumnName="U_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblusers">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbluser">
+        <MappingFragment StoreEntitySet="tblusers">
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="SecondaryRole" ColumnName="SecondaryRole" />
+          <ScalarProperty Name="PrimaryRole" ColumnName="PrimaryRole" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblwolossesses">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblwolossess">
+        <MappingFragment StoreEntitySet="tblwolossess">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="LossCodeLevel2Name" ColumnName="LossCodeLevel2Name" />
+          <ScalarProperty Name="LossCodeLevel2ID" ColumnName="LossCodeLevel2ID" />
+          <ScalarProperty Name="LossCodeLevel1Name" ColumnName="LossCodeLevel1Name" />
+          <ScalarProperty Name="LossCodeLevel1ID" ColumnName="LossCodeLevel1ID" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="LossDuration" ColumnName="LossDuration" />
+          <ScalarProperty Name="LossName" ColumnName="LossName" />
+          <ScalarProperty Name="LossID" ColumnName="LossID" />
+          <ScalarProperty Name="HMIID" ColumnName="HMIID" />
+          <ScalarProperty Name="WOLossesID" ColumnName="WOLossesID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblworeports">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblworeport">
+        <MappingFragment StoreEntitySet="tblworeport">
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="SummationOfSCTvsPP" ColumnName="SummationOfSCTvsPP" />
+          <ScalarProperty Name="ReWorkTime" ColumnName="ReWorkTime" />
+          <ScalarProperty Name="ScrapQtyTime" ColumnName="ScrapQtyTime" />
+          <ScalarProperty Name="Blue" ColumnName="Blue" />
+          <ScalarProperty Name="SplitWO" ColumnName="SplitWO" />
+          <ScalarProperty Name="MinorLoss" ColumnName="MinorLoss" />
+          <ScalarProperty Name="HoldReason" ColumnName="HoldReason" />
+          <ScalarProperty Name="IsNormalWC" ColumnName="IsNormalWC" />
+          <ScalarProperty Name="IsMultiWO" ColumnName="IsMultiWO" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="MRWeight" ColumnName="MRWeight" />
+          <ScalarProperty Name="Program" ColumnName="Program" />
+          <ScalarProperty Name="RejectedReason" ColumnName="RejectedReason" />
+          <ScalarProperty Name="RejectedQty" ColumnName="RejectedQty" />
+          <ScalarProperty Name="WOEfficiency" ColumnName="WOEfficiency" />
+          <ScalarProperty Name="TotalNCCuttingTime" ColumnName="TotalNCCuttingTime" />
+          <ScalarProperty Name="NCCuttingTimePerPart" ColumnName="NCCuttingTimePerPart" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Breakdown" ColumnName="Breakdown" />
+          <ScalarProperty Name="Idle" ColumnName="Idle" />
+          <ScalarProperty Name="SelfInspection" ColumnName="SelfInspection" />
+          <ScalarProperty Name="SettingTime" ColumnName="SettingTime" />
+          <ScalarProperty Name="CuttingTime" ColumnName="CuttingTime" />
+          <ScalarProperty Name="IsHold" ColumnName="IsHold" />
+          <ScalarProperty Name="IsPF" ColumnName="IsPF" />
+          <ScalarProperty Name="DeliveredQty" ColumnName="DeliveredQty" />
+          <ScalarProperty Name="TargetQty" ColumnName="TargetQty" />
+          <ScalarProperty Name="OpNo" ColumnName="OpNo" />
+          <ScalarProperty Name="WorkOrderNo" ColumnName="WorkOrderNo" />
+          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="OperatorName" ColumnName="OperatorName" />
+          <ScalarProperty Name="HMIID" ColumnName="HMIID" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="WOReportID" ColumnName="WOReportID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblworkorderentries">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblworkorderentry">
+        <MappingFragment StoreEntitySet="tblworkorderentry">
+          <ScalarProperty Name="reworkEndTime" ColumnName="reworkEndTime" />
+          <ScalarProperty Name="reworkStartTime" ColumnName="reworkStartTime" />
+          <ScalarProperty Name="ReWorkReasonID" ColumnName="ReWorkReasonID" />
+          <ScalarProperty Name="IsReWork" ColumnName="IsReWork" />
+          <ScalarProperty Name="ReWorkEnd" ColumnName="ReWorkEnd" />
+          <ScalarProperty Name="ReWorkStart" ColumnName="ReWorkStart" />
+          <ScalarProperty Name="PartsPerCycle" ColumnName="PartsPerCycle" />
+          <ScalarProperty Name="SyncInsert" ColumnName="SyncInsert" />
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="isSplit" ColumnName="isSplit" />
+          <ScalarProperty Name="HoldDuration" ColumnName="HoldDuration" />
+          <ScalarProperty Name="HoldTime" ColumnName="HoldTime" />
+          <ScalarProperty Name="HoldCodeID" ColumnName="HoldCodeID" />
+          <ScalarProperty Name="FGCode" ColumnName="FGCode" />
+          <ScalarProperty Name="ProdOrderQty" ColumnName="ProdOrderQty" />
+          <ScalarProperty Name="IsFlag" ColumnName="IsFlag" />
+          <ScalarProperty Name="IsHold" ColumnName="IsHold" />
+          <ScalarProperty Name="IsMultiWO" ColumnName="IsMultiWO" />
+          <ScalarProperty Name="PEStartTime" ColumnName="PEStartTime" />
+          <ScalarProperty Name="isWorkOrder" ColumnName="isWorkOrder" />
+          <ScalarProperty Name="IsPartialFinish" ColumnName="IsPartialFinish" />
+          <ScalarProperty Name="IsFinished" ColumnName="IsFinished" />
+          <ScalarProperty Name="IsStarted" ColumnName="IsStarted" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ProcessQty" ColumnName="ProcessQty" />
+          <ScalarProperty Name="Total_Qty" ColumnName="Total_Qty" />
+          <ScalarProperty Name="ScrapQty" ColumnName="ScrapQty" />
+          <ScalarProperty Name="Yield_Qty" ColumnName="Yield_Qty" />
+          <ScalarProperty Name="OperationNo" ColumnName="OperationNo" />
+          <ScalarProperty Name="Prod_Order_No" ColumnName="Prod_Order_No" />
+          <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+          <ScalarProperty Name="WOEnd" ColumnName="WOEnd" />
+          <ScalarProperty Name="WOStart" ColumnName="WOStart" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="HMIID" ColumnName="HMIID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="weekdatas">
+      <EntityTypeMapping TypeName="unitworksccsModel.weekdata">
+        <MappingFragment StoreEntitySet="weekdata">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Isdeleted" ColumnName="Isdeleted" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="WeekID" ColumnName="WeekID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shift_master">
+      <EntityTypeMapping TypeName="unitworksccsModel.shift_master">
+        <MappingFragment StoreEntitySet="shift_master">
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_livecbmdetails">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_livecbmdetails">
+        <MappingFragment StoreEntitySet="tbl_livecbmdetails">
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="SensorValues" ColumnName="SensorValues" />
+          <ScalarProperty Name="SensorMasterID" ColumnName="SensorMasterID" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="cbmdetailsid" ColumnName="cbmdetailsid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_livetblsensorvalue">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_livetblsensorvalue">
+        <MappingFragment StoreEntitySet="tbl_livetblsensorvalue">
+          <ScalarProperty Name="IsConverted" ColumnName="IsConverted" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="ValueDateTime" ColumnName="ValueDateTime" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="sensorValues" ColumnName="sensorValues" />
+          <ScalarProperty Name="SensorMasterID" ColumnName="SensorMasterID" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="sensorvalueid" ColumnName="sensorvalueid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAndonDisplayRotates">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblAndonDisplayRotate">
+        <MappingFragment StoreEntitySet="tblAndonDisplayRotate">
+          <ScalarProperty Name="CellID" ColumnName="CellID" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="RefCounter" ColumnName="RefCounter" />
+          <ScalarProperty Name="PageName" ColumnName="PageName" />
+          <ScalarProperty Name="AndOnDisplID" ColumnName="AndOnDisplID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblworkmodes">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblworkmode">
+        <MappingFragment StoreEntitySet="tblworkmode">
+          <ScalarProperty Name="IsInserted" ColumnName="IsInserted" />
+          <ScalarProperty Name="LossCodeEnteredBy" ColumnName="LossCodeEnteredBy" />
+          <ScalarProperty Name="LossCodeEnteredTime" ColumnName="LossCodeEnteredTime" />
+          <ScalarProperty Name="StartIdle" ColumnName="StartIdle" />
+          <ScalarProperty Name="ModeTypeEnd" ColumnName="ModeTypeEnd" />
+          <ScalarProperty Name="ModeType" ColumnName="ModeType" />
+          <ScalarProperty Name="BreakdownID" ColumnName="BreakdownID" />
+          <ScalarProperty Name="LossCodeID" ColumnName="LossCodeID" />
+          <ScalarProperty Name="DurationInSec" ColumnName="DurationInSec" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="MacMode" ColumnName="MacMode" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="WorkModeID" ColumnName="WorkModeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblworkmodemimics">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblworkmodemimic">
+        <MappingFragment StoreEntitySet="tblworkmodemimics">
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="MachineOnTime" ColumnName="MachineOnTime" />
+          <ScalarProperty Name="PowerOff" ColumnName="PowerOff" />
+          <ScalarProperty Name="ETC" ColumnName="ETC" />
+          <ScalarProperty Name="RTN" ColumnName="RTN" />
+          <ScalarProperty Name="EDIT" ColumnName="EDIT" />
+          <ScalarProperty Name="HND" ColumnName="HND" />
+          <ScalarProperty Name="JOG" ColumnName="JOG" />
+          <ScalarProperty Name="MDI" ColumnName="MDI" />
+          <ScalarProperty Name="Alarm" ColumnName="Alarm" />
+          <ScalarProperty Name="Delay" ColumnName="Delay" />
+          <ScalarProperty Name="OperatingTime" ColumnName="OperatingTime" />
+          <ScalarProperty Name="WMID" ColumnName="WMID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ProdManMachine">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_ProdManMachine">
+        <MappingFragment StoreEntitySet="tbl_ProdManMachine">
+          <ScalarProperty Name="PerfromaceFactor" ColumnName="PerfromaceFactor" />
+          <ScalarProperty Name="QualityPercent" ColumnName="QualityPercent" />
+          <ScalarProperty Name="PerformancePerCent" ColumnName="PerformancePerCent" />
+          <ScalarProperty Name="TotalPowerLoss" ColumnName="TotalPowerLoss" />
+          <ScalarProperty Name="TotalSetupMinorLoss" ColumnName="TotalSetupMinorLoss" />
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="TotalOperatingTime" ColumnName="TotalOperatingTime" />
+          <ScalarProperty Name="TotalMinorLoss" ColumnName="TotalMinorLoss" />
+          <ScalarProperty Name="TotalSetup" ColumnName="TotalSetup" />
+          <ScalarProperty Name="TotalLoss" ColumnName="TotalLoss" />
+          <ScalarProperty Name="UtilPercent" ColumnName="UtilPercent" />
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="ProdManMachineID" ColumnName="ProdManMachineID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ProdAndonDisp">
+      <EntityTypeMapping TypeName="unitworksccsModel.tbl_ProdAndonDisp">
+        <MappingFragment StoreEntitySet="tbl_ProdAndonDisp">
+          <ScalarProperty Name="InsertedOn" ColumnName="InsertedOn" />
+          <ScalarProperty Name="TotalOperatingTime" ColumnName="TotalOperatingTime" />
+          <ScalarProperty Name="TotalSetup" ColumnName="TotalSetup" />
+          <ScalarProperty Name="TotalLoss" ColumnName="TotalLoss" />
+          <ScalarProperty Name="UtilPercent" ColumnName="UtilPercent" />
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="CorrectedDate" ColumnName="CorrectedDate" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="ProdDashboardID" ColumnName="ProdDashboardID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblparts">
+      <EntityTypeMapping TypeName="unitworksccsModel.tblpart">
+        <MappingFragment StoreEntitySet="tblparts">
+          <ScalarProperty Name="StdCycleTime" ColumnName="StdCycleTime" />
+          <ScalarProperty Name="StdUnLoadingTime" ColumnName="StdUnLoadingTime" />
+          <ScalarProperty Name="StdLoadingTime" ColumnName="StdLoadingTime" />
+          <ScalarProperty Name="StdMinorLoss" ColumnName="StdMinorLoss" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="Std_SetupTime" ColumnName="Std_SetupTime" />
+          <ScalarProperty Name="Std_Load_UnloadTime" ColumnName="Std_Load_UnloadTime" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+          <ScalarProperty Name="DrawingNo" ColumnName="DrawingNo" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="UnitDesc" ColumnName="UnitDesc" />
+          <ScalarProperty Name="PartsPerCycle" ColumnName="PartsPerCycle" />
+          <ScalarProperty Name="IdealCycleTime" ColumnName="IdealCycleTime" />
+          <ScalarProperty Name="PartName" ColumnName="PartName" />
+          <ScalarProperty Name="OperationNo" ColumnName="OperationNo" />
+          <ScalarProperty Name="FGCode" ColumnName="FGCode" />
+          <ScalarProperty Name="PartID" ColumnName="PartID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

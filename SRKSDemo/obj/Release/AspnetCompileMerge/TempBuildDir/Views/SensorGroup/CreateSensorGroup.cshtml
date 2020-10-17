@@ -1,0 +1,81 @@
+﻿@model SRKSDemo.Models.sensormodel
+@{
+    ViewBag.Title = " Sensor Group";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Sensor Group </h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        @using (Html.BeginForm("CreateSensorGroup", "SensorGroup", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <form class="form-horizontal form-label-left" id="fromDiv" novalidate>
+                                <div class="control-group" id="fields">
+                                    <div class="controls">
+                                        <div class="row row-space">
+                                            <label class="col-sm-5 control-label">Sensor Group Name</label>
+                                            <div class="col-sm-6">
+
+                                                @Html.TextBoxFor(model => model.sensorgroup.SensorGroupName, new { @id = "EditsensorName", @class = "form-control", style = "width:89.7%", @placeholder = "Enter sensor Name", @required = "required" })
+                                                @Html.HiddenFor(model => model.sensorgroup.SensorGroupName, new { @id = "sensename" })
+                                                <span id="errorMessage" style="color:red"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row row-space">
+                                            <label class="col-sm-5 control-label">Sensor Group Description</label>
+                                            <div class="col-sm-6">
+                                                @Html.TextBoxFor(model => model.sensorgroup.SensorDesc, new { @id = "EditsensorDesc", @class = "form-control", style = "width:89.7%", @placeholder = "Enter sensor Description", @required = "required" })
+                                                @Html.HiddenFor(model => model.sensorgroup.SensorDesc, new { @id = "sensedesc" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="generate-btn">
+                                    <a id="" href="/SensorGroup/IndexSensorGroup" type="submit" class="btn btn-new"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                                    <button type="submit" class="btn btn-new float-right"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+
+                                </div>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+
+
+@if (TempData["Message"] != null)
+{
+    <input type="hidden" id="Message" value="@TempData["Message"]" />
+    <script type="text/javascript">
+        $(function () {
+            var message = $("#Message").val();
+            if (message !== "") {
+                $("#errorMessage").html(message);
+
+
+            }
+        });
+</script>
+}
+
+

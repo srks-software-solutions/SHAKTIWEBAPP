@@ -1,0 +1,330 @@
+﻿@model SRKSDemo.MachineModel
+@{
+
+}
+<div class="right_col" role="main">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Create Machine List</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            @*<li><button type="button" class="btn btn-default" data-toggle="modal" data-target="#create-plant" style="margin-top: 10px;"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Add New</button></li>*@
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        @using (Html.BeginForm("CreateMachine", "Machines", FormMethod.Post, new { @class = "form-horizontal bordered-row" }))
+                        {
+                        <form class="form-horizontal form-label-left" novalidate>
+                            <div class="row row-space">
+                                <label class="col-sm-1 control-label">Plant</label>
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("plant", null, "--Select Plant--", new { @id = "plantID", @class = "form-control Plant", @name = "plant", @required = "required", @value = ViewData["plant"] })
+                                </div>
+                                <label class="col-sm-1 control-label">Section</label>
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("dept", null, "--Select Section--", new { @id = "DepartmentID", @class = "form-control DepartmentID", @name = "DepartmentID", @required = "required", @value = ViewData["dept"] })
+                                </div>
+                                <label class="col-sm-1 control-label">Cell</label>
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("cell", null, "--Select Cell--", new { @id = "MachineCategoryID", @class = "form-control MachCat", @name = "MachineCategory", @required = "required", @value = ViewData["cell"] })
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <label class="col-sm-1 control-label">M/c Name</label>
+                                <div class="col-sm-3">
+                                    @Html.TextBoxFor(model => model.Machine.MachineName, new { @id = "MachineName", @class = "form-control", @name = "Machine Name", @placeholder = "Enter Machine Name", @required = "required", @onchange = "macNameCheck();", @oninput = "macNameCheck();" })
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Name">*@
+                                </div>
+                                <label class="col-sm-1 control-label adjust-label">M/c Description</label>
+                                <div class="col-sm-3">
+                                    @Html.TextBoxFor(model => model.Machine.MachineDescription, new { @id = "MachineDescription", @class = "form-control", @name = "MachineDescription", @placeholder = "Enter Machine Description", @required = "required" })
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Description">*@
+                                </div>
+                                <label class="col-sm-1 control-label">M/c Display</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.MachineDisplayName, new { @id = "MachineDisplayName", @class = "form-control", @name = "Machine DisplayName", @placeholder = "Enter Display Name", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-3">
+                                    <span id="plantError" class="errorMessage"></span>
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <label class="col-sm-1 control-label">M/c IP Address</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.IPAddress, new { @id = "IPAddress", @class = "form-control", @name = "Machine IPAddress", @placeholder = "Enter IP Address", @required = "required" })
+                                </div>
+                                <div class="col-sm-3">
+                                    <button class="btn btn-new getmacdata">Connect</button>
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <label class="col-sm-1 control-label">Controller Type</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.ControllerType, new { @id = "ControllerType", @class = "form-control", @name = "Controller Type", @placeholder = "Enter Controller Type", @required = "required" })
+                                </div>
+                                <label class="col-sm-1 control-label">M/c Model</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.MachineModel, new { @id = "MachineModel", @class = "form-control", @name = "Machine Model", @placeholder = "Enter Machine Model", @required = "required" })
+                                </div>
+                                <label class="col-sm-1 control-label">M/c Make</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.MachineMake, new { @id = "MachineMake", @class = "form-control", @name = "Machine Make", @placeholder = "Enter Machine Make", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <label class="col-sm-1 control-label">Model Type</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.ModelType, new { @id = "ModelType", @class = "form-control", @name = "Model Type", @placeholder = "Enter Model Type", @required = "required" })
+                                </div>
+                                <label class="col-sm-1 control-label">No of Axis</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.CurrentControlAxis, new { @id = "CurrentControlAxis", @class = "form-control", @name = "Current ControlAxis", @placeholder = "Enter No of Axis", @required = "required" })
+                                </div>
+                                <label class="col-sm-1 control-label">Max Axis</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.NoOfAxis, new { @id = "NoOfAxis", @class = "form-control", @name = "No Of Axis", @placeholder = "Enter Max Axis", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <label class="col-sm-1 control-label">Machine Type</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.DropDownList("plant", null, "--Select Machine Type--", new { @id = "MachineType", @class = "form-control Plant", @name = "MachineType", @required = "required", @value = ViewData["MachineType"] })
+                                </div>
+                                <label class="col-sm-1 control-label">Is Parameters</label>
+                                @Html.HiddenFor(model => model.Machine.IsParameters, new { @id = "IsParameters" })
+                                <div class="col-sm-3">
+                                    <select class="form-control" tabindex="2" id="isParam" onchange="changeParam()">
+                                        <option value="" selected disabled>--Select Is Parameters--</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                    @*@Html.DropDownList("plant", null, "--Select Is Parameters--", new { @id = "IsParameters", @class = "form-control Plant", @name = "IsParameters", @required = "required", @value = ViewData["IsParameters"] })*@
+                                </div>
+                                <script>
+                                    function changeParam() {
+                                        var valId = $("#isParam").val();
+                                        $("#IsParameters").val(valId);
+                                    }
+                                </script>
+                                <label class="col-sm-1 control-label">Is PCB</label>
+                                <div class="col-sm-3">
+                                    @Html.HiddenFor(model => model.Machine.IsPCB, new { @id = "IsPCB" })
+                                    <select class="form-control" tabindex="2" id="isPcb" onchange="changepcb()">
+                                        <option value="" selected disabled>--Select Is PCB--</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                    @*@Html.DropDownList("plant", null, "--Select Is PCB--", new { @id = "IsPCB", @class = "form-control Plant", @name = "IsPCB", @required = "required", @value = ViewData["IsPCB"] })*@
+                                </div>
+                            </div>
+                            <script>
+                                function changepcb() {
+                                    var valId = $("#isPcb").val();
+                                    $("#IsPCB").val(valId);
+                                }
+                            </script>
+                            <div class="row row-space">
+                                @Html.HiddenFor(model => model.Machine.IsNormalWC, new { @id = "IsNormalWC" })
+                                <label class="col-sm-1 control-label">Is Normal WC</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" tabindex="2" id="isNormalWC" onchange="changeNormalWC()">
+                                        <option value="" selected disabled>--Select Is Normal WC--</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                    @* @Html.DropDownList("plant", null, "--Select Is Normal WC--", new { @id = "IsNormalWC", @class = "form-control Plant", @name = "IsNormalWC", @required = "required", @value = ViewData["IsNormalWC"] })*@
+                                </div>
+                                <script>
+                                    function changeNormalWC() {
+                                        var valId = $("#isNormalWC").val();
+                                        $("#IsNormalWC").val(valId);
+                                    }
+                                </script>
+                                <label class="col-sm-1 control-label">Manual WC ID</label>
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("plant", null, "--Select Manual WC ID--", new { @id = "ManualWCID", @class = "form-control Plant", @name = "ManualWCID", @required = "required", @value = ViewData["ManualWCID"] })
+                                </div>
+                                <label class="col-sm-1 control-label">Mac Type</label>
+                                <div class="col-sm-3">
+                                    @Html.DropDownList("plant", null, "--Select Is Mac Type--", new { @id = "MacType", @class = "form-control Plant", @name = "MacType", @required = "required", @value = ViewData["MacType"] })
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <label class="col-sm-1 control-label">M/c Model Type</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.DropDownList("plant", null, "--Select Machine Model Type--", new { @id = "MachineModelType", @class = "form-control Plant", @name = "MachineModelType", @required = "required", @value = ViewData["MachineModelType"] })
+                                </div>
+                                <label class="col-sm-1 control-label adjust-label">Mac Conn Name</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.MacConnName, new { @id = "MacConnName", @class = "form-control", @name = "MacConnName", @placeholder = "Enter Mac Conn Name", @required = "required" })
+                                </div>
+                                <label class="col-sm-1 control-label">Spindle Axis</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.SpindleAxis, new { @id = "SpindleAxis", @class = "form-control", @name = "SpindleAxis", @placeholder = "Enter Spindle Axis", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <label class="col-sm-1 control-label">Tab IP Address</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.TabIPAddress, new { @id = "TabIPAddress", @class = "form-control", @name = "TabIPAddress", @placeholder = "Enter Tab IP Address", @required = "required" })
+                                </div>
+                                <label class="col-sm-1 control-label">M/c Lock Bit</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.MachineLockBit, new { @id = "MachineLockBit", @class = "form-control", @name = "MachineLockBit", @placeholder = "Enter M/c Lock Bit", @required = "required" })
+                                </div>
+                                <label class="col-sm-1 control-label">M/c Setup Bit</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.MachineSetupBit, new { @id = "MachineSetupBit", @class = "form-control", @name = "MachineSetupBit", @placeholder = "Enter M/c Setup Bit", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <label class="col-sm-1 control-label">M/c Main Bit</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.MachineMaintBit, new { @id = "MachineMaintBit", @class = "form-control", @name = "MachineMaintBit", @placeholder = "Enter M/c Main Bit", @required = "required" })
+                                </div>
+                                <label class="col-sm-1 control-label adjust-label">M/c Tool Life Bit</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.MachineToolLifeBit, new { @id = "MachineToolLifeBit", @class = "form-control", @name = "MachineToolLifeBit", @placeholder = "Enter M/c Tool Life Bit", @required = "required" })
+                                </div>
+                                <label class="col-sm-1 control-label">M/c Unlock Bit</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.MachineUnlockBit, new { @id = "MachineUnlockBit", @class = "form-control", @name = "MachineUnlockBit", @placeholder = "Enter M/c Unlock Bit", @required = "required" })
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <label class="col-sm-1 control-label">M/c Idle Bit</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.MachineIdleBit, new { @id = "MachineIdleBit", @class = "form-control", @name = "MachineIdleBit", @placeholder = "Enter M/c Idle Bit", @required = "required" })
+                                </div>
+                                <label class="col-sm-1 control-label">M/c Idle Min</label>
+                                <div class="col-sm-3">
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    @Html.TextBoxFor(model => model.Machine.MachineIdleMin, new { @id = "MachineIdleMin", @class = "form-control", @name = "MachineIdleMin", @placeholder = "Enter M/c Idle Min", @required = "required" })
+                                </div>
+                                <label class="col-sm-1 control-label adjust-label">Enable Lock Logic</label>
+                                <div class="col-sm-3">
+                                    @Html.HiddenFor(model => model.Machine.EnableLockLogic, new { @id = "EnableLockLogic" })
+                                    @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                    <select class="form-control" tabindex="2"  id="enableLockLogic" onchange="changeLockLogic()">
+                                        <option value="" selected disabled>--Select Enable Lock Logic--</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <script>
+                                function changeLockLogic() {
+                                    var valId = $("#enableLockLogic").val();
+                                    $("#EnableLockLogic").val(valId);
+                                }
+                            </script>
+                            <div class="row" style="padding: 0 10px;">
+                                <a href="/Machines/MachineList" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-chevron-left"></span> Back</a>
+                                <button id="btnSubmit" type="submit" class="btn btn-info submission pull-right"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+                            </div>
+                        </form>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+    function macNameCheck() {
+        var machineName = $("#MachineName").val();
+        var PlantID = $("#plantID").val();
+        var shopId = $("#DepartmentID").val();
+        var cellId = $("#MachineCategoryID").val();
+        $.ajax({
+            type: "POST",
+            data: { 'plantID': PlantID, 'shopId': shopId, 'cellId': cellId, 'machineName': machineName},
+            url: "/Machines/MacNameDuplicateCheck",
+            async: false,
+            success: function (data) {
+                if (data == "notok") {
+                    $("#plantError").html('Machine already exists');
+                    $("#btnSubmit").attr('disabled', 'disabled');
+                } else {
+                    $("#plantError").html('');
+                    $("#btnSubmit").removeAttr('disabled', 'disabled');
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("", "There is some issue in network");
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#MachineName').change(function () {
+            var val = $('#MachineName').val();
+            $('#MachineDisplayName').val(val);
+        });
+    });
+</script>
+<script>
+    $('.getmacdata').click(function () {
+        var ipadd = $("#IPAddress").val();
+        if (ipadd == null || ipadd == '') {
+            alert("Enter the IP Address of the Machine before Clicking Connect Button.");
+        } else {
+            $.getJSON("/Machines/GetMacDetail", { IPAdd: ipadd }, function (data) {
+                var splitdata = JSON.stringify(data).replace(/"/gi, '').split('[');
+                var eck = splitdata[1].split(']');
+                var check = eck[0].split(',');
+                $("#EditControllerType").val(check[0]);
+                $("#EditModelType").val(check[1]);
+                $("#EditCurrentControlAxis").val(check[2]);
+                $("#EditNoOfAxis").val(check[3]);
+            });
+        }
+    });
+</script>
+<script>
+    $(function () {
+        var enableLogic = $("#EnableLockLogic").val();
+        $("#enableLockLogic").val(enableLogic);
+
+        var isNormal = $("#IsNormalWC").val();
+        $("#isNormalWC").val(isNormal);
+
+        var isPcb = $("#IsPCB").val();
+        $("#isPcb").val(isPcb);
+
+        var isPar = $("#IsParameters").val();
+        $("#isParam").val(isPar);
+    });
+</script>

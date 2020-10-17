@@ -1,0 +1,601 @@
+﻿@model SRKSDemo.MachineModel
+@{
+    ViewBag.Title = "MachineList";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Machine List</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-default" style="margin-top: 10px;" disabled="disabled" onclick="locationChange()"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Add New</button>
+                                @*<button type="button" class="btn btn-default" data-toggle="modal" data-target="#create-plant" style="margin-top: 10px;"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Add New</button>*@
+                            </li>
+                        </ul>
+                        <script>
+                            function locationChange() {
+                                //window.location.replace("/machines/CreateMachine");
+                                window.location.href = "/Machines/CreateMachine";
+                            }
+                        </script>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Plant</th>
+                                    <th>Shop</th>
+                                    <th>Cell</th>
+                                    <th>Machine</th>
+                                    <th>M/c Description</th>
+                                    <th>M/c Display Name</th>
+                                    <th>M/c IP Address</th>
+                                    <th>Controller Type</th>
+                                    <th>Machine Model</th>
+                                    <th>Machine Make</th>
+                                    <th>Model Type</th>
+                                    <th>No of Axis</th>
+                                    <th style="width: 54px;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.MachineList)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.tblplant.PlantDisplayName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.tblshop.Shopdisplayname)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.tblcell.CelldisplayName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.MachineName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.MachineDescription)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.MachineDisplayName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.IPAddress)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.ControllerType)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.MachineModel)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.MachineMake)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.ModelType)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CurrentControlAxis)</td>
+                                        <td>
+                                            <ul class="actionbtnn">
+                                                @*<li class="actionbtn"><a href="@Url.Action("EditMachine", "Machine", new { id = item.MachineID })" id="@(@item.MachineID)" class="btn btn-round btn-info Machine1" data-title="Edit" data-toggle="modal"><i class="fa fa-pencil fa_lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Edit Plant Details"></i></a></li>*@
+                                                <li class="actionbtn"><a href="@Url.Action("EditMachine", "Machines", new { id = item.MachineID })" id="@(@item.MachineID)" class="btn btn-round btn-info Category @*Machine1*@"><i class="fa fa-pencil fa_lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Edit Machine"></i></a></li>
+                                                <li class="actionbtn"><button class="btn btn-round btn-danger deleteItem" data-id="@item.MachineID" disabled="disabled" onclick="deleteTargetName('@item.MachineID')" data-title="Edit" data-toggle="modal" data-target="#delete-plant"><i class="fa fa-trash fa-lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Delete Machine details"></i></button></li>
+
+                                                <!-- Delete Modal Start -->
+                                                <div class="modal fade" id="delete-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title" id="myModalLabel"></h4>
+                                                                <div class="x_panel">
+                                                                    <div class="x_title">
+                                                                        <h5>Delete Machine Details</h5>
+                                                                    </div>
+                                                                    <div class="x_content">
+                                                                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Detail?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="alert-danger">Machine Name:</label>&nbsp;&nbsp;<label class="alert-danger">@item.MachineDisplayName</label></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                @*@Html.ActionLink("Delete Machine", "DeleteMachine", "Machine", new { id = item.MachineID }, new { @class = "btn btn-danger" })*@
+                                                                <button type="button" class="btn btn-danger btnContinueDelete"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                                                                <button type="button" class="btn btn-info" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Delete Modal Finish -->
+                                                <!-- edit Modal Start -->
+                                                @using (Html.BeginForm("EditMachine", "Machines", FormMethod.Post, new { @class = "form-horizontal bordered-row" }))
+                                                {
+                                                    <div class="modal fade" id="edit-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                                                        <div class="modal-dialog modal-lg" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title" id="myModalLabel"></h4>
+                                                                    <div class="x_panel">
+                                                                        <div class="x_title">
+                                                                            <h5>Edit Machine Details</h5>
+                                                                        </div>
+                                                                        <div class="x_content">
+                                                                            <form class="form-horizontal form-label-left" novalidate>
+                                                                                <div class="row row-space">
+                                                                                    <label class="col-sm-1 control-label">Plant</label>
+                                                                                    <div class="col-sm-3">
+                                                                                        @Html.HiddenFor(model => model.Machine.MachineID, new { @id = "EditMachineID", @class = "form-control", @required = "required" })
+                                                                                        @Html.DropDownList("Plant", null, "--Select Plant--", new { @id = "EditPlant", @class = "form-control", @name = "Plant", @required = "required", @value = "@ViewData['plant']" })
+                                                                                    </div>
+                                                                                    <label class="col-sm-1 control-label">Section</label>
+                                                                                    <div class="col-sm-3">
+                                                                                        @Html.DropDownList("dept", null, "--Select Section--", new { @id = "Editdeptid", @class = "form-control", @name = "dept", @required = "required", @value = "@ViewData['dept']" })
+                                                                                    </div>
+                                                                                    <label class="col-sm-1 control-label">Cell</label>
+                                                                                    <div class="col-sm-3">
+                                                                                        @Html.DropDownList("cell", null, "--Select Cell--", new { @id = "EditMachineCategory", @class = "form-control", @name = "dept", @required = "required", @value = "@ViewData['cell']" })
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row row-space">
+                                                                                    <label class="col-sm-1 control-label adjust-label">M/c Name</label>
+                                                                                    <div class="col-sm-3">
+                                                                                        @Html.TextBoxFor(model => model.Machine.MachineName, new { @id = "EditMachineName", @class = "form-control", @name = "CellName", @placeholder = "Enter Machine Name", @required = "required", @onchange = "macNameCheckEdit();", @oninput = "macNameCheckEdit();" })
+                                                                                        @*<input type="text" class="form-control1" id="" placeholder="Machine Name">*@
+                                                                                    </div>
+                                                                                    <label class="col-sm-1 control-label adjust-label">M/c Description</label>
+                                                                                    <div class="col-sm-3">
+                                                                                        @Html.TextBoxFor(model => model.Machine.MachineDescription, new { @id = "EditMachineDescription", @class = "form-control", @name = "MachineDescription", @placeholder = "Enter Machine Description", @required = "required" })
+                                                                                        @*<input type="text" class="form-control1" id="" placeholder="Machine Description">*@
+                                                                                    </div>
+                                                                                    <label class="col-sm-1 control-label adjust-label">M/c Display</label>
+                                                                                    <div class="col-sm-3">
+                                                                                        @Html.TextBoxFor(model => model.Machine.MachineDisplayName, new { @id = "EditMachineDisplayName", @class = "form-control", @name = "MachineDisplayName", @placeholder = "Enter Machine DisplayName", @required = "required" })
+                                                                                        @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row row-space">
+                                                                                    <div class="col-sm-1"></div>
+                                                                                    <div class="col-sm-3">
+                                                                                        <span id="plantErrorEdit" class="errorMessage"></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row row-space">
+                                                                                    <label class="col-sm-2 control-label">Machine IP Address</label>
+                                                                                    <div class="col-sm-3">
+                                                                                        @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                                        @Html.TextBoxFor(model => model.Machine.IPAddress, new { @id = "EditIPAddress", @class = "form-control", @name = "EditMachineIPAddress", @placeholder = "Enter IP Address", @required = "required" })
+                                                                                    </div>
+                                                                                    <div class="col-sm-3">
+                                                                                        <button class="btn btn-new getmacdata">Connect</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row row-space">
+                                                                                    <label class="col-sm-1 control-label adjust-label">Controller Type</label>
+                                                                                    <div class="col-sm-3">
+                                                                                        @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                                        @Html.TextBoxFor(model => model.Machine.ControllerType, new { @id = "EditControllerType", @class = "form-control", @name = "ControllerType", @placeholder = "Enter Controller Type", @required = "required" })
+                                                                                    </div>
+                                                                                    <label class="col-sm-1 control-label adjust-label">Machine Model</label>
+                                                                                    <div class="col-sm-3">
+                                                                                        @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                                        @Html.TextBoxFor(model => model.Machine.MachineModel, new { @id = "EditMachineModel", @class = "form-control", @name = "MachineModel", @placeholder = "Enter Machine Model", @required = "required" })
+                                                                                    </div>
+                                                                                    <label class="col-sm-1 control-label adjust-label">Machine Make</label>
+                                                                                    <div class="col-sm-3">
+                                                                                        @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                                        @Html.TextBoxFor(model => model.Machine.MachineMake, new { @id = "EditMachineMake", @class = "form-control", @name = "MachineMake", @placeholder = "Enter Machine Make", @required = "required" })
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row row-space">
+                                                                                    <label class="col-sm-1 control-label adjust-label">Model Type</label>
+                                                                                    <div class="col-sm-3">
+                                                                                        @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                                        @Html.TextBoxFor(model => model.Machine.ModelType, new { @id = "EditModelType", @class = "form-control", @name = "ModelType", @placeholder = "Enter Model Type", @required = "required" })
+                                                                                    </div>
+                                                                                    <label class="col-sm-1 control-label adjust-label">No of Axis</label>
+                                                                                    <div class="col-sm-3">
+                                                                                        @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                                        @Html.TextBoxFor(model => model.Machine.CurrentControlAxis, new { @id = "EditCurrentControlAxis", @class = "form-control", @name = "CurrentControlAxis", @placeholder = "Enter No of Axis", @required = "required" })
+                                                                                    </div>
+                                                                                    <label class="col-sm-1 control-label adjust-label">Max Axis</label>
+                                                                                    <div class="col-sm-3">
+                                                                                        @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                                        @Html.TextBoxFor(model => model.Machine.NoOfAxis, new { @id = "EditNoOfAxis", @class = "form-control", @name = "NoofAxis", @placeholder = "Enter Max Axis", @required = "required" })
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" id="btnSubmitEdit" class="btn btn-info editupdate"><i class="fa fa-floppy-o" aria-hidden="true"></i> Update</button>
+                                                                    <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                                <!-- edit Modal Finish -->
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <!-- create Modal Start -->
+                        <div class="modal fade" id="create-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                            @using (Html.BeginForm("CreateMachine", "Machines", FormMethod.Post, new { @class = "form-horizontal bordered-row" }))
+                            {
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                            <h4 class="modal-title" id="myModalLabel"></h4>
+                                            <div class="x_panel">
+                                                <div class="x_title">
+                                                    <h5>Create Machine Details</h5>
+                                                </div>
+                                                <div class="x_content">
+                                                    <form class="form-horizontal form-label-left" novalidate>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-1 control-label">Plant</label>
+                                                            <div class="col-sm-3">
+                                                                @Html.DropDownList("plant", null, "--Select Plant--", new { @id = "plantID", @class = "form-control Plant", @name = "plant", @required = "required", @value = ViewData["plant"] })
+                                                            </div>
+                                                            <label class="col-sm-1 control-label">Section</label>
+                                                            <div class="col-sm-3">
+                                                                @Html.DropDownList("dept", null, "--Select Section--", new { @id = "DepartmentID", @class = "form-control DepartmentID", @name = "DepartmentID", @required = "required", @value = ViewData["dept"] })
+                                                            </div>
+                                                            <label class="col-sm-1 control-label">Cell</label>
+                                                            <div class="col-sm-3">
+                                                                @Html.DropDownList("cell", null, "--Select Cell--", new { @id = "MachineCategoryID", @class = "form-control MachCat", @name = "MachineCategory", @required = "required", @value = ViewData["cell"] })
+                                                            </div>
+                                                        </div>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-1 control-label adjust-label">M/c Name</label>
+                                                            <div class="col-sm-3">
+                                                                @Html.TextBoxFor(model => model.Machine.MachineName, new { @id = "MachineName", @class = "form-control", @name = "Machine Name", @placeholder = "Enter Machine Name", @required = "required", @onchange = "macNameCheck();", @oninput = "macNameCheck();" })
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Machine Name">*@
+                                                            </div>
+
+                                                            <label class="col-sm-1 control-label adjust-label">M/c Description</label>
+                                                            <div class="col-sm-3">
+                                                                @Html.TextBoxFor(model => model.Machine.MachineDescription, new { @id = "MachineDescription", @class = "form-control", @name = "MachineDescription", @placeholder = "Enter Machine Description", @required = "required" })
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Machine Description">*@
+                                                            </div>
+                                                            <label class="col-sm-1 control-label adjust-label">M/c Display</label>
+                                                            <div class="col-sm-3">
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                @Html.TextBoxFor(model => model.Machine.MachineDisplayName, new { @id = "MachineDisplayName", @class = "form-control", @name = "Machine DisplayName", @placeholder = "Enter Display Name", @required = "required" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="row row-space">
+                                                            <div class="col-sm-1"></div>
+                                                            <div class="col-sm-3">
+                                                                <span id="plantError" class="errorMessage"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-2 control-label">M/c IP Address</label>
+                                                            <div class="col-sm-3">
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                @Html.TextBoxFor(model => model.Machine.IPAddress, new { @id = "IPAddress", @class = "form-control", @name = "Machine IPAddress", @placeholder = "Enter IP Address", @required = "required" })
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <button class="btn btn-new">Connect</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-1 control-label adjust-label">Controller Type</label>
+                                                            <div class="col-sm-3">
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                @Html.TextBoxFor(model => model.Machine.ControllerType, new { @id = "ControllerType", @class = "form-control", @name = "Controller Type", @placeholder = "Enter Controller Type", @required = "required" })
+                                                            </div>
+                                                            <label class="col-sm-1 control-label adjust-label">M/c Model</label>
+                                                            <div class="col-sm-3">
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                @Html.TextBoxFor(model => model.Machine.MachineModel, new { @id = "MachineModel", @class = "form-control", @name = "Machine Model", @placeholder = "Enter Machine Model", @required = "required" })
+                                                            </div>
+                                                            <label class="col-sm-1 control-label adjust-label">M/c Make</label>
+                                                            <div class="col-sm-3">
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                @Html.TextBoxFor(model => model.Machine.MachineMake, new { @id = "MachineMake", @class = "form-control", @name = "Machine Make", @placeholder = "Enter Machine Make", @required = "required" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-1 control-label adjust-label">Model Type</label>
+                                                            <div class="col-sm-3">
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                @Html.TextBoxFor(model => model.Machine.ModelType, new { @id = "ModelType", @class = "form-control", @name = "Model Type", @placeholder = "Enter Model Type", @required = "required" })
+                                                            </div>
+                                                            <label class="col-sm-1 control-label adjust-label">No of Axis</label>
+                                                            <div class="col-sm-3">
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                @Html.TextBoxFor(model => model.Machine.CurrentControlAxis, new { @id = "CurrentControlAxis", @class = "form-control", @name = "Current ControlAxis", @placeholder = "Enter No of Axis", @required = "required" })
+                                                            </div>
+                                                            <label class="col-sm-1 control-label adjust-label">Max Axis</label>
+                                                            <div class="col-sm-3">
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                @Html.TextBoxFor(model => model.Machine.NoOfAxis, new { @id = "NoOfAxis", @class = "form-control", @name = "No Of Axis", @placeholder = "Enter Max Axis", @required = "required" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-1 control-label adjust-label">Machine Type</label>
+                                                            <div class="col-sm-3">
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                @Html.TextBoxFor(model => model.Machine.MachineType, new { @id = "MachineType", @class = "form-control", @name = "MachineType", @placeholder = "Enter Machine Type", @required = "required" })
+                                                            </div>
+                                                            <label class="col-sm-1 control-label adjust-label">Is Parameters</label>
+                                                            <div class="col-sm-3">
+                                                                @Html.DropDownList("plant", null, "--Select Is Parameters--", new { @id = "IsParameters", @class = "form-control ", @name = "IsParameters", @required = "required", @value = ViewData["IsParameters"] })
+                                                            </div>
+                                                            <label class="col-sm-1 control-label">Is PCB</label>
+                                                            <div class="col-sm-3">
+                                                                @Html.DropDownList("plant", null, "--Select Is PCB--", new { @id = "IsPCB", @class = "form-control ", @name = "IsPCB", @required = "required", @value = ViewData["IsPCB"] })
+                                                            </div>
+                                                        </div>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-1 control-label adjust-label">IsNormal WC</label>
+                                                            <div class="col-sm-3">
+                                                                @Html.DropDownList("plant", null, "--Select Is Normal WC--", new { @id = "IsNormalWC", @class = "form-control ", @name = "IsNormalWC", @required = "required", @value = ViewData["IsNormalWC"] })
+                                                            </div>
+                                                            <label class="col-sm-1 control-label adjust-label">Manual WC ID</label>
+                                                            <div class="col-sm-3">
+                                                                @Html.DropDownList("plant", null, "--Select Manual WC ID--", new { @id = "ManualWCID", @class = "form-control ", @name = "ManualWCID", @required = "required", @value = ViewData["ManualWCID"] })
+                                                            </div>
+                                                            <label class="col-sm-1 control-label adjust-label">Mac Type</label>
+                                                            <div class="col-sm-3">
+                                                                @Html.TextBoxFor(model => model.Machine.MacType, new { @id = "MacType", @class = "form-control", @name = "MacType", @placeholder = "Enter Mac Type", @required = "required" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-1 control-label adjust-label">M/c Model Type</label>
+                                                            <div class="col-sm-3">
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                @Html.TextBoxFor(model => model.Machine.MachineModelType, new { @id = "MachineModelType", @class = "form-control", @name = "MachineModelType", @placeholder = "Enter M/c Model Type", @required = "required" })
+                                                            </div>
+                                                            <label class="col-sm-1 control-label adjust-label">Mac Conn Name</label>
+                                                            <div class="col-sm-3">
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                @Html.TextBoxFor(model => model.Machine.MacConnName, new { @id = "MacConnName", @class = "form-control", @name = "MacConnName", @placeholder = "Enter Mac Conn Name", @required = "required" })
+                                                            </div>
+                                                            <label class="col-sm-1 control-label adjust-label">Spindle Axis</label>
+                                                            <div class="col-sm-3">
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                @Html.TextBoxFor(model => model.Machine.SpindleAxis, new { @id = "SpindleAxis", @class = "form-control", @name = "SpindleAxis", @placeholder = "Enter Spindle Axis", @required = "required" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-1 control-label adjust-label">Tab IP Address</label>
+                                                            <div class="col-sm-3">
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                @Html.TextBoxFor(model => model.Machine.TabIPAddress, new { @id = "TabIPAddress", @class = "form-control", @name = "TabIPAddress", @placeholder = "Enter Tab IP Address", @required = "required" })
+                                                            </div>
+                                                            <label class="col-sm-1 control-label adjust-label">M/c Lock Bit</label>
+                                                            <div class="col-sm-3">
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                @Html.TextBoxFor(model => model.Machine.MachineLockBit, new { @id = "MachineLockBit", @class = "form-control", @name = "MachineLockBit", @placeholder = "Enter M/c Lock Bit", @required = "required" })
+                                                            </div>
+                                                            <label class="col-sm-1 control-label adjust-label">M/c Setup Bit</label>
+                                                            <div class="col-sm-3">
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Machine Display Name">*@
+                                                                @Html.TextBoxFor(model => model.Machine.MachineSetupBit, new { @id = "MachineSetupBit", @class = "form-control", @name = "MachineSetupBit", @placeholder = "Enter M/c Setup Bit", @required = "required" })
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+
+                                            <button type="submit" id="btnSubmit" class="btn btn-info"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <!-- create Modal Finish -->
+                        <li class="actionbtn"><button class="btn btn-round btn-info mach1" data-title="Edit" data-toggle="modal" style="display:none" data-target="#edit-plant"><i class="fa fa-pencil fa-lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Edit Machine details"></i></button></li>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /page content -->
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+@*<script>
+        $(".Machine1").on("click", function (e) {
+            $(".mach1").click();
+            e.preventDefault();
+            var MachineID = $(this).attr("id")
+
+            $.getJSON("/Machines/MachineById", { Id: MachineID }, function (data) {
+                $.each(data, function (index, item) {
+                    $("#EditMachineID").val(MachineID);
+                    //$("#EditPlant").val((item.pname));
+                    //$("#Editdeptid").val((item.dname));
+                    //$("#EditMachineCategory").val((item.maccatname));
+                    $("#EditMachineName").val(item.mname);
+                    $("#EditMachineDescription").val(item.mdesc);
+                    $("#EditMachineDisplayName").val(item.mdiispname);
+                    $("#EditControllerType").val(item.ContType);
+                    $("#EditModelType").val(item.ModType);
+                    $("#EditCurrentControlAxis").val(item.CurrAxis);
+                    $("#EditNoOfAxis").val(item.MaxAxis);
+                    $("#EditMachineModel").val(item.MacModel);
+                    $("#EditMachineMake").val(item.MacMake);
+                    $("#EditIPAddress").val(item.MacIPAdd);
+                    $("#EditPlant").val((item.pname));
+                    var PID = item.pname;
+                    $.getJSON("/Machines/FetchDept", { PID: PID }, function (data) {
+                        $("#Editdeptid").empty();
+                        $("#Editdeptid").append("<option value = ''> --Select Section-- </option>")
+                        $.each(data, function (index, item) {
+                            $("#Editdeptid").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+                        });
+                        $("#Editdeptid").val(item.dname);
+                    });
+
+                    var DeptID = item.dname;
+                    debugger;
+                    $.getJSON("/Machines/FetchCat", { DeptID: DeptID }, function (data) {
+                        $("#EditMachineCategory").empty();
+                        $("#EditMachineCategory").append("<option value = ''> --Select Cell-- </option>")
+                        $.each(data, function (index, item) {
+                            $("#EditMachineCategory").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+                        });
+                        $("#EditMachineCategory").val(item.maccatname);
+                    });
+
+                })
+            })
+            return false;
+        })
+
+    </script>*@
+<script>
+    $("#EditPlant").on("change", function (e) {
+        var PID = $(this).val();
+        //alert(PID)
+        //debugger;
+        $.getJSON("/Machines/FetchDept", { PID: PID }, function (data) {
+            $("#Editdeptid").empty();
+            $("#Editdeptid").append("<option value = ''> --Select Shop-- </option>")
+            $.each(data, function (index, item) {
+                $("#Editdeptid").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+            });
+        });
+    });
+
+    $("#Editdeptid").on("change", function (e) {
+        var DeptID = $(this).val();
+        //alert(DeptID)
+        $.getJSON("/Machines/FetchCat", { DeptID: DeptID }, function (data) {
+            $("#EditMachineCategory").empty();
+            $("#EditMachineCategory").append("<option value = ''> --Select Cell-- </option>")
+            $.each(data, function (index, item) {
+                $("#EditMachineCategory").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+            });
+        });
+    });
+
+    $(".Plant").on("change", function (e) {
+        var PID = $(this).val();
+        //alert(PID)
+        //debugger;
+        $.getJSON("/Machines/FetchDept", { PID: PID }, function (data) {
+            $(".DepartmentID").empty();
+            $(".DepartmentID").append("<option value = ''> --Select Shop-- </option>")
+            $.each(data, function (index, item) {
+                $(".DepartmentID").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+            });
+        });
+    });
+
+
+    $(".DepartmentID").on("change", function (e) {
+        var DeptID = $(this).val();
+        //alert(DeptID)
+        $.getJSON("/Machines/FetchCat", { DeptID: DeptID }, function (data) {
+            $(".MachCat").empty();
+            $(".MachCat").append("<option value = ''> --Select Cell-- </option>")
+            $.each(data, function (index, item) {
+                $(".MachCat").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+            });
+        });
+    });
+
+    function deleteTargetName(productvariant) {
+        $(".deleteTargetName").empty();
+        $(".deleteTargetName").html("Role Name: " +
+            productvariant);
+    }
+
+    var item_to_delete;
+    $(".deleteItem").click(function (e) {
+        item_to_delete = $(this).data('id');
+        //alert(item_to_delete);
+    });
+    $('.btnContinueDelete').click(function () {
+        //  alert("hi");
+        window.location = "/Machines/DeleteMachine/" + "?id=" + item_to_delete;
+    });
+
+    $('.getmacdata').click(function () {
+        var ipadd = $("#EditIPAddress").val();
+        if (ipadd == null || ipadd == '') {
+            alert("Enter the IP Address of the Machine before Clicking Connect Button.");
+        } else {
+            $.getJSON("/Machines/GetMacDetail", { IPAdd: ipadd }, function (data) {
+                var splitdata = JSON.stringify(data).replace(/"/gi, '').split('[');
+                var eck = splitdata[1].split(']');
+                var check = eck[0].split(',');
+                $("#EditControllerType").val(check[0]);
+                $("#EditModelType").val(check[1]);
+                $("#EditCurrentControlAxis").val(check[2]);
+                $("#EditNoOfAxis").val(check[3]);
+            });
+        }
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#MachineName').change(function () {
+            var val = $('#MachineName').val();
+            $('#MachineDisplayName').val(val);
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#EditMachineName').change(function () {
+            var val = $('#EditMachineName').val();
+            $('#EditMachineDisplayName').val(val);
+        });
+    });
+</script>
+<script>
+    function macNameCheck() {
+        var machineName = $("#MachineName").val();
+        var PlantID = $("#plantID").val();
+        var shopId = $("#DepartmentID").val();
+        var cellId = $("#MachineCategoryID").val();
+        $.ajax({
+            type: "POST",
+            data: { 'plantID': PlantID, 'shopId': shopId, 'cellId': cellId, 'machineName': machineName },
+            url: "/Machines/MacNameDuplicateCheck",
+            async: false,
+            success: function (data) {
+                if (data == "notok") {
+                    $("#plantError").html('Machine already exists');
+                    $("#btnSubmit").attr('disabled', 'disabled');
+                } else {
+                    $("#plantError").html('');
+                    $("#btnSubmit").removeAttr('disabled', 'disabled');
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("", "There is some issue in network");
+            }
+        });
+    }
+</script>
+<script>
+    function macNameCheckEdit() {
+        var machineName = $("#EditMachineName").val();
+        var PlantID = $("#EditPlant").val();
+        var shopId = $("#Editdeptid").val();
+        var cellId = $("#EditMachineCategory").val();
+        var editMachineID = $("#EditMachineID").val();
+        $.ajax({
+            type: "POST",
+            data: { 'plantID': PlantID, 'shopId': shopId, 'cellId': cellId, 'machineName': machineName, 'editMachineID': editMachineID },
+            url: "/Machines/MacNameDuplicateCheckEdit",
+            async: false,
+            success: function (data) {
+                if (data == "notok") {
+                    $("#plantErrorEdit").html('Machine already exists');
+                    $("#btnSubmitEdit").attr('disabled', 'disabled');
+                } else {
+                    $("#plantErrorEdit").html('');
+                    $("#btnSubmitEdit").removeAttr('disabled', 'disabled');
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("", "There is some issue in network");
+            }
+        });
+    }
+</script>

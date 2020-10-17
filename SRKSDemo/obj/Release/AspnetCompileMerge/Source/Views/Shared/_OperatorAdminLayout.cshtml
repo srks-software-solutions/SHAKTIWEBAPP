@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>i_facility - @ViewBag.Title</title>
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!--table -->
+    <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.css" rel="stylesheet">
+    <style>
+        .lblerror {
+            background-color: red;
+            font-size: medium;
+        }
+    </style>
+</head>
+<body class="nav-sm">
+
+    <div class="container body">
+        <div class="">
+            <!-- page content -->
+            <div class="right_col" role="main" style="margin-left: 0px;">
+                <div class="row">
+                    <ul>
+                        <li class="entry-li m-l--28">
+                            <button onclick="location.href='@Url.Action("SelectMachineAdmin", "OperatorEntryAdmin" )';return false;" class="btn btn-round btn-info" style="margin:1px;">
+                                <i class="	fa fa-arrow-left" aria-hidden="true" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="Back"></i>
+                            </button>
+                        </li>
+                        <li class="entry-li">
+                            <label class="das-header" for="MacName">
+                                Machine # : <span>@ViewBag.MachineName</span>
+                            </label>
+                        </li>
+                        <li class="entry-li">
+
+                            @if (ViewBag.TabStatus == "CONNECTED")
+                            {
+                                <label class="das-header-green" id="MacStatus">
+                                    Machine Status :
+                                    <span>@ViewBag.TabStatus</span>
+                                </label>
+                            }
+                            else
+                            {
+                                <label class="das-header-red" id="MacStatus">
+                                    Machine Status :
+                                    <span>@ViewBag.TabStatus</span>
+                                </label>
+                            }
+                        </li>
+                        <li class="entry-li">
+                            @if (ViewBag.ServerStatus == "CONNECTED")
+                            {
+                                <label class="das-header-green" id="ServerStatus">
+                                    Server Status :
+                                    <span>@ViewBag.ServerStatus</span>
+                                </label>
+                            }
+                            else
+                            {
+                                <label class="das-header-red" id="ServerStatus">
+                                    Server Status :
+                                    <span>@ViewBag.ServerStatus</span>
+                                </label>
+                            }
+                        </li>
+                        @*
+                            <li class="entry-li">
+                                <label class="das-header">
+                                    Page Name : <span>@ViewBag.PageName</span>
+                                </label>
+                            </li>*@
+                        <li class="entry-li">
+                            <label class="das-header" for="MacMode">
+                                Mode : <span>@ViewBag.MachineMode</span>
+                            </label>
+                        </li>
+                        <li class="entry-li">
+                            <label class="das-header" for="PreShift">
+                                Shift : <span>@ViewBag.Shift</span>
+                            </label>
+                        </li>
+                        <li class="entry-li">
+                            <label class="das-header">
+                                DateTime :
+                                <span class="date-time-row">
+                                    <div id="date" class="date-time-label"></div>
+                                    <div id="time" class="date-time-label"></div>
+                                </span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                @RenderBody()
+                <div class="row das-footer">
+                    @*<div class="col-sm-3">
+                            <div class="das-header-main">
+                                @if (@ViewBag.SetUpStarted == "1")
+                                {
+                                    @Html.ActionLink("Production/การผลิต", "SettingProduction", "OperatorEntry", new { @class = "btn-das btn-danger", @id = "settingprod", @onclick = "return pingCheck();settingprod();" })
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Setting/การตั้งค่า", "SettingWindow", "OperatorEntry", new { @class = "btn-das btn-danger", @onclick = "return pingCheck();" })
+                                }
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="das-header-main">
+                                @if (@ViewBag.MNTStarted == "1")
+                                {
+                                    @Html.ActionLink("Production/การผลิต", "MaintenanceProductionWindow", "OperatorEntry", new { @class = "btn-das btn-danger", @id = "maintainceprod", @onclick = "return pingCheck();maintainceprod();" })
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Maintenance/ซ่อมบำรุง", "MaintenanceWindow", "OperatorEntry", new { @class = "btn-das btn-danger", @onclick = "return pingCheck();" })
+                                }
+                            </div>
+                        </div>*@
+                    <div class="col-sm-3">
+                        <div class="das-header-main">
+                            <button class="btn-das btn-danger" onclick="EntryWindowAdminClick();"> Prod. Details/รายละเอียดการผลิต </button>
+                            @*@Html.ActionLink("Prod. Details/รายละเอียดการผลิต", "EntryWindow", "OperatorEntryAdmin", new { @class = "btn-das btn-danger" })*@
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="das-header-main">
+                            <button class="btn-das btn-danger" onclick="ToolLifeAdminClick();"> Tool Life </button>
+                            @*@Html.ActionLink("Tool Life", "ToolLifeAdmin", "OperatorEntryAdmin", new { @class = "btn-das btn-danger" ,@onclick= "ToolLifeAdminClick();" })*@
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" id="machineId" value="@Session["MachineID"].ToString()"/>
+            <script>
+                function ToolLifeAdminClick() {
+                    var machineId = $("#machineId").val();
+                    window.location.href = "ToolLifeAdmin?Length=18&MachineId=" + machineId + "";
+                }
+                function EntryWindowAdminClick() {
+                    var machineId = $("#machineId").val();
+                    window.location.href = "EntryWindowAdmin?Length=18&MachineId=" + machineId + "";
+                }
+            </script>
+            <!-- /page content -->
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.js"></script>
+    <!-- Datatables -->
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    @RenderPage("~/Views/Shared/Error.cshtml")
+    <script type="text/javascript">
+        (function () {
+            function checkTime(i) {
+                return (i < 10) ? "0" + i : i;
+            }
+
+            function startTime() {
+                var today = new Date(),
+                    h = checkTime(today.getHours()),
+                    m = checkTime(today.getMinutes()),
+                    s = checkTime(today.getSeconds());
+                document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
+                t = setTimeout(function () {
+                    startTime()
+                }, 500);
+            }
+            startTime();
+        })();
+    </script>
+    @*<script type="text/javascript">
+            var updatedCheck = window.setInterval(
+            function () {
+                var currentLocation = window.location;
+                if (currentLocation.pathname.indexOf('Setting') == -1 && currentLocation.pathname.indexOf('Maintenance') == -1) {
+                    //$(".btn-danger").show();
+                    $.ajax({
+                        url: "/OperatorEntry/CheckIdle/", //Returns {"updated": "true"} or {"updated": "false"}
+                        dataType: "json",
+                        success: function (data) {
+                            if (data == 1 && currentLocation.pathname.indexOf('IDLEPopup') == -1) {
+                                $(".btn-danger").hide();
+                                window.location.href = '@Url.Action("IDLEPopup", "OperatorEntry")';
+                            }
+                            else if (data == 2 && currentLocation.pathname.indexOf('ToolLife') == -1)
+                            {
+                                window.location.href = '@Url.Action("ToolLife", "OperatorEntry")';
+                            }
+                            else
+                            {
+                                //window.location.href = '@Url.Action("DashboardProduction", "OperatorEntry")';
+                            }
+                        } //success
+                    })
+                }
+                else if (currentLocation.pathname.indexOf('IDLEPopup') != -1)
+                {
+                    $(".btn-danger").hide();
+                }
+            }, 10000);
+        </script>*@
+
+    @* JSON to Update the Header content. *@
+    <script>
+        window.setInterval(function () {
+            RefreshData();
+        }, 3000);
+        function RefreshData() {
+            var machineId = $("#machineId").val();
+            $.getJSON("/OperatorEntryAdmin/RefreshData?machineId="+machineId+"", function (data) {
+                //alert(data);
+                //for (var i = 0; i <= data.RetVal.length; i++) {
+                //    alert(data.RetVal[i]);
+                //}
+                $("label[for='MacName']").html("Machine # : " + data.RetVal[0]);
+
+                if (data.RetVal[1] == "CONNECTED") {
+                    $("#MacStatus").html("Machine Status : " + data.RetVal[1]);
+                    $("#MacStatus").removeAttr("class");
+                    $("#MacStatus").attr("class", "das-header-green");
+                }
+                else {
+                    $("#MacStatus").html("Machine Status : " + data.RetVal[1]);
+                    $("#MacStatus").removeAttr("class");
+                    $("#MacStatus").attr("class", "das-header-red");
+                }
+                if (data.RetVal[2] == "CONNECTED") {
+                    $("#ServerStatus").html("Server Status : " + data.RetVal[2]);
+                    $("#ServerStatus").removeAttr("class");
+                    $("#ServerStatus").attr("class", "das-header-green");
+                }
+                else {
+                    $("#ServerStatus").html("Server Status : " + data.RetVal[2]);
+                    $("#ServerStatus").removeAttr("class");
+                    $("#ServerStatus").attr("class", "das-header-red");
+                }
+                $("label[for='MacMode']").html("Mode : " + data.RetVal[3]);
+                $("label[for='PreShift']").html("Shift : " + data.RetVal[4]);
+            });
+        }
+        /**/
+    </script>
+
+    <script type="text/javascript">
+        var currentDate = new Date()
+        var day = currentDate.getDate()
+        var month = currentDate.getMonth() + 1
+        var year = currentDate.getFullYear()
+        document.getElementById('date').innerHTML = day + "-" + month + "-" + year;
+    </script>
+    <script>
+        $(document).ready(function () {
+            var SetupError = $("#SetupError").val();
+            if (SetupError != null && SetupError != '') {
+                alert(SetupError);
+            }
+        });
+    </script>
+    <script>
+        function settingprod() {
+            $("#settingprod").attr("href", "/OperatorEntry/SettingProduction?smValue=1");
+
+        }
+        function maintainceprod() {
+            $("#maintainceprod").attr("href", "/OperatorEntry/MaintenanceProductionWindow?smValue=2");
+
+        }
+        function pingCheck() {
+            var sorf = "";
+            $.ajax({
+                type: "POST",
+                url: "/OperatorEntry/ServerPing",
+                async: false,
+                success: function (data) {
+                    var status = data;
+                    if (status == "Connected") {
+                        sorf = "Connected";
+                    }
+                    else {
+                        sorf = "NotConnected";
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    //if (textStatus == 'Unauthorized') {
+                    //    alert('custom message. Error: ' + errorThrown);
+                    //} else {
+                    //    alert('custom message. Error: ' + errorThrown);
+                    //}
+                    sorf = "NotConnected";
+                    toastr.warning("", "There is some issue in network");
+                }
+            });
+            if (sorf == "Connected") {
+                return true;
+            }
+            else {
+                toastr.error("", "No Internet Connectivity");
+                return false;
+            }
+        }
+    </script>
+    <link href="~/Content/toaster.css" rel="stylesheet" />
+    <script src="~/Scripts/toaster.js"></script>
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-full-width",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "5000",
+            "hideDuration": "7000",
+            "timeOut": "5000",
+            "extendedTimeOut": "5000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-full-width",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "5000",
+            "hideDuration": "7000",
+            "timeOut": "5000",
+            "extendedTimeOut": "5000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    </script>
+</body>
+</html>

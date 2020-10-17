@@ -1,0 +1,554 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
+    <title> Dashboard  </title>
+    <!-- Bootstrap -->
+    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="~/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link href="~/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="~/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    <link href="~/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="~/build/css/custom.min.css" rel="stylesheet">
+
+
+</head>
+<body class="nav-md " style="overflow-x:hidden">
+    <div class="body">
+        <div class="main_container">
+
+            <div class="row">
+
+                <div class="x_panel" style="background-color: #4b5360; border:1px;  height: 61px;">
+                    <div>
+                        <img src="~/images/img.png" height="50px;">
+                        <span style="color:white; font-size: 22px; margin-left: 30px;"> i-facility </span>
+                    </div>
+                    <div class="x-title">
+
+                        <h3 style="color:white; text-align: center; margin-top: -42px;"> Dashboard </h3>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right" style="margin-top: -51px;">
+
+                        @*<li role="presentation" class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-user" style="color: white;"></i>
+                            </a>
+                        </li>
+                        <li role="presentation" class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-bell" style="color: white;"></i>
+                                <span class="badge bg-red">6</span>
+                            </a>
+
+                        </li>
+                        <li role="presentation" class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-bell" style="color: white;"></i>
+                                <span class="badge bg-red">6</span>
+                            </a>
+                        </li>*@
+                        <li role="presentation" class="dropdown">
+                            <a>
+                                <!-- <span style = "color: white;"> 2018/1/18 </span> -->
+                                <span style="color: white;" id="DateTime"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <div class="x_panel" style="background-color: #4b5360; border:1px">
+                            <div class="x_title">
+                                <h2 style="margin-left: 90px; color:white"> OEE</h2>
+
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div id="chartdiv2" style="height: 250px; width: 100%;"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="x_panel" style="background-color: #4b5360; border:1px ">
+                            <div class="x_content">
+                                <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <div class="x_panel" style="background-color: #4b5360; border:1px ">
+                            <div class="x_title">
+                                <h2 style="margin-left: 90px; color:white">Machine Status</h2>
+
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div>
+                                    <canvas id="canvasDoughnut1"></canvas>
+                                </div>
+
+                                <table style="color: aliceblue; font-size: 12px; margin-top:24px;">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" style="width: 150px;"></th>
+                                            <th scope="col" style="color:cornflowerblue">Time(hrs)</th>
+                                            <th scope="col" style="color:cornflowerblue"> Percentage</th>
+                                        </tr>
+                                    </thead>
+                                    <tr>
+                                        <td>POWER ON</td>
+                                        <td id="pon"></td>
+                                        <td id="ponperc" style="float:right"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>RUNNING</td>
+                                        <td id="running">k</td>
+                                        <td id="runningPerc" style="float:right"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>IDLE</td>
+                                        <td id="idle"></td>
+                                        <td id="idleperc" style="float:right"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>BREAK DOWN</td>
+                                        <td id="brkdwn"></td>
+                                        <td id="brkdwnPerc" style="float:right"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 text-center">
+                    <div class="tile-stats" style="background-color: #4b5360; border: 1px;">
+
+                        <div style="color: white;
+                    font-size: 20px;">Availability</div>
+                        <h3 id="lblavail" class="count" style="color: white; font-size: 32px;">0%</h3>
+
+                    </div>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <div class="tile-stats" style="background-color: #4b5360; border: 1px;">
+
+                        <div style="color: white;
+                    font-size: 20px;">Performance</div>
+                        <h3 id="lblPerf" class="count" style="    color: white; font-size: 32px;">0%</h3>
+
+                    </div>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <div class="tile-stats" style="background-color: #4b5360; border: 1px;">
+
+                        <div style="color: white;
+                    font-size: 20px;">Quality</div>
+                        <h3 id="lblqual" class="count" style="    color: white; font-size: 32px;">0%</h3>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="x_panel tile fixed_height_320" style="background-color: #4b5360; border: 1px;">
+                        <p style="    color: white; text-align:center;
+                font-size: 16px;">Top 5 Working Hour Abnormaility</p>
+                        <div class="abnormality">
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 ">
+                    <div class="x_panel tile fixed_height_320 overflow_hidden" style="background-color: #4b5360; border: 1px;">
+                        <p style=" color: white;  font-size: 16px; text-align: center"> Previous Day Machine Status  </p>
+                        <h6 style="color:white">OEE</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" id="divOEE" style="width:100%">
+                                100%
+                            </div>-
+                        </div>
+                        <h6 style="color:white;">Availability</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" id="divAvail" style="width:70%">
+                                70%
+                            </div>
+                        </div>
+                        <h6 style="color:white">Performance</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" id="divPerfrom" style="width:50%">
+                                50%
+                            </div>
+                        </div>
+                        <h6 style="color:white">Quality</h6>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" id="divQuality" style="width:80%">
+                                80%
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-6">
+                    <div class="x_panel tile fixed_height_320 overflow_hidden" style="background-color: #4b5360; border: 1px;">
+                        <p style=" color: white; font-size: 16px;"> Top  IDLE Losses </p>
+                        <div class="IDLELOSS"></div>
+
+                        @*<h6 style="color:white;" id="IDLELoss1">1.Data 1</h6>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" id="divIDLELoss1" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                                
+                            </div>
+                        </div>
+                        <h6 style="color:white" id="IDLELoss2">2. Data 2</h6>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" id="divIDLELoss2" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                                
+                            </div>
+                        </div>
+                        <h6 style="color:white" id="IDLELoss3">3.Data 3</h6>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" id="divIDLELoss3" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+                                
+                            </div>
+                        </div>
+                        <h6 style="color:white" id="IDLELoss4">4.Data 4</h6>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" id="divIDLELoss4" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                
+                            </div>
+                        </div>*@
+
+                        @*<h6 style="color:white" id="IDLELoss5">4.Data 4</h6>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" id="divIDLELoss5" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                100%
+                            </div>
+                        </div>*@
+
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-sm-2 col-xs-6 ">
+                    <div class="x_panel tile fixed_height_320 overflow_hidden" style="background-color: #4b5360; border: 1px;">
+                        <p style="color: white;  font-size: 16px;"> BreaK Down Lossess </p>
+                        <div class="BRKDWNLOSSES"></div>
+
+                        @*<h6 style="color:white;" id="BRKLoss1">1.MC 1</h6>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" id="divBRKLoss1" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                                70%
+                            </div>
+                        </div>
+                        <h6 style="color:white" id="BRKLoss2">2.MC 2</h6>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" id="divBRKLoss2" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                                50%
+                            </div>
+                        </div>
+                        <h6 style="color:white" id="BRKLoss3">3.MC 3</h6>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" id="divBRKLoss3" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+                                80%
+                            </div>
+                        </div>
+                        <h6 style="color:white" id="BRKLoss4">4.MC 4</h6>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" id="divBRKLoss4" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                100%
+                            </div>
+                        </div>*@
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                    <div class="row">
+                    </div>
+                </div>
+            </div>
+            <!-- </div> div right col end here -->
+            <!-- /page content -->
+            <!-- footer content -->
+            <!-- <footer>
+              <div class="pull-right">
+                SRKSDemo Software Solutions
+              </div>
+              <div class="clearfix"></div>
+            </footer> -->
+            <!-- /footer content -->
+        </div>
+    </div>
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+    <script src="https://www.amcharts.com/lib/3/gauge.js"></script>
+    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+    <!-- jQuery -->
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <script src="~/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="~/vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="~/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="~/vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="~/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="~/vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="~/vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="~/vendors/Flot/jquery.flot.js"></script>
+    <script src="~/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="~/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="~/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="~/vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="~/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="~/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="~/vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="~/vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="~/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="~/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="~/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="~/vendors/moment/min/moment.min.js"></script>
+    <script src="~/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="~/build/js/custom.min.js"></script>
+    <script src="~/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="~/vendors/nprogress/nprogress.js"></script>
+    <!-- jQuery Sparklines -->
+    <script src="~/vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- JQVMap -->
+    <script src="~/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="~/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="~/vendors/jqvmap/dist/maps/jquery.vmap.usa.js"></script>
+    <script src="~/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- easy-pie-chart -->
+    <script src="~/vendors/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="~/build/js/custom.min.js"></script>
+
+    <script src="~/build/js/Dashboard.js"></script>
+</body>
+
+
+<script>
+//Line Chart JS Function
+     window.onload = function () {
+
+      //  var chart2 = AmCharts.makeChart("chartdiv2", {
+      //  "hideCredits":true,
+      //  "theme": "light",
+      //  "type": "gauge",
+      //  "marginLeft": -22,
+      //  "marginRight": -22,
+      //  "axes": [{
+      //    "topTextFontSize": 15,
+      //    "topTextYOffset": 50,
+      //    "axisColor": "#FFFF00",
+      //    "axisThickness": 1,
+      //    "endValue": 100,
+      //    "gridInside": true,
+      //    "inside": true,
+      //    "radius": "50%",
+      //    "valueInterval": 20,
+      //    "tickColor": "#FFFF00",
+      //    "startAngle": -90,
+      //    "endAngle": 90,
+      //    "unit": "%",
+      //    "bandOutlineAlpha": 0,
+      //    "bands": [{
+      //      "color": "#FFFF00",
+      //      "endValue": 100,
+      //      "innerRadius": "105%",
+      //      "radius": "170%",
+      //      "gradientRatio": [0.5, 0, -0.5],
+      //      "startValue": 0
+      //    }, {
+      //      "color": "#FFFF00",
+      //      "endValue": 0,
+      //      "innerRadius": "105%",
+      //      "radius": "170%",
+      //      "gradientRatio": [0.5, 0, -0.5],
+      //      "startValue": 0
+      //    }]
+      //  }],
+      //  "arrows": [{
+      //    "alpha": 1,
+      //    "innerRadius": "25%",
+      //    "nailRadius": 0,
+      //    "radius": "170%",
+      //    "color":"#FFFF"
+      //  }]
+      //});
+      //setInterval(randomValue2, 2000);
+      //// set random value
+      //function randomValue2() {
+      //  var value = Math.round(Math.random() * 100);
+      //  chart2.arrows[0].setValue(value);
+      //  chart2.axes[0].setTopText(value + " %");
+      //  // adjust darker band to new value
+      //  chart2.axes[0].bands[1].setEndValue(value);
+      //}
+
+      //   var chart = new CanvasJS.Chart("guagechartContainer", {
+      //       animationEnabled: true,
+      //       theme: "dark2",
+      //       backgroundColor: "#4b5360",
+      //       title:{
+      //           text: "Avg. OEE"
+      //         },
+      //         data: [
+      //         {
+      //           type: "doughnut",
+      //           dataPoints: [
+      //           { x: 30, y: 30, label: "first" },
+      //           { X: 30, y: 30, label: "second" }
+      //           ]
+      //         }
+      //       ]
+      //  });
+
+      //chart.render();
+      var today = new Date();
+      document.getElementById('DateTime').innerHTML=today.toLocaleString();
+
+      //var chart = new CanvasJS.Chart("chartContainer", {
+      //  animationEnabled: true,
+      //  theme: "dark2",
+      //  backgroundColor: "#4b5360",
+      //  title:{
+      //    text: "OEE Trend"
+      //  },
+      //  axisX:{
+      //  stripLines:[
+      //      {
+      //        color:"#d8d8d8",
+
+      //        labelFontColor: "#a8a8a8"
+      //      }
+      //      ]
+      //   },
+      //  axisY:{
+      //    includeZero: false,
+
+      //  },
+      //  data: [{
+      //    type: "line",
+      //    lineColor: "orange",
+      //    type: "splineArea",
+      //    color: "rgba(83, 223, 128, .6)",
+          
+      //    dataPoints: [
+            
+      //      {y: 450 },
+      //      { y: 414},
+      //      { y: 100, indexLabel: "highest",markerColor: "red", markerType: "triangle" },
+      //      { y: 460 },
+      //      { y: 450 },
+      //      { y: 500 },
+      //      { y: 480 },
+      //      { y: 480 },
+      //      { y: 0 , indexLabel: "lowest",markerColor: "DarkSlateGrey", markerType: "cross" },
+      //      { y: 500 },
+      //      { y: 480 },
+      //      { y: 510 }
+      //    ]
+
+      //  }]
+      //});
+      //chart.render();
+
+      }
+
+      // Doughnut chart
+
+      //if ($('#canvasDoughnut1').length) {
+
+      //    var ctx = document.getElementById("canvasDoughnut1");
+      //    var data = {
+      //        labels: [
+      //            "GREEN",
+      //            "YELLOW",
+      //            "BLUE",
+      //            "RED",
+      //            "Blue Color"
+      //        ],
+      //        datasets: [{
+      //            data: [120, 50, 140, 180, 100],
+      //            backgroundColor: [
+      //                "#RED",
+      //                "#9B59B6",
+      //                "#BDC3C7",
+      //                "#26B99A",
+      //                "#3498DB"
+      //            ],
+      //            hoverBackgroundColor: [
+      //                "#34495E",
+      //                "#B370CF",
+      //                "#CFD4D8",
+      //                "#36CAAB",
+      //                "#49A9EA"
+      //            ]
+
+      //        }]
+      //    };
+
+      //    var canvasDoughnut = new Chart(ctx, {
+      //        type: 'doughnut',
+      //        tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+      //        data: data
+      //    });
+
+      //}
+
+</script>
+
+</html>

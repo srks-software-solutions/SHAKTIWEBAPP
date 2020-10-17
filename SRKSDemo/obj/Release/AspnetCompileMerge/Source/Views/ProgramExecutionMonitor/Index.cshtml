@@ -1,0 +1,691 @@
+﻿@{
+    ViewBag.Title = "I_Facility - VirtualHMI";
+    Layout = "~/Views/Shared/_VHMILayout.cshtml";
+    List<string> returnedValues = new List<string>();
+    List<AxisDetails> AxisDetails = new List<AxisDetails>();
+    List<string> ModelData = new List<string>();
+    ModelData = @ViewBag.ModalData;
+    AxisDetails = @ViewBag.AxisDetailsList;
+    returnedValues = @ViewBag.RetValList;
+
+    var slno = 1;
+}
+
+@using (Html.BeginForm())
+{
+    <div class="right_col" role="main" style="margin-left: 0px;">
+        <div class="">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Virtual HMI Screen</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                        <div class="form-horizontal">
+                            @*<label class="col-sm-1 control-label">Plant</label>*@
+                            <div class="col-sm-2">
+                                @Html.DropDownList("PlantID", null, "--Select Plant--", new { @id = "PlantID", @class = "stacked-label dropdown-toggle form-control", @name = "PlantID", @value = ViewData["PlantID"], @Required = "required" })
+                            </div>
+                            @*<label class="col-sm-1 control-label">Shop</label>*@
+                            <div class="col-sm-2">
+                                @Html.DropDownList("ShopID", null, "--Select Shop--", new { @id = "ShopID", @class = "stacked-label form-control", @name = "ShopID", @value = ViewData["ShopID"], @Required = "required" })
+                            </div>
+                            @*<label class="col-sm-1 control-label">Cell</label>*@
+                            <div class="col-sm-2">
+                                @Html.DropDownList("CellID", null, "--Select Cell--", new { @id = "CellID", @class = "stacked-label form-control", @name = "CellID", @value = ViewData["CellID"], @Required = "required" })
+                            </div>
+                            @*<label class="col-sm-1 control-label">Machine</label>*@
+                            <div class="col-sm-2">
+                                @Html.DropDownList("WorkCenterID", null, "--Select Machines--", new { @id = "WorkCenterID", @class = "stacked-label form-control", @name = "WorkCenterID", @value = ViewData["WorkCenterID"], @Required = "required" })
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="submit" class="btn btn-new" style="margin-bottom:8px;">Display</button>
+                            </div>
+                        </div>
+
+                        <div class="row form-horizontal" style="margin-top:8px;">
+                            <div class="col-sm-6 col-xs-12">
+                                <div class="x_panel">
+                                    <div class="x_content">
+                                        <div class="state-space">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">State :</label>
+                                            <label class="col-md-3 col-sm-3 col-xs-12 label-new" for="stateval">
+                                                @if (returnedValues != null)
+                                                {@Html.Raw(returnedValues[10])}
+                                                else
+                                                {
+
+                                                }
+                                            </label>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Run Mode :</label>
+                                            <label class="col-md-3 col-sm-3 col-xs-12 label-new" for="runmode">
+                                                @if (returnedValues != null)
+                                                {@Html.Raw(returnedValues[11])}
+                                            </label>
+                                        </div>
+                                        <div class="alarm-space">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Alarm :</label>
+                                            <label class="col-md-3 col-sm-3 col-xs-12 label-new" for="alarm">
+                                                @if (returnedValues != null)
+                                                {
+                                                    if (returnedValues[12] == "ALM" || returnedValues[12] == "BATLOW" || returnedValues[12] == "FANALM")
+                                                    { <span style="color:red;font-size:10px"> @Html.Raw(returnedValues[11])  </span> }
+                                                    else
+                                                    {<span style="font-size:10px">  @Html.Raw(returnedValues[12]) </span>}
+                                                }
+                                            </label>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Emergency :</label>
+                                            <label class="col-md-3 col-sm-3 col-xs-12 label-new" for="emerg">
+                                                @if (returnedValues != null)
+                                                {
+                                                    if (returnedValues[13] == "ALM")
+                                                    { <span style="color:red;font-size:10px"> @Html.Raw(returnedValues[13])  </span> }
+                                                    else
+                                                    { <span style="font-size:10px"> @Html.Raw(returnedValues[13])</span> }
+                                                }
+                                            </label>
+                                        </div>
+                                        <table id="example" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th class="table-space">Axis</th>
+                                                    <th class="table-space">Absolute Position</th>
+                                                    <th class="table-space">Relative Position</th>
+                                                    <th class="table-space">Machine Position</th>
+                                                    <th class="table-space">Distance to Go</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="AxisDetailsBody">
+                                               @if (ViewBag.AxisDetailsList != null)
+                                                {
+                                                    foreach (var row in ViewBag.AxisDetailsList)
+                                                    {
+                                                        <tr>
+                                                            <td class="table-space">
+                                                                <label class="col-md-3 col-sm-3 col-xs-12 label-new" for="@slno">@row.AxisName</label>
+                                                            </td>
+                                                            <td class="table-space">
+                                                                <label class="col-md-3 col-sm-3 col-xs-12 label-new" for="@slno">@row.AbsPos</label>
+                                                            </td>
+                                                            <td class="table-space">
+                                                                <label class="col-md-3 col-sm-3 col-xs-12 label-new" for="@slno">@row.RelPos</label>
+                                                            </td>
+                                                            <td class="table-space">
+                                                                <label class="col-md-3 col-sm-3 col-xs-12 label-new" for="@slno">@row.MacPos</label>
+                                                            </td>
+                                                            <td class="table-space">
+                                                                <label class="col-md-3 col-sm-3 col-xs-12 label-new" for="@slno">@row.DistToGo</label>
+                                                            </td>
+                                                        </tr>
+                                                       slno++;
+                                                   }
+                                               }
+                                               else
+                                               {
+                                                    <tr>
+                                                        <td class="table-space"></td>
+                                                        <td class="table-space"></td>
+                                                        <td class="table-space"></td>
+                                                        <td class="table-space"></td>
+                                                        <td class="table-space"></td>
+                                                    </tr>
+                                                }
+                                             </tbody>
+                                        </table>
+                                        <div class="clearfix"></div>
+                                        <table id="example" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th class="table-space">Feed Rate</th>
+                                                    <th class="table-space">Spindle RPM</th>
+                                                    <th class="table-space">Power on Time</th>
+                                                    <th class="table-space">Operating Time</th>
+                                                    <th class="table-space">Cutting Time</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="table-space">
+                                                        <label class="label-cycle" for="feedrate">
+                                                            @if (returnedValues != null)
+                                                            {
+                                                                @Html.Raw(returnedValues[4])
+                                                            }
+                                                            else
+                                                            {
+
+                                                            }
+                                                        </label>
+                                                    </td>
+                                                    <td class="table-space">
+                                                        <label class="label-cycle" for="spindlespeed">
+                                                            @if (returnedValues != null)
+                                                            {
+                                                                @Html.Raw(returnedValues[5])
+                                                            }
+                                                            else
+                                                            {
+
+                                                            }
+                                                        </label>
+                                                    </td>
+                                                    <td class="table-space">
+                                                        <label class="label-cycle" for="pontime">
+                                                            @if (returnedValues != null)
+                                                            {@Html.Raw(returnedValues[2])}
+                                                            else
+                                                            {
+                                                                //No Data
+                                                            }
+                                                        </label>
+                                                    </td>
+                                                    <td class="table-space">
+                                                        <label class="label-cycle" for="optime">
+                                                            @if (returnedValues != null)
+                                                            {@Html.Raw(returnedValues[0])}
+                                                            else
+                                                            {
+                                                                //No Data
+                                                            }
+                                                        </label>
+                                                    </td>
+                                                    <td class="table-space">
+                                                        <label class="label-cycle" for="cuttime">
+                                                            @if (returnedValues != null)
+                                                            {@Html.Raw(returnedValues[1])}
+                                                            else
+                                                            {
+                                                                //No Data
+                                                            }
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row alarm-space">
+                                    <div class="col-sm-12">
+                                        <input type="button" class="btn btn-new" style="margin-top: 10px;float: right;" value="Operator Msg History" id="OpMsgHistory" name="OpMsgHistory" />
+                                        <input type="button" class="btn btn-new" style="margin-top: 10px; float: right;" value="Alarms" id="Alarms" name="Alarms" />
+                                        @*<a role="button" href="~/ProgramExecutionMonitor/OpMsgHistory" class="btn btn-new" style="margin-top: 10px; float: right;"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;Operator Msg History</a>
+                                            <a role="button" href="~/ProgramExecutionMonitor/alarms" class="btn btn-new" style="margin-top: 10px;float: right;"><i class="fa fa-bell-o" aria-hidden="true"></i>&nbsp;Alarms</a>*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xs-12">
+                                <div class="x_panel">
+                                    <div class="x_content">
+                                        <form id="demo-form2" class="form-horizontal form-label-left">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Program </label>
+                                                <div class="col-md-9 col-sm-6 col-xs-12">
+                                                    @if (returnedValues != null)
+                                                    {
+                                                    <input class="form-control" id="programdetails" name="message" disabled="disabled" value="@Html.Raw(returnedValues[6])">
+                                                    }
+                                                    else
+                                                    {
+                                                    <input id="programdetails" class="form-control" name="message" disabled="disabled">
+                                                    }
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">NC Program </label>
+                                                <div class="col-md-9 col-sm-6 col-xs-12">
+                                                    @if (returnedValues != null)
+                                                    {
+                                                    <textarea id="programcontent" class="form-control" name="message" style="max-height:130px;min-height:130px; resize: none" disabled="disabled">@Html.Raw(returnedValues[7])</textarea>
+                                                    }
+                                                    else
+                                                    {
+                                                    <textarea id="programcontent" class="form-control" name="message" style="max-height:130px;min-height:130px; resize: none" disabled="disabled"></textarea>
+                                                    }
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Cycle Time(hh:mm:ss)</label>
+                                                <div class="col-md-9 col-sm-6 col-xs-12">
+                                                    <label class="label-cycle" for="cyctime">
+                                                        @if (returnedValues != null)
+                                                        {@Html.Raw(returnedValues[3])}
+                                                        else
+                                                        {
+                                                            //No Data
+                                                        }
+                                                    </label>
+                                                </div>
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Parts Count</label>
+                                                <div class="col-md-9 col-sm-6 col-xs-12">
+                                                    <label class="label-cycle" for="partscount">
+                                                        @if (returnedValues != null)
+                                                        {@Html.Raw(returnedValues[14])}
+                                                        else
+                                                        {
+                                                            //No Data
+                                                        }
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            @*<label style="color: blue; font-style: oblique;display:inline">Modal: </label>
+                                                @if (returnedValues != null)
+                                                {
+                                                <label style="color: blue; font-style: oblique;display:inline;float:right">Cycle Time : @Html.Raw(returnedValues[3]) </label>
+                                                }
+                                                else
+                                                {
+                                                <label style="color: blue; font-style: oblique;display:inline;float:right">Cycle Time :  </label>
+                                                }*@
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Modal</label>
+                                                <div class="col-md-9 col-sm-6 col-xs-12">
+                                                    <table style="width:100%;border: 1px solid #ccc;border-radius: 4px; padding: 10px;border-collapse: inherit;">
+                                                        <tr>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal1">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[4]) }
+                                                                    </label>*@
+                                                            </td>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal8">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[11]) }
+                                                                    </label>*@
+                                                            </td>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal15">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[18]) }
+                                                                    </label>*@
+                                                            </td>
+                                                            <td>
+                                                                @*<label class="label-modal">HD.T&nbsp;:</label><label class="label-modal" for="hdt">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[1]) }
+                                                                    </label>*@
+                                                                <label class="label-modal">HD.T&nbsp;:</label><label class="label-modal" for="hdt">
+                                                                    &nbsp;@if (ModelData != null)
+                                                                    {@Html.Raw(ModelData[1])}
+                                                                    else
+                                                                    {
+                                                                        //No Data
+                                                                    }
+                                                                </label>
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal2">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[5]) }
+                                                                    </label>*@
+                                                            </td>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal9">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[12]) }
+                                                                    </label>*@
+                                                            </td>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal16">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[19]) }
+                                                                    </label>*@
+                                                            </td>
+                                                            <td></td>
+                                                            @*
+                                                                <td>
+                                                                    <label class="label-modal">NX.T&nbsp;:</label><label class="label-modal" for="nxt">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 3)
+                                                                            { @Html.Raw(ViewBag.ModalData[2]) }
+                                                                    </label>
+                                                                </td>*@
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal3">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[6]) }
+                                                                    </label>*@
+                                                            </td>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal10">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[13]) }
+                                                                    </label>*@
+                                                            </td>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal17">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[20]) }
+                                                                    </label>*@
+                                                            </td>
+                                                            <td>
+                                                                @*<label class="label-modal">ATC Count&nbsp;:</label><label class="label-modal" for="atccnt">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() > 1)
+                                                                            { @Html.Raw(ViewBag.ModalData[0])}
+                                                                    </label>*@
+                                                                <label class="label-modal">ATC Count&nbsp;:</label><label class="label-modal" for="atccnt">
+                                                                    &nbsp;@if (ModelData != null)
+                                                                    {@Html.Raw(ModelData[0])}
+                                                                    else
+                                                                    {
+                                                                        //No Data
+                                                                    }
+                                                                </label>
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                @*<label class="label-modal" id="modal4">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[7]) }
+                                                                    </label>*@
+                                                            </td>
+                                                            <td>
+                                                                @*<label class="label-modal" id="modal11">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[14]) }
+                                                                    </label>*@
+                                                            </td>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal18">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[21]) }
+                                                                    </label>*@
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal5">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[8]) }
+                                                                    </label>*@
+                                                            </td>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal12">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[15]) }
+                                                                    </label>*@
+                                                            </td>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal19">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[22]) }
+                                                                    </label>*@
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal6">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[9]) }
+                                                                    </label>*@
+                                                            </td>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal13">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[16]) }
+                                                                    </label>*@
+                                                            </td>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal20">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[23]) }
+                                                                    </label>*@
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal7">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[10]) }
+                                                                    </label>*@
+                                                            </td>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal14">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[17]) }
+                                                                    </label>*@
+                                                            </td>
+                                                            <td>
+                                                                @*<label class="label-modal" for="modal21">
+                                                                        &nbsp;@if (ViewBag.ModalData != null && ((IEnumerable<dynamic>
+                                                                            )ViewBag.ModalData).Count() >= 2)
+                                                                            {@Html.Raw(ViewBag.ModalData[24]) }
+                                                                    </label>*@
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+                        <!-- /page content -->
+}
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+
+
+<script>
+    //setInterval(function () {
+    //    var macID = $("#WorkCenterID").val();
+    //    //alert(macID);
+    //    if (macID == null || macID == '') {
+
+    //    } else {
+    //        var plantID = $("#PlantID").val();
+    //        var shopID = $("#ShopID").val();
+    //        var cellID = $("#CellID").val();
+    //        window.location.href = "/ProgramExecutionMonitor/Index?PlantID=" + plantID + "&ShopID=" + shopID + "&CellID=" + cellID + "&WorkCenterID=" + macID;;
+    //    }
+    //}, 3000);
+</script>
+
+<script>
+    window.setInterval(function () {
+        RefreshData();
+    }, 1000);
+    function RefreshData() {
+        var id = $(this).parent().attr("id");
+        $("#td1").show();
+        var plantID = $("#PlantID").val();
+        var shopID = $("#ShopID").val();
+        var cellID = $("#CellID").val();
+        var macID = $("#WorkCenterID").val();
+        if (macID != null && macID != '') {
+
+            $.getJSON("/ProgramExecutionMonitor/RefreshData", { 'PlantID': plantID, 'ShopID': shopID, 'CellID': cellID, 'WorkCenterID': macID }, function (data) {
+                //alert(data);
+                $("label[for='optime']").html(data.RetVal[0]);
+                $("label[for='cuttime']").html(data.RetVal[1]);
+                $("label[for='pontime']").html(data.RetVal[2]);
+                $("label[for='cyctime']").html(data.RetVal[3]);
+                $("label[for='feedrate']").html(data.RetVal[4]);
+                $("label[for='spindlespeed']").html(data.RetVal[5]);
+                $("label[for='stateval']").html(data.RetVal[10]);
+                $("label[for='runmode']").html(data.RetVal[11]);
+                $("label[for='alarm']").html(data.RetVal[12]);
+                $("label[for='emerg']").html(data.RetVal[13]);
+                $("label[for='partscount']").html(data.RetVal[14]);
+
+                //$("label[for='Axis']").html(data.AxisDetailsList[1]);
+                //$("label[for='AbsPos']").html(data.AxisDetailsList[2]);
+                //$("label[for='RelPos']").html(data.AxisDetailsList[3]);
+                //$("label[for='MacPos']").html(data.AxisDetailsList[4]);
+                //$("label[for='DistToGo']").html(data.AxisDetailsList[5]);
+
+                $("label[for='atccnt']").html(data.ModalData[0]);
+                $("label[for='hdt']").html(data.ModalData[1]);
+
+                $("#programdetails").val(data.RetVal[6]);
+                $("#programcontent").val(data.RetVal[7]);
+
+                var axisdet = data.AxisDetailsList;
+                if(axisdet!=null)
+                {
+                    var cssdata = '';
+                    $("#AxisDetailsBody").html('');
+                    for (var i = 0; i < axisdet.length; i++) {
+                        cssdata += '<tr>';
+                        cssdata += '<td class="table-space"><label class="col-md-3 col-sm-3 col-xs-12 label-new" for="' + i + '">' + axisdet[i].AxisName + '</label> </td>';
+                        cssdata += '<td class="table-space"><label class="col-md-3 col-sm-3 col-xs-12 label-new" for="' + i + '">' + axisdet[i].AbsPos + '</label> </td>';
+                        cssdata += '<td class="table-space"><label class="col-md-3 col-sm-3 col-xs-12 label-new" for="' + i + '">' + axisdet[i].RelPos + '</label> </td>';
+                        cssdata += '<td class="table-space"><label class="col-md-3 col-sm-3 col-xs-12 label-new" for="' + i + '">' + axisdet[i].MacPos + '</label> </td>';
+                        cssdata += '<td class="table-space"><label class="col-md-3 col-sm-3 col-xs-12 label-new" for="' + i + '">' + axisdet[i].DistToGo + '</label> </td>';
+                        cssdata += '</tr>';
+                    }
+                    $(cssdata).appendTo($('#AxisDetailsBody'));
+                }
+
+            });
+        }
+    }
+   /**/
+</script>
+
+@*Mac Hierarchy Dropdowns*@
+<script>
+    $("#PlantID").on("change", function () {
+        $("#ShopID").empty();
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#PlantID option:selected").val();
+        $.getJSON("/ProgramExecutionMonitor/GetShop", { PlantID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#ShopID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                //$("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#ShopID").prepend("<option value='' selected='selected'></option>");
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+
+            var dropdownVal = "Plant";
+            $("#SummerizeAs").find('option[value=' + dropdownVal + ']').remove();
+        });
+
+        $.getJSON("/OEEDashboard/GetSummarizeDropDownValues", { Factor: "Plant" }, function (data) {
+            $("#SummarizeAs").empty();
+            $.each(data, function (index, item) {
+                $("#SummarizeAs").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+        });
+    });
+    $("#ShopID").on("change", function () {
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#ShopID option:selected").val();
+        $.getJSON("/ProgramExecutionMonitor/GetCell", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#CellID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/ProgramExecutionMonitor/GetWC_Shop", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/OEEDashboard/GetSummarizeDropDownValues", { Factor: "Shop" }, function (data) {
+            $("#SummarizeAs").empty();
+            $.each(data, function (index, item) {
+                $("#SummarizeAs").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+        });
+    });
+    $("#CellID").on("change", function () {
+        $("#WorkCenterID").empty();
+        var selectedID = $("#CellID option:selected").val();
+        $.getJSON("/ProgramExecutionMonitor/GetWC_Cell", { CellID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/OEEDashboard/GetSummarizeDropDownValues", { Factor: "Cell" }, function (data) {
+            $("#SummarizeAs").empty();
+            $.each(data, function (index, item) {
+                $("#SummarizeAs").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+        });
+    });
+    $("#WorkCenterID").on("change", function () {
+        $("#SummarizeAs").empty();
+    });
+</script>
+<script>
+    //var plantID = $("#PlantID").val();
+    //alert(plantID);
+
+    $("#Alarms").click(function (e) {
+        var macID = $("#WorkCenterID").val();
+        //alert(macID);
+        if (macID == null || macID == '') {
+            alert("Select a Machine");
+        } else {
+            //PlantID,  ShopID,  CellID,  WorkCenterID
+            var plantID = $("#PlantID").val();
+            var shopID = $("#ShopID").val();
+            var cellID = $("#CellID").val();
+            window.location.href = "/ProgramExecutionMonitor/Alarms?PlantID=" + plantID + "&ShopID=" + shopID + "&CellID=" + cellID + "&WorkCenterID=" + macID;
+        }
+    });
+
+    $("#OpMsgHistory").click(function (e) {
+        var macID = $("#WorkCenterID").val();
+        //alert(macID);
+        if (macID == null || macID == '') {
+            alert("Select a Machine");
+        } else {
+            //PlantID,  ShopID,  CellID,  WorkCenterID
+            var plantID = $("#PlantID").val();
+            var shopID = $("#ShopID").val();
+            var cellID = $("#CellID").val();
+            window.location.href = "/ProgramExecutionMonitor/OpMsgHistory?PlantID=" + plantID + "&ShopID=" + shopID + "&CellID=" + cellID + "&WorkCenterID=" + macID;
+        }
+    });
+
+</script>

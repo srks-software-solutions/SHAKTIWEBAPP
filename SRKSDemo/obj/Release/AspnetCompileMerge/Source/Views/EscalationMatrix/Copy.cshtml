@@ -1,0 +1,226 @@
+﻿@model SRKSDemo.Server_Model.tblemailescalation
+@{
+    ViewBag.Title = "Copy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<input id="overlapDownward" type="hidden" value="@ViewBag.DoesThisPlanOverlapUpwards"/>
+<div class="right_col" role="main">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            @using (Html.BeginForm("Copy", "EscalationMatrix", FormMethod.Post))
+            {
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Copy Escalation Matrix</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <input id="errorChecker" value="@TempData["Error"]" type="hidden" />
+                        <div class="row container">
+                            <div class="col-md-1" id="warning" style="display:none">
+                                <span style="color: orange;" class="pull-right">Warning:</span>
+                            </div>
+                            <div class="col-md-10" id="divError"></div>
+                            <div class="col-md-1"></div>
+                        </div>
+
+                        <form class="form-horizontal form-label-left" novalidate>
+                            <div class="row form-horizontal">
+                                <div class="item form-group">
+                                    <label class="control-label col-md-2 col-sm-3 col-xs-12">Escalation Email Name</label>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        @Html.TextBoxFor(model => model.EMailEscalationName, new { @class = "form-control" })
+                                    </div>
+                                    <label class="control-label col-md-2 col-sm-3 col-xs-12">Reason Level 1</label>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        @Html.DropDownListFor(model => model.ReasonLevel1, ViewBag.RL1 as IEnumerable<SelectListItem>, "--Select Reason Level_1--", new { @id = "RL1", @class = "form-control", @name = "RL1", @required = "required", @onchange = "Level1();" })
+                                        @Html.ValidationMessageFor(model => model.ReasonLevel1)
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-2 col-sm-3 col-xs-12">Reason Level 2</label>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        @Html.DropDownListFor(model => model.ReasonLevel2, ViewBag.RL2 as IEnumerable<SelectListItem>, "--Select Reason Level_2--", new { @id = "RL2", @class = "form-control", @name = "RL2", @Onchange = "Level2();" })
+                                        @Html.ValidationMessageFor(model => model.ReasonLevel2)
+                                    </div>
+                                    <label class="control-label col-md-2 col-sm-3 col-xs-12">Reason Level 3</label>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        @Html.DropDownListFor(model => model.ReasonLevel3, ViewBag.RL3 as IEnumerable<SelectListItem>, "--Select Reason Level_3--", new { @id = "RL3", @class = "form-control", @name = "RL3" })
+                                        @Html.ValidationMessageFor(model => model.ReasonLevel3)
+                                    </div>
+                                </div>
+
+                                <div class="item form-group">
+                                    <label class="control-label col-md-2 col-sm-3 col-xs-12">Plant</label>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        @Html.DropDownListFor(model => model.PlantID, ViewBag.Plant as IEnumerable<SelectListItem>, "--Select Plant--", new { @id = "PlantID", @class = "form-control", @name = "PlantID", @required = "required" })
+                                        @Html.ValidationMessageFor(model => model.PlantID)
+                                    </div>
+                                    <label class="control-label col-md-2 col-sm-3 col-xs-12">Shop</label>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        @Html.DropDownListFor(model => model.ShopID, ViewBag.Shop as IEnumerable<SelectListItem>, "--Select Shop--", new { @id = "ShopID", @class = "form-control", @name = "ShopID" })
+                                        @*@Html.DropDownList("Shop", null, "--Select Shop--", new { @id = "ShopID", @class = "stacked-label", @name = "ShopID", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["Shop"] })*@
+                                        @Html.ValidationMessageFor(model => model.ShopID)
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-2 col-sm-3 col-xs-12">Cell</label>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        @Html.DropDownListFor(model => model.CellID, ViewBag.Cell as IEnumerable<SelectListItem>, "--Select Cell--", new { @id = "CellID", @class = "form-control", @name = "CellID" })
+                                        @*@Html.DropDownList("Cell", null, "--Select Cell--", new { @id = "CellID", @class = "stacked-label", @name = "CellID", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["Cell"] })*@
+                                        @Html.ValidationMessageFor(model => model.CellID)
+                                    </div>
+                                    <label class="control-label col-md-2 col-sm-3 col-xs-12">Machine</label>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        @Html.DropDownListFor(model => model.WorkCenterID, ViewBag.WorkCenter as IEnumerable<SelectListItem>, "--Select Machinnes--", new { @id = "MachineID", @class = "form-control", @name = "MachineID" })
+                                        @*@Html.DropDownList("WorkCenter", null, "--Select WC--", new { @id = "WorkCenterID", @class = "stacked-label", @name = "WorkCenterID", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["WorkCenter"] })*@
+                                        @Html.ValidationMessageFor(model => model.WorkCenterID)
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-2 col-sm-3 col-xs-12">Hours</label>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        @Html.TextBoxFor(model => model.Hours, new { @class = "form-control", @placeholder = "Hours", @min = "0", @max = "24" })
+                                    </div>
+                                    <label class="control-label col-md-2 col-sm-3 col-xs-12">Minutes</label>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        @Html.TextBoxFor(model => model.Minutes, new { @class = "form-control", @placeholder = "Hours", @min = "0", @max = "60" })
+                                    </div>
+                                </div>
+
+                                <div class="item form-group">
+                                    <label class="control-label col-md-2 col-sm-3 col-xs-12">To List</label>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        @Html.TextAreaFor(model => model.ToList, new { @class = "form-control1", @placeholder = "TolIst" })
+                                    </div>
+                                    <label class="control-label col-md-2 col-sm-3 col-xs-12">CC List</label>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        @Html.TextAreaFor(model => model.CcList, new { @class = "form-control1", @placeholder = "CC List" })
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-sm-5 control-label"><span style="color: red;">NOTE:</span> Please use "," as seperator between MailID's </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <a role="button" href="/EscalationMatrix/Index" class="btn btn-new" style="margin-top: 10px; margin-left: 5px;"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                <button id="btnSave" type="submit" class="btn btn-new float-right" style="margin-top: 10px;"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+                <button id="btnSaveNContinue" type="submit" class="btn btn-new float-right" style="margin-top: 10px;display:none"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Override & Continue </button>
+                <input type="hidden" id="hdnSaveNContinue" name="hdnSaveNContinue" value="0"/>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+
+<script>
+
+    //Cascading
+    $("#PlantID").on("change", function () {
+        $("#ShopID").empty();
+        $("#CellID").empty();
+        $("#MachineID").empty();
+        var selectedID = $("#PlantID option:selected").val();
+        $.getJSON("/EscalationMatrix/GetShop", { PlantID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#ShopID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                //$("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#ShopID").prepend("<option value='' selected='selected'>--Select Shop--</option>");
+            $("#CellID").prepend("<option value='' selected='selected'>--Select Cell--</option>");
+            $("#MachineID").prepend("<option value='' selected='selected'>--Select Machines--</option>");
+        });
+    });
+
+    $("#ShopID").on("change", function () {
+        $("#CellID").empty();
+        $("#MachineID").empty();
+        var selectedID = $("#ShopID option:selected").val();
+        $.getJSON("/EscalationMatrix/GetCell", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#CellID").prepend("<option value='' selected='selected'>--Select Cell--</option>");
+            $("#MachineID").prepend("<option value='' selected='selected'>--Select Machines--</option>");
+        });
+
+
+
+    });
+
+    $("#CellID").on("change", function () {
+        $("#MachineID").empty();
+        var selectedID = $("#CellID option:selected").val();
+        $.getJSON("/EscalationMatrix/GetWC_Cell", { CellID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#MachineID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#MachineID").prepend("<option value='' selected='selected'>--Select Machines--</option>");
+
+        });
+    });
+</script>
+<script>
+
+    //Cascading
+    function Level1() {
+        $("#RL2").empty();
+        $("#RL3").empty();
+        var selectedID = $("#RL1 option:selected").val();
+        $.getJSON("/EscalationMatrix/GetRL2", { RL1ID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#RL2").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#RL2").prepend("<option value='' selected='selected'>--Select Reason Level_2--</option>");
+            $("#RL3").prepend("<option value='' selected='selected'>--Select Reason Level_3--</option>");
+        });
+    }
+
+    function Level2() {
+        $("#RL3").empty();
+        var selectedID = $("#RL2 option:selected").val();
+        $.getJSON("/EscalationMatrix/GetRL3", { RL2ID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#RL3").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#RL3").prepend("<option value='' selected='selected'>--Select Reason Level_3--</option>");
+        });
+    }
+
+</script>
+<script>
+    $(function () {
+        var item = $("#errorChecker").val();
+        $("#divError").html(item);
+        if (item != "" && item != null) {
+            $("#warning").show();
+        } else {
+            $("#warning").hide();
+        }
+    });
+</script>
+<script>
+    $(function () {
+        var item = $("#overlapDownward").val();
+        if (parseInt(item) >= 1) {
+            $("#btnSaveNContinue").show();
+            $("#btnSave").hide();
+            $("#hdnSaveNContinue").val(item);
+        } else {
+            $("#btnSaveNContinue").hide();
+            $("#btnSave").show();
+        }
+    });
+</script>

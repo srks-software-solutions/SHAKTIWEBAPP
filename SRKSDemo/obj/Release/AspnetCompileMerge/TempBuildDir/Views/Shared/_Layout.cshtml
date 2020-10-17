@@ -1,0 +1,504 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>i_facility - @ViewBag.Title</title>
+    <!-- Bootstrap -->
+    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- NProgress -->
+    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../vendors/bootstrap-chosen.css">
+    <!-- Font Awesome -->
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- NProgress -->
+    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet" />
+    @*<link rel="stylesheet" type="text/css" href="../vendors/tooltip/tooltip.css">*@
+    <link href="~/vendors/tooltip/tooltip.css" rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    @*<link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">*@
+    <link href="~/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="~/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="~/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <!-- bootstrap-datetimepicker -->
+    <link href="~/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <!-- timeicker -->
+    <link href="~/vendors/timepicker/timepicker.css" rel="stylesheet" />
+    <!-- Custom Theme Style -->
+    <link href="~/build/css/custom.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- ICONS -->
+    <link href="~/vendors/icons/fontawesome/fontawesome.css" rel="stylesheet" type="text/css" />
+    <link href="~/vendors/icons/linecons/linecons.css" rel="stylesheet" />
+    <link href="~/vendors/icons/spinnericon/spinnericon.css" rel="stylesheet" />
+    <link href="~/vendors/helpers/utils.css" rel="stylesheet" />
+    <link href="~/vendors/element/tile-box.css" rel="stylesheet" />
+
+    <!-- Compare -->
+    <link rel="stylesheet" href="~/vendors/lib/codemirror.css" />
+    <link rel="stylesheet" href="~/vendors/lib/mergely.css" />
+    <link rel="stylesheet" type="text/css" href="~/vendors/editor.css">
+</head>
+
+<body class="nav-sm">
+
+    <style>
+        .errorMessage {
+            color: red;
+        }
+    </style>
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="~/dashboard/dashboard" class="site_title"><img src="~/images/CCSLogo.png" /></a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_info">
+                            <span>Welcome,</span>
+                            <h2> @ViewBag.Logout</h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+                    <br />
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            @*<h3>General</h3>*@
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a href="~/Dashboard/Dashboard"><img src="~/images/dashboard.png" /> Dashboard<span class="fa fa-chevron-down"></span></a>
+                                    @*<ul class="nav child_menu">
+                                                                            <li><a href="index.html">Dashboard</a></li>
+                                        <li><a href="index2.html">Dashboard2</a></li>
+                                        <li><a href="index3.html">Dashboard3</a></li>
+                                        <li>@Html.ActionLink("Dashboard", "Dashboard", "Dashboard")</li>
+                                                                        </ul>*@
+                                </li>
+
+                                <li>
+                                    <a><img src="~/images/MDashboards.png" /><br /> Machine Dashboards <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Machine Connectivity Status Dashboard", "NewDashboard2911", "Dashboard")</li>
+                                        <li>@Html.ActionLink("Centralized Dashboard", "MConnectivity2", "Dashboard")</li>
+                                        <li>@Html.ActionLink("OEE Dashboard", "Index", "OEEDashboard")</li>
+                                        <li>@Html.ActionLink("Prv Day Machine Status", "DashboardStatus", "MachineStatusReport")</li>
+                                        <li>@Html.ActionLink("Prod Andon Display", "proddisplay", "AndonDisplay")</li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="~/HMIScree/Index">
+                                        @*<a href="~/NewHMIScreen/Index">*@
+                                        <img src="~/images/part.png" />
+                                        &nbsp PartEntry Screen
+                                    </a>
+                                </li>
+                                <li>
+
+                                    <a><img src="~/images/shift.png" /><br /> PMS Entry Screen <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("PMS Entry Screen", "Index1", "PMSEntryScreen")</li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="~/ProgramExecutionMonitor/Index"> <img src="~/images/part.png" /><br />Virtual HMI <span class="fa fa-chevron-down"></span></a>
+                                    @*<ul class="nav child_menu">
+                                            <li>@Html.ActionLink("Virtual HMI", "Index", "ProgramExecutionMonitor")</li>
+                                        </ul>*@
+                                </li>
+                                <li>
+                                    <a href="~/ProgramTransfer/Index">
+                                        <img src="~/images/nc.png" />
+                                        <br />NC Program Transfer <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    @*<ul class="nav child_menu">
+                                           <li>@Html.ActionLink("PragramTransfer", "Index", "ProgramTransfer")</li>
+                                        </ul>*@
+                                </li>
+                                <li>
+                                    <a href="~/PMSMaster/Index">
+                                        <img src="~/images/machinery-parts.png" />
+                                        <br />PMS Master <span class="fa fa-chevron-down"></span>
+                                    </a>
+
+                                </li>
+
+                                <li>
+                                    <a><img src="~/images/report.png" /><br /> Report <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Main Utilization Report", "Utilization_ABGraph", "Reports")</li>
+                                        <li>@Html.ActionLink("OEE Report", "OEEReport", "Reports")</li>
+                                        <li>@Html.ActionLink("Job Report", "JobReport", "Reports")</li>
+                                        <li>@Html.ActionLink("Loss Register Report", "IdleList", "Reports")</li>
+                                        <li>@Html.ActionLink("Breakdown Register Report", "BreakdownList", "Reports")</li>
+                                        <li>@Html.ActionLink("MTTR and MTBF Report", "MTTRandMTBFReport", "Reports")</li>
+                                        <li>@Html.ActionLink("Cycle Time Report", "CycleTime", "Reports")</li>
+                                        @*<li>@Html.ActionLink("Tool Life Monitoring Sheet", "ToolLife", "Reports")</li>*@
+                                        <li>@Html.ActionLink("Alaram Report", "AlaramReport", "Reports")</li>
+                                        @*<li>@Html.ActionLink("PMS Report", "PMSReport", "Reports")</li>*@
+                                    </ul>
+                                </li>
+
+                                @*<li>
+                                    <a href="~/OperatorEntryAdmin/SelectMachineAdmin">
+                                        <img src="~/images/mach.png" />
+
+                                        <br />Operator Input <span class="fa fa-chevron-down"></span>
+                                    </a>*@
+                                @*<a><img src="~/images/mach.png" /> Operator Input <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Operator Input", "Index", "OperatorEntry")</li>
+                                    </ul>*@
+                                @*</li>*@
+                                @*<li>
+                                        <a><img src="~/images/part.png" /> Andon Scheduling <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>@Html.ActionLink("ANDON Scheduling", "ImageText", "AndonDisplay")</li>
+                                        </ul>
+                                    </li>*@
+                                <li>
+                                    <a>
+                                        <img src="~/images/nc.png" /><span class="set_name">Preventive Maintainance Scheduling</span><span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="/PreventiveMaintainanceScheduling/Index">Preventive Maintainance Scheduling Details</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="/PmCheckPoint/Index">PmCheckPoint Details</a>
+                                        </li>
+                                        <li>
+                                            <a href="/PmCheckList/Index">PmCheckList Details</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                @*<li>
+                                        <a><img src="~/images/machinery-parts.png" />Tool Configuration <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>@Html.ActionLink("Tool Life Management", "Index", "ToolLifeManagement")</li>
+                                        </ul>
+                                    </li>*@
+                                <li>
+                                    <a><img src="~/images/mach.png" /> Machine Configuration <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Plant Details", "Index", "Plant")</li>
+                                        <li>@Html.ActionLink("Shop Details", "ShopList", "Shops")</li>
+                                        <li>@Html.ActionLink("Cell Details", "CellsList", "Cells")</li>
+                                        <li>@Html.ActionLink("Machine Details", "MachineList", "Machines")</li>
+                                    </ul>
+                                </li>
+
+                                @*<li>
+                                                        <a><img src="~/images/loss.png" /><br /> Losses & Breakdown <span class="fa fa-chevron-down"></span></a>
+
+                                                        <ul class="nav child_menu">
+                                                            <li>@Html.ActionLink("Production Losses", "Index", "ProductionLoss")</li>
+                                                            @*<li><a href="chartjs2.html">Chart JS2</a></li>
+                                    <li><a href="morisjs.html">Moris JS</a></li>
+                                    <li><a href="echarts.html">ECharts</a></li>
+                                    <li><a href="other_charts.html">Other Charts</a></li>*@
+                                @*</ul>
+                                    </li>*@
+                                <li>
+                                    <a><img src="~/images/mach.png" /> Losses & Breakdown <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Idle Reason", "Index", "IdleCodes")</li>
+                                        <li>@Html.ActionLink("BreakDown Reason", "Index", "BreakdownCodes")</li>
+                                        <li>@Html.ActionLink("Hold Codes", "Index", "HoldCodes")</li>
+                                        <li>@Html.ActionLink("Excel Upload", "ImportLossCodesDetails", "IdleCodes")</li>
+                                        <li>@Html.ActionLink("UnIdentifiedLosses", "Index", "UnIdentifiedLossEntry")</li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="~/OperatorModule/Index">
+                                        <img src="~/images/machinery-parts.png" />
+                                        <br />Operator Module <span class="fa fa-chevron-down"></span>
+                                    </a>
+
+                                </li>
+
+                                <li>
+                                    <a><img src="~/images/mach.png" /> General Config. <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("STD Time & Weight", "Index", "MasterParts")</li>
+                                        <li>@Html.ActionLink("Enable Multi-WO", "Index", "MultiWorkOrder")</li>
+                                        <li>@Html.ActionLink("Generic Work", "Index", "GenericWork")</li>
+                                        <li>@Html.ActionLink("Email Details", "Index", "MailIDs")</li>
+                                        @*<li>@Html.ActionLink("Surface Area / Perimeter", "ImportPartWiseSP", "PartWiseSp")</li>*@
+                                        @*<li>@Html.ActionLink("Units", "Index", "Units")</li>*@
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a><img src="~/images/shift.png" /><br /> Shift Planner <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("ShiftMethod", "Index", "ShiftMethod")</li>
+                                        <li>@Html.ActionLink("Shift Details", "Index", "ShiftDetails")</li>
+                                        <li>@Html.ActionLink("Shift Planner", "Index", "ShiftPlanner")</li>
+                                    </ul>
+                                </li>
+                                @*<li>
+                                        <a><img src="~/images/sensor.png" /> Sensor Configuration <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>@Html.ActionLink("Sensor Group", "IndexSensorGroup", "SensorGroup")</li>
+                                            <li>@Html.ActionLink("Sensor Master", "Index", "SensorMaster")</li>
+                                            <li>@Html.ActionLink("Sensor Machine", "IndexMachineSensor", "MachineSensor")</li>
+                                            <li>@Html.ActionLink("Parameter List", "Index", "SensorDataLink")</li>
+                                        </ul>
+                                    </li>*@
+                                <li>
+                                    <a><img src="~/images/role.png" /><br /> Roles & Users <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        @if (ViewBag.roleid == 1)
+                                        {
+                                            <li>@Html.ActionLink("Role", "Index", "Roles")</li>
+                                        }
+                                        <li>@Html.ActionLink("Users", "Index", "Login")</li>
+                                    </ul>
+                                </li>
+                                @* <li>
+                                    @if (ViewBag.roleid == 1)
+                                               {
+                                                   <a><i class="fa fa-home"></i> Role Module <span class="fa fa-chevron-down"></span></a>
+                                                   <ul class="nav child_menu">
+                                                       <li>  @Html.ActionLink("Role Module", "Index", "RoleModule")</li>
+                                       <li>@Html.ActionLink("Modules", "Index", "Modules")</li>
+
+                                                                               </ul>
+                                                                           }
+                                                            </li>*@
+
+                                <li>
+                                    <a>
+                                        <img src="~/images/auto.png" /><br /> Auto Report / Escalation <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("Auto Email Report", "Index", "AutomaticEmailReport")</li>
+                                        <li>@Html.ActionLink("Escalation Matrix", "Index", "EscalationMatrix")</li>
+
+                                    </ul>
+                                </li>
+
+
+                                @*<li>
+                                        <a>
+                                            <img src="~/images/auto.png" /><br /> Operator Details <span class="fa fa-chevron-down"></span>
+                                        </a>
+                                        <ul class="nav child_menu">
+                                            <li>@Html.ActionLink("Operator Details", "Index", "OperatorLoginDetails")</li>
+
+                                        </ul>
+                                    </li>*@
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a href="~/dashboard/dashboard">i_facility</a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    Welcome @ViewBag.Logout!
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    @*<li><a href="javascript:;"> Profile</a></li>
+                                        <li>
+                                            <a href="javascript:;">
+                                                <span class="badge bg-red pull-right">50%</span>
+                                                <span>Settings</span>
+                                            </a>
+                                        </li>*@
+                                    <li><a href="javascript:;">Help</a></li>
+                                    <li><a href="~/login/Logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                </ul>
+                            </li>
+                            <li role="presentation" class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+
+
+                                </a>
+                                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                    <li>
+                                        <a>
+                                            @*<span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>*@
+                                            <span>
+                                                <span>John Smith</span>
+                                                <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                            <span>
+                                                <span>John Smith</span>
+                                                <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                            <span>
+                                                <span>John Smith</span>
+                                                <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                            <span>
+                                                <span>John Smith</span>
+                                                <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="text-center">
+                                            <a>
+                                                <strong>See All Alerts</strong>
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            @RenderBody()
+            @RenderPage("~/Views/Shared/Error.cshtml")
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="~/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="~/vendors/nprogress/nprogress.js"></script>
+    <!-- validator -->
+    <script src="~/vendors/validator/validator.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="~/build/js/custom.js" type="text/javascript"></script>
+
+    @*<script src="../vendors/chosen-select.js" type="text/javascript"></script>*@
+
+    <!-- bootstrap-daterangepicker -->
+    <script src="~/vendors/moment/min/moment.min.js"></script>
+    <script src="~/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-datetimepicker -->
+    <script src="~/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- Compare -->
+    <script src="~/vendors/lib/codemirror.js"></script>
+    <script src="~/vendors/lib/mergely.js"></script>
+
+    <!-- Datatables -->
+    <script src="~/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="~/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="~/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="~/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="~/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="~/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="~/vendors/editor.js"></script>
+    @*<script type="text/javascript">
+            $(function () {
+                $('.chosen-select').chosen();
+            });
+        </script>*@
+    <script>
+
+        $('#myDatepicker2').datetimepicker({
+            format: 'YYYY/MM/DD'
+        });
+    </script>
+    <!-- Bootstrap Timepicker -->
+    <!--<link rel="stylesheet" type="text/css" href="../../assets/widgets/timepicker/timepicker.css">-->
+    @*<script type="text/javascript" src="../vendors/timepicker/timepicker.js"></script>*@
+    <script src="~/vendors/timepicker/timepicker.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        /* Timepicker */
+
+        $(function () {
+            "use strict";
+            $('.timepicker-example').timepicker();
+        });
+
+        $(document).ready(function () {
+            $("[data-toggle=tooltip]").tooltip();
+        });
+    </script>
+
+</body>
+</html>

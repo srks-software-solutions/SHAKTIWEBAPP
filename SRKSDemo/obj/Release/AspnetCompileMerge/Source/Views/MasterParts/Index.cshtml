@@ -1,0 +1,440 @@
+﻿@model IEnumerable<SRKSDemo.Server_Model.tblmasterparts_st_sw>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutForMaster.cshtml";
+    var slno = 1;
+    var pageNo = Convert.ToInt32(Session["PageNo"]);
+}
+<h2></h2>@* induces gap between button and container top*@
+<div style="width: 2%; display: inline-block; height: inherit"></div>
+@if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+{
+    @Html.ActionLink("Create New Parts Standard Time & Weight", "Create", new { }, new { @class = "btn orange btn-lg", @style = "color:black;width:35%;height:70%;backgroundcolor:red;font-size:90%" })
+    <div style="width:5%;display:inline"></div>
+    @Html.ActionLink("Import Data From Excel", "ImportMasterPartsstsw", new { }, new { @class = "btn orange btn-lg ", @style = "color:black;width:20%;height:70%;backgroundcolor:red;font-size:90%;display:inline" })
+    <div style="width:5%;display:inline"></div>
+    @Html.ActionLink("Export Data To Excel", "ExportMasterPartsSTDWeightTime", new { }, new { @class = "btn orange btn-lg ", @style = "color:black;width:20%;height:70%;backgroundcolor:red;font-size:90%;display:inline" })
+
+}
+<div class="wrp clearfix">
+    <div class="fluid">
+        <div class="widget grid12">
+            <div class="widget-header">
+                <div class="widget-title" style="font-size:125%">
+                    Parts Standard Time & Weight
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content pad20f">
+                <div class="widget__content table-responsive table-hover">
+                    <div id="repeatedParts">
+                        @if (Session["PartNo"] != null)
+                        {
+                            <pre>
+<span style="font-family:Calibri">@Session["PartNo"]</span>
+                    </pre>
+                        }
+                    </div>
+                    <select class="form-control" id="pageNum" style="width:100px" name="pageNum">
+                        <option>10</option>
+                        <option>25</option>
+                        <option>50</option>
+                        <option>100</option>
+                    </select>
+                    <div style="width: 10%; display: inline-block; height: inherit;margin-right: 648px;"></div>
+                    <input type="text" name="Search" value="" id="Search" style="width: 30%;" placeholder="Search" />
+                    <br />
+                    <table class="table table-condensed table-striped table-hover" id="jqueryTable">
+                        <thead>
+                            <tr class="text-centre" style="background-color:orange">
+                                <th style="text-align:center;font-size:95%">Sl.No.</th>
+                                <th style="text-align:center;font-size:95%" ">Part No</th>
+                                <th style="text-align:center;font-size:95%" ">Op No</th>
+                                <th style="text-align:center;font-size:95%" ">Std Setup Time / Unit</th>
+                                <th style="text-align:center;font-size:95%" ">Std Cutting Time / Unit</th>
+                                <th style="text-align:center;font-size:95%" ">Std ChangeOver Time / Unit</th>
+                                <th style="text-align:center;font-size:95%" ">I/P Weight / Unit</th>
+                                <th style="text-align:center;font-size:95%" ">O/P Weight / Unit</th>
+                                <th style="text-align:center;font-size:95%" ">Material Removed Qty / Unit</th>
+                                @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+                                {
+                                    <th style="text-align:center;font-size:95%" ">Edit</th>
+                                    <th style="text-align:center;font-size:95%" ">Delete</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyid">
+                            <tr class="spacer"></tr>
+                            <tr class="spacer"></tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @slno
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.PartNo)
+                                    </td>
+
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.OpNo)
+                                    </td>
+
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.StdSetupTime) / @Html.DisplayFor(modelItem => item.StdSetupTimeUnit)
+                                    </td>
+
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.StdCuttingTime) /  @Html.DisplayFor(modelItem => item.StdCuttingTimeUnit)
+                                    </td>
+
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.StdChangeoverTime) /  @Html.DisplayFor(modelItem => item.StdChangeoverTimeUnit)
+                                    </td>
+
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.InputWeight) / @Html.DisplayFor(modelItem => item.InputWeightUnit)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.OutputWeight) / @Html.DisplayFor(modelItem => item.OutputWeightUnit)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.MaterialRemovedQty) /@Html.DisplayFor(modelItem => item.MaterialRemovedQtyUnit)
+                                    </td>
+
+                                    @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+                                    {
+                                        <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Edit">
+                                            @Html.ActionLink(" ", "Edit", new { id = item.PARTSSTSWID }, new { @class = " blue  btn-lg fa fa-edit", @style = "color:white;text-decoration:none" })
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Delete">
+                                            @{var id = item.PARTSSTSWID;
+                                                @Html.ActionLink(" ", "Delete", new { id = item.PARTSSTSWID }, new { @id = id, @class = "DeleteModel red btn-lg fa fa-trash", @style = "color:white;text-decoration:none" })
+                                            }
+                                        </td>
+                                    }
+                                </tr>
+                                slno = slno + 1;
+                            }
+                            <tr class="spacer"></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Prev" id="Previous" class="btn orange btn-lg" style="width: 5%; display: inline-block; height: inherit;margin-top:2%;background-color:orange;color:black;font-size:95%" />
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    <input type="text" value="@pageNo" id="txtbox" style="width: 5%;" />
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Next" id="Next" class="btn orange btn-lg" style="width: 5%; display: inline-block; height: inherit;margin-top:2%;background-color:orange;color:black;font-size:95%" />
+
+                </div>
+
+            </div>
+            <!-- /widget-content -->
+
+        </div>
+        <!-- /widget -->
+    </div>
+    <div id="dialog-confirm" title=" Delete Confirmation ?" style="height: 5%;">
+        <p>
+        </p>
+    </div>
+</div>
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+        setTimeout(function () {
+            $('#repeatedParts').fadeOut('slow');
+        }, 30000); // <-- time in milliseconds
+</script>
+<script>
+        $(document).on("change", "#Search", function (e) {
+            var serachedItem = $(this).val();
+            $.get("MasterParts/SearchSelectedItem", { partNo: serachedItem }, function (res) {
+                var data = '';
+                if (res != null) {
+                    $("#tbodyid").html('');
+                    for (var i = 1; i <= res.length; i++) {
+                        var indexdet = res[i - 1];
+                        data = data + '<tr><td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' + i + '</td><td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' + indexdet.PartNo + '</td>"' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.OpNo + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.StdSetupTime + ' /' + indexdet.StdSetupTimeUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.StdCuttingTime + ' /' + indexdet.StdCuttingTimeUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.StdChangeoverTime + ' /' + indexdet.StdChangeoverTimeUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.InputWeight + ' /' + indexdet.InputWeightUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.OutputWeight + ' /' + indexdet.OutputWeightUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.MaterialRemovedQty + ' /' + indexdet.MaterialRemovedQtyUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Edit">' +
+                            '<button type="button" class = " blue  btn-lg fa fa-edit EditModel" style = "color:white;text-decoration:none" id="' + indexdet.PARTSSTSWID + '"></button>' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Delete">' +
+                            '<button type="button" class = "DeleteModel1 red btn-lg fa fa-trash" style = "color:white;text-decoration:none" id="' + indexdet.PARTSSTSWID + '"></button>' +
+
+                            '</td>' +
+
+                            '</tr>'
+
+                    }
+                    $("#tbodyid").append(data);
+                }
+            });
+
+        });
+</script>
+<script>
+        $(document).on("change", "#pageNum", function (e) {
+            var pNo = $(this).val();
+            var takeValue = pNo;
+            var pageNum1 = $("#txtbox").val();
+            var no = parseInt(pageNum1) - 1;
+            var skipValue = no * takeValue;
+            $.get("MasterParts/IndexDetailsForLassyLoading", { takeValue: takeValue, skipValue: skipValue, pageNo: pageNum1 }, function (res) {
+                var data = '';
+                if (res != null) {
+                    $("#tbodyid").html('');
+                    for (var i = 1; i <= res.length; i++) {
+                        skipValue++;
+                        var indexdet = res[i - 1];
+                        data = data + '<tr><td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' + skipValue + '</td><td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' + indexdet.PartNo + '</td>"' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.OpNo + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.StdSetupTime + ' /' + indexdet.StdSetupTimeUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.StdCuttingTime + ' /' + indexdet.StdCuttingTimeUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.StdChangeoverTime + ' /' + indexdet.StdChangeoverTimeUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.InputWeight + ' /' + indexdet.InputWeightUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.OutputWeight + ' /' + indexdet.OutputWeightUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.MaterialRemovedQty + ' /' + indexdet.MaterialRemovedQtyUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Edit">' +
+                            '<button type="button" class = " blue  btn-lg fa fa-edit EditModel" style = "color:white;text-decoration:none" id="' + indexdet.PARTSSTSWID + '"></button>' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Delete">' +
+                            '<button type="button" class = "DeleteModel1 red btn-lg fa fa-trash" style = "color:white;text-decoration:none" id="' + indexdet.PARTSSTSWID + '"></button>' +
+
+                            '</td>' +
+
+                            '</tr>'
+
+                    }
+                    $("#tbodyid").append(data);
+                }
+                else {
+                    $("#Next").prop("disabled", true);
+                }
+            });
+        });
+        $(document).ready(function (e) {
+            var pageNum = $("#txtbox").val();
+            if (pageNum == 0) {
+                $("#Previous").prop("disabled", true);
+            }
+
+        });
+        $(document).on("click", "#Next", function (e) {
+            $("#Previous").prop("disabled", false);
+            var pageNum = $("#txtbox").val();
+            //var pagenumber = pageNo;
+            var no = parseInt(pageNum) + 1;
+            $("#txtbox").val(no);
+            var pageNum1 = $("#txtbox").val();
+            var staticPgNo = $("#pageNum").val();
+            var takeValue = staticPgNo;
+            no = pageNum1 - 1;
+            var skipValue = no * takeValue;
+            $.get("MasterParts/IndexDetailsForLassyLoading", { takeValue: takeValue, skipValue: skipValue, pageNo: no }, function (res) {
+                var data = '';
+                if (res != null) {
+                    $("#tbodyid").html('');
+                    for (var i = 1; i <= res.length; i++) {
+                        skipValue++;
+                        var indexdet = res[i - 1];
+                        data = data + '<tr><td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' + skipValue + '</td><td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' + indexdet.PartNo + '</td>"' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.OpNo + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.StdSetupTime + ' /' + indexdet.StdSetupTimeUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.StdCuttingTime + ' /' + indexdet.StdCuttingTimeUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.StdChangeoverTime + ' /' + indexdet.StdChangeoverTimeUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.InputWeight + ' /' + indexdet.InputWeightUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.OutputWeight + ' /' + indexdet.OutputWeightUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.MaterialRemovedQty + ' /' + indexdet.MaterialRemovedQtyUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Edit">' +
+                            '<button type="button" class = " blue  btn-lg fa fa-edit EditModel" style = "color:white;text-decoration:none" id="' + indexdet.PARTSSTSWID + '"></button>' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Delete">' +
+                            '<button type="button" class = "DeleteModel1 red btn-lg fa fa-trash" style = "color:white;text-decoration:none" id="' + indexdet.PARTSSTSWID + '"></button>' +
+
+                            '</td>' +
+
+                            '</tr>'
+
+                    }
+                    $("#tbodyid").append(data);
+                }
+                else {
+                    $("#Next").prop("disabled", true);
+                }
+            });
+        });
+</script>
+
+<script>
+        $(document).on("click", "#Previous", function (e) {
+            var pageNum = $("#txtbox").val();
+            //var pagenumber = pageNo;
+            var no = parseInt(pageNum) - 1;
+            $("#txtbox").val(no);
+            var pageNum1 = $("#txtbox").val();
+            var staticPgNo = $("#pageNum").val();
+            var takeValue = staticPgNo;
+            var skipValue = no * takeValue;
+            if (pageNum1 == 1) {
+                skipValue = 0;
+                $("#Previous").prop("disabled", true);
+            }
+
+            $.get("MasterParts/IndexDetailsForLassyLoading", { takeValue: takeValue, skipValue: skipValue, pageNo: no }, function (res) {
+                var data = '';
+                if (res != null) {
+                    $("#tbodyid").html('');
+                    for (var i = 1; i <= res.length; i++) {
+                        skipValue++;
+                        var indexdet = res[i - 1];
+                        data = data + '<tr><td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' + skipValue + '</td><td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' + indexdet.PartNo + '</td>"' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.OpNo + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.StdSetupTime + ' /' + indexdet.StdSetupTimeUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.StdCuttingTime + ' /' + indexdet.StdCuttingTimeUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.StdChangeoverTime + ' /' + indexdet.StdChangeoverTimeUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.InputWeight + ' /' + indexdet.InputWeightUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.OutputWeight + ' /' + indexdet.OutputWeightUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">' +
+                            '' + indexdet.MaterialRemovedQty + ' /' + indexdet.MaterialRemovedQtyUnit + '' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Edit">' +
+                            '<button type="button" class = " blue  btn-lg fa fa-edit EditModel" style = "color:white;text-decoration:none" id="' + indexdet.PARTSSTSWID + '"></button>' +
+                            '</td>' +
+                            '<td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Delete">' +
+                            '<button type="button" class = "DeleteModel1 red btn-lg fa fa-trash" style = "color:white;text-decoration:none" id="' + indexdet.PARTSSTSWID + '"></button>' +
+
+                            '</td>' +
+
+                            '</tr>'
+
+                    }
+                    $("#tbodyid").append(data);
+                }
+            });
+        });
+</script>
+
+<script>
+        //This model window is from https://jqueryui.com/dialog/#modal-confirmation
+        $(".DeleteModel").on("click", (function (e) {
+            var MyHref = $(this).prop('href');
+            e.preventDefault();
+            $("#dialog-confirm").dialog({
+                resizable: true,
+                height: 50,
+                width: 400,
+                modal: true,
+                buttons: {
+                    "Delete Parts W&T": function () {
+                        window.location.href = MyHref;
+                    },
+                    Cancel: function () {
+                        $(this).dialog("close");
+                        //We were getting method a hidden field value as null so
+                    }
+                }
+            });
+        }));
+</script>
+
+<script>
+        $(document).on("click", ".DeleteModel1", function (e) {
+            //$(".DeleteModel1").on("click", (function (e) {
+            var MyHref = $(this).attr('id');
+            var pageNum1 = $("#txtbox").val();
+            e.preventDefault();
+            $("#dialog-confirm").dialog({
+                resizable: true,
+                height: 50,
+                width: 400,
+                modal: true,
+                buttons: {
+                    "Delete Parts W&T": function () {
+                        $.get("MasterParts/DeleteDet", { id: MyHref }, function (res) {
+                            if (res == "Success") {
+                                var tValue = 10, sValue = pageNum1 * tValue, pageno = 0;
+                                window.location.href = "/MasterParts/IndexDetailsForLassyLoading?takeValue=" + tValue + "&skipValue=" + sValue + "&pageNo=" + pageno;
+                            }
+                        });
+                    },
+                    Cancel: function () {
+                        $(this).dialog("close");
+                        //We were getting method a hidden field value as null so
+                    }
+                }
+            });
+        });
+</script>
+
+<script>
+        $(document).on("click", ".EditModel", function (e) {
+            var MyHref = $(this).attr('id');
+            window.location.href = "/MasterParts/Edit?id=" + MyHref;
+        });
+</script>
+

@@ -1,0 +1,199 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutForRole.cshtml";
+}
+<!-- page content -->
+<div class="right_col" role="main">
+
+    <div class="xx_panel">
+        <div class="xx_content">
+            <input type="hidden" id="hdnSession" data-value="@Request.RequestContext.HttpContext.Session["UserId"]" />
+        </div>
+        <div class="example-box-wrapper dashboardmenu">
+            @* <div class="row">
+                    <div class="col-md-3">
+                        <a href="@Url.Action("Index", "MachineStatus" )" data-placement="bottom">
+                            <div class="tile-box tile-box-alt bg-blue">
+                                <div class="tile-header">
+                                    Machine Status
+
+                                </div>
+                                <div class="tile-content-wrapper">
+
+                                    <img src="~/images/machine-status.png" />
+                                </div>
+                                <div>
+                                    <div class="tile-footer tooltip-button">
+                                        view details
+                                        <i class="fa fa-arrow-right glyph-icon" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="@Url.Action("Index", "ProgramExecutionMonitor")" data-placement="bottom">
+                            <div class="tile-box tile-box-alt bg-purple">
+                                <div class="tile-header">
+                                    virtual HMI
+                                </div>
+                                <div class="tile-content-wrapper">
+
+                                    <img src="~/images/part-entry.png" />
+                                </div>
+
+                                <div class="tile-footer tooltip-button">
+                                    view details
+                                    <i class="fa fa-arrow-right glyph-icon" aria-hidden="true"></i>
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="@Url.Action("Index", "ProgramTransfer")" data-placement="bottom">
+                            <div class="tile-box tile-box-alt bg-azure">
+                                <div class="tile-header">
+                                    NC Program Transfer
+                                </div>
+                                <div class="tile-content-wrapper">
+
+                                    <img src="~/images/email.png" />
+                                </div>
+
+                                <div class="tile-footer tooltip-button">
+                                    view details
+                                    <i class="fa fa-arrow-right glyph-icon" aria-hidden="true"></i>
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" data-placement="bottom">
+                            <div class="tile-box tile-box-alt bg-green">
+                                <div class="tile-header">
+                                    Reports
+                                </div>
+                                <div class="tile-content-wrapper">
+
+                                    <img src="~/images/reports.png" />
+                                </div>
+
+                                <div class="tile-footer tooltip-button">
+                                    view details
+                                    <i class="fa fa-arrow-right glyph-icon" aria-hidden="true"></i>
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="@Url.Action("MachineList", "Machines")" data-placement="bottom">
+                            <div class="tile-box tile-box-alt bg-black-opacity">
+                                <div class="tile-header">
+                                    Machine Management
+                                </div>
+                                <div class="tile-content-wrapper">
+                                    <img src="~/images/machine.png" />
+                                </div>
+                                <div class="tile-footer tooltip-button">
+                                    view details
+                                    <i class="fa fa-arrow-right glyph-icon" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="@Url.Action("Index", "ProductionLoss")" data-placement="bottom">
+                            <div class="tile-box tile-box-alt bg-orange">
+                                <div class="tile-header">
+                                    Losses & Breakdown Configuration
+                                </div>
+                                <div class="tile-content-wrapper">
+                                    <img src="~/images/losses.png" />
+                                </div>
+                                <div class="tile-footer tooltip-button">
+                                    view details
+                                    <i class="fa fa-arrow-right glyph-icon" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="@Url.Action("Index", "Roles")" data-placement="bottom">
+                            <div class="tile-box tile-box-alt bg-danger">
+                                <div class="tile-header">
+                                    Role Configuration
+                                </div>
+                                <div class="tile-content-wrapper">
+                                    <img src="~/images/roles.png" />
+                                </div>
+                                <div class="tile-footer tooltip-button">
+                                    view details
+                                    <i class="fa fa-arrow-right glyph-icon" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="@Url.Action("Index", "PartsManagement")" data-placement="bottom">
+                            <div class="tile-box tile-box-alt bg-brown">
+                                <div class="tile-header">
+                                    General Configuration
+                                </div>
+                                <div class="tile-content-wrapper">
+                                    <img src="~/images/general.png" />
+                                </div>
+                                <div class="tile-footer tooltip-button">
+                                    view details
+                                    <i class="fa fa-arrow-right glyph-icon" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="@Url.Action("Calendar", "Calendar")" data-placement="bottom">
+                            <div class="tile-box tile-box-alt bg-parrot" style="color: #fff;border-color: #D500F9;background:#D500F9;">
+                                <div class="tile-header">
+                                    Holiday Managment
+                                </div>
+                                <div class="tile-content-wrapper">
+                                    <img src="~/images/calendar.png" />
+                                </div>
+                                <div class="tile-footer tooltip-button">
+                                    view details
+                                    <i class="fa fa-arrow-right glyph-icon" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="@Url.Action("UserManagement", "User")" data-placement="bottom">
+                            <div class="tile-box tile-box-alt bg-parrot" style="color: #fff;border-color: #F535AA;background:#F535AA;">
+                                <div class="tile-header">
+                                    User Management
+                                </div>
+                                <div class="tile-content-wrapper">
+                                    <img src="~/images/User-Management.png" />
+                                </div>
+                                <div class="tile-footer tooltip-button">
+                                    view details
+                                    <i class="fa fa-arrow-right glyph-icon" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>*@
+        </div>
+    </div>
+</div>
+<!-- /page content -->
+
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+<script src="~/Scripts/MCAdmin/Dashboard.js"></script>

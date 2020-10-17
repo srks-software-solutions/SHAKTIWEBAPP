@@ -1,0 +1,219 @@
+﻿
+@{
+    ViewBag.Title = "ManMachineTicket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    List<SelectListItem> ProdFAI = new List<SelectListItem>();
+
+    ProdFAI.Add(new SelectListItem
+    {
+        Text = "OverAll",
+        Value = "OverAll",
+    });
+    ProdFAI.Add(new SelectListItem
+    {
+        Text = "Production",
+        Value = "Production",
+    });
+    ProdFAI.Add(new SelectListItem
+    {
+        Text = "FAI",
+        Value = "FAI",
+    });
+    ProdFAI.Add(new SelectListItem
+    {
+        Text = "Others",
+        Value = "Others",
+    });
+    //ProdFAI.Add(new SelectListItem
+    //{
+    //    Text = "DeltaFAI",
+    //    Value = "DeltaFAI",
+    //});
+    //ProdFAI.Add(new SelectListItem
+    //{
+    //    Text = "ProtoType",
+    //    Value = "ProtoType",
+    //});
+    //ProdFAI.Add(new SelectListItem
+    //{
+    //    Text = "TASLRequirement",
+    //    Value = "TASLRequirement",
+    //});
+    //ProdFAI.Add(new SelectListItem
+    //{
+    //    Text = "InWork",
+    //    Value = "InWork",
+    //});
+    //ProdFAI.Add(new SelectListItem
+    //{
+    //    Text = "ReleasedLev1",
+    //    Value = "ReleasedLev1",
+    //});
+    //ProdFAI.Add(new SelectListItem
+    //{
+    //    Text = "ProtoTypeLev1",
+    //    Value = "ProtoTypeLev1"
+    //});
+}
+
+<div class="right_col" role="main">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Job Report Generation</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            @using (Html.BeginForm("JobReport", "Reports", FormMethod.Post, new { @class = "form-horizontal form-label-left", enctype = "multipart/form-data" }))
+            {
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            @*<label class="col-sm-new-1 control-label">Plant</label>*@
+                            <div class="col-sm-new-3">
+                                @Html.DropDownList("PlantID", null, "--Select Plant--", new { @id = "PlantID", @class = "form-control", @tabindex = "2", @name = "PlantID", @required = "required", @value = ViewData["PlantID"] })
+                            </div>
+                            @*<label class="col-sm-new-1 control-label">Shop</label>*@
+                            <div class="col-sm-new-3">
+                                @Html.DropDownList("ShopID", null, "--Select Section--", new { @id = "ShopID", @class = "form-control", @tabindex = "2", @name = "ShopID", @required = "required", @value = ViewData["ShopID"] })
+                            </div>
+                            @*<label class="col-sm-new-1 control-label">Cell</label>*@
+                            <div class="col-sm-new-3">
+                                @Html.DropDownList("CellID", null, "--Select Cell--", new { @id = "CellID", @class = "form-control", @tabindex = "2", @name = "CellID", @value = ViewData["CellID"] })
+                            </div>
+                            @*<label class="col-sm-new-1 control-label">Machine</label>*@
+                            <div class="col-sm-new-3">
+                                @Html.DropDownList("WorkCenterID", null, "--Select Machine--", new { @id = "WorkCenterID", @class = "form-control", @tabindex = "2", @name = "WorkCenterID", @value = ViewData["WorkCenterID"] })
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <label class="col-sm-1 control-label" style="margin-top: -8px;">Operator</label>
+                            <div class="col-sm-new-3">
+                                @Html.TextBox("OperatorName", null, new { @id = "OperatorName", @name = "OperatorName", @class = "second ", @style = "margin-left: 2%;aria-expanded:false;width:20%", @placeholder = "Enter OperatorName" })
+                                @*@Html.DropDownList("MachineID", null, "--Select Machine--", new { @id = "MachineID", @class = "form-control", @tabindex = "2", @name = "WorkCenterID", @value = ViewData["MachineID"] })*@
+                            </div>
+                            <label class="col-sm-new-1 control-label" style="margin-top: -8px;">Prod/FAI</label>
+                            <div class="col-sm-new-3">
+                                @Html.DropDownList("ProdFAI", ProdFAI, new { @id = "ProdFAI", @name = "ProdFAI", @class = "stacked-label", @style = "margin-left: 2%;aria-expanded:false;width:50%" })
+                                @*@Html.DropDownList("MachineID", null, "--Select Machine--", new { @id = "MachineID", @class = "form-control", @tabindex = "2", @name = "WorkCenterID", @value = ViewData["MachineID"] })*@
+                            </div>
+                        </div>
+                        <div>
+                            <label class="control-label1 col-md-2 col-sm-3 col-xs-12" style="display:none;">Start Date</label>
+                            <div class="col-md-2 col-sm-6 col-xs-12">
+                                <div class="">
+                                    <div class='input-group date myDatepicker4'>
+                                        <input type="text" id="FromDate" name="StartDate" class="form-control myDatepicker4" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <label class="control-label1 col-md-2 col-sm-3 col-xs-12" style="display:none;">End Date</label>
+                            <div class="col-md-2 col-sm-6 col-xs-12">
+                                <div class="">
+                                    <div class='input-group date myDatepicker4'>
+                                        <input type="text" id="ToDate" name="EndDate" class="form-control myDatepicker4" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-new col-sm-new-2 ListOfPrograms">GENERATE</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<!-- FastClick -->
+<script src="~/vendors/fastclick/lib/fastclick.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<!-- validator -->
+<script src="~/vendors/validator/validator.js"></script>
+
+<script src="~/vendors/chosen-select.js" type="text/javascript"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="~/vendors/moment/min/moment.min.js"></script>
+<script src="~/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap-datetimepicker -->
+<script src="~/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<link href="~/css/fileinput.css" rel="stylesheet" />
+<link href="~/css/fileinput.min.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    $(function () {
+        $('.chosen-select').chosen();
+    });
+</script>
+@*<script type="text/javascript">
+        /* Timepicker */
+        $('.myDatepicker3').datetimepicker({ format: 'hh:mm A' });
+    </script>*@
+<script type="text/javascript">
+    $('.myDatepicker4').datetimepicker({
+        format: 'YYYY-MM-DD',
+        maxDate: moment()
+    });
+</script>
+
+
+<script>
+    //Cascading
+    $("#PlantID").on("change", function () {
+        $("#ShopID").empty();
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#PlantID option:selected").val();
+        $.getJSON("/ShiftPlanner/GetShop", { PlantID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#ShopID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                //$("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#ShopID").prepend("<option value='' selected='selected'>All</option>");
+            $("#CellID").prepend("<option value='' selected='selected'>All</option>");
+            $("#WorkCenterID").prepend("<option value='' selected='selected'>All</option>");
+        });
+    });
+
+
+    $("#ShopID").on("change", function () {
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#ShopID option:selected").val();
+        $.getJSON("/ShiftPlanner/GetCell", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#CellID").prepend("<option value='' selected='selected'>All</option>");
+            $("#WorkCenterID").prepend("<option value='' selected='selected'>All</option>");
+        });
+    });
+
+
+    $("#CellID").on("change", function () {
+        $("#WorkCenterID").empty();
+        var selectedID = $("#CellID option:selected").val();
+        //alert(selectedID);
+        $.getJSON("/ShiftPlanner/GetWC_Cell", { CellID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'>All</option>");
+        });
+    });
+</script>

@@ -1,0 +1,269 @@
+﻿@model IList<SRKSDemo.Models.UnIdentifiedLossCorrection>
+@{
+    ViewBag.Title = "UnitWorks - Index";
+    Layout = "~/Views/Shared/_LayoutForMaster.cshtml";
+    var slno = 1;
+}
+
+@*<link href="~/Content1/SuperTable/jquery-ui.css" rel="stylesheet" />
+<link href="~/Content1/SuperTable/dataTables.jqueryui.css" rel="stylesheet" />
+<script src="~/Content1/SuperTable/jquery.dataTables.min.js"></script>
+<script src="~/Content1/SuperTable/dataTables.jqueryui.js"></script>*@
+
+<div class="wrp clearfix">
+    <div class="fluid">
+        <div class="wrapper">
+            <section class="content">
+                <div class="row">
+                    <div class="widget-content pad20f">
+                        <article class="widget widget__form">
+                            <div class="widget-header">
+                                <div class="widget-title" style="font-size: 125%">
+                                    UnIdentified Loss List 
+                                </div>
+                            </div>
+                            <!-- /widget-header -->
+                            <div class="widget-content pad20f">
+                                <div class="widget__content table-responsive">
+                                    @using (Html.BeginForm("Index", "UnIdentifiedLossEntry", FormMethod.Get, new { enctype = "multipart/form-data" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true) 
+                                        
+                                        <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; padding-top: 2%; margin-left: 2%; color: blue; font-style: oblique">Plant Name</label>
+                                        <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; margin-left: 2%; width: 20%; color: blue; font-style: oblique">Shop Name</label>
+                                        <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; margin-left: 2%; color: blue; font-style: oblique">Cell Name</label>
+                                        <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; margin-left: 2%; width: 20%; color: blue; font-style: oblique">WorkCenter Name</label>
+
+                                        @Html.DropDownList("PlantID", null, "--Select Plant--", new { @id = "PlantID", @class = "stacked-label", @name = "PlantID", @required = "required", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["PlantID"] })
+                                        @Html.DropDownList("ShopID", null, "--Select Shop--", new { @id = "ShopID", @class = "stacked-label", @name = "ShopID", @style = "margin-left: 2%;aria-expanded:false;width:20%", @required = "required", @value = ViewData["ShopID"] })
+                                        @Html.DropDownList("CellID", null, "--Select Cell--", new { @id = "CellID", @class = "stacked-label", @name = "CellID", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["CellID"] })
+                                        @Html.DropDownList("WorkCenterID", null, "--Select WC--", new { @id = "WorkCenterID", @class = "stacked-label", @name = "WorkCenterID", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["WorkCenterID"] })
+                                        <br />
+                                        <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; margin-left: 2%; width: 20%; color: blue; font-style: oblique">Date of Loss Entry</label>
+                                         @Html.TextBox("CDate", null, new { @id = "CDate", @class = "stacked-label fdate", @name = "CDate",  @style = "margin-left: 2%;width:20%", @placeholder= "Select Date" })
+                                       
+                                        <br />
+                                        <input type="submit" id="fetch" value="Fetch" style="width:20%;margin-left:24%;font-weight:bolder;font-size:medium;background-color:gray;color:black" class="btn btn-primary" />
+                                        
+                                    }
+
+                                    @using (Html.BeginForm("Index", "UnIdentifiedLossEntry", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true) 
+                                        if (Model != null)
+                                        {
+                                        <table id="jqueryTable" class="table table-condensed table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sl No.</th>
+                                                    <th style="display: none">LossID</th>
+                                                    <th>Machine Name</th>
+                                                    <th>Loss Code Lvl1</th>
+                                                    <th>Loss Code Lvl2</th>
+                                                    <th>Loss Code Lvl3</th>
+                                                    <th>Start Time </th>
+                                                    <th>End Time </th>
+                                                     <th>Duration </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{
+                                                    
+                                            string PrvMacID = null;
+                                                    }
+                                                @for (int r = 0; r < Model.Count(); r++)
+                                                {
+                                                    if (PrvMacID == null)
+                                                    {
+                                                        PrvMacID = Model[r].MachineName;
+                                                    }
+                                                    else if (Model[r].MachineName != PrvMacID)
+                                                    {
+                                                        <tr>
+                                                            <td>&nbsp</td>
+                                                            <td>&nbsp</td>
+                                                            <td>&nbsp</td>
+                                                            <td>&nbsp</td>
+                                                            <td>&nbsp</td>
+                                                            <td>&nbsp</td>
+                                                            <td>&nbsp</td>
+                                                            <td>&nbsp</td>
+                                                        </tr>
+                                                        slno++;
+                                                        PrvMacID = Model[r].MachineName;
+                                                    }
+                                                    
+                                                    <tr>
+                                                        <td>@slno </td>
+                                                        <td style="display: none">@Html.TextBoxFor(modelItem => Model[r].LossID) </td>
+                                                        <td>@Html.DisplayFor(modelItem => Model[r].MachineName) </td>
+
+                                                        @*<td>@Html.DisplayFor(modelItem => item.Level1) </td>
+                                                            <td>@Html.DisplayFor(modelItem => item.Level2) </td>
+                                                            <td>@Html.DisplayFor(modelItem => item.Level3) </td>*@
+                                                        <td>
+                                                            @*@Html.DropDownList("Level1", null, "--Select Level1--", new { @id = "Level1", @name = "Level1", @class = "Level1", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = ViewData["Level1"] })*@
+                                                            @Html.DropDownListFor(model => model[r].Level1, ViewData["Level1"] as IEnumerable<SelectListItem>, "--Select Level_1--", new { @id = "Level1", @class = "stacked-label Level1", @name = "Level1", @style = "margin-left: 2%;aria-expanded:false;width:89.7%" })
+                                                        </td>
+                                                        <td>
+                                                            @*@Html.DropDownList("Level2", null, "--Select Level2--", new { @id = "Level2", @name = "Level2", @class = "Level2", @style = "aria-expanded:false;width:89.7%", @value = ViewData["Level2"] })*@
+                                                            @Html.DropDownListFor(model => model[r].Level2, ViewData["Level2"] as IEnumerable<SelectListItem>, "--Select Level_2--", new { @id = "Level2", @class = "stacked-label Level2", @name = "Level2", @style = "margin-left: 2%;aria-expanded:false;width:89.7%" })
+                                                        </td>
+                                                        <td>
+                                                            @*@Html.DropDownList("Level3", null, "--Select Level3--", new { @id = "Level3", @name = "Level3", @class = "Level3",@style = "aria-expanded:false;width:89.7%", @value = ViewData["Level3"] })*@
+                                                            @Html.DropDownListFor(model => model[r].Level3, ViewData["Level3"] as IEnumerable<SelectListItem>, "--Select Level_3--", new { @id = "Level3", @class = "stacked-label Level3", @name = "Level3", @style = "margin-left: 2%;aria-expanded:false;width:89.7%" })
+                                                        </td>
+                                                        <td>@Html.DisplayFor(modelItem => Model[r].SDateTime) </td>
+                                                        <td>@Html.DisplayFor(modelItem => Model[r].EDateTime)  </td>
+                                                        <td>@{
+                                                    TimeSpan TimeSpan = Model[r].EDateTime.Subtract(Model[r].SDateTime);
+                                                        }
+                                                            @TimeSpan
+                                                        </td>
+                                                    </tr>
+                                                    slno = slno + 1;
+                                                }
+                                            </tbody>
+                                        </table>
+                                        }
+                                        else
+                                        {
+                                        <p style="color: red">No Data is Available</p>
+                                        }
+                                        <input type="submit" id="submit" value="Submit" style="width:20%;margin-left:24%;font-weight:bolder;font-size:medium;background-color:gray;color:black" class="btn btn-primary" />
+                                        
+                                    }
+                                </div>
+
+                            </div>
+                            <!-- /widget-content -->
+                        </article>
+                    </div>
+                </div>
+                <!-- /widget -->
+            </section>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    .ui-datepicker .ui-datepicker-title select{color: #000;}
+
+</style>
+
+<link href="~/datepicker/css/datepicker.css" rel="stylesheet" />
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/Content1/jquery.datetimepicker.js" type="text/javascript"></script>
+<script>
+    $(".fdate").keypress(function (event) { event.preventDefault(); });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.fdate').datepicker({
+            dateFormat: "yy-mm-dd",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-1:+0"
+        });
+
+    });
+</script>
+
+@*Losses Levels Changes*@
+<script>
+    $(".Level1").change(function (e) {
+        $(this).parent("td").siblings().find(".Level2").empty();
+        $(this).parent("td").siblings().find(".Level3").empty();
+        //$(".Level2").empty();
+        //$(".Level3").empty();
+        var selectedID = $(this).val();
+        //alert(selectedID)
+        var Blah = $(this);
+        $.getJSON("/UnIdentifiedLossEntry/GetLevel2", { Id: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                if (index == 0) {
+                    Blah.parent("td").siblings().find(".Level2").each(function (index) {
+                        $(this).append("<option value='0'> --Select Level 2-- </option>");
+                        $(this).append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                    });
+                } else {
+                    Blah.parent("td").siblings().find(".Level2").each(function (index) {
+                        $(this).append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                    });
+                }
+            });
+        });
+    });
+</script>
+<script>
+    $(".Level2").change(function (e) {
+        $(this).parent("td").siblings().find(".Level3").empty();
+        var selectedID = $(this).val();
+        var Blah = $(this);
+        $.getJSON("/UnIdentifiedLossEntry/GetLevel3", { Id: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                if (index == 0) {
+                    Blah.parent("td").siblings().find(".Level3").each(function (index) {
+                        $(this).append("<option value='0'> --Select Level 3-- </option>");
+                        $(this).append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                    });
+                } else {
+                    Blah.parent("td").siblings().find(".Level3").each(function (index) {
+                        $(this).append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+@* Mac Hierarchy *@
+<script>
+    $("#PlantID").on("change", function () {
+        $("#ShopID").empty();
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#PlantID option:selected").val();
+        $.getJSON("/ShiftPlanner/GetShop", { PlantID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#ShopID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#ShopID").prepend("<option value='' selected='selected'></option>");
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+    });
+
+    $("#ShopID").on("change", function () {
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#ShopID option:selected").val();
+        $.getJSON("/ShiftPlanner/GetCell", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#CellID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/ShiftPlanner/GetWC_Shop", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+
+    });
+
+    $("#CellID").on("change", function () {
+        $("#WorkCenterID").empty();
+        var selectedID = $("#CellID option:selected").val();
+        $.getJSON("/ShiftPlanner/GetWC_Cell", { CellID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+    });
+</script>

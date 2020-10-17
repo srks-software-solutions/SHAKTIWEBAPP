@@ -1,0 +1,51 @@
+﻿@model SRKSDemo.Server_Model.sidebar_menus
+@{
+    ViewBag.Title = "CreateSubMenus";
+    Layout = "~/Views/Shared/_LayoutForRole.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Create SubMenus</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        @using (Html.BeginForm("CreateSubMenus", "Menu", FormMethod.Post, new { @class = "form-horizontal form-label-left" }))
+                        {
+                            <input type="hidden" name="MenuId" value="@ViewBag.Menus" />
+
+                            <div class="row row-space">
+                                <label class="col-sm-2 control-label">SubMenu Name</label>
+                                <div class="col-sm-3">
+                                    @Html.TextBoxFor(model => model.SubMenuName, new { @id = "SubMenuName", @class = "form-control", @name = "SubMenuName", @placeholder = "Enter SubMenu Name", @required = "required" })
+                                </div>
+                                <label class="col-sm-2 control-label">SubMenu URL</label>
+                                <div class="col-sm-3">
+                                    @Html.TextBoxFor(model => model.SubMenuURL, new { @id = "SubMenuUrl", @class = "form-control", @name = "SubMenuURL", @placeholder = "Enter SubMenu URL starting with /", @required = "required" })
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding: 0 10px;">
+                                <a href="/Menu/SubMenusList" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-chevron-left"></span> Back</a>
+                                <button id="btnSubmit" type="submit" class="btn btn-info submission pull-right"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

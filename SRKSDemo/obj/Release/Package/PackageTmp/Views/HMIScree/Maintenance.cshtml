@@ -1,0 +1,124 @@
+﻿@model i_facilitylibrary.DAL.tblbreakdown
+@{ ViewBag.Title = "Maintenance"; Layout = "~/Views/Shared/Layoutmimics.cshtml"; }
+@using (Html.BeginForm())
+{@Html.AntiForgeryToken() @Html.ValidationSummary(true) <div class="wrp clearfix">
+    <div class="fluid">
+        <div style="width: 100%">
+            @Html.ActionLink("Back To HMIScreen", "Index", new { }, new { @class = "btn orange btn-lg ", @style = "margin-left:2%;color:black;width:15vw;height:70%;backgroundcolor:red;font-size:1vw" })
+            <div style="margin-left: 15vw; display: inline"></div>
+            @{ if (ViewBag.roleid == 3)
+                { <span style="font-size: 1.5vw; color: orange">@ViewBag.macDispName</span>}
+            else
+            { <span style="font-size: 1.5vw; color: black">@ViewBag.macDispName</span>
+        }
+            }
+        </div>
+        <div class="widget grid12">
+            <div class="widget-header">
+                <div class="widget-title">
+                    Planned Maintenance Details
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content pad20f">
+                @if (TempData["Enable"] != null)
+                {
+                    <label for="input-1" class="stacked-label" disabled="disabled" style="resize: horizontal; width: 20%; display: inline">Planned Maintenance Reason</label>
+                    @*@Html.DropDownList("BreakDownCode", (SelectList)ViewData["BreakDownCode"], "--Select Setting--", new { disabled = "disabled", @id = "BreakDownCode", @class = "form-control", @name = "BreakDownCode", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.BreakDownCode)*@
+                    @Html.DropDownList("BreakDownCode", (SelectList)ViewData["BreakDownCode"], new { disabled = "disabled", @id = "BreakDownCode", @class = "form-control", @name = "BreakDownCode", @required = "required", @value = @ViewData["BreakDownCode"] })
+                    // @Html.ValidationMessageFor(model => model.BreakDownCode)
+                }
+                else
+                {
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; display: inline">Planned Maintenance Reason</label>
+                    @Html.DropDownListFor(model => model.BreakDownCode, ViewData["BreakDownCode"] as IList<SelectListItem>, "--Select Maintenance--", new { @id = "BreakDownCode", @class = "form-control", @name = "BreakDownCode", @required = "required" })
+                    //@Html.DropDownList("BreakDownCode", (SelectList)ViewData["BreakDownCode"], "--Select Maintenance--", new { @id = "BreakDownCode", @class = "form-control", @name = "BreakDownCode", @required = "required" })
+                    // @Html.ValidationMessageFor(model => model.BreakDownCode)
+                }
+                <div style="width: 20%; display: inline-block; height: inherit"></div>
+
+                @if (TempData["Enable"] != null)
+                {
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input name="submit" type="submit" value="Start" id="submit" class="btn green btn-lg  inverse" disabled="disabled" style="width: 10%; height: inherit; margin-top: 2%; margin-left: 0%; font-size: 100%; font-family: Calibri" />
+                }
+                else
+                {
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input name="submit" type="submit" value="Start" id="submit" class="btn green btn-lg  inverse" style="width: 10%; height: inherit; margin-top: 2%; margin-left: 0%; font-size: 100%; font-family: Calibri" />
+                }
+                @if (TempData["Enable"] == null)
+                {
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input name="Save" type="submit" value="End" id="Save" class="btn green btn-lg  inverse" disabled="disabled" style="width: 10%; height: inherit; margin-top: 2%; margin-left: 0%; font-size: 100%; font-family: Calibri;" />
+                }
+                else
+                {
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input name="Save" type="submit" value="End" id="Save" class="btn green btn-lg  inverse" style="width: 10%; height: inherit; margin-top: 2%; margin-left: 0%; font-size: 100%; font-family: Calibri" />
+                }
+
+            </div>
+            <!-- /widget-content -->
+        </div>
+        <!-- /widget -->
+    </div>
+</div>
+@Html.HiddenFor(model => model.BreakdownID)
+@Html.HiddenFor(model => model.StartTime)
+@Html.HiddenFor(model => model.MachineID)
+@Html.HiddenFor(model => model.CorrectedDate)
+@Html.HiddenFor(model => model.BreakDownCode)
+@Html.HiddenFor(model => model.MessageCode)
+@Html.HiddenFor(model => model.MessageDesc)
+@Html.HiddenFor(model => model.MachineID)
+@Html.HiddenFor(model => model.Shift)
+}
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/Content1/SuperTable/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/jquery.dataTables.js"></script>
+<script>setTimeout(function () { window.location.reload(); }, 60000 * 1)</script>
+
+@*//To bring it to focus*@
+@*<script type="text/javascript">
+        function myFunction() {
+            window.focus();
+            window.open('http://www.google.com', '_blank').close();
+            // alert("GotIt!")//now doesn't work in chrome.
+        } setInterval(myFunction, 300000);
+    </script>*@
+
+@*//script to checkfor ShiftEnd.*@
+<script type="text/javascript">
+    var roleid = parseInt('@Session["RoleID"]');
+    //alert(roleid)
+    if (roleid == 3) {
+        function checkShiftEnd() {
+            var j = "breakdownlist";
+            debugger;
+            var path = ' @Url.Action("checkShiftEnd", "ManualHMIScreen")';
+
+            $.getJSON(path, { rep: j }, function (data) {
+                if (data != null) {
+                    var MsgData = $.parseJSON(data);
+                    if (MsgData == "yes") {
+                        //alert("yes")
+                        window.open('http://www.google.com', '_blank').close();
+                    }
+                    else {
+                        //alert("no")
+                    }
+                }
+                else {
+                    // alert("Not Found");
+                }
+            });
+
+        } setInterval(checkShiftEnd, 59000);
+    }
+</script>
+

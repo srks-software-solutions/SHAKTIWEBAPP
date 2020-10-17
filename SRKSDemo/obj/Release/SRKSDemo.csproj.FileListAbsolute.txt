@@ -1,0 +1,1562 @@
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\ApplicationInsights.config
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\SRKSDemo.dll.config
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\SRKSDemo.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\SRKSDemo.pdb
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\csc.exe
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\csc.exe.config
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\csc.rsp
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\csi.exe
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\csi.rsp
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\System.AppContext.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\vbc.exe
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\vbc.exe.config
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\vbc.rsp
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Antlr3.Runtime.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\EntityFramework.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\EntityFramework.SqlServer.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\EPPlus.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\HiQPdf.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Web.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Newtonsoft.Json.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\System.Web.Helpers.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\System.Web.Mvc.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\System.Web.Optimization.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\System.Web.Razor.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\WebGrease.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\EntityFramework.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\EntityFramework.SqlServer.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\EPPlus.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\HiQPdf.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\System.Web.Helpers.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\System.Web.Mvc.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\System.Web.Optimization.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\System.Web.Razor.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Newtonsoft.Json.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Antlr3.Runtime.pdb
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Web.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\HiQPdf.dep
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\bin\HiQPdf.rda
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.dll
+C:\Users\SRKSDEV007\source\repos\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.pdb
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\ApplicationInsights.config
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\SRKSDemo.dll.config
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\SRKSDemo.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\SRKSDemo.pdb
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\csc.exe
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\csc.exe.config
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\csc.rsp
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\csi.exe
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\csi.rsp
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\System.AppContext.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\vbc.exe
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\vbc.exe.config
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\vbc.rsp
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Antlr3.Runtime.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\EntityFramework.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\EntityFramework.SqlServer.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\EPPlus.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\HiQPdf.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Web.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Newtonsoft.Json.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\System.Web.Helpers.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\System.Web.Mvc.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\System.Web.Optimization.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\System.Web.Razor.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\WebGrease.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\EntityFramework.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\EntityFramework.SqlServer.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\EPPlus.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\HiQPdf.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\System.Web.Helpers.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\System.Web.Mvc.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\System.Web.Optimization.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\System.Web.Razor.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Newtonsoft.Json.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Antlr3.Runtime.pdb
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Web.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\HiQPdf.dep
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\bin\HiQPdf.rda
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.dll
+D:\SRKS\Projects\2019\Demos\Maini Auto\NewDemoDetails\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.pdb
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\ApplicationInsights.config
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\SRKSDemo.dll.config
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\SRKSDemo.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\SRKSDemo.pdb
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\csc.exe
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\csc.exe.config
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\csc.rsp
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\csi.exe
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\csi.rsp
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\System.AppContext.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\vbc.exe
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\vbc.exe.config
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\vbc.rsp
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Antlr3.Runtime.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\EntityFramework.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\EntityFramework.SqlServer.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\EPPlus.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\HiQPdf.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Web.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Newtonsoft.Json.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\System.Web.Helpers.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\System.Web.Mvc.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\System.Web.Optimization.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\System.Web.Razor.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\WebGrease.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\EntityFramework.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\EntityFramework.SqlServer.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\EPPlus.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\HiQPdf.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Newtonsoft.Json.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\System.Web.Helpers.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\System.Web.Mvc.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\System.Web.Optimization.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\System.Web.Razor.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Antlr3.Runtime.pdb
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Web.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\HiQPdf.dep
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\bin\HiQPdf.rda
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.dll
+E:\Vignesh\DEMO20190625\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.pdb
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\ApplicationInsights.config
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\SRKSDemo.dll.config
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\SRKSDemo.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\SRKSDemo.pdb
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\csc.exe
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\csc.exe.config
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\csc.rsp
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\csi.exe
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\csi.rsp
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\System.AppContext.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\vbc.exe
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\vbc.exe.config
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\vbc.rsp
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Antlr3.Runtime.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\EntityFramework.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\EntityFramework.SqlServer.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\EPPlus.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\HiQPdf.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Web.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Newtonsoft.Json.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\System.Web.Helpers.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\System.Web.Mvc.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\System.Web.Optimization.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\System.Web.Razor.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\WebGrease.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\EntityFramework.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\EntityFramework.SqlServer.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\EPPlus.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\HiQPdf.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Newtonsoft.Json.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\System.Web.Helpers.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\System.Web.Mvc.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\System.Web.Optimization.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\System.Web.Razor.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Antlr3.Runtime.pdb
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Web.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\HiQPdf.dep
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\bin\HiQPdf.rda
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.dll
+D:\Ashok\PLM\LATEST DEMO APPLICATION\SRKSDemolatest\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.pdb
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\ApplicationInsights.config
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\SRKSDemo.dll.config
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\SRKSDemo.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\SRKSDemo.pdb
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\csc.exe
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\csc.exe.config
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\csc.rsp
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\csi.exe
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\csi.rsp
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\System.AppContext.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\vbc.exe
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\vbc.exe.config
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\vbc.rsp
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Antlr3.Runtime.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\EntityFramework.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\EntityFramework.SqlServer.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\EPPlus.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\HiQPdf.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Web.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Newtonsoft.Json.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\System.Web.Helpers.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\System.Web.Mvc.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\System.Web.Optimization.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\System.Web.Razor.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\WebGrease.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\EntityFramework.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\EntityFramework.SqlServer.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\EPPlus.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\HiQPdf.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Newtonsoft.Json.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\System.Web.Helpers.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\System.Web.Mvc.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\System.Web.Optimization.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\System.Web.Razor.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Antlr3.Runtime.pdb
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Web.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\HiQPdf.dep
+D:\New folder (2)\SRKSDemo\SRKSDemo\bin\HiQPdf.rda
+D:\New folder (2)\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+D:\New folder (2)\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+D:\New folder (2)\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+D:\New folder (2)\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.dll
+D:\New folder (2)\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.pdb
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\ApplicationInsights.config
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\SRKSDemo.dll.config
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\SRKSDemo.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\SRKSDemo.pdb
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\csc.exe
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\csc.exe.config
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\csc.rsp
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\csi.exe
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\csi.rsp
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\System.AppContext.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\vbc.exe
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\vbc.exe.config
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\vbc.rsp
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Antlr3.Runtime.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\EntityFramework.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\EntityFramework.SqlServer.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\EPPlus.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\HiQPdf.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Web.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Newtonsoft.Json.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\System.Web.Helpers.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\System.Web.Mvc.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\System.Web.Optimization.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\System.Web.Razor.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\WebGrease.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\EntityFramework.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\EntityFramework.SqlServer.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\EPPlus.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\HiQPdf.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Newtonsoft.Json.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\System.Web.Helpers.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\System.Web.Mvc.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\System.Web.Optimization.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\System.Web.Razor.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Antlr3.Runtime.pdb
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Microsoft.AI.Web.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\HiQPdf.dep
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\bin\HiQPdf.rda
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.dll
+E:\VigneshSRKSDemo\20190704SRKSDemo\SRKSDemo\SRKSDemo\obj\Release\SRKSDemo.pdb
+E:\Vignesh\Maini20190712\SRKSDemo\bin\ApplicationInsights.config
+E:\Vignesh\Maini20190712\SRKSDemo\bin\SRKSDemo.dll.config
+E:\Vignesh\Maini20190712\SRKSDemo\bin\SRKSDemo.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\SRKSDemo.pdb
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\csc.exe
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\csc.exe.config
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\csc.rsp
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\csi.exe
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\csi.rsp
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\System.AppContext.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\vbc.exe
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\vbc.exe.config
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\vbc.rsp
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+E:\Vignesh\Maini20190712\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Antlr3.Runtime.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\EntityFramework.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\EntityFramework.SqlServer.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\EPPlus.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\HiQPdf.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Microsoft.AI.Web.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Newtonsoft.Json.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\System.Web.Helpers.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\System.Web.Mvc.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\System.Web.Optimization.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\System.Web.Razor.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\System.Web.WebPages.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\WebGrease.dll
+E:\Vignesh\Maini20190712\SRKSDemo\bin\EntityFramework.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\EntityFramework.SqlServer.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\EPPlus.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\HiQPdf.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Newtonsoft.Json.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\System.Web.Helpers.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\System.Web.Mvc.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\System.Web.Optimization.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\System.Web.Razor.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\System.Web.WebPages.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Antlr3.Runtime.pdb
+E:\Vignesh\Maini20190712\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Microsoft.AI.Web.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Vignesh\Maini20190712\SRKSDemo\bin\HiQPdf.dep
+E:\Vignesh\Maini20190712\SRKSDemo\bin\HiQPdf.rda
+E:\Vignesh\Maini20190712\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+E:\Vignesh\Maini20190712\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+E:\Vignesh\Maini20190712\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+E:\Vignesh\Maini20190712\SRKSDemo\obj\Release\SRKSDemo.dll
+E:\Vignesh\Maini20190712\SRKSDemo\obj\Release\SRKSDemo.pdb
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\ApplicationInsights.config
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\SRKSDemo.dll.config
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\SRKSDemo.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\SRKSDemo.pdb
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\csc.exe
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\csc.exe.config
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\csc.rsp
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\csi.exe
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\csi.rsp
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\System.AppContext.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\vbc.exe
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\vbc.exe.config
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\vbc.rsp
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Antlr3.Runtime.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\EntityFramework.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\EntityFramework.SqlServer.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\EPPlus.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\HiQPdf.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Microsoft.AI.Web.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Newtonsoft.Json.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\System.Web.Helpers.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\System.Web.Mvc.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\System.Web.Optimization.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\System.Web.Razor.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\System.Web.WebPages.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\WebGrease.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\EntityFramework.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\EntityFramework.SqlServer.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\EPPlus.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\HiQPdf.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Newtonsoft.Json.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\System.Web.Helpers.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\System.Web.Mvc.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\System.Web.Optimization.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\System.Web.Razor.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\System.Web.WebPages.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Antlr3.Runtime.pdb
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Microsoft.AI.Web.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\HiQPdf.dep
+D:\Vignesh_Titan\titan20190808\SRKSDemo\bin\HiQPdf.rda
+D:\Vignesh_Titan\titan20190808\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+D:\Vignesh_Titan\titan20190808\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+D:\Vignesh_Titan\titan20190808\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+D:\Vignesh_Titan\titan20190808\SRKSDemo\obj\Release\SRKSDemo.dll
+D:\Vignesh_Titan\titan20190808\SRKSDemo\obj\Release\SRKSDemo.pdb
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\ApplicationInsights.config
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\SRKSDemo.dll.config
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\SRKSDemo.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\SRKSDemo.pdb
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\csc.exe
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\csc.exe.config
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\csc.rsp
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\csi.exe
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\csi.rsp
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\System.AppContext.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\vbc.exe
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\vbc.exe.config
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\vbc.rsp
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Antlr3.Runtime.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\EntityFramework.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\EntityFramework.SqlServer.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\EPPlus.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\HiQPdf.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Microsoft.AI.Web.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Newtonsoft.Json.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\System.Web.Helpers.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\System.Web.Mvc.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\System.Web.Optimization.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\System.Web.Razor.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\System.Web.WebPages.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\WebGrease.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\EntityFramework.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\EntityFramework.SqlServer.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\EPPlus.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\HiQPdf.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Newtonsoft.Json.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\System.Web.Helpers.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\System.Web.Mvc.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\System.Web.Optimization.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\System.Web.Razor.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\System.Web.WebPages.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Antlr3.Runtime.pdb
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Microsoft.AI.Web.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\HiQPdf.dep
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\bin\HiQPdf.rda
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\obj\Release\SRKSDemo.dll
+E:\Vignesh\Titan\TitanWebApp\SRKSDemo\obj\Release\SRKSDemo.pdb
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\ApplicationInsights.config
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\SRKSDemo.dll.config
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\SRKSDemo.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\SRKSDemo.pdb
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\csc.exe
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\csc.exe.config
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\csc.rsp
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\csi.exe
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\csi.rsp
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\System.AppContext.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\vbc.exe
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\vbc.exe.config
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\vbc.rsp
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Antlr3.Runtime.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\EntityFramework.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\EntityFramework.SqlServer.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\EPPlus.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\HiQPdf.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Microsoft.AI.Web.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Newtonsoft.Json.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\System.Web.Helpers.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\System.Web.Mvc.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\System.Web.Optimization.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\System.Web.Razor.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\System.Web.WebPages.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\WebGrease.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\EntityFramework.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\EntityFramework.SqlServer.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\EPPlus.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\HiQPdf.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Newtonsoft.Json.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\System.Web.Helpers.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\System.Web.Mvc.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\System.Web.Optimization.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\System.Web.Razor.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\System.Web.WebPages.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Antlr3.Runtime.pdb
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Microsoft.AI.Web.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\HiQPdf.dep
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\bin\HiQPdf.rda
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\obj\Release\SRKSDemo.dll
+E:\Vignesh\Shakti\ShaktiWeApplication\SRKSDemo\obj\Release\SRKSDemo.pdb
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\ApplicationInsights.config
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\SRKSDemo.dll.config
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\SRKSDemo.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\SRKSDemo.pdb
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\csc.exe
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\csc.exe.config
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\csc.rsp
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\csi.exe
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\csi.rsp
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\System.AppContext.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\vbc.exe
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\vbc.exe.config
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\vbc.rsp
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Antlr3.Runtime.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\EntityFramework.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\EntityFramework.SqlServer.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\EPPlus.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\HiQPdf.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.Web.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Newtonsoft.Json.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.Helpers.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.Mvc.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.Optimization.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.Razor.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.WebPages.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\WebGrease.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\EntityFramework.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\EntityFramework.SqlServer.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\EPPlus.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\HiQPdf.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Newtonsoft.Json.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.Helpers.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.Mvc.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.Optimization.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.Razor.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.WebPages.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Antlr3.Runtime.pdb
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.Web.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\HiQPdf.dep
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\HiQPdf.rda
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\obj\Release\SRKSDemo.dll
+E:\Vignesh\weir minerals\weir minerals\weir mineralsWeApplication\SRKSDemo\obj\Release\SRKSDemo.pdb
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\ApplicationInsights.config
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\SRKSDemo.dll.config
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\SRKSDemo.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\SRKSDemo.pdb
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\csc.exe
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\csc.exe.config
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\csc.rsp
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\csi.exe
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\csi.rsp
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\System.AppContext.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\vbc.exe
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\vbc.exe.config
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\vbc.rsp
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Antlr3.Runtime.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\EntityFramework.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\EntityFramework.SqlServer.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\EPPlus.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\HiQPdf.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.Web.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Newtonsoft.Json.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.Helpers.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.Mvc.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.Optimization.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.Razor.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.WebPages.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\WebGrease.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\EntityFramework.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\EntityFramework.SqlServer.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\EPPlus.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\HiQPdf.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Newtonsoft.Json.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.Helpers.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.Mvc.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.Optimization.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.Razor.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.WebPages.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Antlr3.Runtime.pdb
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.AI.Web.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\HiQPdf.dep
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\bin\HiQPdf.rda
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\obj\Release\SRKSDemo.dll
+D:\Vignesh\weir minerals\weir mineralsWeApplication\SRKSDemo\obj\Release\SRKSDemo.pdb
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\ApplicationInsights.config
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\SRKSDemo.dll.config
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\SRKSDemo.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\SRKSDemo.pdb
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\csc.exe
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\csc.exe.config
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\csc.rsp
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\csi.exe
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\csi.rsp
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\System.AppContext.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\vbc.exe
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\vbc.exe.config
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\vbc.rsp
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Antlr3.Runtime.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\EntityFramework.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\EntityFramework.SqlServer.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\EPPlus.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\HiQPdf.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Microsoft.AI.Web.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Newtonsoft.Json.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\System.Web.Helpers.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\System.Web.Mvc.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\System.Web.Optimization.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\System.Web.Razor.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\System.Web.WebPages.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\WebGrease.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\EntityFramework.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\EntityFramework.SqlServer.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\EPPlus.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\HiQPdf.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Newtonsoft.Json.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\System.Web.Helpers.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\System.Web.Mvc.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\System.Web.Optimization.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\System.Web.Razor.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\System.Web.WebPages.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Antlr3.Runtime.pdb
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Microsoft.AI.Web.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\HiQPdf.dep
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\bin\HiQPdf.rda
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\obj\Release\SRKSDemo.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200106\SRKSDemo\obj\Release\SRKSDemo.pdb
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\ApplicationInsights.config
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\SRKSDemo.dll.config
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\SRKSDemo.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\SRKSDemo.pdb
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\csc.exe
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\csc.exe.config
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\csc.rsp
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\csi.exe
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\csi.rsp
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\System.AppContext.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\vbc.exe
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\vbc.exe.config
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\vbc.rsp
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Antlr3.Runtime.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\EntityFramework.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\EntityFramework.SqlServer.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\EPPlus.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\HiQPdf.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\i_facilitylibrary.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.Web.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Newtonsoft.Json.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.Helpers.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.Mvc.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.Optimization.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.Razor.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.WebPages.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\WebGrease.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Dapper.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\i_facilitylibrary.pdb
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\EntityFramework.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\EntityFramework.SqlServer.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\EPPlus.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\HiQPdf.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Newtonsoft.Json.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.Helpers.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.Mvc.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.Optimization.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.Razor.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.WebPages.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Antlr3.Runtime.pdb
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.Web.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\Dapper.xml
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\HiQPdf.dep
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\bin\HiQPdf.rda
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\obj\Release\SRKSDemo.dll
+G:\Vignesh\Shakthi WeApplication20200108\SRKSDemo\obj\Release\SRKSDemo.pdb
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\ApplicationInsights.config
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\SRKSDemo.dll.config
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\SRKSDemo.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\SRKSDemo.pdb
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\csc.exe
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\csc.exe.config
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\csc.rsp
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\csi.exe
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\csi.rsp
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\System.AppContext.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\vbc.exe
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\vbc.exe.config
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\vbc.rsp
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Antlr3.Runtime.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\EntityFramework.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\EntityFramework.SqlServer.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\EPPlus.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\HiQPdf.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\i_facilitylibrary.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.Web.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Newtonsoft.Json.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.Helpers.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.Mvc.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.Optimization.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.Razor.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.WebPages.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\WebGrease.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Dapper.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\i_facilitylibrary.pdb
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\EntityFramework.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\EntityFramework.SqlServer.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\EPPlus.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\HiQPdf.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Newtonsoft.Json.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.Helpers.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.Mvc.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.Optimization.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.Razor.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.WebPages.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Antlr3.Runtime.pdb
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.AI.Web.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\Dapper.xml
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\HiQPdf.dep
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\bin\HiQPdf.rda
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\obj\Release\SRKSDemo.dll
+G:\Vignesh\Shakthi\Shakthi WeApplication20200108\SRKSDemo\obj\Release\SRKSDemo.pdb
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\ApplicationInsights.config
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\SRKSDemo.dll.config
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\SRKSDemo.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\SRKSDemo.pdb
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\csc.exe
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\csc.exe.config
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\csc.rsp
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\csi.exe
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\csi.rsp
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\System.AppContext.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\vbc.exe
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\vbc.exe.config
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\vbc.rsp
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Antlr3.Runtime.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\EntityFramework.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\EntityFramework.SqlServer.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\EPPlus.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\HiQPdf.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\i_facilitylibrary.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.Web.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Newtonsoft.Json.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.Helpers.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.Mvc.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.Optimization.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.Razor.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.WebPages.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\WebGrease.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Dapper.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\i_facilitylibrary.pdb
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\EntityFramework.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\EntityFramework.SqlServer.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\EPPlus.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\HiQPdf.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Newtonsoft.Json.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.Helpers.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.Mvc.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.Optimization.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.Razor.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.WebPages.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Antlr3.Runtime.pdb
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.Web.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\Dapper.xml
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\HiQPdf.dep
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\bin\HiQPdf.rda
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\obj\Release\SRKSDemo.dll
+D:\Aswini\shakthi\Shakthi WeApplication20200213\SRKSDemo\obj\Release\SRKSDemo.pdb
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\ApplicationInsights.config
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\SRKSDemo.dll.config
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\SRKSDemo.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\SRKSDemo.pdb
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\csc.exe
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\csc.exe.config
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\csc.rsp
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\csi.exe
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\csi.rsp
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\System.AppContext.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\vbc.exe
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\vbc.exe.config
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\vbc.rsp
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Antlr3.Runtime.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\EntityFramework.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\EntityFramework.SqlServer.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\EPPlus.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\HiQPdf.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\i_facilitylibrary.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.Web.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Newtonsoft.Json.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.Helpers.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.Mvc.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.Optimization.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.Razor.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.WebPages.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\WebGrease.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Dapper.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\i_facilitylibrary.pdb
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\EntityFramework.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\EntityFramework.SqlServer.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\EPPlus.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\HiQPdf.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Newtonsoft.Json.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.Helpers.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.Mvc.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.Optimization.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.Razor.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.WebPages.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Antlr3.Runtime.pdb
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.AI.Web.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\Dapper.xml
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\HiQPdf.dep
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\bin\HiQPdf.rda
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\obj\Release\SRKSDemo.dll
+D:\Aswini\shakthi\Shakti-Serverrunning_Builds\Shakthi WeApplication20200213\SRKSDemo\obj\Release\SRKSDemo.pdb
+D:\Ashok\Shakti\Github\SRKSDemo\bin\ApplicationInsights.config
+D:\Ashok\Shakti\Github\SRKSDemo\bin\SRKSDemo.dll.config
+D:\Ashok\Shakti\Github\SRKSDemo\bin\SRKSDemo.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\SRKSDemo.pdb
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\csc.exe
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\csc.exe.config
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\csc.rsp
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\csi.exe
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\csi.rsp
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\System.AppContext.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\vbc.exe
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\vbc.exe.config
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\vbc.rsp
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+D:\Ashok\Shakti\Github\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Antlr3.Runtime.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\EntityFramework.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\EntityFramework.SqlServer.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\EPPlus.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\HiQPdf.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\i_facilitylibrary.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Microsoft.AI.Web.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Newtonsoft.Json.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\System.Web.Helpers.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\System.Web.Mvc.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\System.Web.Optimization.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\System.Web.Razor.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\System.Web.WebPages.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\WebGrease.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Dapper.dll
+D:\Ashok\Shakti\Github\SRKSDemo\bin\i_facilitylibrary.pdb
+D:\Ashok\Shakti\Github\SRKSDemo\bin\EntityFramework.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\EntityFramework.SqlServer.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\EPPlus.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\HiQPdf.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Newtonsoft.Json.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\System.Web.Helpers.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\System.Web.Mvc.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\System.Web.Optimization.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\System.Web.Razor.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\System.Web.WebPages.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Antlr3.Runtime.pdb
+D:\Ashok\Shakti\Github\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Microsoft.AI.Web.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\Dapper.xml
+D:\Ashok\Shakti\Github\SRKSDemo\bin\HiQPdf.dep
+D:\Ashok\Shakti\Github\SRKSDemo\bin\HiQPdf.rda
+D:\Ashok\Shakti\Github\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+D:\Ashok\Shakti\Github\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+D:\Ashok\Shakti\Github\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+D:\Ashok\Shakti\Github\SRKSDemo\obj\Release\SRKSDemo.dll
+D:\Ashok\Shakti\Github\SRKSDemo\obj\Release\SRKSDemo.pdb
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\ApplicationInsights.config
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\SRKSDemo.dll.config
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\SRKSDemo.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\SRKSDemo.pdb
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\csc.exe
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\csc.exe.config
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\csc.rsp
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\csi.exe
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\csi.rsp
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\System.AppContext.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\System.Collections.Immutable.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\System.IO.FileSystem.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\System.Reflection.Metadata.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\vbc.exe
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\vbc.exe.config
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\vbc.rsp
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\VBCSCompiler.exe
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\roslyn\VBCSCompiler.exe.config
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Antlr3.Runtime.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\EntityFramework.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\EntityFramework.SqlServer.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\EPPlus.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\HiQPdf.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\i_facilitylibrary.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Microsoft.AI.DependencyCollector.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Microsoft.AI.Web.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Microsoft.AI.WindowsServer.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Microsoft.ApplicationInsights.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Microsoft.Web.Infrastructure.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Newtonsoft.Json.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\System.Web.Helpers.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\System.Web.Mvc.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\System.Web.Optimization.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\System.Web.Razor.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\System.Web.WebPages.Deployment.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\System.Web.WebPages.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\System.Web.WebPages.Razor.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\WebGrease.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Dapper.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\i_facilitylibrary.pdb
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\EntityFramework.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\EntityFramework.SqlServer.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\EPPlus.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\HiQPdf.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Newtonsoft.Json.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\System.Web.Helpers.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\System.Web.Mvc.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\System.Web.Optimization.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\System.Web.Razor.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\System.Web.WebPages.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\System.Web.WebPages.Deployment.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\System.Web.WebPages.Razor.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Antlr3.Runtime.pdb
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\System.Diagnostics.DiagnosticSource.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Microsoft.AI.DependencyCollector.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Microsoft.AI.WindowsServer.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Microsoft.AI.Web.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\Dapper.xml
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\HiQPdf.dep
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\bin\HiQPdf.rda
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\obj\Release\SRKSDemo.csprojAssemblyReference.cache
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\obj\Release\SRKSDemo.csproj.CoreCompileInputs.cache
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\obj\Release\SRKSDemo.csproj.CopyComplete
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\obj\Release\SRKSDemo.dll
+D:\Github_Ashok\Shakti\shakti_web\SRKSDemo\obj\Release\SRKSDemo.pdb

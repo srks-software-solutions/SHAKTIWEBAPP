@@ -1,0 +1,296 @@
+﻿@{
+    ViewBag.Title = "EditPrograms";
+}
+
+<style>
+    .fadeMe {
+        opacity: 0.7;
+        filter: alpha(opacity=20);
+        background-color: #000;
+        width: 100%;
+        height: 100%;
+        z-index: 998;
+        top: 0;
+        left: 0;
+        position: fixed;
+    }
+</style>
+
+<style type="text/css">
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: black;
+        z-index: 999;
+        opacity: 0.9;
+        filter: alpha(opacity=90);
+        -moz-opacity: 0.9;
+        min-height: 100%;
+        width: 100%;
+    }
+
+    .loading {
+        font-family: Arial;
+        font-size: 10pt;
+        /*border: 5px solid #67CFF5;*/
+        width: 200px;
+        height: 100px;
+        display: none;
+        position: fixed;
+        background-color: White;
+        z-index: 1000;
+    }
+</style>
+
+@*<link href="~/css/bootstrap.min.css" rel="stylesheet" />*@
+<link href="~/css/fileinput.css" rel="stylesheet" />
+<link href="~/css/fileinput.min.css" rel="stylesheet" />
+
+@using (Html.BeginForm("Index", "ProgramTransfer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true) 
+    <div class="wrp clearfix mainDiv">
+        <div class="fluid">
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title">
+                        Program Transfer
+                    </div>
+                </div>
+                <!-- /widget-header -->
+                <div class="widget-content pad20f">
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; padding-top: 2%; margin-left: 2%; color: blue; font-style: oblique">Plant Name</label>
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; margin-left: 2%; width: 20%; color: blue; font-style: oblique">Shop Name</label>
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; margin-left: 2%; color: blue; font-style: oblique">Cell Name</label>
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; margin-left: 2%; width: 20%; color: blue; font-style: oblique">WorkCenter Name</label>
+
+                    @Html.DropDownList("PlantID", null, "--Select Plant--", new { @id = "PlantID", @class = "stacked-label", @name = "PlantID", @required = "required", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["PlantID"] })
+                    @*@Html.DropDownListFor(model => model.PlantID, ViewBag.Plant as IEnumerable<SelectListItem>, "--Select Plant--", new { @id = "PlantID", @class = "stacked-label", @name = "PlantID", @required = "required", @style = "margin-left: 2%;aria-expanded:false;width:20%" })*@
+
+                    @*@Html.DropDownListFor(model => model.ShopID, ViewBag.Shop as IEnumerable<SelectListItem>, "--Select Shop--", new { @id = "ShopID", @class = "stacked-label", @name = "ShopID", @style = "margin-left: 2%;aria-expanded:false;width:20%" })*@
+                    @Html.DropDownList("ShopID", null, "--Select Shop--", new { @id = "ShopID", @class = "stacked-label", @name = "ShopID", @required = "required", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["ShopID"] })
+
+                    @*@Html.DropDownListFor(model => model.CellID, ViewBag.Cell as IEnumerable<SelectListItem>, "--Select Cell--", new { @id = "CellID", @class = "stacked-label", @name = "CellID", @style = "margin-left: 2%;aria-expanded:false;width:20%" })*@
+                    @Html.DropDownList("CellID", null, "--Select Cell--", new { @id = "CellID", @class = "stacked-label", @name = "CellID", @required = "required", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["CellID"] })
+
+                    @*@Html.DropDownListFor(model => model.MachineID, ViewBag.WCID as IEnumerable<SelectListItem>, "--Select WorkCenter--", new { @id = "WorkCenterID", @class = "stacked-label", @name = "WorkCenterID", @style = "margin-left: 2%;aria-expanded:false;width:20%" })*@
+                    @Html.DropDownList("WorkCenterID", null, "--Select WC--", new { @id = "WorkCenterID", @required = "required", @class = "stacked-label", @name = "WorkCenterID", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["WorkCenterID"] })
+
+                    <br />
+                    <br />
+
+                    <div style="width: 50%; margin-left: 2%;">
+                        <label for="input-1" class="stacked-label" style="resize: horizontal; width: 40%">Select Text File</label>
+                        <input id="file" name="file" type="file" accept="text/*" data-show-upload="false" data-show-remove="false" required="required" style="width: 60%; margin-left: 2%">
+
+
+                        <div style="width: inherit; display: inline-block; height: inherit"></div>
+                        @*@Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply btn-aqua fa-1x", @style = "text-decoration:none;display:inline-block" })*@
+                        <div style="width: 20%; display: inline-block; height: inherit"></div>
+                        <input type="submit" value="Upload" class="btnsubmit" id="btnsubmit" name="btnsubmit" style="float: right; display: inline-block; color: white; background-color: #ea4335; margin-top: 3%; width: 30%; font-size: 1.2vw" />
+                    </div>
+
+                    <div id="viewPlaceHolder"></div>
+                    <br />
+                    <br />
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+    </div>
+  
+    <div id="dialog" title="Upload Result" style="width: 300px">
+        <p>@Html.Raw(@ViewBag.ReturnStatusMsg)</p>
+    </div>
+    
+    <div class="loading" align="center" style="font-weight: bolder; font-size: 20px; font-size-adjust: inherit;">
+        <span style="color: black">Uploading. Please wait.</span><br />
+        <br />
+        <img src="~/Images/Loaders/loading45.gif" alt="" />
+    </div>
+}
+
+<link href="~/Scripts/jquery.simple-dtpicker.css" rel="stylesheet" />
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/Scripts/jquery.simple-dtpicker.js"></script>
+
+@*<script src="~/js/fileinput.js"></script>*@
+<script src="~/js/fileinput.min.js"></script>
+
+<script type="text/javascript">
+    //$(document).ready(function () {
+    //    $(function () {
+
+    //        $('#date_foo').appendDtpicker({
+    //            "autodateOnStart": false
+    //        });
+
+    //        $('#datetimepicker6').datetimepicker();
+    //        $('#datetimepicker7').datetimepicker({
+    //            useCurrent: false //Important! See issue #1075
+    //        });
+    //        $("#datetimepicker6").on("dp.change", function (e) {
+    //            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+    //        });
+    //        $("#datetimepicker7").on("dp.change", function (e) {
+    //            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+    //        });
+    //    });
+    //});
+</script>
+
+<script>
+    @*  $(function () {
+        //alert(@ViewBag.ReturnStatusMsg);
+          if ('@ViewBag.ReturnStatusMsg' == null || '@ViewBag.ReturnStatusMsg' == 'undefined' || '@ViewBag.ReturnStatusMsg' == '') {
+          } else {
+              $("#ReturnDesc").dialog();
+              @{
+                  string a = @"%
+d1
+d2
+d3
+d4
+%";
+                  string[] aArray = a.Split(Environment.NewLine.ToCharArray()).Where(m => m.Trim().Length > 0).Select(m => m.Trim()).ToArray();
+
+                  int[] IntArray = new int[] { 0, 1, 25, 555, 4, 5, 6, 10, 11, 120, 13, 140, 15 };
+                  int[] MulOf5 = (from row in IntArray
+                                  where row % 5 == 0 && row != 0
+                                  select row).ToArray();
+
+                  var Dummy = "a";
+              }
+
+          }
+      });*@
+</script>
+
+@*File Upload Initialize your widget via javascript as follows *@
+<script>
+    $("#file").fileinput({
+        previewFileType: "txt",
+        allowedFileExtensions: ["txt"],          //validate
+        maxFileSize: 1240,                      //maxFileSize in KB's
+        browseClass: "btn btn-primary btn-md",
+        browseLabel: "Select Text File",
+        browseIcon: '<i class="fa fa-file-text-o"></i>',
+        previewClass: "bg-warning",
+        msgInvalidFileExtension: "Select Only .txt Formats."
+    });
+</script>
+
+@*Machine Hierarchy*@
+<script>
+    $("#PlantID").on("change", function () {
+        $("#ShopID").empty();
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#PlantID option:selected").val();
+        $.getJSON("/ShiftPlanner/GetShop", { PlantID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#ShopID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#ShopID").prepend("<option value='' selected='selected'></option>");
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+    });
+
+    $("#ShopID").on("change", function () {
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#ShopID option:selected").val();
+        $.getJSON("/ShiftPlanner/GetCell", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#CellID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/ShiftPlanner/GetWC_Shop", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+
+    });
+
+    $("#CellID").on("change", function () {
+        $("#WorkCenterID").empty();
+        var selectedID = $("#CellID option:selected").val();
+        $.getJSON("/ShiftPlanner/GetWC_Cell", { CellID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+    });
+</script>
+
+<script>
+    setTimeout(function () {
+        $('#ReturnDesc').fadeOut('slow');
+    }, 30000); // <-- time in milliseconds
+</script>
+
+@* Josn Result checker  *@
+@*<script>
+    //alert(@ViewBag.ReturnStatusMsg);
+    $("#DivToHide").hide();
+    $("#btnsubmit").on("click", function (e) {
+        $("#DivToHide").show();
+        });
+</script>*@
+
+<script type="text/javascript">
+    //ShowProgress();
+
+    //$('body').on("onbeforeunload", function (e) {
+    //    alert();
+    //    var stateObj = { foo: "bar" };
+    //    history.pushState(stateObj, "page 2", "bar.html");
+    //    e.preventDefault();
+    //});
+    http://www.4guysfromrolla.com/articles/121708-1.aspx
+    https://www.aspsnippets.com/Articles/Display-loading-progress-image-when-Page-Loads-or-does-PostBack-using-ASPNet.aspx
+        $("#DivToHide").hide();
+    function ShowProgress() {
+        setTimeout(function () {
+            var modal = $('<div />');
+            modal.addClass("modal");
+            $('body').append(modal);
+            var loading = $(".loading");
+            loading.show();
+            var top = Math.max($(window).height() / 2 - loading[0].offsetHeight / 2, 0);
+            var left = Math.max($(window).width() / 2 - loading[0].offsetWidth / 2, 0);
+            loading.css({ top: top, left: left });
+        }, 200);
+    }
+    $('form').on("submit", function () {
+        $("#DivToHide").show();
+        ShowProgress();
+        var stateObj = { foo: "bar" };
+        history.pushState(stateObj, "page 2", "bar.html");
+    });
+</script>
+
+<script>
+    $(function () {
+        var a = '@ViewBag.ReturnStatusMsg';
+        //alert(a);
+        if (($.trim(a)).length > 0) {
+            $("#dialog").dialog({
+                //height: 200,
+                width: 300
+            });
+        }
+    });
+</script>
+
+

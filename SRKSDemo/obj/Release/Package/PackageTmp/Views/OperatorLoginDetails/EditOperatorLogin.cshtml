@@ -1,0 +1,312 @@
+﻿@model SRKSDemo.Models.OperatorLogin
+@{
+    ViewBag.Title = "Operator Login Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Operator Details</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div class="x_content">
+                            <form class="form-horizontal form-label-left" id="fromDiv" novalidate>
+                                <div class="control-group" id="fields">
+                                    <div class="controls">
+                                        <div class="row row-space">
+                                            <label class="col-sm-2 control-label">Operator Id</label>
+                                            <div class="col-sm-6">
+
+                                                @Html.TextBoxFor(model => model.operatorLogin.operatorId, new { @id = "operatorId", @class = "form-control", @name = "operatorId", style = "width:89.7%", @placeholder = "Enter operatorId", @required = "required" })
+                                                @Html.HiddenFor(model => model.operatorLogin.operatorId, new { @id = "operatorId" })
+                                            </div>
+                                        </div>
+                                        <div class="row row-space">
+                                            <label class="col-sm-2 control-label">Operator Name</label>
+                                            <div class="col-sm-6">
+
+                                                @Html.TextBoxFor(model => model.operatorLogin.operatorName, new { @id = "operatorName", @class = "form-control", @name = "operatorName", style = "width:89.7%", @placeholder = "Enter operator Name", @required = "required" })
+                                                @Html.HiddenFor(model => model.operatorLogin.operatorName, new { @id = "operatorName" })
+                                            </div>
+                                        </div>
+                                        <div class="row row-space">
+                                            <label class="col-sm-2 control-label">Role</label>
+                                            <div class="col-sm-6">
+                                                @Html.DropDownList("Roles", null, "--Select Role--", new { @id = "EditRoleID", @class = "form-control", @name = "Role", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = ViewData["Roles"] })
+
+                                            </div>
+                                        </div>
+
+                                        @*@Html.TextBoxFor(model => model.operatorLogin.operatorLoginId, new { @id = "EditoperatorLoginId", @class = "form-control", @name = "operatorLoginId", style = "width:89.7%", @placeholder = "Enter operatorUser Name", @required = "required" })*@
+                                        @Html.HiddenFor(model => model.operatorLogin.operatorLoginId, new { @id = "operatorLoginId" })
+
+
+                                        <div class="row row-space">
+                                            <label class="col-sm-2 control-label">Operator UserName</label>
+
+                                            <div class="col-sm-6">
+
+                                                @Html.TextBoxFor(model => model.operatorLogin.operatorUserName, new { @id = "EditoperatorUserName", @class = "form-control", @name = "operatorUserName", style = "width:89.7%", @placeholder = "Enter operatorUser Name", @required = "required" })
+                                                @Html.HiddenFor(model => model.operatorLogin.operatorUserName, new { @id = "operatorUserName" })
+                                            </div>
+                                        </div>
+                                        <div class="row row-space">
+                                            <label class="col-sm-2 control-label">Operator Email Address</label>
+                                            <div class="col-sm-6">
+
+                                                @Html.TextBoxFor(model => model.operatorLogin.operatorEmailId, new { @id = "EditoperatorEmailId", @class = "form-control", @name = "operatorEmailId", style = "width:89.7%", @placeholder = "Enter Operator Email Address", @required = "required" })
+                                                @Html.HiddenFor(model => model.operatorLogin.operatorEmailId, new { @id = "operatorEmailId" })
+                                            </div>
+                                        </div>
+                                        <div class="row row-space">
+                                            <label class="col-sm-2 control-label">Operator Mobile Number</label>
+                                            <div class="col-sm-6">
+
+                                                @Html.TextBoxFor(model => model.operatorLogin.operatorMobileNo, new { @id = "EditoperatorMobileNo", @class = "form-control", @name = "operatorMobileNo", style = "width:89.7%", @placeholder = "Enter Operator Mobile Number", @required = "required" })
+                                                @Html.HiddenFor(model => model.operatorLogin.operatorMobileNo, new { @id = "operatorMobileNo" })
+                                            </div>
+                                        </div>
+                                        <div class="row row-space">
+                                            <label class="col-sm-2 control-label">Operator Password</label>
+                                            <div class="col-sm-6">
+
+                                                @Html.TextBoxFor(model => model.operatorLogin.operatorPwd, new { @id = "EditoperatorPwd", @class = "form-control", @name = "operatorPwd", @type = "password", style = "width:89.7%", @placeholder = "Enter Operator Password", @required = "required" })
+                                                @Html.HiddenFor(model => model.operatorLogin.operatorPwd, new { @id = "operatorPwd" })
+                                            </div>
+                                        </div>
+                                        <div class="row row-space">
+                                            <label class="col-sm-2 control-label">Number Of Machines</label>
+                                            <div class="col-sm-6">
+
+                                                @Html.TextBoxFor(model => model.operatorLogin.NumOfMachines, new { @id = "EditNumOfMachines", @class = "form-control", @name = "NumOfMachines", @onchange = "EditNumOfMachinesChange()", style = "width:89.7%", @placeholder = "Enter Number Of Machines", @required = "required" })
+                                                @Html.HiddenFor(model => model.operatorLogin.NumOfMachines, new { @id = "NumOfMachines" })
+                                            </div>
+                                        </div>
+                                        <div class="row row-space">
+                                            <label class="col-sm-2 control-label">Machine Details</label>
+                                            <div class="col-sm-6" id="xyzabc">
+                                                @Html.DropDownList("machineDetails", null, "--Select Machine--", new { @id = "machineDetails", @class = "macMyDetails form-control1 SensorDataLink", @name = "machineDetails", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['machineDetails']" })
+                                            </div>
+                                        </div>
+
+                                        <div class="row row-space">
+                                            <label class="col-sm-2 control-label">&nbsp</label>
+                                            <div class="col-sm-6" id="xyz">
+                                                <div id="divmy"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="hidden" id="machineids" value="@ViewBag.mac" />
+                                        </div>
+
+                            </form>
+                            <div class="generate-btn">
+                                <a id="" href="/OperatorLoginDetails/Index" type="submit" style="margin-left: -605px;" class="btn btn-new"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                                <button type="submit" onclick="return submitBtnClick()" class="btn btn-new float-right savebtn"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Update</button>
+
+                            </div>
+                        </div>
+
+                        <input type="hidden" id="myHdn" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        var ids = $('#machineids').val();
+        var splitstring = ids.split(",");
+        var html = $("#xyzabc").html();
+        $("#xyzabc").html('');
+        $("#myHdn").val(html);
+        var abc = "";
+        for (var i = 0; i < splitstring.length ; i++) {
+            var ax = html;
+            ax = ax.replace('machineDetails', 'machineDetails_' + i);
+            abc = abc + ax;
+        }
+
+        $("#xyzabc").html(abc);
+
+        for (var i = 0; i < splitstring.length; i++)
+        {
+            $("#machineDetails_" + i).val(splitstring[i]);
+        }
+
+    });
+
+    function EditNumOfMachinesChange() {
+        var counter = parseInt($("#EditNumOfMachines").val());
+        var vals = $("#myHdn").val();
+        var html = "";
+        for (var i = 0; i < counter ; i++) {
+            html = html + vals;
+        }
+        $("#xyzabc").html(html);
+    };
+
+    function submitBtnClick() {
+        var operatorName = $('#operatorName').val();
+        var operatorLoginId = $('#operatorLoginId').val();
+        var operatorId = $('#operatorId').val();
+        var Role = $('#EditRoleID').val();
+        var operatorUserName = $('#EditoperatorUserName').val();
+        var operatorPwd = $('#EditoperatorPwd').val();
+        var operatorMobileNo = $('#EditoperatorMobileNo').val();
+        var NumOfMachines = $('#EditNumOfMachines').val();
+        var operatorEmailId = $('#EditoperatorEmailId').val();
+        var option_all = $(".macMyDetails option:selected").map(function () {
+            return $(this).text();
+        }).get().join(',');
+        if (operatorId == '' || operatorName == '' || Role == '' || operatorUserName == '' || operatorPwd == '' || operatorMobileNo == '' || NumOfMachines == '') {
+            alert("Please Enter all the Details");
+        }
+        else {
+            var datas = {};
+            datas.operatorLoginId = operatorLoginId;
+            datas.operatorName = operatorName;
+            datas.machineids = option_all;
+            datas.operatorUserName = operatorUserName;
+            datas.operatorEmailId = operatorEmailId;
+            datas.operatorPwd = operatorPwd;
+            datas.operatorMobileNo = operatorMobileNo;
+            datas.NumOfMachines = NumOfMachines;
+            datas.operatorId = operatorId;
+            datas.roleId = Role;
+
+            $.ajax({
+                url: '/OperatorLoginDetails/EditOperator',
+                type: 'POST',
+                async: false,
+                data: datas,
+                success: function (data) {
+                    if (data == "Updated") {
+                        window.location = '/OperatorLoginDetails/Index';
+                    }
+                },
+                failure: function (xhr, textStatus, errorThrown) {
+                    alert('request failed');
+                }
+            });
+            return false;
+        }
+    }
+
+
+</script>
+@*<script type="text/javascript">
+        $(function () {
+            $(document).on('click', ".savebtn", function (e) {
+                var Id = $("#smid").val();
+                var channelnum = $("#Editchannelno").val();
+                var memoryadd = $("#Editmemoryadd").val();
+                var sid = $("#sid").val();
+                var sensordesc = $("#EditSensorDesc").val();
+                var scalingfac = $("#scalingfac1").val();
+                var modeltype = $("#modeltype").val();
+                var countlow = $("#countlow").val();
+                var counthigh = $("#counthigh").val();
+                var sensorlimitlow = $("#sensorlimitlow").val();
+                var sensorlimithigh = $("#sensorlimithigh").val();
+                var uid = $("#uid").val();
+                var sdlid = $("#EditSensorDataLink").val();
+                if (modeltype == "Analog") {
+                    $.post("/SensorMaster/UpdateData", {
+                        channelnum: channelnum, memoryadd: memoryadd, sid: sid, sensordesc: sensordesc, modeltype: modeltype,
+                        countlow: countlow, counthigh: counthigh,
+                        sensorlimitlow: sensorlimitlow, sensorlimithigh: sensorlimithigh, uid: uid, sdlid: sdlid, smid: Id
+                    }, function (msg) {
+                        if (msg !== "success") {
+                            alert("This Record Already Exists");
+                            window.location.href = "/SensorMaster/EditSensorMaster";
+                        }
+                        else {
+                            alert("Data Updated successfully");
+                            window.location.href = "/SensorMaster/Index";
+                        }
+                    });
+                }
+                else {
+                    $.post("/SensorMaster/UpDataDatawithio", {
+                        channelnum: channelnum, memoryadd: memoryadd, sid: sid, sensordesc: sensordesc, modeltype: modeltype,
+                        scalingfac: scalingfac, uid: uid, sdlid: sdlid, smid: Id
+                    }, function (msg) {
+                        if (msg !== "success") {
+                            alert("This Record Already Exists");
+                            window.location.href = "/SensorMaster/EditSensorMaster";
+                        }
+                        else {
+                          alert("Data Updated successfully");
+                            window.location.href = "/SensorMaster/Index";
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+    <script>
+        function getdatalink() {
+            var id = $("#EditSensorDataLink").val();
+            $("#parameterid").val(id);
+        }
+    </script>
+
+    <script>
+        $(document).ready(function (e) {
+            var Id = $("#smid").val();
+            var id = $("#ModelType").val();
+            $("#modeltype").val(id);
+            if (id == "0") {
+                $("#btnio").append("<div id='ioid' class='col-sm-3'><label  style='margin-left: 30px; color: Black'>ScalingFactor:</label> <input name='scaling' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' type='Number'  maxlength = '6' min='0' id='scalingfac1' class='scaling' required /></div>");
+
+                $.getJSON("/SensorMaster/GetSensorById", { Id: Id }, function (data) {
+                    $.each(data, function (index, item) {
+                        $("#EditSensorDesc").val((item.EditSensorDesc));
+                        $("#Editmemoryadd").val((item.Editmemoryadd));
+                        $("#Editchannelno").val((item.Editchannelno));
+                        $("#scalingfac1").val((item.scalingfac));
+                    });
+                });
+            }
+            else if (id == "1") {
+                $("#btnio").append("<div id='analogid1' class='row row-space'><div id='analogid' class='col-sm-2'><label>count: </label> </div><div id='lowid' style='margin-left: 30px;' style='margin-right: 30px;' class='col-sm-3'><label  style='margin-left: 30px;'>Low: </label> <input name='low' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' type='Number' maxlength='6' min='0' style='border: 1px solid Black' id='countlow' class='btn low' value='0' required /><span id='errorMessage2' style='color: red'></span></div>&nbsp;&nbsp;&nbsp;<div id='highid'  style='margin-left: 30px;' style='margin-right: 30px;' class='col-sm-3'><label  style='margin-left: 30px;'>High: </label> <input name='high' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' type='Number' maxlength='6' style='border: 1px solid Black' id='counthigh' class='btn high'  value='32768' required /><span id='errorMessage1' style='color: red'></span></div></div>");
+                $("#btnio").append("<div id='sensorlimit1' class='row row-space'><div id='sensorlimit' class='col-sm-2'><label>SensorLimit: </label> </div><div id='senlowid' style='margin-left: 30px;' style='margin-right: 30px;' class='col-sm-3'><label  style='margin-left: 30px;'>Low: </label> <input name='low' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' type='Number' maxlength='6' min='0' style='border: 1px solid Black' id='sensorlimitlow' class='btn btn-low' required /><span id='errorMess' style='color: red'></span></div>&nbsp;&nbsp;&nbsp;<div id ='senhighid' style='margin-left: 30px;' style='margin-right: 30px;' class='col-sm-3'><label  style='margin-right: 30px;'>High: </label> <input name='high' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' type='Number' maxlength='6' style='border: 1px solid Black' id='sensorlimithigh' class='btn btn-high' required /><span id='errorMessage' style='color: red'></span></div></div>");
+                $.get("/SensorMaster/GetSensoranalogById", { Id: Id }, function (data) {
+                    $.each(data, function (index, item) {
+                        $("#EditSensorDesc").val((item.EditSensorDesc));
+                        $("#Editmemoryadd").val((item.Editmemoryadd));
+                        $("#Editchannelno").val((item.Editchannelno));
+                        $("#countlow").val((item.countlow));
+                        $("#counthigh").val((item.counthigh));
+                        $("#sensorlimitlow").val((item.sensorlimitlow));
+                        $("#sensorlimithigh").val((item.sensorlimithigh));
+                    });
+                });
+            }
+        });
+    </script>*@
+

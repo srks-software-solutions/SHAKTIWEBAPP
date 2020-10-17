@@ -1,0 +1,240 @@
+﻿@model SRKSDemo.Server_Model.tblplannedbreak
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Planned Breaks Management</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form class="form-horizontal form-label-left" id="fromDiv" novalidate>
+                            <div class="control-group" id="fields">
+                                <div class="controls">
+
+                                    <div class="form">
+                                        <div class="entry input-group col-sm-12">
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-1 col-sm-3 col-xs-12">Reason</label>
+                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                    @Html.TextBoxFor(model => model.BreakReason, new { @class = "form-control1 Breakdown", @required = "required" })
+                                                    @*<input type="text" id="" name="" placeholder="Reason" class="form-control1">*@
+                                                </div>
+                                                <label class="control-label col-md-1 col-sm-3 col-xs-12">From Time</label>
+                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                    @Html.TextBoxFor(model => model.StartTime, new { @class = "form-control1 Starttime", @type = "time", @required = "required", @oninput = "timecheck();" })
+                                                    @*<input type="time" name="" id="" class="form-control1">*@
+                                                </div>
+                                                <label class="control-label col-md-1 col-sm-3 col-xs-12">To Time</label>
+                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                    @Html.TextBoxFor(model => model.EndTime, new { @class = "form-control1 Endtime", @type = "time", @required = "required", @oninput = "timecheck();" })
+                                                    @*<input type="time" name="" id="" class="form-control1">*@
+                                                </div>
+
+                                            </div>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-round btn-success btn-add" type="button" style="margin-top:-20px">
+                                                    <span class="glyphicon glyphicon-plus"></span>
+                                                </button>
+                                            </span>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="generate-btn">
+                                <a id="" href="/PlannedBreaksManagement/Index" type="submit" class="btn btn-new"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                                <button id="send" type="button" class="btn btn-new float-right submitmain"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(document).on('click', '.btn-add', function (e) {
+            e.preventDefault();
+            var st = $(this).closest(".input-group").find('.Starttime:first').val();
+            var et = $(this).closest(".input-group").find('.Endtime:first').val();
+            var br = $(this).closest(".input-group").find('.Breakdown:first').val();
+            if (st != "" && et != "" && br != "") {
+                var curEntry = $(this).parents('.entry:first');
+                var controlForm = $('.controls .form:first'),
+                    currentEntry = $(this).parents('.entry:first'),
+                    newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+                $.getJSON("/PlannedBreaksManagement/InsertData", { st: st, et: et, br: br }, function (data) {
+                    if (data != null && data != 0) {
+                        $(curEntry).attr("id", data);
+                    }
+                });
+
+                newEntry.find('input').val('');
+                controlForm.find('.entry:not(:last) .btn-add')
+                    .removeClass('btn-add').addClass('btn-remove')
+                    .removeClass('btn-success').addClass('btn-danger')
+                    .html('<span class="glyphicon glyphicon-minus"></span>');
+            }
+
+        }).on('click', '.btn-remove', function (e) {
+            var Val = $(this).parents('.entry:first').attr("id");
+            $.getJSON("/PlannedBreaksManagement/DeleteData", { id: Val }, function (data) {
+
+            });
+            $(this).parents('.entry:first').remove();
+
+            e.preventDefault();
+            return false;
+        });
+    });
+</script>
+
+<script>
+    $(".submitmain").on("click", function (e) {
+        e.preventDefault();
+        var st = $("#fromDiv").last(".entry input-group").find('.Starttime:last').val();
+        var et = $("#fromDiv").last(".entry input-group").find('.Endtime:last').val();
+        var br = $("#fromDiv").last(".entry input-group").find('.Breakdown:last').val();
+        if (st != "" && et != "" && br != "") {
+            $.getJSON("/PlannedBreaksManagement/InsertData", { st: st, et: et, br: br }, function (data) {
+                if (data != null && data != 0) {
+                    window.location.href = "/PlannedBreaksManagement/Index";
+                }
+            });
+
+        }
+        else {
+            alert("Enter all data before submission")
+        }
+
+    });
+
+</script>
+
+
+<script>
+    function timecheck() {
+
+        var Starttime = $("#fromDiv").last(".entry input-group").find('.Starttime:last').val();
+        var Endtime = $("#fromDiv").last(".entry input-group").find('.Endtime:last').val();
+        $.ajax({
+            type: "POST",
+            data: {
+                'st': Starttime, 'et': Endtime
+            },
+            url: "/PlannedBreaksManagement/timeRangeChecker",
+            async: false,
+            success: function (data) {
+                if (data == "notok") {
+                    toastr.error("", "start time should be less than end time");
+                    $("#fromDiv").last(".entry input-group").find('.btn').prop('disabled', true);
+                    $("#send").prop('disabled', true);
+                }
+                else {
+                    $("#fromDiv").last(".entry input-group").find('.btn').prop('disabled', false);
+                    $("#send").prop('disabled', false);
+                    Startandendtimeduplicatecheck();
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                //alert("", "There is some issue in network");
+            }
+
+        });
+    }
+</script>
+
+<script>
+    function Startandendtimeduplicatecheck() {
+        var Starttime = $("#fromDiv").last(".entry input-group").find('.Starttime:last').val();
+        var Endtime = $("#fromDiv").last(".entry input-group").find('.Endtime:last').val();
+
+        $.ajax({
+            type: "POST",
+            data: {
+                'st': Starttime, 'et': Endtime
+            },
+            url: "/PlannedBreaksManagement/startandendtimeduplicatecheck",
+            async: false,
+            success: function (data) {
+                if (data == "notok") {
+                    toastr.warning("", "Time Already Exists");
+                    $("#fromDiv").last(".entry input-group").find('.btn').prop('disabled', true);
+                    $("#send").prop('disabled', true);
+                } else {
+                    $("#fromDiv").last(".entry input-group").find('.btn').prop('disabled', false);
+                    $("#send").prop('disabled', false);
+                    //toastr.sucess("", "Time Already Exists");
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                //alert("", "There is some issue in network");
+            }
+        });
+    }
+</script>
+
+<link href="~/css/toaster1.css" rel="stylesheet" />
+<script src="~/Scripts/toaster.js"></script>
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "5000",
+        "hideDuration": "7000",
+        "timeOut": "5000",
+        "extendedTimeOut": "5000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "5000",
+        "hideDuration": "7000",
+        "timeOut": "5000",
+        "extendedTimeOut": "5000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+</script>
+

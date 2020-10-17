@@ -1,0 +1,981 @@
+﻿@model IList<i_facilitylibrary.DAL.tbllivehmiscreen>
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    string Date = DateTime.Now.Date.ToString("dd-MM-yyyy");
+    int count = 0;
+    string jshift = null;
+    var prod = ViewBag.ProdFAI;
+    int M = 0;
+    var j = Session["SubmitClicked"];
+    var k = Session["FromDDL"];
+
+    int roleid = Convert.ToInt32(Session["RoleID"]);
+    var slno = 1;
+    var hmiid = 0;
+    if (Model.Count != 0)
+    {
+        hmiid = Model[0].HMIID;
+    }
+    else { }
+    int inOrder = 0;
+    int IsWorkOrder = 0;
+    //int count = 0;
+    //int.TryParse(Convert.ToString(Session["count"]), out count);
+    int.TryParse(Convert.ToString(Session["isWorkOrder"]), out IsWorkOrder);
+
+}
+@*//creating a dropdown*@
+@{
+    List<SelectListItem> Shifts = new List<SelectListItem>();
+    Shifts.Add(new SelectListItem
+    {
+        Text = "A",
+        Value = "A"
+    });
+    Shifts.Add(new SelectListItem
+    {
+        Text = "B",
+        Value = "B",
+    });
+    Shifts.Add(new SelectListItem
+    {
+        Text = "C",
+        Value = "C",
+    });
+    Shifts.Add(new SelectListItem
+    {
+        Text = "G",
+        Value = "G",
+    });
+}
+@{
+    List<SelectListItem> Prod_FAI = new List<SelectListItem>();
+
+    Prod_FAI.Add(new SelectListItem
+    {
+        Text = "Production",
+        Value = "Production",
+    });
+    Prod_FAI.Add(new SelectListItem
+    {
+        Text = "FAI",
+        Value = "FAI",
+    });
+    Prod_FAI.Add(new SelectListItem
+    {
+        Text = "DeltaFAI",
+        Value = "DeltaFAI",
+    });
+    Prod_FAI.Add(new SelectListItem
+    {
+        Text = "ProtoType",
+        Value = "ProtoType",
+    });
+    Prod_FAI.Add(new SelectListItem
+    {
+        Text = "TASLRequirement",
+        Value = "TASLRequirement",
+    });
+    Prod_FAI.Add(new SelectListItem
+    {
+        Text = "InWork",
+        Value = "InWork",
+    });
+    Prod_FAI.Add(new SelectListItem
+    {
+        Text = "ReleasedLev1",
+        Value = "ReleasedLev1",
+    });
+    Prod_FAI.Add(new SelectListItem
+    {
+        Text = "ProtoTypeLev1",
+        Value = "ProtoTypeLev1"
+    });
+    Prod_FAI.Add(new SelectListItem
+    {
+        Text = "Trial",
+        Value = "Trial"
+    });
+    Prod_FAI.Add(new SelectListItem
+    {
+        Text = "RM Sizeing",
+        Value = "RM Sizeing",
+    });
+    Prod_FAI.Add(new SelectListItem
+    {
+        Text = "PRR",
+        Value = "PRR"
+    });
+}
+@*@{
+        List<SelectListItem> Prod_FAI = new List<SelectListItem>();
+
+        Prod_FAI.Add(new SelectListItem
+        {
+            Text = "FAI",
+            Value = "FAI",
+        });
+        Prod_FAI.Add(new SelectListItem
+        {
+            Text = "PRR",
+            Value = "PRR"
+        });
+        Prod_FAI.Add(new SelectListItem
+        {
+            Text = "Prod",
+            Value = "Prod",
+        });
+        Prod_FAI.Add(new SelectListItem
+        {
+            Text = "Trial",
+            Value = "Trial"
+        });
+        Prod_FAI.Add(new SelectListItem
+        {
+            Text = "RM Sizeing",
+            Value = "RM Sizeing",
+        });
+    }*@
+
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="~/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/font-awesome-4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/toastr.css">
+    <link rel="stylesheet" type="text/css" href="~/css/pe-icon-7-filled.css">
+    <link rel="stylesheet" type="text/css" href="~/css/pe-icon-7-stroke.css">
+
+    @*Disable buttons and their Colors*@
+    <style>
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .RedClassDisPointer {
+            background-color: #FF0000;
+            pointer-events: none;
+        }
+
+        .RedClass {
+            background-color: #FF0000;
+        }
+
+        .NoHoverRed:hover {
+            border: 1px solid red;
+            background-color: #FF0000;
+        }
+
+        pre {
+            white-space: pre-wrap; /* css-3 */
+            white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+            white-space: -pre-wrap; /* Opera 4-6 */
+            white-space: -o-pre-wrap; /* Opera 7 */
+            word-wrap: break-word; /* Internet Explorer 5.5+ */
+        }
+
+        .vr {
+            width: 2px;
+            background-color: #000;
+            position: relative;
+            top: 1%;
+            height: 100%;
+            bottom: 0;
+            left: 5%;
+        }
+
+        .vericaltext {
+            width: 1px;
+            word-wrap: break-word;
+            font-family: monospace; /* this is just for good looks */
+            white-space: pre; /* this is for displaying whitespaces */
+        }
+    </style>
+    @* Parent & child Divs *@
+    <style>
+        div.parent3 {
+            border: 1px solid red;
+            width: 100%;
+        }
+
+        div.child {
+            width: 21%;
+            float: left;
+            text-align: left;
+            -webkit-text-size-adjust: 100%;
+            font-size: 1.2vw;
+        }
+
+        div.child1 {
+            width: 21%;
+            float: left;
+            height: 19%;
+            text-align: left;
+            padding-top: 0.2vh;
+            -webkit-text-size-adjust: 80%;
+            font-size: 1.2vw;
+        }
+
+        div.child2 {
+            width: 10%;
+            float: left;
+            height: 19%;
+            text-align: left;
+            padding-top: 0.2vh;
+            -webkit-text-size-adjust: 80%;
+            font-size: 1.2vw;
+        }
+
+        div.header {
+            -webkit-text-size-adjust: 100%;
+            font-size: 3vw;
+        }
+
+        div.subheader {
+            -webkit-text-size-adjust: 100%;
+            font-size: 2vw;
+        }
+    </style>
+
+    <style type="text/css">
+        table {
+            border-spacing: 1px;
+        }
+
+        input {
+            width: 100%;
+        }
+
+        orange {
+            background-color: red;
+        }
+
+        green {
+            background-color: red;
+        }
+
+        pink {
+            background-color: red;
+        }
+    </style>
+
+    <script src="~/js/jquery-2.1.4.min.js"></script>
+    @*<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>*@
+
+
+    <script>
+        //$(function () {
+        //    setTimeout(xyz(), 8000);
+
+        //});
+
+        //function xyz() {
+        //    alert(0)
+        //    var ue = $("#cjtextboxop").val();
+        //    if (ue.length == 0) {
+        //        $("#cjtextboxop").prop("disabled", false);
+        //    } else {
+        //        alert(1);
+        //    }
+        //}
+
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+            var t = setTimeout(function () { startTime() }, 500);
+
+        }
+
+        function MacStatus() {
+            $.ajax({
+                url: "/HMIScree/MacStatus",
+                type: "POST",
+                dataType: "json",
+                //data: { Prefix: GetCurrentSearchTerm(req.term), AllVal: req.term },
+                success: function (data) {
+                }
+            })
+        }
+
+        function SessionTimeout() {
+            //$.ajax({
+            //    url: "/NewHMIScreen/SessionTimeOutChecker",
+            //    type: "POST",
+            //    dataType: "json",
+            //    //data: { Prefix: GetCurrentSearchTerm(req.term), AllVal: req.term },
+            //    success: function (data) {
+            //        if (parseInt(data) < 3) {
+            //            //alert("You have " + data + " Minutes before SessionOut");
+            //        } else {
+            //            //alert("You have " + data + " Minutes before SessionOut");
+            //        }
+            //    }
+            //})
+        }
+        setInterval(SessionTimeout, 60000);
+
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+            return i;
+        }
+
+    </script>
+
+
+</head>
+
+@*<body onload="startTime()" onbeforeunload="MacStatus()">*@
+<body onbeforeunload="MacStatus()">
+    @*@using (Html.BeginForm())*@
+    @*@using (Html.BeginForm("Index", "NewHMIScreen", FormMethod.Post, new { enctype = "multipart/form-data" })) *@
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div id="ErrorDiv" style="z-index: 1000; top: 0; left: 0; width: auto; position: absolute; margin-left: 60%">
+
+            @if (Session["ModeError"] != null)
+            {
+                <pre>
+<span style="font-family:Calibri;font-size:3vh;color:red">@Session["ModeError"]</span>
+                </pre>
+            }
+            @if (Session["Error"] != null)
+            {
+                <pre>
+<span style="font-family:Calibri;font-size:3vh;color:red">@Session["Error"]</span>
+                    </pre>
+            }
+            @if (Session["VError"] != null)
+            {
+                <pre>
+<span style="font-family:Calibri;font-size:3vh;color:red">@Session["VError"]</span>
+                    </pre>
+                Session["VError"] = null;
+            }
+        </div>
+
+        {
+            Session["Error"] = null;
+            Session["ModeError"] = null;
+            Session["VError"] = null;
+        }
+
+
+        @*////for (int 0 = 0; 0 < Model.Count; 0++)
+            ////{*@
+        if (count == 0)
+        {
+            <div style="font-family: Calibri; font-size: 99%; padding-left: 1%; padding-bottom: 1%">
+                <div class="parent3" style="border: none; width: 100%; height: 5%">
+                    <div class="header" style="margin-left: 20%; display: inline; color: #2e6da4;"><b>@Html.DisplayFor(m => m[0].tblmachinedetail.MachineName)</b></div>@* Nexus 535C-||-MS-02-04*@
+                    @*<div class="header" style="margin-left: 20%; display: inline; color: #2e6da4; font-size: 2.25vw"><b>@ViewBag.MachineName</b></div>*@
+                    @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+                    {
+                        <div class="header" style="display: inline; float: left; border-radius: 5px; padding-top: 2vh">@Html.ActionLink(" Home Page ", "Dashboard", "Dashboard", new { id = 0 }, new { @class = "btn btn-primary", @style = "color:white;text-decoration:none;font-size:1.2vw;font-weight:thick" })</div>
+                    }
+                    @if (ViewBag.roleid == 3)
+                    {
+                        <div class="header" style="display: inline; float: left; border-radius: 5px; padding-top: 2vh">@Html.ActionLink(" Logout ", "Logout", "Login", new { id = 0 }, new { @class = "btn btn-primary", @style = "color:white;text-decoration:none;font-size:1.2vw;font-weight:thick" })</div>
+                    }
+                    @* @for (int k = 0; k < Model.Count; k++)
+                        { *@
+                    @if (Model[0].Status == 0 || Model[0].Status == 2)
+                    {
+                        //if (Model[0].isWorkOrder == 1)
+                        if (IsWorkOrder == 1)
+                        {
+                            <div class="header" style="display: inline; float: left; padding-top: 2vh; padding-left: 7%; width: 9vw" id="reworkdiv">
+                                <button id="reworkorder" onclick="Rework(event)" class="btn btn-success" style="font-size: 1.2vw; width: auto">ReWork Order</button>
+                            </div>
+                            @*<div class="header" style="display: inline; float: left; padding-top: 2vh; padding-left: 7%; width: 9vw" id="reworkClickedMsg">
+                                    <button class="btn btn-success" style="font-size: 1.2vw; width: auto" disabled>ReWork Order is Started</button>
+                                </div>*@
+                        }
+                        else
+                        {
+                            <div class="header" style="display: inline; float: left; padding-top: 2vh; padding-left: 7%; width: 9vw" id="reworkdiv">
+                                <button id="reworkorder" onclick="Rework(event)" class="btn btn-primary" style="font-size: 1.2vw; width: auto">ReWork Order</button>
+                            </div>
+                        }
+                    }
+                    @* }*@
+
+                </div>
+            </div>
+            count++;
+        }
+        //}
+        <input type="hidden" id="selectedValue" value="@ViewBag.selectedValues" name="selectedValue" />
+        <div style="width: 85%; height: 2%"></div>
+        <div style="font-family: Calibri; font-size: 98%; padding-left: 1%">
+
+            <div style="color: white; width: 100%">.</div>
+            <div class="wrp clearfix" style="padding-left: 1%; float: left">
+                <div class="fluid">
+                    <div class="wrapper">
+                        <section class="content">
+                            <div class="row">
+
+                                <div class="widget-content  pad20f">
+                                    <article class="widget widget__form">
+                                        <div class="widget-content  pad20f">
+                                            <div class="widget__content table-responsive">
+
+                                                <table class="table table-striped" style="width: 98%">
+                                                    <tbody>
+                                                        @if (Model[0].Status == 0 || Model[0].Status == 2)
+                                                        {
+                                                            <tr style="background-color: white">
+                                                                @*;float:left*@
+                                                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%; font-weight: bold">Operator </td>
+                                                                <td style="width: 10%; text-align: center; font-family: Helvetica; font-size: 85%;">
+                                                                    @if (ViewBag.hide != null)
+                                                                    {
+                                                                        <input type="hidden" id="hdnId" value="1" />
+                                                                        @Html.TextBoxFor(m => m[0].OperatorDet, new { @id = "cjtextboxop", @name = "cjtextboxop", @class = "autosaveCommon j_length", @maxlength = 10, @disabled = "disabled" })
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="hidden" id="hdnId" value="2" />
+                                                                        @Html.TextBoxFor(m => m[0].OperatorDet, new { @id = "cjtextboxop", @name = "cjtextboxop", @class = "autosaveCommon j_length j_int", @maxlength = 10 })
+                                                                    }
+
+                                                                </td>
+                                                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%; font-weight: bold">Shift </td>
+                                                                <td style="width: 10%; text-align: center; font-family: Helvetica; font-size: 85%">
+
+                                                                    @* @{
+                                                                        string shift = Model[0].Shift;
+                                                                        string js = shift;
+                                                                        }*@
+                                                                    @*@ViewBag.shift*@
+                                                                    @* @if (ViewBag.hide != null)
+                                                                        {
+                                                                            string shift = Model[0].Shift;
+                                                                            @Html.DropDownList("Shift", new List<SelectListItem>() { new SelectListItem { Text = "--Select Shift--", Value = "--Select Shift--" }, new SelectListItem { Text = "A", Value = "A" }, new SelectListItem { Text = "B", Value = "B" }, new SelectListItem { Text = "C", Value = "C" }, new SelectListItem { Text = "G", Value = "G" } }, new { disabled = "disabled", @onchange = "jshift = this.value", @id = "jdrop", @class = "form-control", @style = "width:40%;height:45%;font-size:1.0vw;display:inline", @name = "Shift", })
+                                                                            @Html.ValidationMessageFor(model => model[0].Shift)
+                                                                            <div style="display: inline; width: 5%">&nbsp</div>
+                                                                            @Html.ActionLink("Change", "changeVisibelityNorm", new { }, new { @id = "hbd", @class = "btn btn-primary", @style = "width:55%;height:45%;font-size:1.0vw;color:white;font-weight:thick;display:inline" })
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            string shift = Model[0].Shift;
+                                                                            @Html.DropDownList("Shift", new List<SelectListItem>() { new SelectListItem { Text = "--Select Shift--", Value = "--Select Shift--" }, new SelectListItem { Text = "A", Value = "A" }, new SelectListItem { Text = "B", Value = "B" }, new SelectListItem { Text = "C", Value = "C" }, new SelectListItem { Text = "G", Value = "G" } }, new { @onchange = "jshift = this.value", @id = "jdrop", @class = "form-control", @style = "width:40%;height:45%;font-size:1.0vw;display:inline", @name = "Shift", })
+                                                                            @Html.ValidationMessageFor(model => model[0].Shift)
+                                                                            <div style="display: inline; width: 5%">&nbsp</div>
+                                                                            @Html.ActionLink("Set", "changeShiftNorm", new { Shift = jshift, op = Model[0].OperatiorID, mid = Model[0].tblmachinedetail.MachineID }, new { @id = "setbutton", @class = "btn btn-primary", @style = "width:55%;height:45%;font-size:1.0vw;color:white;font-weight:thick;display:inline" })
+                                                                        }*@
+
+                                                                    @*Working fine as of 2017-01-13*@
+                                                                    @if (ViewBag.hide != null)
+                                                                    {
+                                                                        int dat = ViewBag.hide;
+                                                                        @Html.TextBoxFor(m => m[0].Shift, new { @id = "cjtextboxshift", @name = "cjtextboxshift", @style = "width:20%;font-size:1.0vw;display:inline", @class = "autosaveCommon j_length", @disabled = "disabled", @maxlength = 1 })
+
+                                                                        @Html.ValidationMessageFor(model => model[0].Shift)
+                                                                        <div style="display: inline; width: 1%">&nbsp</div>
+
+                                                                        @Html.ActionLink("Change", "changeVisibilityNorm", new { id = Model[0].HMIID }, new { @class = "btn btn-primary changingshift ", @style = "width:55%;font-size:1.0vw;color:white;font-weight:thick;display:none" })
+                                                                        <button id="changeshift" onclick="shfitChange(event)" class="btn btn-primary setchange" style="font-size: .90vw;">change</button>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        @Html.TextBoxFor(m => m[0].Shift, new { @id = "cjtextboxshift", @class = "shiftInput j_length autosaveCommon", @style = "width:20%;font-size:1.0vw;display:inline", @maxlength = 1, @name = "cjtextboxshift", })
+                                                                        <div style="display: inline; height: 5%; width: 1%; color: white">.&nbsp</div>
+                                                                        @Html.ActionLink("Set", "changeShiftNorm", "HMIScree", new { @id = "setbutton", @style = "display:none" })
+                                                                        <button id="setshift" name="setshift" class="btn btn-primary setchange" style="font-size: .90vw;">Set</button>
+                                                                    }
+                                                                </td>
+
+                                                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%; font-weight: bold">Date </td>
+                                                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                    @Date
+                                                                </td>
+
+                                                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%; font-weight: bold">Time </td>
+                                                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                    <span id="txt"></span>
+                                                                </td>
+                                                                <td>
+                                                                    @*@if (Model[0].isWorkOrder == 1)*@
+                                                                    @if (IsWorkOrder == 1)
+                                                                    {
+                                                                        <div style="display: inline; float: left; background-color: red; margin: 3px 3px 3px 3px" id="reworkClickedMsg">
+                                                                            ReWorkOrder Started
+                                                                        </div>
+
+                                                                    }
+                                                                </td>
+
+                                                            </tr>
+
+
+
+                                                            @*<tr style="float:left">
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">Date </td>
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Date
+                                                                    </td>
+
+                                                                     <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">Time </td>
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%" >
+                                                                        <span id="txt"></span>
+                                                                    </td>
+                                                                </tr>*@
+                                                            <tr class="spacer"></tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+
+                                                <table style="width: 80%; margin-left: 10%">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <b>Total WO :</b>  @ViewBag.TotalWOCount
+                                                            </td>
+                                                            <td>
+                                                                <b>WO's Started :</b> @ViewBag.WOStartedCount
+                                                            </td>
+                                                            @* <td><b>WO's On Hold :</b> @ViewBag.WOOnHoldCount
+                                                                </td>*@
+                                                            <td>
+                                                                <b>WO's Yet to Start :</b> @ViewBag.WONotStartedCount
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+
+                                                <div style="width: 100%; color: white">&nbsp.</div>
+                                                <table class="table table-striped" style="width: 98%">
+                                                    <thead>
+                                                        <tr class="text-centre" style="background-color: orange">
+                                                            <th style="text-align: center; font-size: 95%">Sl.No.</th>
+                                                            <th style="text-align: center; font-size: 95%; display: none" class="cp">CB</th>
+
+                                                            <th style="text-align: center; font-size: 95%">WO No.</th>
+                                                            <th style="text-align: center; font-size: 95%">PartNo</th>
+                                                            <th style="text-align: center; font-size: 95%; width: 10%">OP No.</th>
+                                                            <th style="text-align: center; font-size: 95%">Project</th>
+                                                            <th style="text-align: center; font-size: 95%">Prod/FAI</th>
+                                                            <th style="text-align: center; font-size: 95%">WO Qty</th>
+                                                            <th style="text-align: center; font-size: 95%">ProcessedQty</th>
+                                                            <th style="text-align: center; font-size: 95%">Del Qty</th>
+                                                            @if (roleid != 2)
+                                                            {
+                                                                @*<th style="text-align: center; font-size: 95%" class="StartButtons">Start</th>*@
+                                                                // <th style="text-align: center; font-size: 95%" class="StartButtons">Hold/Release</th>
+                                                                @*<th style="text-align: center; font-size: 95%" class="StartButtons">JobFinish</th>*@
+                                                                <th style="text-align: center; font-size: 95%" class="StartButtons">Remove</th>
+                                                                <th style="text-align: center; font-size: 95%" class="StartButtons">Split WO</th>
+                                                                <th style="text-align: center; font-size: 95%" class="StartButtons"></th>
+                                                            }
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="spacer"></tr>
+                                                        <tr class="spacer"></tr>
+                                                        @for (int r = 0; r < Model.Count; r++)
+                                                        {
+                                                            if (Model[r].Status == 0 || Model[r].Status == 2)
+                                                            {
+                                                                var a = Model[r].Prod_FAI;
+                                                                <tr style="background-color: white">
+
+                                                                    <td class="hmiid" style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%; display: none; " value='@Model[r].HMIID'>
+                                                                        @Model[r].HMIID
+                                                                    </td>
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @slno
+                                                                    </td>
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%; display: none" class="HiddenDDLIDtd">
+                                                                        <input type="checkbox" , class="HiddenDDLID" id='@Model[r].HMIID' />
+                                                                    </td>
+
+                                                                    @*To Disable WO Details when its from DDLList*@
+                                                                    @if (Convert.ToString(Model[r].DDLWokrCentre) == null)
+                                                                    {
+                                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.TextBoxFor(m => m[r].Work_Order_No, new { @id = "cjtextbox4", @name = "textbox4", @class = "cjtextbox4 jscan autosave j_int j_length", @maxlength = 40 })
+                                                                        </td>
+                                                                        <td style="text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.TextBoxFor(m => m[r].PartNo, new { @id = "cjtextbox3", @name = "textbox3", @class = "cjtextbox3 jscan  autosave j_length", @maxlength = 40 })
+                                                                        </td>
+                                                                        <td style="text-align: center; font-family: Helvetica; font-size: 85%; width: 10%">
+                                                                            @Html.TextBoxFor(m => m[r].OperationNo, new { @id = "cjtextbox5", @name = "textbox5", @class = "cjtextbox5 autosave j_int j_length", @maxlength = 10 })
+                                                                        </td>
+                                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.TextBoxFor(m => m[r].Project, new { @id = "cjtextbox1", @name = "textbox1", @class = " cjtextbox1 autosave j_AlphNum j_length", @maxlength = 40 })
+                                                                        </td>
+                                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.DropDownListFor(model => model[r].Prod_FAI, new SelectList(Prod_FAI, "Value", "Text", Model[r].Prod_FAI), "-Select-", new { @id = "Prod_FAI", @class = "Prod_FAI", @name = "Prod_FAI", @style = "font-size:1.2vw;display:inline" })
+                                                                        </td>
+                                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.TextBoxFor(m => m[r].Target_Qty, new { @id = "cjtextbox6", @name = "cjtextbox6", @class = "cjtextbox6 j_int autosave j_length", @maxlength = 9 })
+                                                                        </td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.TextBoxFor(m => m[r].Work_Order_No, new { @id = "cjtextbox4", @name = "textbox4", @class = "cjtextbox4 jscan j_int autosave  j_length", @maxlength = 40, @disabled = "disabled" })
+                                                                        </td>
+                                                                        <td style="text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.TextBoxFor(m => m[r].PartNo, new { @id = "cjtextbox3", @name = "textbox3", @class = "cjtextbox3 jscan autosave j_length", @maxlength = 40, @disabled = "disabled" })
+                                                                        </td>
+                                                                        <td style="text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.TextBoxFor(m => m[r].OperationNo, new { @id = "cjtextbox5", @name = "textbox5", @class = "cjtextbox5 autosave j_int j_length", @maxlength = 10, @disabled = "disabled" })
+                                                                        </td>
+                                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.TextBoxFor(m => m[r].Project, new { @id = "cjtextbox1", @name = "textbox1", @class = " cjtextbox1 autosave j_AlphNum j_length", @maxlength = 40, @disabled = "disabled" })
+                                                                        </td>
+                                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.DropDownListFor(model => model[r].Prod_FAI, new SelectList(Prod_FAI, "Value", "Text", Model[r].Prod_FAI), "-Select-", new { @id = "Prod_FAI", @class = "Prod_FAI", @name = "Prod_FAI", @style = "font-size:1.2vw;display:inline" })
+                                                                        </td>
+                                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.TextBoxFor(m => m[r].Target_Qty, new { @id = "cjtextbox6", @name = "cjtextbox6", @class = "cjtextbox6 j_int autosave j_length", @maxlength = 9, @disabled = "disabled" })
+                                                                        </td>
+                                                                    }
+
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.TextBoxFor(m => m[r].ProcessQty, new { @id = "cjtextbox9", @name = "cjtextbox9", @class = "j_int j_length", @maxlength = 9, @readonly = "readonly", @style = "background-color:lightblue" })
+                                                                        @Html.HiddenFor(m => m[r].ProcessQty, new { @id = "cjtextbox9", @name = "cjtextbox9", @class = "j_int j_length", @maxlength = 9, disabled = "disabled" })
+                                                                        @Html.HiddenFor(m => m[r].Rej_Qty, new { @id = "cjtextbox7", @name = "cjtextbox7", @class = "j_int autosave", @Value = "0" })
+                                                                    </td>
+
+                                                                    @* <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.TextBoxFor(m => m[r].Delivered_Qty, new { @id = "cjtextbox8", @name = "cjtextbox8", @class = "j_int autosave j_length cjtextbox8", @maxlength = 9 })
+                                                                        </td>*@
+
+                                                                    @*  @if (roleid != 2)
+                                                                        {
+                                                                    *@
+
+                                                                    @if (Model[r].Date != null)
+                                                                    {
+
+                                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.TextBoxFor(m => m[r].Delivered_Qty, new { @id = "cjtextbox8", @name = "cjtextbox8", @class = "j_int autosave j_length cjtextbox8", @maxlength = 9 })
+                                                                        </td>
+                                                                    }
+                                                                    else
+                                                                    {
+
+                                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.TextBoxFor(m => m[r].Delivered_Qty, new { @id = "cjtextbox8", @name = "cjtextbox8", @class = "j_int autosave j_length cjtextbox8", @maxlength = 9, @disabled = "disabled" })
+                                                                        </td>
+                                                                    }
+                                                                    @*@if (Model[r].Date != null)
+                                                                        {
+
+                                                                            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                                @Html.TextBoxFor(m => m[r].Delivered_Qty, new { @id = "cjtextbox8", @name = "cjtextbox8", @class = "j_int autosave j_length cjtextbox8", @maxlength = 9 })
+                                                                            </td>
+
+                                                                            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+
+                                                                                @Html.ActionLink(" ", "IndividualSubmit", new { HMIID = Model[r].HMIID }, new { @id = @Model[r].HMIID, @class = " btn-lg fa fa-arrow-circle-right fa-1x IndividualSubmit ", @style = "float:left;background-color:lightgreen;text-decoration:none", @disabled = "disabled" })
+
+                                                                            </td>
+                                                                        }
+                                                                        else
+                                                                        {
+
+                                                                            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                                @Html.TextBoxFor(m => m[r].Delivered_Qty, new { @id = "cjtextbox8", @name = "cjtextbox8", @class = "j_int autosave j_length cjtextbox8", @maxlength = 9, @disabled = "disabled" })
+                                                                            </td>
+
+                                                                            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                                @Html.ActionLink(" ", "IndividualSubmit", new { HMIID = Model[r].HMIID }, new { @id = @Model[r].HMIID, @class = " btn-lg fa fa-arrow-circle-right fa-1x IndividualSubmit", @style = "float:left;background-color:#FFA500;text-decoration:none" })
+                                                                            </td>
+                                                                        }
+
+                                                                        @if (Model[r].IsHold == 1)
+                                                                        {
+                                                                            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                                @Html.ActionLink(" ", "EndHoldIndividual", new { hmiiid = Model[r].HMIID }, new { @class = "EndHoldIndividualLink HoldLink orange btn-lg fa  fa-lock fa-1x ", @style = "background-color:yellow;text-decoration:none;display:none" })
+                                                                                <button class="EndHoldIndividual Hold orange btn-lg fa  fa-lock fa-1x" style="background-color: yellow; text-decoration: none"></button>
+                                                                            </td>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                        }
+                                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.ActionLink(" ", "IndividualFinish", new { HMIID = Model[r].HMIID }, new { @class = "IndividualFinish pink btn-lg fa fa-check-square-o fa-1x ", @style = "background-color:#FFA500;text-decoration:none" })
+                                                                        </td>*@
+
+                                                                    @*@if (Model[r].Date != null)
+                                                                        {
+                                                                            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                                <button class="orange btn-lg fa fa-trash-o fa-1x" style="background-color: #FFA500; text-decoration: none" disabled><i class="icon-remove-sign"></i></button>
+                                                                            </td>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                                @Html.ActionLink(" ", "EndHoldIndividual", new { hmiiid = Model[r].HMIID }, new { @class = "EndHoldIndividualLink HoldLink orange btn-lg fa  fa-lock fa-1x ", @style = "background-color:yellow;text-decoration:none;display:none" })
+                                                                                <button class="RemoveWC orange btn-lg fa fa-trash-o fa-1x" onclick="myFunRemoveWO(@Model[r].HMIID)" value='@Model[r].HMIID' style="background-color: #FFA500; text-decoration: none"><i class="icon-remove-sign"></i></button>
+                                                                            </td>
+                                                                        }
+                                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @if (Model[r].SplitWO == "Yes")
+                                                                            {
+                                                                                @Html.CheckBox("SplitWO", new { @class = "SplitWO sw ", @checked = "checked", @style = "width:30px;height:30px" })
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                @Html.CheckBox("SplitWO", new { @class = "SplitWO sw ", @style = "width:30px;height:30px" })
+                                                                            }
+                                                                        </td>*@
+                                                                    <td style="display: none">
+                                                                        @Html.ActionLink("jf", "IndividualHold", new { id = Model[r].HMIID }, new { @class = "btn btn-primary sendHoldIndi", @style = "color:white;font-size:1.2vw;font-weight:thick;display:none" })
+                                                                        @Html.ActionLink("jf", "IndividualFinish", new { id = Model[r].HMIID }, new { @class = "btn btn-primary sendFinishedIndi", @style = "color:white;font-size:1.2vw;font-weight:thick;display:none" })
+
+                                                                        @Html.HiddenFor(m => Model[r].HMIID)
+                                                                        @Html.HiddenFor(m => Model[r].MachineID)
+                                                                        @Html.HiddenFor(m => Model[r].OperatiorID)
+                                                                        @Html.HiddenFor(m => Model[r].OperatorDet)
+                                                                        @Html.HiddenFor(m => Model[r].Status)
+                                                                        @Html.HiddenFor(m => Model[r].Date)
+                                                                        @Html.HiddenFor(m => Model[r].CorrectedDate)
+                                                                        @Html.HiddenFor(m => Model[r].Shift)
+                                                                        @Html.HiddenFor(m => Model[r].Time)
+                                                                        @Html.HiddenFor(m => Model[r].isUpdate)
+                                                                        @Html.HiddenFor(m => Model[r].DoneWithRow)
+                                                                        @Html.HiddenFor(m => Model[r].isWorkInProgress)
+                                                                        @Html.HiddenFor(m => Model[r].isWorkOrder)
+
+                                                                        @Html.HiddenFor(m => Model[r].DDLWokrCentre)
+                                                                        @Html.HiddenFor(m => Model[r].Delivered_Qty)
+                                                                        @Html.HiddenFor(m => Model[r].OperationNo)
+                                                                        @Html.HiddenFor(m => Model[r].PartNo)
+                                                                        @Html.HiddenFor(m => Model[r].ProcessQty)
+                                                                        @Html.HiddenFor(m => Model[r].Prod_FAI)
+
+                                                                        @Html.HiddenFor(m => Model[r].Project)
+                                                                        @Html.HiddenFor(m => Model[r].Rej_Qty)
+                                                                        @Html.HiddenFor(m => Model[r].Work_Order_No)
+                                                                        @Html.HiddenFor(m => Model[r].IsMultiWO)
+                                                                        @Html.HiddenFor(m => Model[r].PEStartTime)
+                                                                        @Html.HiddenFor(m => Model[r].Target_Qty)
+
+                                                                    </td>
+                                                                    @* }*@
+                                                                </tr>
+                                                                slno = slno + 1;
+                                                            }
+                                                        }
+                                                        <tr class="spacer"></tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div style="color: white; width: 85%; padding-top: 4vh;">.</div>
+
+            <div style="width: 100%; padding-right: 2%">
+
+                @* <div style="display: inline; float: left; width: 9vw" id="wipwos">
+                        <button class="btn btn-primary" style="font-size: 1.2vw;">WIP WO's</button>
+                    </div>*@
+
+                @Html.ActionLink("WIP WO's ", "WorkInProgressList", new { id = Convert.ToInt32(ViewBag.machineID) }, new { @class = "btn btn-primary wipwo", @style = "color:white;font-size:1.2vw;font-weight:thick;display:none" })
+
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            @*<div style="display: inline; float: left; width: 9vw" id="wipwos">
+                                    <button class="btn btn-primary" style="font-size: 1.2vw;">WIP WO's</button>
+                                </div>*@
+                        </td>
+                        <td>
+                            @Html.ActionLink("WIP WO's ", "WorkInProgressList", new { id = Convert.ToInt32(ViewBag.machineID) }, new { @class = "btn btn-primary wipwo", @style = "color:white;font-size:1.2vw;font-weight:thick;display:none" })
+                        </td>
+                        <td>
+                            <div style="display: inline; float: left; class="ddlClass">
+                                @if (Convert.ToInt32(Session["SubmitClicked"]) != 1)
+                                {
+                                    @Html.ActionLink("DDL", "DDLList", new { id = Convert.ToInt32(ViewBag.machineID) }, new { @class = "btn btn-primary DDL ddlClass ddlClassSpecific", @style = "color:white;font-size:1.2vw;font-weight:thick" })
+                                }
+                                else
+                                {
+                                    //Commented For Now 2016-12-27
+                                    @Html.ActionLink("DDL", "DDLList", new { id = Convert.ToInt32(ViewBag.machineID) }, new { @class = "btn btn-primary DDL ddlClass ddlClassSpecific", @style = "color:white;font-size:1.2vw;font-weight:thick" })
+                                    @*<button class="btn btn-primary ddlClass" style="color: white; font-size: 1.2vw; font-weight: 600">DDL</button>*@
+                                }
+                            </div>
+                        </td>
+                        @if (@Session["Color"] == "Green")
+                        {
+                            <td>
+                                <div style="display: inline; float: left; padding-left: 5%; width: 7vw">
+                                    <button class="btn btn-primary " id="StartAll" style="font-size: 1.2vw;" style="float:left;background-color:lightgreen;text-decoration:none" onclick="StartAllClick()">Start All</button>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <div style="display: inline; float: left; padding-left: 5%; width: 7vw">
+                                    <button class="btn btn-primary " id="StartAll" style="font-size: 1.2vw;" onclick="StartAllClick()">Start All</button>
+                                </div>
+                            </td>
+                        }
+                        <td>
+                            <div style="display: inline; float: left; padding-left: 5%; width: 9vw" id="jobFinished">
+                                <button class="btn btn-primary " id="JobFinish" onclick="myFunctionFinishAll(event)" style="font-size: 1.2vw;">Job Finish</button>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="display: inline; float: left; padding-left: 5%; width: 9vw">
+                                <button class="btn btn-primary " id="PartialFinish" onclick="myFunctionPartial(event)" style="font-size: 1.2vw;">Partial Finish</button>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="display: inline; float: left" class="BreakD">@Html.ActionLink(" BreakDown(BD)", "BreakDownEntry", new { id = Model[0].MachineID }, new { @class = "btn btn-primary Breakdown", @style = "color:white;font-size:1.2vw;font-weight:thick" })</div>
+                        </td>
+                        <td>
+                            <div style="display: inline; float: left" class="PlannedM">@Html.ActionLink("Planned Maintenance", "Maintenance", new { id = Model[0].MachineID }, new { @class = "btn btn-primary PM", @style = "color:white;font-size:1.2vw;font-weight:thick" })</div>
+                        </td>
+                        <td>
+                            <div style="display: inline; float: left; width: 7vw">@Html.ActionLink("BD List ", "BreakDownList", new { id = Convert.ToInt32(ViewBag.machineID) }, new { @class = "btn btn-primary", @style = "color:white;font-size:1.2vw;font-weight:thick" })</div>
+                        </td>
+                        <td style="width: auto">
+                            <div style="display: inline; float: left; width: 7vw">@Html.ActionLink("Idle List ", "IdleList", new { id = Convert.ToInt32(ViewBag.machineID) }, new { @class = "btn btn-primary", @style = "color:white;font-size:1.2vw;font-weight:thick" })</div>
+                        </td>
+                        <td style="width: auto">
+                            <div style="display: inline; float: left; width: 5vw" id="removeWODiv">
+                                <button class="btn btn-primary " id='removeWO' value="@Model[0].HMIID" style="font-size: 1.2vw;" onclick="RemoveAllClick()">Remove WO</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <div style="width: 85%; height: 1vh"></div>
+            @*}*@
+
+        </div>
+        <div class="test">
+            <div style="width: 100%; color: white">&nbsp.</div>
+            @if (ViewBag.item != null)
+            {
+                <table class="table table-striped" style="width: 98%">
+                    <thead>
+                        <tr class="text-centre" style="background-color: orange">
+                            <th style="text-align: center; font-size: 95%">Sl.No.</th>
+
+                            <th style="text-align: center; font-size: 95%">WO No.</th>
+                            <th style="text-align: center; font-size: 95%">Operation No</th>
+                            <th style="text-align: center; font-size: 95%">Message</th>
+                        </tr>
+
+
+
+                        @foreach (var i in ViewBag.item)
+                        {
+                            M = M + 1;
+                            <tr>
+                                <td style="text-align: center; font-size: 95%">@M</td>
+                                <td style="text-align: center; font-size: 95%">@i.WorkorderNo</td>
+                                <td style="text-align: center; font-size: 95%">@i.OperationNo</td>
+                                <td style="text-align: center; font-size: 95%">@i.Errmsg</td>
+
+                            </tr>
+                        }
+
+
+                    </thead>
+                </table>
+            }
+        </div>
+        <div style="font-family: Calibri; font-size: 100%; padding-top: 8vh">
+            <div class="parent3" style="border: none; width: 100%; height: 5%"></div>
+        </div>
+        <input type="submit" value="" class="btn btn-primary btn-lg" id="loginForm" name="loginForm" hidden="hidden" style="display: none;" />
+    }
+    <div id="dialog-confirm" title=" Release Confirmation ?" style="height: 5%;">
+        <p>
+        </p>
+    </div>
+
+    <div id="dialog-confirm-1" title=" Split WorkOrder Confirmation ?" style="height: 5%; color: blue">
+        <p>
+        </p>
+    </div>
+
+</body>
+</html>
+
+<script src="~/js/jValidations.js"></script>
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+
+<script>
+    $(document).ready(function (e) {
+        //$('#cjtextboxshift').prop("disabled", true);
+        //$('#cjtextboxop').prop("disabled", true);
+        //$(".setchange").prop("disabled", true);
+
+        $('#Prod_FAI').prop("disabled", true);
+        $('#RemoveAutoSave').prop("disabled", true);
+        $('#PartialFinish').prop("disabled", true);
+        $('#JobFinished').prop("disabled", true);
+        $('#JobFinish').prop("disabled", true);
+        $('#JobFinished').addClass('disbaleClick');
+        $('#JobFinish').addClass('disbaleClick');
+
+        //$('.DDL').css('pointer-events', 'none');
+        //$('.DDL').css('background-color', '#7BA9D0');
+        $('.ddlClass').css('pointer-events', 'none');
+        $('.ddlClass').css('background-color', '#7BA9D0');
+        $('.EnterDelivQty').removeAttr('href');
+        $('.EnterDelivQty').addClass('RedClassDisPointer');
+        $('.Breakdown').css('pointer-events', 'none');
+        $('.Breakdown').css('background-color', '#7BA9D0');
+        $('.PM').css('pointer-events', 'none');
+        $('.PM').css('background-color', '#7BA9D0');
+        $('#reworkdiv').prop("disabled", true);
+        $('#reworkorder').prop("disabled", true);
+        $('.cjtextbox1').prop("disabled", true);
+        $('.cjtextbox3').prop("disabled", true);
+        $('.cjtextbox4').prop("disabled", true);
+        $('.cjtextbox5').prop("disabled", true);
+        $('.cjtextbox6').prop("disabled", true);
+        $('.cjtextbox8').prop("readonly", true);
+        $('#changeshift').prop("disabled", true);
+        $('.setshift').prop("disabled", true);
+
+        $("#removeWO").prop("disabled", true);
+        $('.PlannedM').css('pointer-events', 'none');
+        $('.PlannedM').css('background-color', '#7BA9D0');
+        //$('#PlannedMaintenance').prop("disabled", true);
+        $('.BreakD').css('pointer-events', 'none');
+        $('.BreakD').css('background-color', '#7BA9D0');
+        $('.Prod_FAI').prop("disabled", true);
+        $('.IndividualSubmit').css('pointer-events', 'none');
+        $('.Hold').css('pointer-events', 'none');
+        $('.IndividualFinish').css('pointer-events', 'none');
+        $('#StartAll').prop("disabled", true);
+        $('#HoldAll').prop("disabled", true);
+        $('#GenericWork').prop("disabled", true);
+        $('.RemoveWC').prop("disabled", true);
+    });
+</script>

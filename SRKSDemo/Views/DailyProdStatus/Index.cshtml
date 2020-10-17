@@ -1,0 +1,557 @@
+﻿@*//@model IList<Tata.Models.tbllivedailyprodstatu>*@
+@model IList<SRKSDemo.Server_Model.tblworkmode>
+@{
+    ViewBag.Title = "Index";
+    int count = Model.Count();
+    Layout = "~/Views/Shared/_VHMILayout.cshtml";
+    int jd1 = 1;
+
+    int[,] colorval = new int[ViewBag.macCount, 10];
+    colorval = (int[,])Session["colordata"];
+
+    int[] machineids = new int[ViewBag.macCount];
+    // machineids = Session["macid"];
+
+    int[] machids = new int[ViewBag.macCount];
+    machids = (int[])Session["macid"];
+    int maclopper = 0;
+    foreach (var item in machids)
+    {
+        machineids[maclopper++] = Convert.ToInt32(item);
+    }
+    var accordin1 = 0;
+}
+<style>
+    body {
+        background: #fff;
+    }
+
+    div.child-new {
+        width: 4%;
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 1.2vw;
+        color: white;
+    }
+
+    div.child1 {
+        width: 2.03%;
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 0.8vw;
+        color: white;
+    }
+
+    div.child2 {
+        width: 2.03%;
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 0.8vw;
+        color: blue;
+    }
+
+    div.childMDetails {
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 24px;
+        color: blue;
+        margin-top: -10px;
+        padding-bottom: 10px;
+    }
+
+    .panel {
+        opacity: 1;
+    }
+</style>
+
+<style>
+    div.parent3 {
+        border-bottom: 1px solid #fff;
+        width: 100%;
+        color: #fff;
+    }
+
+    div.child-new {
+        width: 4.00%;
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 25px;
+        /* color: blue; */
+        padding-left: 11spx;
+    }
+
+    div.child1 {
+        width: 2%;
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 0.8vw;
+        /* color: blue; */
+        padding-left: 6px;
+    }
+
+    div.child2 {
+        width: 2%;
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 0.8vw;
+        color: #fff;
+        padding-left: 10px;
+    }
+
+    div.parent {
+        border: 2px solid red;
+        width: 100%;
+        color: blue;
+        border: none;
+        height: 3vh;
+    }
+
+    div.childcolor {
+        width: 2.5%;
+        height: 80%;
+        float: right;
+        -webkit-text-size-adjust: 100%;
+        display: inline;
+        margin-left: 1vw;
+        text-align: right;
+        border-radius: 10px;
+    }
+
+    div.childtext {
+        width: auto;
+        height: 90%;
+        float: right;
+        -webkit-text-size-adjust: 100%;
+        font-size: 1vw;
+        color: black;
+        display: inline;
+        text-align: left;
+        /*margin-right: 1vw;
+        border-radius: 10px;*/
+        font-family: Calibri;
+        font-style: oblique;
+        font-weight: bold;
+    }
+
+    a:hover, a:focus {
+        text-decoration: none;
+        outline: none;
+    }
+
+    #accordion .panel {
+        border: 1px solid teal;
+        box-shadow: none;
+        border-radius: 0;
+        margin-bottom: 3px;
+        margin-top: 3px;
+    }
+
+    #accordion .panel-heading {
+        padding: 0;
+        border-radius: 0;
+        border: none;
+    }
+
+    hr {
+        border-top-color: #edeaee;
+        border-bottom: 1px solid #ffffff;
+        margin: 12px 0;
+        clear: both;
+    }
+
+    #accordion .panel-title a {
+        display: block;
+        padding: 15px;
+        font-size: 25px;
+        font-weight: 500;
+        color: #fff;
+        background: teal;
+        transition: all 0.5s ease 0s;
+    }
+
+        #accordion .panel-title a:hover {
+            background: teal;
+        }
+
+    #accordion .panel-body {
+        font-size: 14px;
+        color: #000;
+        background: #fff;
+        padding: 15px 12px;
+        line-height: 25px;
+        border: none;
+        position: relative;
+    }
+
+        #accordion .panel-body:after {
+            content: "";
+            position: absolute;
+            top: -30px;
+            left: 40px;
+            border: 15px solid transparent;
+            border-bottom: 15px solid #29b0a0;
+        }
+
+    .float-right {
+        float: right;
+    }
+
+    #top {
+        background: -webkit-gradient(linear, 0 50%, 0 100%, from(#4c4851), to(#38353c));
+        background: -webkit-linear-gradient(top, #4c4851, #38353c);
+        background: -moz-linear-gradient(top, #4c4851, #38353c);
+        background: -o-linear-gradient(top, #4c4851, #38353c);
+        background: -ms-linear-gradient(top, #4c4851, #38353c);
+        background: #e0791c;
+        padding: 10px 30px;
+    }
+</style>
+<script>setTimeout(function () { window.location.reload(); }, 60000 * 1)</script>@* Every One menuts it will update*@
+
+<div class="container-fluid">
+    @*to display the TimeLine*@
+
+    <div id="top" style="margin-top:30px;;height:auto;overflow:hidden; position:sticky;">
+        <div class="parent3 row">
+            @for (var i = 0; i <= 24; i++)
+            {
+                var val = (i + 6) % 24;
+                if (val == 0)
+                { val = 00; }
+                if (val > 9)
+                {
+                    <div class="child-new">
+                        @val:00
+                    </div>
+                }
+                else
+                {
+                    var val1 = "0" + val;
+                    <div class="child-new">
+                        @val1:00
+                    </div>
+                }
+            }
+        </div>
+        <div class="parent1 row">
+            @for (var i = 0; i <= 48; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    <div class="child1">
+                        00
+                    </div>
+                }
+                else
+                {
+                    <div class="child1">
+                        30
+                    </div>
+                }
+            }
+        </div>
+
+        <div class="parent1 row">
+            @for (var i = 0; i <= 48; i++)
+            {
+                <div class="child2">
+                    |
+                </div>
+            }
+        </div>
+    </div>
+    @*Endof to display the TimeLine*@
+
+    <!-- /parent container -->
+    <div class=" pad20f">
+
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+            @foreach (string shopname in ViewBag.DistinctShops)
+            {
+                var shopnameString = shopname.Replace(" ", "");
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href='#@shopnameString' aria-expanded="false">
+                                @shopname <i class="fa fa-chevron-down float-right" aria-hidden="true"></i>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="@shopnameString" class="panel-collapse collapse" role="tabpanel">
+                        @*  @if(accordin1 == 0){
+                                <div id="@shopnameString" class="panel-collapse collapse in" role="tabpanel" >
+                            }
+                            else{
+                                 <div id="@shopnameString" class="panel-collapse collapse" role="tabpanel" >
+                                }*@
+
+                        <div class="panel-body">
+                            @for (var n = 1; n <= ViewBag.macCount; n++)
+                            {
+                                var showData = 0;
+                                for (var ja = 0; ja < count; ja++)
+                                {
+                                    if (Model[ja].MachineID == machineids[n - 1] && Model[ja].tblmachinedetail.tblcell.CelldisplayName == shopname)
+                                    {
+                                        showData = 1;
+                                        <div class="parent3" style="padding-left: 1%; border: none; background-color: orange;">
+                                            <div class="childMDetails col-sm-6">
+                                                <span style="color: brown">M/c : </span>@Model[ja].tblmachinedetail.MachineDisplayName
+                                            </div>
+                                            <div class="childMDetails col-sm-6">
+                                                <span style="color: brown; font-weight:700">M/c Utilization : @colorval[n - 1, 11] % (Prv.Day @colorval[n - 1, 13] % (@colorval[n - 1, 14] / @colorval[n - 1, 15]))</span>
+                                            </div>
+                                            @*<div class="childMDetails col-sm-6">
+                                                    <span style="color: brown">M/c Desc : </span>@Model[ja].tblmachinedetail.MachineDescription
+                                                </div>*@
+                                        </div>
+                                        break;
+                                    }
+                                }
+                                //color Data
+                                <div style="padding-left: 1%">
+                                    @for (var j = 0; j < count; j++)
+                                    {
+                                        if (Model[j].MachineID == machineids[n - 1] && Model[j].tblmachinedetail.tblcell.CelldisplayName == shopname)
+                                        {
+                                            var Width = Model[j].DurationInSec * 0.067;
+                                            var Dura = Model[j].DurationInSec;
+                                            if (Model[j].ColorCode == "GREEN")
+                                            {
+                                                <span style="background-color: green; color: green; float: left; height: 27px; width:@Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("Operating " +Dura + " min")">.</span>
+                                            }
+                                            else if (Model[j].ColorCode == "YELLOW")
+                                            {
+                                                if (Model[j].LossCodeID != null)
+                                                {
+                                                    var losscodedesc = Model[j].tbllossescode.LossCodeDesc;
+                                                    <span style="background-color: yellow; color: yellow; float: left; height: 27px; width: @Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("Delay " + Dura + " min -- " + losscodedesc)">.</span>
+                                                }
+                                                else
+                                                {
+                                                    <span style="background-color: yellow; color: yellow; float: left; height: 27px; width: @Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("Delay " + Dura + " min")">.</span>
+                                                }
+                                            }
+                                            else if (Model[j].ColorCode == "RED")
+                                            {
+                                                if (Model[j].BreakdownID != null)
+                                                {
+                                                    var BDDesc = Model[j].tblbreakdown.MessageDesc;
+                                                    <span style="background-color: red; color: red; float: left; height: 27px; width: @Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("Alram " + Dura + " min -- " + BDDesc)">.</span>
+                                                }
+                                                else
+                                                {
+                                                    <span style="background-color: red; color: red; float: left; height: 27px; width: @Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("Alarm " + Dura + " min")">.</span>
+                                                }
+                                            }
+                                            else if (Model[j].ColorCode == "BLUE")
+                                            {
+                                                <span style="background-color: blue; color: blue; float: left; height: 27px; width: @Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("MDI "+Dura + " min")">.</span>
+                                            }
+                                            else if (Model[j].ColorCode == "BROWN")
+                                            {
+                                                @*<span style="background-color: brown; color: brown; float: left; height: 27px; width: @Width%; padding-bottom: 10px">.</span>*@
+                                                <span style="background-color: brown; color: brown; float: left; height: 27px; width:@Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("RTN " +Dura + " min")">.</span>
+                                            }
+                                            else if (Model[j].ColorCode == "GRAY")
+                                            {
+                                                @*<span style="background-color: gray; color: gray; float: left; height: 27px; width: @Width%; padding-bottom: 10px">.</span>*@
+                                                <span style="background-color: gray; color: gray; float: left; height: 27px; width:@Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("EDIT " +Dura + " min")">.</span>
+                                            }
+                                            else if (Model[j].ColorCode == "PURPLE")
+                                            {
+                                                @*<span style="background-color: purple; color: purple; float: left; height: 27px; width: @Width%; padding-bottom: 10px">.</span>*@
+                                                <span style="background-color: purple; color: purple; float: left; height: 27px; width:@Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("JOG " +Dura + " min")">.</span>
+                                            }
+                                            else if (Model[j].ColorCode == "PINK")
+                                            {
+                                                @*<span style="background-color: pink; color: pink; float: left; height: 27px; width: @Width%; padding-bottom: 10px">.</span>*@
+                                                <span style="background-color: pink; color: pink; float: left; height: 27px; width:@Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("HND " +Dura + " min")">.</span>
+                                            }
+                                            else if (Model[j].ColorCode == "SKYBLUE")
+                                            {
+                                                @*<span style="background-color: white; color: white; float: left; height: 27px; width: @Width%; padding-bottom: 10px">.</span>*@
+                                                <span style="background-color: skyblue; color: skyblue; float: left; height: 27px; width:@Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("ETC " +Dura + " min")">.</span>
+                                            }
+                                            else if (Model[j].ColorCode == "BLACK")
+                                            {
+                                                @*<span style="background-color: black; color: black; float: left; height: 27px; width: @Width%; padding-bottom: 10px">.</span>*@
+                                                <span style="background-color: black; color: black; float: left; height: 27px; width:@Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("Power Off " +Dura + " min")">.</span>
+                                            }
+                                            else
+                                            {
+                                                <span style="background-color: black; color: black; float: left; height: 27px; width: 0.069%; padding-bottom: 10px">.</span>
+                                            };
+                                        }
+                                    }
+                                </div>
+
+                                if (showData == 1)
+                                {
+                                    <hr style="border: 2px solid #000; color: black; margin: 12px 0; clear:both;" />
+                                    //color with count
+                                    <div class="parent">
+                                        @* <div class="childtext">
+                                                @colorval[n - 1, 5]
+                                            </div>
+                                            <div class="childtext" style="margin-left: .1vw;">
+                                                Maintenance :
+                                            </div>
+                                            <div class="childcolor" style="background-color: brown; color: white">
+                                            </div>*@
+
+                                        <div class="childtext">
+                                            @colorval[n - 1, 10]
+                                        </div>
+                                        <div class="childtext" style="margin-left: .1vw;">
+                                            PowerOff :
+                                        </div>
+                                        <div class="childcolor" style="background-color: black; color: white">
+                                        </div>
+
+                                        <div class="childtext">
+                                            @colorval[n - 1, 9]
+                                        </div>
+                                        <div class="childtext" style="margin-left: .1vw;">
+                                            ETC :
+                                        </div>
+                                        <div class="childcolor" style="background-color: skyblue; color: white">
+                                        </div>
+
+                                        <div class="childtext">
+                                            @colorval[n - 1, 8]
+                                        </div>
+                                        <div class="childtext" style="margin-left: .1vw;">
+                                            RTN :
+                                        </div>
+                                        <div class="childcolor" style="background-color: brown; color: white">
+                                        </div>
+
+
+                                        <div class="childtext">
+                                            @colorval[n - 1, 7]
+                                        </div>
+                                        <div class="childtext" style="margin-left: .1vw;">
+                                            EDIT :
+                                        </div>
+                                        <div class="childcolor" style="background-color: gray; color: white">
+                                        </div>
+
+                                        <div class="childtext">
+                                            @colorval[n - 1, 6]
+                                        </div>
+                                        <div class="childtext" style="margin-left: .1vw;">
+                                            HND :
+                                        </div>
+                                        <div class="childcolor" style="background-color: pink; color: white">
+                                        </div>
+
+                                        <div class="childtext">
+                                            @colorval[n - 1, 5]
+                                        </div>
+                                        <div class="childtext" style="margin-left: .1vw;">
+                                            JOG :
+                                        </div>
+                                        <div class="childcolor" style="background-color: purple; color: white">
+                                        </div>
+
+                                        <div class="childtext">
+                                            @colorval[n - 1, 4]
+                                        </div>
+                                        <div class="childtext" style="margin-left: .1vw;">
+                                            MDI :
+                                        </div>
+                                        <div class="childcolor" style="background-color: blue; color: white">
+                                        </div>
+                                        <div class="childtext">
+                                            @colorval[n - 1, 3]
+                                        </div>
+                                        <div class="childtext" style="margin-left: .1vw;">
+                                            Alarm :
+                                        </div>
+                                        <div class="childcolor" style="background-color: red; color: white">
+                                        </div>
+
+                                        <div class="childtext">
+                                            @colorval[n - 1, 2]
+                                        </div>
+                                        <div class="childtext" style="margin-left: .1vw;">
+                                            Delay :
+                                        </div>
+                                        <div class="childcolor" style="background-color: yellow; color: white">
+                                        </div>
+                                        <div class="childtext">
+                                            @colorval[n - 1, 1]
+                                        </div>
+                                        <div class="childtext" style="margin-left: .1vw;">
+                                            Operating :
+                                        </div>
+                                        <div class="childcolor" style="background-color: green; color: white">
+                                        </div>
+                                        <div class="childtext">
+                                            @colorval[n - 1, 12]
+                                        </div>
+                                        <div class="childtext" style="margin-left: .1vw;">
+                                            TotalTime :
+                                        </div>
+                                        <div class="childtext">
+                                            (Values in Minutes) &nbsp;&nbsp;
+                                        </div>
+                                        @*<div class="childcolor" style="background-color: blue; color: white">
+                                            </div>*@
+                                    </div>
+                                    <hr />
+                                }
+
+                            }
+                        </div>
+                        @* @if(accordin1 == 0){
+                                </div>
+                            }
+                            else{
+                                  </div>
+                                }*@
+                    </div>
+                </div>
+
+                accordin1++;
+            }
+            <hr />
+        </div>
+
+        <!-- /widget -->
+    </div>
+</div>
+<style>
+    table {
+        border-spacing: 0;
+    }
+</style>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+    $(document).find(".panel-collapse:first").addClass("in")
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var hash = window.location.hash;
+        if (hash) {
+            $("#accordion .panel-collapse").removeClass('in');
+            $(hash).addClass('in');
+        }
+
+        $('#accordion').on('shown.bs.collapse', function () {
+            var activeId = $("#accordion .in").attr('id');
+            window.location.hash = activeId;
+        });
+
+        $('#accordion').on('hidden.bs.collapse', function () {
+            window.location.hash = '';
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>

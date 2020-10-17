@@ -1,0 +1,412 @@
+﻿@model SRKSDemo.ServerModel.tblworkorderentry
+@{
+    ViewBag.Title = "UnitWorks - Prod Details Entry";
+    Layout = "~/Views/Shared/_OperatorAdminLayout.cshtml";
+}
+
+@{
+    List<SelectListItem> DirectJobOrder = new List<SelectListItem>();
+    DirectJobOrder.Add(new SelectListItem
+    {
+        Text = "D",
+        Value = "1",
+    });
+    DirectJobOrder.Add(new SelectListItem
+    {
+        Text = "N",
+        Value = "2",
+    });
+}
+
+<div class="mp_content">
+    <h3>
+        Production Details Entry / รายละเอียดการผลิต
+    </h3>
+    <form class="form-horizontal form-label-left" method="post" action="/OperatorEntry/EntryWindow">
+        @if (Model == null)
+        {
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Shift / เปลี่ยน
+                        </label>
+                        @Html.DropDownList("ShiftID", null, "--Select Shift--", new { @id = "ShiftID", @class = "stacked-label dropdown-toggle form-control", @name = "ShiftID", @value = ViewData["ShiftID"], @Required = "required" })
+                        @*@Html.DropDownListFor(model => model.Shift, DirectJobOrder, new { @id = "Shift", @class = "form-control", @tabindex = "7", @name = "Shift", @required = "required" })
+                                            <select class="form-control" tabindex="2">
+                                <option value="" selected="" disabled="">Select Shift</option>
+                                <option value="United States">Shift 1</option>
+                                <option value="United Kingdom">Shift 2</option>
+                            </select>*@
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Operator ID
+                        </label>
+                        @Html.TextBoxFor(model => model.OperatorID, new { @id = "OperatorID", @class = "form-control", @name = "OperatorID", @placeholder = "Operator ID", @required = "required" })
+                        @*@Html.TextBox("OperatorID", null, new { @id = "operatorid", @class = "form-control", @placeholder = "Operator ID" })*@
+                        @*<input type="text" id="print" name="print" placeholder="Operator ID" class="form-control">*@
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Production Order No.
+                        </label>
+                        @Html.TextBoxFor(model => model.Prod_Order_No, new { @id = "Prod_Order_No", @class = "form-control", @name = "Prod_Order_No", @placeholder = "Production Order No.", @required = "required", @onchange = "autoPopulateOperatorEntry()" })
+                        @*@Html.TextBox("ProductionOrder", null, new { @id = "ProductionOrder", @class = "form-control", @placeholder = "Production Order No." })*@
+                        @*<input type="text" id="print" name="print" placeholder="Production Order No." class="form-control">*@
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Operation No.
+                        </label>
+                        @Html.TextBoxFor(model => model.OperationNo, new { @id = "OperationNo", @class = "form-control", @name = "OperationNo", @placeholder = "Operation No.", @required = "required", @onchange = "autoPopulateOperatorEntry()" })
+                        @*@Html.TextBox("OperationNo", null, new { @id = "OperationNo", @class = "form-control", @placeholder = "Operation No." })*@
+                        @*<input type="text" id="print" name="print" placeholder="Operation No." class="form-control">*@
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            FG Code
+                        </label>
+                        @Html.TextBoxFor(model => model.FGCode, new { @class = "form-control", @placeholder = "FG Code", @required = "required" })
+                        @*@Html.TextBox("FG Code", null, new { @id = "FGCode", @class = "form-control", @placeholder = "FG Code" })*@
+                        @*<input type="text" id="print" name="print" placeholder="FG Code" class="form-control">*@
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Prod. Order Qty
+                        </label>
+                        @Html.TextBoxFor(model => model.ProdOrderQty, new { @id = "ProdOrderQty", @class = "form-control", @name = "ProdOrderQty", @placeholder = "Prod. Order Qty.", @required = "required" })
+                        @*@Html.TextBox("Yield", null, new { @id = "Yield", @class = "form-control", @placeholder = "Prod. Order Qty" })*@
+                        @*<input type="text" id="print" name="print" placeholder="Prod. Order Qty" class="form-control">*@
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Processed Qty
+                        </label>
+                        @Html.TextBoxFor(model => model.ProcessQty, new { @id = "ProcessQty", @class = "form-control", @name = "ProcessQty", @placeholder = "Processed Qty", @readonly = "readonly" })
+                        @*@Html.TextBox("ProcessedQty", null, new { @id = "ProcessedQty", @class = "form-control", @placeholder = "Processed Qty", @readonly = "readonly" })*@
+                        @*<input type="text" id="print" name="print" placeholder="Total" class="form-control">*@
+                    </div>
+                </div>
+            </div>
+        }
+        else if (Model.IsStarted == 0)
+        {
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Shift / เปลี่ยน
+                        </label>
+                        @Html.DropDownList("ShiftID", null, "--Select Shift--", new { @id = "ShiftID", @class = "stacked-label dropdown-toggle form-control", @name = "ShiftID", @value = ViewData["ShiftID"], @Required = "required" })
+                        @*@Html.DropDownList("Shift", DirectJobOrder, new { @id = "Shift", @class = "form-control", @tabindex = "7", @name = "Shift", @required = "required" })*@
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Operator ID
+                        </label>
+                        @Html.TextBoxFor(model => model.OperatorID, new { @id = "OperatorID", @class = "form-control", @name = "OperatorID", @placeholder = "Operator ID", @required = "required" })
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Production Order No.
+                        </label>
+                        @Html.TextBoxFor(model => model.Prod_Order_No, new { @id = "Prod_Order_No", @class = "form-control", @name = "Prod_Order_No", @placeholder = "Production Order No.", @required = "required" })
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Operation No.
+                        </label>
+                        @Html.TextBoxFor(model => model.OperationNo, new { @id = "OperationNo", @class = "form-control", @name = "OperationNo", @placeholder = "Operation No.", @required = "required" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            FG Code
+                        </label>
+                        @Html.TextBoxFor(model => model.FGCode, new { @class = "form-control", @placeholder = "FG Code", @required = "required" })
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Prod. Order Qty
+                        </label>
+                        @Html.TextBoxFor(model => model.ProdOrderQty, new { @id = "ProdOrderQty", @class = "form-control", @name = "ProdOrderQty", @placeholder = "Prod. Order Qty.", @required = "required" })
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Processed Qty
+                        </label>
+                        @Html.TextBoxFor(model => model.ProcessQty, new { @id = "ProcessQty", @class = "form-control", @name = "ProcessQty", @placeholder = "Processed Qty", @readonly = "readonly" })
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Shift / เปลี่ยน
+                        </label>
+                        @*@Html.DropDownList("Shift", DirectJobOrder, new { @id = "Shift", @class = "form-control", @tabindex = "7", @name = "Shift", @required = "required", @readonly = "readonly" })*@
+                        @Html.DropDownList("ShiftID", null, "--Select Shift--", new { @id = "ShiftID", @class = "stacked-label dropdown-toggle form-control", @name = "ShiftID", @value = ViewData["ShiftID"], @Required = "required", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Operator ID
+                        </label>
+                        @Html.TextBoxFor(model => model.OperatorID, new { @id = "OperatorID", @class = "form-control", @name = "OperatorID", @placeholder = "Operator ID", @required = "required", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Production Order No.
+                        </label>
+                        @Html.TextBoxFor(model => model.Prod_Order_No, new { @id = "Prod_Order_No", @class = "form-control", @name = "Prod_Order_No", @placeholder = "Production Order No.", @required = "required", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Operation No.
+                        </label>
+                        @Html.TextBoxFor(model => model.OperationNo, new { @id = "OperationNo", @class = "form-control", @name = "OperationNo", @placeholder = "Operation No.", @required = "required", @readonly = "readonly" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            FG Code
+                        </label>
+                        @Html.TextBoxFor(model => model.FGCode, new { @class = "form-control", @placeholder = "FG Code", @required = "required", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Prod. Order Qty
+                        </label>
+                        @Html.TextBoxFor(model => model.ProdOrderQty, new { @id = "ProdOrderQty", @class = "form-control", @name = "ProdOrderQty", @placeholder = "Prod. Order Qty.", @required = "required", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>
+                            Processed Qty
+                        </label>
+                        @Html.TextBoxFor(model => model.ProcessQty, new { @id = "ProcessQty", @class = "form-control", @name = "ProcessQty", @placeholder = "Processed Qty", @readonly = "readonly" })
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>
+                        Yield / ผล
+                    </label>
+                    @Html.TextBoxFor(model => model.Yield_Qty, new { @id = "Yield_Qty", @class = "form-control", @name = "Yield_Qty", @placeholder = "Yield Qty." ,@readonly= "readonly" })
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>
+                        Scrap / เศษ
+                    </label>
+                    @Html.TextBoxFor(model => model.ScrapQty, new { @id = "ScrapQty", @class = "form-control", @name = "ScrapQty", @placeholder = "Scrap Qty.", @readonly = "readonly"})
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>
+                        Total / ทั้งหมด
+                    </label>
+                    @Html.TextBoxFor(model => model.Total_Qty, new { @id = "Total_Qty", @class = "form-control", @name = "Total_Qty", @placeholder = "Total Qty.", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @*@if (Model == null)
+            {
+                <button type="submit" class="btn btn-info POStart"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Start / เริ่มต้น</button>
+            }
+            else if (Model.IsStarted == 0)
+            {
+                <button type="submit" class="btn btn-info POStart"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Start / เริ่มต้น</button>
+            }
+            else
+            {
+                <button type="button" class="btn btn-info POFinish"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Finish / เสร็จสิ้น</button>
+                <button type="button" class="btn btn-info POShowHold"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Hold / ถือ</button>
+                <div class="ShowHold" hidden="hidden">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>
+                                Hold Reason / ถือเหตุผล
+                            </label>
+                            @Html.DropDownList("HoldCodeID", (SelectList)@ViewBag.HoldReason, "--Select Hold Reason--", new { @id = "HoldCodeID", @class = "form-control", @name = "HoldCodeID" })
+                        </div>
+                        <button type="button" class="btn btn-info POHold"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Hold / ถือ</button>
+                    </div>
+                </div>
+            }*@
+        </div>
+
+    </form>
+</div>
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+    function autoPopulateOperatorEntry() {
+        var Prod_Order_No = $("#Prod_Order_No").val();
+        var OperationNo = $("#OperationNo").val();
+        var datas = {};
+        datas.Prod_Order_No = Prod_Order_No;
+        datas.OperationNo = OperationNo;
+        $.ajax({
+            type: "POST",
+            url: "/OperatorEntry/autoPopulateOperatorEntry",
+            async: false,
+            data:datas,
+            success: function (data) {
+                var status = data;
+                var arry = status.split('#');
+                var fgCode = arry[0];
+                var orderQty = arry[1];
+                $("#FGCode").val(fgCode);
+                $("#ProdOrderQty").val(orderQty);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                //if (textStatus == 'Unauthorized') {
+                //    alert('custom message. Error: ' + errorThrown);
+                //} else {
+                //    alert('custom message. Error: ' + errorThrown);
+                //}
+                //sorf = "NotConnected";
+                //toastr.warning("", "There is some issue in network");
+            }
+        });
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#ScrapQty").focusout(function () { // focusout method to bind function
+            var YieldQty = $("#Yield_Qty").val();
+            var ScrapQty = $("#ScrapQty").val();
+            var totalqty = parseInt(YieldQty, 10) + parseInt(ScrapQty, 10);
+            $("#Total_Qty").val(totalqty);
+        });
+        $("#Yield_Qty").focusout(function () { // focusout method to bind function
+            var YieldQty = $("#Yield_Qty").val();
+            var ScrapQty = $("#ScrapQty").val();
+            var totalqty = parseInt(YieldQty, 10) + parseInt(ScrapQty, 10);
+            $("#Total_Qty").val(totalqty);
+        });
+    });
+</script>
+
+<script>
+    $(".POFinish").on("click", function (e) {
+        e.preventDefault();
+        var YieldQty = $("#Yield_Qty").val();
+        var ScrapQty = $("#ScrapQty").val();
+        var totalqty = $("#Total_Qty").val();
+        var ProcessedQty = $("#ProcessQty").val();
+        var ProdQty = $("#ProdOrderQty").val();
+        var refstatus = false;
+        var QtyDiff = ProdQty - totalqty - ProcessedQty;
+        if (QtyDiff == 0) {
+            $.getJSON("/OperatorEntry/FinishProdOrder", { Yqty: YieldQty, Sqty: ScrapQty, Tqty: totalqty }, function (data) {
+                if (data == true)
+                {
+                    alert("The Production Order Details was successfully finished.");
+                    window.location.href = '@Url.Action("EntryWindow", "OperatorEntry")';
+                    refstatus = true;
+                }
+                else
+                {
+                    alert("The Production Order Details didn't Save. Try again in sometime.");
+                }
+            })
+        }
+        else
+        {
+            alert("The Total Qty + Processed Qty entered should be equal to the Production Order Qty.");
+        }
+        return false;
+    })
+</script>
+
+<script>
+    $(".POShowHold").on("click", function (e) {
+        $(".ShowHold").show();
+        $(".POShowHold").hide();
+    })
+</script>
+
+<script>
+    $(".POHold").on("click", function (e) {
+        e.preventDefault();
+        var YieldQty = $("#Yield_Qty").val();
+        var ScrapQty = $("#ScrapQty").val();
+        var totalqty = $("#Total_Qty").val();
+        var ProcessedQty = $("#ProcessQty").val();
+        var ProdQty = $("#ProdOrderQty").val();
+        var HoldReasonID = $("#HoldCodeID").val();
+        var refstatus = false;
+        var QtyDiff = ProdQty - totalqty - ProcessedQty;
+        if (QtyDiff > 0) {
+            $.getJSON("/OperatorEntry/HoldProdOrder", { Yqty: YieldQty, Sqty: ScrapQty, Tqty: totalqty, HoldReasonID: HoldReasonID }, function (data) {
+                if (data == true)
+                {
+                    alert("The Production Order Details was successfully Hold.");
+                    window.location.href = '@Url.Action("EntryWindow", "OperatorEntry")';
+                    refstatus = true;
+                }
+                else
+                {
+                    alert("The Production Order Details didn't Save. Try again in sometime.");
+                }
+            })
+        }
+        else
+        {
+            alert("The Total Qty entered shouldn't be greater than the Production Order Qty.");
+        }
+        return false;
+    })
+</script>
+

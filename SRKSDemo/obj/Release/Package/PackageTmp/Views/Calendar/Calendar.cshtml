@@ -1,0 +1,596 @@
+﻿@{
+    ViewBag.Title = "Calendar";
+    Layout = null;
+}
+<link href="~/Content/calendar/css/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/calendar/css/bootstrap-year-calendar.css" rel="stylesheet" />
+<link href="~/Content/calendar/css/bootstrap-datepicker.css" rel="stylesheet" />
+<style>
+    .dispnone {
+        display: none;
+    }
+</style>
+
+<button class="btn btn-primary" onclick="javascript:htmlToJPEG();" style="float: right;margin-top: 68px;margin-right: 89px;cursor:pointer;"><img src="~/images/photo-camera.png" /></button>
+<div class="container body" id="img" style="background-color: #fff;">
+    <div class="top_nav">
+        <div class="nav_menu">
+            <nav>
+                <div class="col-sm-10 navbar nav_title" style="border: 0;text-align: center;">
+                    <img src="~/images/CCSLogo.png" style="width: 200px;padding-top: 20px;" onclick="goBack();" />
+                    @*<img src="~/images/mainsrks.png" style="width: 94px;padding-top: 20px;" onclick="goBack();" />*@
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="col-sm-9">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="padding-bottom: 40px;">
+                <div class="col-md-8" style="padding-top: 8px;">
+                    <h4 style="display: inline;">Holiday Management</h4>
+
+                    <h4 id="currentYear" style="display:inline"></h4>
+                </div>
+
+                <div class="col-md-4">
+                    <a class="btn btn-info" id="sundayButton" href="~/Calendar/SundayHoliday" style="display: inline;float: right;" onclick="return updateCurrentYear()">Sunday Holiday</a>
+                </div>
+
+            </div>
+            <div class="panel-body">
+                <div data-provide="calendar" class="calendar-dis" id="htmlbody"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">No. of Holidays</div>
+            <div class="panel-body" id="noOfHolidays">
+                @*<ol id="noHolidays">
+                        <li>National Holidays - 2</li>
+                        <li>Sunday Holidays - 20</li>
+                    </ol>*@
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">List of Holidays</div>
+            <div class="panel-body" id="holidayList">
+                @*<ol>
+                        <li>National Holidays - 2</li>
+                        <li>Sunday Holidays - 20</li>
+                    </ol>*@
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="event-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">
+                        Event
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="event-index" value="" id="HolidayManagmentId">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="min-date" class="col-sm-4 control-label">Holiday Name</label>
+                            <div class="col-sm-7">
+                                <input id="eventName" name="event-name" type="text" class="form-control" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="min-date" class="col-sm-4 control-label">Holiday Type</label>
+                            <div class="col-sm-7">
+                                <!-- <input name="event-location" type="text" class="form-control"> -->
+                                @Html.DropDownList("HolidayTypeId", null, "--Select Holiday Type--", new { @id = "HolidayTypeId", @class = "form-control event-location", @tabindex = "2", @required = "required", @value = ViewData["HolidayTypeId"], @name = "event-location" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="min-date" class="col-sm-4 control-label">Dates</label>
+                            <div class="col-sm-7">
+                                <div class="input-group input-daterange" data-provide="datepicker">
+                                    <input name="event-start-date" type="text" class="form-control" value="2012-04-05" required="required">
+                                    <span class="input-group-addon">to</span>
+                                    <input name="event-end-date" type="text" class="form-control" value="2012-04-19" required="required">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="save-event">
+                        Save
+                    </button>
+                    @*<input type="button" onclick="test()"/>
+                        <script>
+                            function test() {
+                                var hal = jq("#HolidayTypeId option:selected").text();
+                                alert(hal)
+                            }
+                            </script>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm("ConvertHtmlPageToPdf", "Calendar", FormMethod.Post))
+{
+    @*<input type="submit" onclick="uploadhtml()"/>
+        <input type="hidden" id="hdnHTml" name="html" />*@
+
+}
+
+<script src="~/Content/calendar/js/jquery.js"></script>
+<script src="~/Content/calendar/js/jquery-ui.js"></script>
+<script src="~/Content/calendar/js/popper.min.js"></script>
+<script src="~/Content/calendar/js/bootstrap.js"></script>
+<script src="~/Content/calendar/js/date-picker.js"></script>
+<script src="~/Content/calendar/js/bootstrap-year-calendar.js"></script>
+<script src="~/Content/html2canvas.js"></script>
+
+<script>
+    var jq = jQuery.noConflict();
+    function editEvent(event) {
+        jq('#event-modal input[name="event-index"]').val(event ? event.id : '');
+        jq('#event-modal input[name="event-name"]').val(event ? event.name : '');
+        var loc = event ? event.location : '';
+        if (loc != '') {
+            var locId = jq('#HolidayTypeId').find("option:contains('" + loc + "')").val();
+            jq('#HolidayTypeId').val(locId);
+        }
+        jq('#event-modal input[name="event-start-date"]').datepicker('update', event ? event.startDate : '');
+        jq('#event-modal input[name="event-end-date"]').datepicker('update', event ? event.endDate : '');
+        jq('#event-modal').modal();
+    }
+
+    function deleteEvent(event) {
+        var dataSource = jq('.calendar').data('calendar').getDataSource();
+
+        for (var i in dataSource) {
+            if (dataSource[i].id == event.id) {
+                dataSource.splice(i, 1);
+                break;
+            }
+        }
+
+        var status = deleteItemInDb(event.id);
+        if (status == "Deleted") {
+            toastr.success("", "Deleted successfully");
+            //return true;
+        }
+        else {
+            toastr.error("", "Something went wrong please try again later");
+            //return false;
+        }
+
+        jq('.calendar').data('calendar').setDataSource(dataSource);
+    }
+
+    function saveEvent() {
+        var event = {
+            id: jq('#event-modal input[name="event-index"]').val(),
+            name: jq('#event-modal input[name="event-name"]').val(),
+            location: jq('#event-modal .event-location option:selected').text(),
+            startDate: jq('#event-modal input[name="event-start-date"]').datepicker('getDate'),
+            endDate: jq('#event-modal input[name="event-end-date"]').datepicker('getDate')
+        }
+
+
+
+        var dataSource = jq('.calendar').data('calendar').getDataSource();
+
+        if (event.id) {
+            for (var i in dataSource) {
+                if (dataSource[i].id == event.id) {
+                    dataSource[i].name = event.name;
+                    dataSource[i].location = event.location;
+                    dataSource[i].startDate = event.startDate;
+                    dataSource[i].endDate = event.endDate;
+                }
+            }
+        }
+        else {
+            var newId = 0;
+            for (var i in dataSource) {
+                if (dataSource[i].id > newId) {
+                    newId = dataSource[i].id;
+                }
+            }
+
+            newId++;
+            event.id = newId;
+
+            dataSource.push(event);
+        }
+
+        jq('.calendar').data('calendar').setDataSource(dataSource);
+        jq('#event-modal').modal('hide');
+        var status = saveEventInDb();
+        if (status == "Added") {
+            toastr.success("", "Changes saved successfully");
+            //setTimeout(function () { location.reload(); }, 3000);
+            return true;
+        }
+        else {
+            toastr.error("", "Something went wrong please try again later");
+            return false;
+        }
+
+    }
+
+    jq(function () {
+        var item = "";
+        jq.ajax({
+            url: "getALlCalendarItem",
+            success: function (data) {
+
+                var myData = [];
+                for (var i = 0; i < data.length; i++) {
+                    var calId = parseInt(data[i].id);
+                    var calName = data[i].name;
+                    var calLoc = data[i].location;
+
+                    var sDate = data[i].startDate;
+                    var stDate = sDate.split('-');
+                    var syear = parseInt(stDate[0]);
+                    var smonth = parseInt(stDate[1]) - 1;
+                    var sday = parseInt(stDate[2]);
+
+                    var eDate = data[i].endDate;
+                    var etDate = eDate.split('-');
+                    var eyear = parseInt(etDate[0]);
+                    var emonth = parseInt(etDate[1]) - 1;
+                    var eday = parseInt(etDate[2]);
+
+                    myData.push({
+                        id: calId,
+                        name: calName,
+                        location: calLoc,
+                        startDate: new Date(syear, smonth, sday),
+                        endDate: new Date(eyear, emonth, eday)
+
+                    });
+                }
+
+                jq('.calendar').data('calendar').setDataSource(myData);
+            }
+        });
+
+        var currentYear = new Date().getFullYear();
+        jq('.calendar-dis').calendar({
+            enableContextMenu: true,
+            enableRangeSelection: true,
+            contextMenuItems: [
+                {
+                    text: 'Update',
+                    click: editEvent
+                },
+                {
+                    text: 'Delete',
+                    click: deleteEvent
+                }
+            ],
+            selectRange: function (e) {
+                editEvent({ startDate: e.startDate, endDate: e.endDate });
+            },
+            mouseOnDay: function (e) {
+                //console.log(e.events);
+                if (e.events.length > 0) {
+                    //console.log(e.events);
+                    var content = '';
+
+                    for (var i in e.events) {
+                        //console.log(e.events[i].location);
+                        content += '<div class="event-tooltip-content">'
+                            + '<div class="event-name" style="color:' + e.events[i].color + '">' + e.events[i].name + '</div>'
+                            + '<div class="event-location">' + e.events[i].location + '</div>'
+                            + '</div>';
+                    }
+
+                    jq(e.element).popover({
+                        trigger: 'manual',
+                        container: 'body',
+                        html: true,
+                        content: content
+                    });
+
+                    jq(e.element).popover('show');
+                }
+            },
+            holidaytype: function (e) {
+
+                console.log(e.events);
+
+
+            },
+            mouseOutDay: function (e) {
+                if (e.events.length > 0) {
+                    jq(e.element).popover('hide');
+                }
+            },
+            dayContextMenu: function (e, element) {
+
+                jq(e.element).popover('hide');
+            },
+            style: 'background',
+            dataSource: [
+
+                //{
+                //    id: 0,
+                //    name: 'Google I/O',
+                //    location: 'Public Holiday',
+                //    startDate: new Date(2018, 4, 28),
+                //    endDate: new Date(2018, 4, 29)
+                //},
+                //{
+                //    id: 1,
+                //    name: 'Microsoft Convergence',
+                //    location: 'National Holiday',
+                //    startDate: new Date(currentYear, 2, 16),
+                //    endDate: new Date(currentYear, 2, 19)
+                //},
+                //{
+                //    id: 2,
+                //    name: 'Microsoft Build Developer Conference',
+                //    location: 'San Francisco, CA',
+                //    startDate: new Date(currentYear, 3, 29),
+                //    endDate: new Date(currentYear, 4, 1)
+                //},
+                //{
+                //    id: 3,
+                //    name: 'Apple Special Event',
+                //    location: 'San Francisco, CA',
+                //    startDate: new Date(currentYear, 8, 1),
+                //    endDate: new Date(currentYear, 8, 1)
+                //},
+                //{
+                //    id: 4,
+                //    name: 'Apple Keynote',
+                //    location: 'San Francisco, CA',
+                //    startDate: new Date(currentYear, 8, 9),
+                //    endDate: new Date(currentYear, 8, 9)
+                //},
+                //{
+                //    id: 5,
+                //    name: 'Chrome Developer Summit',
+                //    location: 'Mountain View, CA',
+                //    startDate: new Date(currentYear, 10, 17),
+                //    endDate: new Date(currentYear, 10, 18)
+                //},
+                //{
+                //    id: 6,
+                //    name: 'F8 2015',
+                //    location: 'San Francisco, CA',
+                //    startDate: new Date(currentYear, 2, 25),
+                //    endDate: new Date(currentYear, 2, 26)
+                //},
+                //{
+                //    id: 7,
+                //    name: 'Yahoo Mobile Developer Conference',
+                //    location: 'New York',
+                //    startDate: new Date(currentYear, 7, 25),
+                //    endDate: new Date(currentYear, 7, 26)
+                //},
+                //{
+                //    id: 8,
+                //    name: 'Android Developer Conference',
+                //    location: 'Santa Clara, CA',
+                //    startDate: new Date(currentYear, 11, 1),
+                //    endDate: new Date(currentYear, 11, 4)
+                //},
+                //{
+                //    id: 9,
+                //    name: 'LA Tech Summit',
+                //    location: 'Los Angeles, CA',
+                //    startDate: new Date(currentYear, 10, 17),
+                //    endDate: new Date(currentYear, 10, 17)
+                //}
+            ],
+        });
+        jq('#save-event').click(function () {
+            saveEvent();
+        });
+    });
+
+    function saveEventInDb() {
+        var event = {
+            id: jq('#event-modal input[name="event-index"]').val(),
+            name: jq('#event-modal input[name="event-name"]').val(),
+            location: jq('#HolidayTypeId').val(),
+            startDate: jq('#event-modal input[name="event-start-date"]').datepicker('getDate'),
+            endDate: jq('#event-modal input[name="event-end-date"]').datepicker('getDate')
+        }
+        var status = "";
+        var datas = {};
+        datas.id = event.id;
+        datas.name = event.name;
+        datas.location = event.location;
+        datas.startDate = event.startDate;
+        datas.endDate = event.endDate;
+
+        jq.ajax({
+            type: "POST",
+            url: "/Calendar/saveCalendarItem",
+            async: false,
+            data: datas,
+            success: function (data) {
+                status = data;
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                status = "NotAdded";
+                toastr.warning("", "There is some issue in network");
+
+            }
+        });
+        var currentYear = new Date().getFullYear();
+        getAllDetails(parseInt(currentYear));
+        return status;
+    }
+
+    function retMonthNumber(MonthName) {
+        var monthsShort = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var monthNo = monthsShort.indexOf(MonthName);
+        var ActMonth = parseInt(monthNo);
+        return ActMonth;
+    }
+
+    function deleteItemInDb(id) {
+        status = "";
+        var datas = {};
+        datas.id = id;
+        jq.ajax({
+            type: "POST",
+            url: "/Calendar/deleteItemIndb",
+            async: false,
+            data: datas,
+            success: function (data) {
+                status = data;
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                status = "NotDeleted";
+                toastr.warning("", "There is some issue in network");
+
+            }
+        });
+        var currentYear = new Date().getFullYear();
+        getAllDetails(parseInt(currentYear));
+        return status;
+    }
+
+    function updateCurrentYear() {
+        var innerHtmlYear = jq(".year-title").html();
+        var currentSelectedYear = parseInt(innerHtmlYear) + 2;
+        jq("#sundayButton").attr('href', 'SundayHoliday?year=' + currentSelectedYear + '');
+        return true;
+    }
+
+    jq(function () {
+        var currentYear = new Date().getFullYear();
+        getAllDetails(parseInt(currentYear));
+        jq("#currentYear").html(currentYear);
+    });
+
+    function getAllDetails(id) {
+        var datas = {};
+        datas.year = id;
+        jq.ajax({
+            type: "POST",
+            url: "/Calendar/dataListHtml",
+            async: false,
+            data: datas,
+            success: function (data) {
+                var item = data;
+                jq("#noOfHolidays").html(item);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                toastr.warning("", "There is some issue in network");
+            }
+        });
+        getHolidayAllDetails(id);
+    }
+
+    function updateDivsLeft() {
+        var id = jq(".currentYear").attr('id');
+        var year = parseInt(id) - 1;
+        getAllDetails(year);
+    }
+
+    function updateDivsRight() {
+        var id = jq(".currentYear").attr('id');
+        var year = parseInt(id) + 1;
+        getAllDetails(year);
+    }
+
+    function getHolidayAllDetails(id) {
+        var datas = {};
+        datas.year = id;
+        jq.ajax({
+            type: "POST",
+            url: "/Calendar/dataHolidayListHtml",
+            async: false,
+            data: datas,
+            success: function (data) {
+                var item = data;
+                jq("#holidayList").html(item);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                toastr.warning("", "There is some issue in network");
+            }
+        });
+
+    }
+
+    function goBack() {
+        window.location.href = 'goback';
+    }
+
+    function htmlToJPEG() {
+        var currentYear = new Date().getFullYear();
+        html2canvas(document.getElementById('img')).then((canvas) => {
+            var uri = canvas.toDataURL();
+            var a = document.createElement("a");
+            if (typeof a.download === 'string') {
+                a.href = uri;
+                a.download = "Holiday Management  " + currentYear + ".jpeg";
+
+                //Firefox requires the link to be in the body
+                document.body.appendChild(a);
+
+                //simulate click
+                a.click();
+
+                //remove the link when done
+                document.body.removeChild(a);
+            } else {
+                window.open(uri);
+            }
+        });
+    }
+</script>
+<script>
+
+</script>
+<link href="~/css/toaster.css" rel="stylesheet" />
+<script src="~/Scripts/toaster.js"></script>
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "5000",
+        "hideDuration": "7000",
+        "timeOut": "5000",
+        "extendedTimeOut": "5000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "5000",
+        "hideDuration": "7000",
+        "timeOut": "5000",
+        "extendedTimeOut": "5000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+</script>
+

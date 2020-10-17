@@ -1,0 +1,502 @@
+﻿@*//@model IList<Tata.Models.tbllivedailyprodstatu>*@
+@model IList<SRKSDemo.Server_Model.tbllivemode>
+@{
+    ViewBag.Title = "Index";
+    int count = Model.Count();
+    int RealCount = 0;
+    Layout = "~/Views/Shared/_VHMILayout.cshtml";
+    int jd1 = 1;
+
+    //int[,] colorval = new int[ViewBag.macCount, 10];
+    //colorval = (int[,])Session["colordata"];
+
+    int[] machineids = new int[ViewBag.macCount];
+    // machineids = Session["macid"];
+
+    //int[] machids = new int[ViewBag.macCount];
+    //machids = (int[])Session["macid"];
+    //int maclopper = 0;
+    //foreach (var item in machids)
+    //{
+    //    machineids[maclopper++] = Convert.ToInt32(item);
+    //}
+
+    //int macloop = 0;
+    //int[] machinebyshop = new int[ViewBag.machinecountbyshopCount];
+    //foreach(var item in ViewBag.machinecountbyshop)
+    //{
+    //    machinebyshop[macloop++] = item;
+    //}
+
+    var MachineStatList = (List<SRKSDemo.Models.MachineStatus>)Session["MachineStauts"];
+    MachineStatList = MachineStatList.OrderBy(m => m.machinedet.CellOrderNo).ToList();
+    var accordin1 = 0;
+    // var m = 0;
+}
+<style>
+    body {
+        background: #fff;
+    }
+
+    div.child-new {
+        width: 4%;
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 1.2vw;
+        color: white;
+    }
+
+    div.child1 {
+        width: 2.03%;
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 0.8vw;
+        color: white;
+    }
+
+    div.child2 {
+        width: 2.03%;
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 0.8vw;
+        color: blue;
+    }
+
+    div.childMDetails {
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 24px;
+        color: blue;
+        margin-top: -10px;
+        padding-bottom: 10px;
+    }
+
+    .panel {
+        opacity: 1;
+    }
+</style>
+
+<style>
+    div.parent3 {
+        border-bottom: 1px solid #fff;
+        width: 100%;
+        color: #fff;
+    }
+
+    div.child-new {
+        width: 4.00%;
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 25px;
+        /* color: blue; */
+        padding-left: 11spx;
+    }
+
+    div.child1 {
+        width: 2%;
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 0.8vw;
+        /* color: blue; */
+        padding-left: 6px;
+    }
+
+    div.child2 {
+        width: 2%;
+        float: left;
+        -webkit-text-size-adjust: 100%;
+        font-size: 0.8vw;
+        color: #fff;
+        padding-left: 10px;
+    }
+
+    div.parent {
+        border: 2px solid red;
+        width: 100%;
+        color: blue;
+        border: none;
+        height: 3vh;
+    }
+
+    div.childcolor {
+        width: 2.5%;
+        height: 80%;
+        float: right;
+        -webkit-text-size-adjust: 100%;
+        display: inline;
+        margin-left: 1vw;
+        text-align: right;
+        border-radius: 10px;
+    }
+
+    div.childtext {
+        width: auto;
+        height: 90%;
+        float: right;
+        -webkit-text-size-adjust: 100%;
+        font-size: 1vw;
+        color: black;
+        display: inline;
+        text-align: left;
+        /*margin-right: 1vw;
+        border-radius: 10px;*/
+        font-family: Calibri;
+        font-style: oblique;
+        font-weight: bold;
+    }
+
+    a:hover, a:focus {
+        text-decoration: none;
+        outline: none;
+    }
+
+    #accordion .panel {
+        border: 1px solid #3F51B5;
+        box-shadow: none;
+        border-radius: 0;
+        margin-bottom: 3px;
+        margin-top: 3px;
+    }
+
+    #accordion .panel-heading {
+        padding: 0;
+        border-radius: 0;
+        border: none;
+    }
+
+    hr {
+        border-top-color: #edeaee;
+        border-bottom: 1px solid #ffffff;
+        margin: 12px 0;
+        clear: both;
+    }
+
+    #accordion .panel-title a {
+        display: block;
+        padding: 15px;
+        font-size: 25px;
+        font-weight: 500;
+        color: #fff;
+        background: #3F51B5;
+        transition: all 0.5s ease 0s;
+    }
+
+        #accordion .panel-title a:hover {
+            background: #3F51B5;
+        }
+
+    #accordion .panel-body {
+        font-size: 14px;
+        color: #000;
+        background: #fff;
+        padding: 15px 12px;
+        line-height: 25px;
+        border: none;
+        position: relative;
+    }
+
+        #accordion .panel-body:after {
+            content: "";
+            position: absolute;
+            top: -30px;
+            left: 40px;
+            border: 15px solid transparent;
+            border-bottom: 15px solid #29b0a0;
+        }
+
+    .float-right {
+        float: right;
+    }
+
+    #top {
+        background: -webkit-gradient(linear, 0 50%, 0 100%, from(#4c4851), to(#38353c));
+        background: -webkit-linear-gradient(top, #4c4851, #38353c);
+        background: -moz-linear-gradient(top, #4c4851, #38353c);
+        background: -o-linear-gradient(top, #4c4851, #38353c);
+        background: -ms-linear-gradient(top, #4c4851, #38353c);
+        background: #e0791c;
+        padding: 10px 30px;
+    }
+</style>
+<script>setTimeout(function () { window.location.reload(); }, 60000 * 1)</script>@* Every One menuts it will update*@
+
+<div class="container-fluid">
+    @*to display the TimeLine*@
+
+    <div id="top" style="margin-top:3px;;height:auto;overflow:hidden; position:sticky;" class="navbar-fixed-top">
+        <div class="parent3 row">
+            @for (var i = 0; i <= 24; i++)
+            {
+                var val = (i + 7) % 24;
+                if (val == 0)
+                { val = 00; }
+                if (val > 9)
+                {
+                    <div class="child-new">
+                        @val:00
+                    </div>
+                }
+                else
+                {
+                    var val1 = "0" + val;
+                    <div class="child-new">
+                        @val1:00
+                    </div>
+                }
+            }
+        </div>
+        <div class="parent1 row">
+            @for (var i = 0; i <= 48; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    <div class="child1">
+                        00
+                    </div>
+                }
+                else
+                {
+                    <div class="child1">
+                        30
+                    </div>
+                }
+            }
+        </div>
+
+        <div class="parent1 row">
+            @for (var i = 0; i <= 48; i++)
+            {
+                <div class="child2">
+                    |
+                </div>
+            }
+        </div>
+    </div>
+    @*Endof to display the TimeLine*@
+
+    <!-- /parent container -->
+    <div class=" pad20f">
+
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+            @foreach (string shopname in ViewBag.DistinctShops)
+            {
+                var m = 0;
+                var shopnameString = shopname.Replace(" ", "");
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href='#@shopnameString' aria-expanded="false">
+                                @shopname <i class="fa fa-chevron-down float-right" aria-hidden="true"></i>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="@shopnameString" class="panel-collapse collapse" role="tabpanel">
+                        @*  @if(accordin1 == 0){
+                                <div id="@shopnameString" class="panel-collapse collapse in" role="tabpanel" >
+                            }
+                            else{
+                                 <div id="@shopnameString" class="panel-collapse collapse" role="tabpanel" >
+                                }*@
+
+                        <div class="panel-body">
+                            @*@for (var n = 1; n <= machinebyshop[m]; n++)
+                                {*@
+                            @*//int k = 1;
+                                //int index = 0;
+                                //var machineid = machineids[n - 1];
+
+
+                                var row = MachineStatList.Where(R => R.MachineID == machineid).FirstOrDefault();*@
+                            <p style="display:none">
+                                MachineStatList = MachineStatList.Where(j => j.CellName == @shopnameString).ToList();
+                            </p>
+
+                            @foreach (var row1 in MachineStatList)
+                            {
+                                var showData = 0;
+                                var count1 = Model.Where(l => l.MachineID == row1.MachineID).ToList().Count;
+                                var model1 = Model.Where(l => l.MachineID == row1.MachineID).OrderBy(l => l.tblmachinedetail.CellOrderNo).ToList();
+                                for (var ja = 0; ja < count1; ja++)
+                                {
+
+                                    if (model1[ja].MachineID == row1.MachineID && model1[ja].tblmachinedetail.tblcell.CelldisplayName == shopname)
+                                    {
+
+                                        showData = 1;
+                                        <div class="parent3" style="padding-left: 1%; border: none; background-color: orange;">
+                                            <div class="childMDetails col-sm-6">
+                                                <span style="color: brown">M/c : </span>@model1[ja].tblmachinedetail.MachineDisplayName
+                                            </div>
+                                            <div class="childMDetails col-sm-6">
+                                                <span style="color: brown; font-weight:700">M/c Utilization :@row1.Utilization % (Prv.Day @row1.PrevUtilization % (@row1.PrevOperatingTime / @row1.PrevTotalTime))</span>
+                                            </div>
+                                            @*<div class="childMDetails col-sm-6">
+                                                    <span style="color: brown">M/c Desc : </span>@Model[ja].tblmachinedetail.MachineDescription
+                                                </div>*@
+                                        </div>
+                                        break;
+                                    }
+                                }
+                                //color Data
+                                <div style="padding-left: 1%">
+                                    @for (var j = 0; j < count1; j++)
+                                    {
+                                        if (model1[j].MachineID == row1.MachineID && model1[j].tblmachinedetail.tblcell.CelldisplayName == shopname)
+                                        {
+                                            var Width = model1[j].DurationInSec * 0.069;
+                                            var Dura = model1[j].DurationInSec;
+                                            if (model1[j].ColorCode == "GREEN")
+                                            {
+                                                <span style="background-color: green; color: green; float: left; height: 27px; width:@Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("Operating " + Dura + " min")">.</span>
+                                            }
+                                            else if (model1[j].ColorCode == "YELLOW")
+                                            {
+                                                if (model1[j].LossCodeID != null)
+                                                {
+                                                    var losscodedesc = model1[j].tbllossescode.LossCodeDesc;
+                                                    <span style="background-color: yellow; color: yellow; float: left; height: 27px; width: @Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("Loss " + Dura + " min -- " + losscodedesc)">.</span>
+                                                }
+                                                else
+                                                {
+                                                    <span style="background-color: yellow; color: yellow; float: left; height: 27px; width: @Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("Loss " + Dura + " min")">.</span>
+                                                }
+                                            }
+                                            else if (model1[j].ColorCode == "RED")
+                                            {
+                                                if (model1[j].BreakdownID != null)
+                                                {
+                                                    var BDDesc = model1[j].tbllossescode.LossCodeDesc;
+                                                    <span style="background-color: red; color: red; float: left; height: 27px; width: @Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("Breakdown " + Dura + " min -- " + BDDesc)">.</span>
+                                                }
+                                                else
+                                                {
+                                                    <span style="background-color: red; color: red; float: left; height: 27px; width: @Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("Breakdown " + Dura + " min")">.</span>
+                                                }
+                                            }
+                                            else if (model1[j].ColorCode == "BLUE")
+                                            {
+                                                <span style="background-color: blue; color: blue; float: left; height: 27px; width: @Width%; padding-bottom: 10px" data-toggle="tooltip" title="@("Power Off " + Dura + " min")">.</span>
+                                            }
+                                            else if (model1[j].ColorCode == "BROWN")
+                                            {
+                                                <span style="background-color: brown; color: brown; float: left; height: 27px; width: @Width%; padding-bottom: 10px">.</span>
+                                            }
+                                            else
+                                            {
+                                                <span style="background-color: black; color: black; float: left; height: 27px; width: 0.069%; padding-bottom: 10px">.</span>
+                                            };
+                                        }
+                                        RealCount++;
+                                    }
+                                </div>
+
+                                if (showData == 1)
+                                {
+                                    <hr style="border: 2px solid #000; color: black; margin: 12px 0; clear:both;" />
+                                    //color with count
+                                    <div class="parent">
+                                        @* <div class="childtext">
+                                                @colorval[n - 1, 5]
+                                            </div>
+                                            <div class="childtext" style="margin-left: .1vw;">
+                                                Maintenance :
+                                            </div>
+                                            <div class="childcolor" style="background-color: brown; color: white">
+                                            </div>*@
+                                        <div class="childtext">
+                                            @row1.BreakdownTime
+                                        </div>
+                                        <div class="childtext" style="margin-left: .1vw;">
+                                            Breakdown :
+                                        </div>
+                                        <div class="childcolor" style="background-color: red; color: white">
+                                        </div>
+                                        <div class="childtext">
+                                            @row1.IdleTime
+                                        </div>
+                                        <div class="childtext" style="margin-left: .1vw;">
+                                            Loss :
+                                        </div>
+                                        <div class="childcolor" style="background-color: yellow; color: white">
+                                        </div>
+
+                                        <div class="childtext">
+                                            @row1.MachineOffTime
+                                        </div>
+                                        <div class="childtext" style="margin-left: .1vw;">
+                                            PowerOff / Network Loss :
+                                        </div>
+                                        <div class="childcolor" style="background-color: blue; color: white">
+                                        </div>
+                                        <div class="childtext">
+                                            @row1.OperatingTime
+                                        </div>
+                                        <div class="childtext" style="margin-left: .1vw;">
+                                            Operating :
+                                        </div>
+                                        <div class="childcolor" style="background-color: green; color: white">
+                                        </div>
+                                        <div class="childtext">
+                                            @row1.TotalTime
+                                        </div>
+                                        <div class="childtext" style="margin-left: .1vw;">
+                                            TotalTime :
+                                        </div>
+                                        <div class="childtext">
+                                            (Values in Minutes) &nbsp;&nbsp;
+                                        </div>
+                                        @*<div class="childcolor" style="background-color: blue; color: white">
+                                            </div>*@
+                                    </div>
+                                    <hr />
+                                }
+                            }
+
+                            @*}*@
+                        </div>
+
+                    </div>
+                </div>
+
+                accordin1++;
+            }
+            <hr />
+        </div>
+
+        <!-- /widget -->
+    </div>
+</div>
+<style>
+    table {
+        border-spacing: 0;
+    }
+</style>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+    $(document).find(".panel-collapse:first").addClass("in")
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var hash = window.location.hash;
+        if (hash) {
+            $("#accordion .panel-collapse").removeClass('in');
+            $(hash).addClass('in');
+        }
+
+        $('#accordion').on('shown.bs.collapse', function () {
+            var activeId = $("#accordion .in").attr('id');
+            window.location.hash = activeId;
+        });
+
+        $('#accordion').on('hidden.bs.collapse', function () {
+            window.location.hash = '';
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>

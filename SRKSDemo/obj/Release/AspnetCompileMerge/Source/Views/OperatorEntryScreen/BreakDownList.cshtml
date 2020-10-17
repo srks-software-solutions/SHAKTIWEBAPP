@@ -1,0 +1,137 @@
+﻿@model IEnumerable<SRKSDemo.Models.tblbreakdown>
+@{
+    ViewBag.Title = "UnitWorks - Index";
+    var slno = 1;
+    if (ViewBag.roleid == 3)
+    {
+        Layout = "~/Views/Shared/_VHMILayout.cshtml";
+    }
+    int mcid = Convert.ToInt32(ViewBag.mcnid);
+    int opid = Convert.ToInt32(ViewBag.opid);
+    string date = ViewBag.coretddt;
+
+}
+
+   
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        @Html.ActionLink("Back To OperatorEntryscreen", "Index", new { }, new { @class = "btn orange btn-lg ", @style = "margin-left:2%;color:black;width:15vw;height:70%;backgroundcolor:red;font-size:1vw" })
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                  
+                        <ul class="nav navbar-right panel_toolbox">
+
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                          
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table id="datatable-fixed-header" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Breakdown Level1</th>
+                                    <th>Breakdown Level2</th>
+                                    <th>Breakdown Level3</th>
+                                    <th>StartTime</th>
+                                    <th>EndTime</th>
+                                    <th>Duration</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              
+                                @foreach (var item in Model)
+                                {
+                                    SRKSDemo.Models.[dbo]Entities db6 = new SRKSDemo.Models.[dbo]Entities();
+                                    var dte = db6.tbllossescodes.Where(m => m.LossCodeID == item.BreakDownCode).SingleOrDefault();
+                                    <tr>
+                                        @if (Convert.ToInt32(dte.LossCodesLevel) == 1)
+                                        {
+                                            <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                @Html.DisplayFor(modelItem => dte.LossCode)
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        }
+                                        @if (Convert.ToInt32(dte.LossCodesLevel) == 2)
+                                        {
+                                            if (Convert.ToString(dte.LossCodesLevel1ID) != null)
+                                            {
+                                                SRKSDemo.Models.[dbo]Entities db = new SRKSDemo.Models.[dbo]Entities();
+                                                int losscodeid = Convert.ToInt32(dte.LossCodesLevel1ID);
+                                                var lossdetailsDesc = db.tbllossescodes.Where(m => m.IsDeleted == 0 && m.LossCodeID == losscodeid).Select(m => m.LossCode).FirstOrDefault();
+                                                <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                    @lossdetailsDesc
+                                                </td>
+
+                                                <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                    @Html.DisplayFor(modelItem => dte.LossCode)
+                                                </td>
+                                                <td></td>
+                                            }
+                                        }
+                                        @if (Convert.ToInt32(dte.LossCodesLevel) == 3)
+                                        {
+                                            if (Convert.ToString(dte.LossCodesLevel1ID) != null)
+                                            {
+                                                SRKSDemo.Models.[dbo]Entities db = new SRKSDemo.Models.[dbo]Entities();
+                                                int losscodeid = Convert.ToInt32(dte.LossCodesLevel1ID);
+                                                var lossdetailsDesc = db.tbllossescodes.Where(m => m.IsDeleted == 0 && m.LossCodeID == losscodeid).Select(m => m.LossCode).FirstOrDefault();
+                                                <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                    @lossdetailsDesc
+                                                </td>
+                                                int losscode2id = Convert.ToInt32(dte.LossCodesLevel2ID);
+                                                var lossdetails2Desc = db.tbllossescodes.Where(m => m.IsDeleted == 0 && m.LossCodeID == losscodeid).Select(m => m.LossCode).FirstOrDefault();
+                                                <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                    @lossdetails2Desc
+                                                </td>
+                                                <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                    @Html.DisplayFor(modelItem => dte.LossCode)
+                                                </td>
+
+                                            }
+                                        }
+                                        <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => dte.MessageType)
+                                        </td>
+                                        <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.StartTime)
+                                        </td>
+                                        <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.EndTime)
+                                        </td>
+                                        <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                            @{
+                                                var STime = Convert.ToDateTime(item.StartTime);
+                                                var ETime = Convert.ToDateTime(item.EndTime);
+                                                var Duration = ETime.Subtract(STime);
+                                                @Duration
+                                            }
+                                        </td>
+                                      
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- /page content -->
+<script src="~/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+

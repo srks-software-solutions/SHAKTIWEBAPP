@@ -1,0 +1,130 @@
+﻿@model SRKSDemo.Server_Model.tblholiday
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+ <!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Holiday Management</h3>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Holiday Management</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form class="form-horizontal form-label-left" novalidate>
+                            <div class="control-group" id="fields">
+                                <div class="controls">
+                                    <div class="form">
+                                        <div class="entry input-group col-sm-12">
+                                            <span style="color:red;font-size:20px;"> @TempData["Error"]</span>
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-1 col-sm-3 col-xs-12">Date</label>
+                                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                                    @Html.TextBoxFor(model =>model.HolidayDate, new { @class = "form-control1 Holidaydate",@type="Date", @required = "required" })
+                                                    @*<input type="date" name="dateofbirth" id="dateofbirth" class="form-control1">*@
+                                                </div>
+                                                <label class="control-label col-md-2 col-sm-3 col-xs-12">Reason</label>
+                                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                                    @Html.TextBoxFor(model => model.Reason, new { @class = "form-control1 Reason", @required = "required" })
+                                                </div>
+                                            </div>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-round btn-success btn-add" type="button">
+                                                    <span class="glyphicon glyphicon-plus"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="generate-btn">
+                                <a id="" href="/HolidayManagement/Index" type="submit" class="btn btn-new"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                                <button id="send" type="button" class="btn btn-new float-right submitmain"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->
+ <!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(document).on('click', '.btn-add', function (e) {
+            e.preventDefault();
+            var HD = $(this).closest(".input-group").find('.Holidaydate:first').val();
+            var RD = $(this).closest(".input-group").find('.Reason:first').val();
+            if (HD != "" && RD != "") {
+                var curEntry = $(this).parents('.entry:first');
+                var controlForm = $('.controls .form:first'),
+                    currentEntry = $(this).parents('.entry:first'),
+                    newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+                $.getJSON("/HolidayManagement/CreateData", { HD: HD, RD: RD }, function (data) {
+                   if (data != null && data != 0)
+                    {
+
+                       $(curEntry).attr("id", data.HId);
+                    }
+                });
+
+                   newEntry.find('input').val('');
+                   controlForm.find('.entry:not(:last) .btn-add')
+                    .removeClass('btn-add').addClass('btn-remove')
+                    .removeClass('btn-success').addClass('btn-danger')
+                    .html('<span class="glyphicon glyphicon-minus"></span>');
+            }
+
+        }).on('click', '.btn-remove', function (e) {
+            var Val = $(this).parents('.entry:first').attr("id");
+            $.getJSON("/HolidayManagement/DeleteData", { id: Val }, function (data) {
+
+            });
+            $(this).parents('.entry:first').remove();
+
+            e.preventDefault();
+            return false;
+        });
+    });
+</script>
+
+
+<script>
+    $(".submitmain").on("click", function (e) {
+        e.preventDefault();
+        var HD = $(document).find(".input-group:last .Holidaydate").val();
+        var RD = $(document).find(".input-group:last .Reason").val();
+        if (HD !="" && RD !="" ) {
+            $.getJSON("/HolidayManagement/CreateData", { HD: HD, RD: RD}, function (data) {
+                {
+                    window.location.href = "/HolidayManagement/Index";
+                }
+                return false;
+            });
+        }
+        else {
+            alert("Enter all data before submission")
+        }
+
+    });
+</script>
+

@@ -1,0 +1,382 @@
+﻿@model SRKSDemo.CellsModel
+@{
+    ViewBag.Title = "Cells";
+
+}
+
+<div class="right_col" role="main">
+    <div class="">
+
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Cell Details</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><button type="button" class="btn btn-default" data-toggle="modal" data-target="#create-plant" style="margin-top: 10px;" disabled="disabled"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Add New</button></li>
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table id="datatable-fixed-header" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Plant</th>
+                                    <th>Shop</th>
+                                    <th>Cell</th>
+                                    <th>Cell Description</th>
+                                    <th>Cell Displayname</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.cellslist)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.tblplant.PlantName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.tblshop.ShopName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CellName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CellDesc)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CelldisplayName)</td>
+                                        <td>
+                                            <ul class="actionbtnn">
+
+                                                @using (Html.BeginForm("EditCellDetails", "Cells", FormMethod.Post))
+                                                {
+                                                    <!-- edit Modal Start -->
+                                                    <div class="modal fade" id="edit-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+
+                                                                    <h4 class="modal-title" id="myModalLabel"></h4>
+                                                                    <div class="x_panel">
+                                                                        <div class="x_title">
+                                                                            <h5>Edit Cell Details</h5>
+                                                                        </div>
+                                                                        <div class="x_content">
+                                                                            <form class="form-horizontal form-label-left" novalidate>
+                                                                                <div class="row row-space">
+                                                                                    <label class="col-sm-5 control-label">Plant Name</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        @Html.DropDownList("Plant", null, "--Select Plant--", new { @id = "EditPlant", @class = "form-control", @name = "Plant", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['Plant']" })
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row row-space">
+                                                                                    <label class="col-sm-5 control-label">Shop Name</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        @Html.DropDownList("shop", null, "--Select Department--", new { @id = "Editdeptid", @class = "form-control", @name = "dept", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['shop']" })
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row row-space">
+                                                                                    <label class="col-sm-5 control-label">Cell Name</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        @Html.HiddenFor(model => model.Cells.CellID, new { @id = "EditCellCategoryID", @class = "form-control", @name = "CellName", style = "width:89.7%", @placeholder = "Enter Cell Name", @required = "required" })
+                                                                                        @Html.TextBoxFor(model => model.Cells.CellName, new { @id = "EditCellCategory", @class = "form-control", @name = "CellName", style = "width:89.7%", @placeholder = "Enter Cell Name", @required = "required", @onchange = "cellNameCheckEdit();", @oninput = "cellNameCheckEdit();" })
+                                                                                        @*<input type="text" class="form-control1" id="" placeholder="Cell Category Name">*@
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row row-space">
+                                                                                    <label class="col-sm-5 control-label">Cell Description</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        @Html.TextBoxFor(model => model.Cells.CellDesc, new { @id = "EditCategoryDesc", @class = "form-control", @name = "CellDesc", style = "width:89.7%", @placeholder = "Enter Cell Description", @required = "required" })
+                                                                                        @*<input type="text" class="form-control1" id="" placeholder="Cell Category Description">*@
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row row-space">
+                                                                                    <label class="col-sm-5 control-label">Cell Display Name</label>
+                                                                                    <div class="col-sm-6">
+                                                                                        @Html.TextBoxFor(model => model.Cells.CelldisplayName, new { @id = "EditCategoryDisplayName", @class = "form-control", @name = "CategoryDisplayName", style = "width:89.7%", @placeholder = "Enter Cell Description", @required = "required"})
+                                                                                        @*<input type="text" class="form-control1" id="" placeholder="Cell Category Display Name">*@
+                                                                                    </div>
+                                                                                    <div class="col-sm-5">
+
+                                                                                    </div>
+                                                                                    <div class="col-sm-6">
+                                                                                        <span id="plantErrorEdit" class="errorMessage"></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+
+                                                                    <button type="submit" id="btnSubmitEdit" class="btn btn-info"><i class="fa fa-floppy-o" aria-hidden="true"></i> Update</button>
+                                                                    <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- edit Modal Finish -->
+                                                }
+                                                <li class="actionbtn"><a href="@Url.Action("EditCellCategory", "CellCategory", new { id = item.CellID })" id="@(@item.CellID)" class="btn btn-round btn-info Category" data-title="Edit" data-toggle="modal" data-target="#edit-plant"><i class="fa fa-pencil fa_lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Edit Cell Category"></i></a></li>
+                                                @*@Html.ActionLink("Edit Cell Category", "EditCellCategory", "CellCategory", new { @Id = item.CellCategoryID }, new { @id = item.CellCategoryID, @class = "btn btn-round btn-info Category" })*@
+
+                                                <li class="actionbtn"><button class="btn btn-round btn-danger deleteItem" data-id="@item.CellID" onclick="deleteTargetName('@item.CelldisplayName')" disabled="disabled" data-title="Edit" data-toggle="modal" data-target="#delete-plant"><i class="fa fa-trash fa-lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Delete Cell Category details"></i></button></li>
+
+                                                <!-- Delete Modal Start -->
+                                                <div class="modal fade" id="delete-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+
+                                                                <h4 class="modal-title" id="myModalLabel"></h4>
+                                                                <div class="x_panel">
+                                                                    <div class="x_title">
+                                                                        <h5>Delete Cell Details</h5>
+                                                                    </div>
+                                                                    <div class="alert alert-danger">
+                                                                        <span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Detail?<br><label class="alert-danger11">cell Name:</label>&nbsp;&nbsp;
+                                                                        <br />
+                                                                        <span id="childSpan" style="white-space: pre-line;line-height: 8px;"></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                @*@Html.ActionLink("Delete Cell Category", "DeleteCellCategory", "CellCategory", new { id = item.DepartmentID }, new { @class = "btn btn-danger" })*@
+                                                                <button type="button" class="btn btn-danger btnContinueDelete"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                                                                <button type="button" class="btn btn-info" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Delete Modal Finish -->
+
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                        <!-- create Modal Start -->
+                        @using (Html.BeginForm("CreateCells", "Cells", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+                            <div class="modal fade" id="create-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                            <h4 class="modal-title" id="myModalLabel"></h4>
+                                            <div class="x_panel">
+                                                <div class="x_title">
+                                                    <h5>Create Cell Details</h5>
+                                                </div>
+                                                <div class="x_content">
+                                                    <form class="form-horizontal form-label-left" novalidate>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-5 control-label">Plant Name</label>
+                                                            <div class="col-sm-6">
+                                                                @Html.DropDownListFor(model => model.Cells.PlantID, ViewBag.Plant as IEnumerable<SelectListItem>, "--Select Plant--", new { @id = "PlantID", @class = "form-control Plant", @name = "Plant", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = ViewData["plant"] })
+                                                            </div>
+                                                        </div>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-5 control-label">Shop Name</label>
+                                                            <div class="col-sm-6">
+                                                                @Html.DropDownList("shop", null, "--Select Shop--", new { @id = "DepartmentID", @class = "form-control DepartmentID", @name = "DepartmentID", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = ViewData["dept"] })
+                                                            </div>
+                                                        </div>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-5 control-label">Cell Name</label>
+                                                            <div class="col-sm-6">
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Cell Category Name">*@
+                                                                @Html.TextBoxFor(model => model.Cells.CellName, new { @id = "CellName", @class = "form-control", @name = "Cell Name", style = "width:89.7%", @placeholder = "Enter Cell Name", @required = "required", @onchange = "cellNameCheck();", @oninput = "cellNameCheck();" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-5 control-label">Cell Description</label>
+                                                            <div class="col-sm-6">
+                                                                @Html.TextBoxFor(model => model.Cells.CellDesc, new { @id = "CellDesc", @class = "form-control", @name = "Cell Desc", style = "width:89.7%", @placeholder = "Enter Cell Description", @required = "required" })
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Cell Category Description">*@
+                                                            </div>
+                                                        </div>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-5 control-label">Cell Display Name</label>
+                                                            <div class="col-sm-6">
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Cell Category Display Name">*@
+                                                                @Html.TextBoxFor(model => model.Cells.CelldisplayName, new { @id = "Celldisplayname", @class = "form-control", @name = "Cell Display Name", style = "width:89.7%", @placeholder = "Enter Cell Displayname", @required = "required" })
+                                                            </div>
+                                                            <div class="col-sm-5">
+
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <span id="plantError" class="errorMessage"></span>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+
+                                            <button type="submit" id="btnSubmit" class="btn btn-info"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- create Modal Finish -->
+                        }
+
+                        <li class="actionbtn"><button class="btn btn-round btn-info Category" data-title="Edit" style="display:none" data-toggle="modal" data-target="#edit-plant"><i class="fa fa-pencil fa-lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Edit Cell Category details"></i></button></li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+    $(".Plant").on("change", function (e) {
+        var PID = $(this).val();
+        $.getJSON("/Cells/FetchDept", { PID: PID }, function (data) {
+            $(".DepartmentID").empty();
+            $(".DepartmentID").append("<option value = ''> --Select Department-- </option>")
+            $.each(data, function (index, item) {
+                $(".DepartmentID").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+            });
+        });
+    });
+</script>
+
+<script>
+    $(".Category").on("click", function (e) {
+        $(".Cell").click();
+
+        e.preventDefault();
+        var CellCategoryID = $(this).attr("id")
+        //alert(CellCategoryID)
+        $.getJSON("/Cells/CellCategoryById", { Id: CellCategoryID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#EditCellCategoryID").val(CellCategoryID);
+                $("#EditPlant").val((item.PlantId));
+                $("#Editdeptid").val((item.DepartmentId));
+                $("#EditCellCategory").val((item.machinecategory));
+                $("#EditCategoryDesc").val((item.catdesc));
+                $("#EditCategoryDisplayName").val((item.catdeisplay));
+
+                var PID = item.PlantId;
+                $.getJSON("/Cells/FetchDept", { PID: PID }, function (data) {
+                    $("#Editdeptid").empty();
+                    $("#Editdeptid").append("<option value = ''> --Select Department-- </option>")
+                    $.each(data, function (index, item) {
+                        $("#Editdeptid").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+                    });
+                    $("#Editdeptid").val(item.DepartmentId);
+                });
+
+            })
+        })
+    })
+
+</script>
+<!--Delete-->
+<script>
+
+    function deleteTargetName(productvariant) {
+        $(".deleteTargetName").empty();
+        $(".alert-danger11").html("Cell Name: " +
+            productvariant);
+    }
+
+    var item_to_delete;
+    $(".deleteItem").click(function (e) {
+        item_to_delete = $(this).data('id');
+        //alert(item_to_delete);
+        $.ajax({
+            type: "POST",
+            data: { 'id': item_to_delete },
+            url: "/Cells/ChildNodeCheck",
+            async: false,
+            success: function (data) {
+                $("#childSpan").html(data);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("", "There is some issue in network");
+            }
+        });
+    });
+    $('.btnContinueDelete').click(function () {
+        window.location = "/Cells/DeleteCells/" + "?id=" + item_to_delete;
+    });
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#CellName').change(function () {
+            var val = $('#CellName').val();
+            $('#Celldisplayname').val(val);
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#EditCellCategory').change(function () {
+            var val = $('#EditCellCategory').val();
+            $('#EditCategoryDisplayName').val(val);
+        });
+    });
+</script>
+
+<script>
+    function cellNameCheck() {
+        var cellName = $("#CellName").val();
+        var PlantID = $("#PlantID").val();
+        var shopId = $("#DepartmentID").val();
+        $.ajax({
+            type: "POST",
+            data: { 'plantID': PlantID, 'shopId': shopId, 'cellName': cellName },
+            url: "/Cells/CellNameDuplicateCheck",
+            async: false,
+            success: function (data) {
+                if (data == "notok") {
+                    $("#plantError").html('Cell already exists');
+                    $("#btnSubmit").attr('disabled', 'disabled');
+                } else {
+                    $("#plantError").html('');
+                    $("#btnSubmit").removeAttr('disabled', 'disabled');
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("", "There is some issue in network");
+            }
+        });
+    }
+</script>
+<script>
+    function cellNameCheckEdit() {
+        var cellName = $("#EditCellCategory").val();
+        var PlantID = $("#EditPlant").val();
+        var shopId = $("#Editdeptid").val();
+        var EditCellCategoryID = $("#EditCellCategoryID").val();
+        $.ajax({
+            type: "POST",
+            data: { 'plantID': PlantID, 'shopId': shopId, 'cellName': cellName, 'editCellID': EditCellCategoryID },
+            url: "/Cells/CellNameDuplicateCheckEdit",
+            async: false,
+            success: function (data) {
+                if (data == "notok") {
+                    $("#plantErrorEdit").html('Cell already exists');
+                    $("#btnSubmitEdit").attr('disabled', 'disabled');
+                } else {
+                    $("#plantErrorEdit").html('');
+                    $("#btnSubmitEdit").removeAttr('disabled', 'disabled');
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("", "There is some issue in network");
+            }
+        });
+    }
+</script>

@@ -1,0 +1,195 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ifacility - shakti</title>
+    <link href="~/Content/calendar/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/customNew.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/CCSLogo.png" />
+</head>
+
+<body class="first-slide">
+    <div class="container">
+        <div id="loading" style="display:none">
+            <img src="~/images/loading1.gif" class="center img-responsive" style="width: 100px; position: absolute;top:50%;left:50%;z-index:99;">
+
+        </div>
+        <div class="col-sm-12" style="margin: 10px 0 -11px 0;">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8" style="text-align:center;">
+                @*<img src="~/images/TVS.png" style="width: 226px;">*@
+                <a href="~/dashboard/dashboard" class="site_title"> <img src="~/images/CCSLogo.png" style="width: 100px" /></a>
+            </div>
+        </div>
+
+        <div class="col-sm-12 dash-margin">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <h3 class="dash1-h3"><b>Centralized Dashboard</b></h3>
+            </div>
+        </div>
+        <div class="col-sm-12 dash-margin" style="margin-top: -15px">
+            <div class="col-sm-2">
+
+            </div>
+            @*<div class="col-sm-8">
+                <h3 class="dash-h3" style="color:white" id="CellNames"></h3>
+            </div>*@
+        </div>
+
+        <div class="col-sm-12 dash-new-maintitle-padd">
+            <div class="dash-new-maintitle">
+                Machine Utilization
+                <span class="dash-new-span"><span id="DateTimeVal"></span></span>
+            </div>
+            <div id="divUtilization"></div>
+        </div>
+
+        <div class="col-sm-6 dash-new-maintitle-padd1">
+            <div class="row dash-new-row">
+                <div class="dash-new-maintitle m-b-3">
+                    Overall Equipment Effectiveness
+                </div>
+                <div class="dash-newc-bg">
+                    <table class="table table-bordered" id="oeeTable">
+                        <thead>
+                            <tr>
+                                <th class="tableshead1">Machine Name</th>
+                                @*<th class="tableshead1">Target</th>
+                                <th class="tableshead1">Actual</th>*@
+                                <th class="tableshead1">OEE</th>
+                                <th class="tableshead1">Availability</th>
+                                <th class="tableshead1">Performance</th>
+                                <th class="tableshead1">Quality</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                @*<div class="col-sm-12" style="padding:0;margin-top: 3px;">
+                        <div class="dash-newc-bg">
+                            <canvas id="myChart" height="121"></canvas>
+                        </div>
+                    </div>*@
+            </div>
+        </div>
+        <div class="col-sm-6 dash-new-maintitle-padd1">
+            <div class="row dash-new-row">
+                <div class="dash-new-maintitle m-b-3">
+                    Priority Alarms
+                </div>
+                <div class="col-sm-12" style="padding:0;margin-top: 3px;">
+                    <div class="dash-newc-bg">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="tableshead1">Sl No.</th>
+                                    <th class="tableshead1">Machine No.</th>
+                                    <th class="tableshead1">Alarm No.</th>
+                                    <th class="tableshead1">Alarm Desc</th>
+                                    <th class="tableshead1">Alarm Axis</th>
+                                    <th class="tableshead1">Occured ON</th>
+                                </tr>
+                            </thead>
+                            <tbody id="alrmdet">
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="col-sm-6 dash-new-maintitle-padd1">
+            <div class="row dash-new-row">
+                <div class="dash-new-maintitle m-b-3">
+                    Losses
+                </div>
+                <div class="col-sm-12" style="padding:0;margin-top: 3px;">
+                    <div class="dash-newc-bg">
+                        @*<table class="table table-bordered">
+                                <tr>
+                                    <th colspan="3" class="tablehead">losses</th>
+                                </tr>
+
+                            </table>*@
+                        <canvas id="myChart2" width="670" height="292"></canvas>
+                        @*<div id="chartContainer2" style="height: 300px; width: 100%;"></div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="clearfix"></div>
+
+
+    </div>
+
+    <!-- jQuery -->
+    <script src="~/Newdashboardjs/jquery.min.js"></script>
+    <script src="~/js/jquery-2.1.4.min.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>*@
+
+    <script src="~/js/canvasjs.min.js"></script>
+    <script src="~/js/Chart.bundle.js"></script>
+    <script src="~/js/Chart.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/moment/MainDashboard.js"></script>
+    @*<script type="text/javascript">
+            window.onload = function () {
+                var chart = new CanvasJS.Chart("chartContainer",
+                {
+
+                    title: {
+                        text: "Earthquakes - per month"
+                    },
+                    axisX: {
+                        valueFormatString: "MMM",
+                        interval: 1,
+                        intervalType: "month"
+                    },
+                    axisY: {
+                        includeZero: false
+
+                    },
+                    data: [
+                    {
+                        type: "line",
+
+                        dataPoints: [
+                        { x: new Date(2012, 00, 1), y: 450 },
+                        { x: new Date(2012, 01, 1), y: 414 },
+                          { x: new Date(2012, 02, 1), y: 520, indexLabel: "highest", markerColor: "red", markerType: "triangle" },
+                        { x: new Date(2012, 03, 1), y: 460 },
+                        { x: new Date(2012, 04, 1), y: 450 },
+                        { x: new Date(2012, 05, 1), y: 500 },
+                        { x: new Date(2012, 06, 1), y: 480 },
+                        { x: new Date(2012, 07, 1), y: 480 },
+                        { x: new Date(2012, 08, 1), y: 410, indexLabel: "lowest", markerColor: "DarkSlateGrey", markerType: "cross" },
+                        { x: new Date(2012, 09, 1), y: 500 },
+                        { x: new Date(2012, 10, 1), y: 480 },
+                        { x: new Date(2012, 11, 1), y: 510 }
+                        ]
+                    }
+                    ]
+                });
+
+                chart.render();
+            }
+
+        </script>*@
+
+
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+﻿@model List<SRKSDemo.OpMsgHisDetails>
+@{
+    ViewBag.Title = "VirtualHMI Operator Message History";
+    Layout = "~/Views/Shared/_VHMILayout.cshtml";
+    int slno = 1;
+}
+
+<div class="right_col" role="main" style="margin-left: 0px;">
+    <div class="">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Virtual HMI Operator Message History</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                    <div class="form-horizontal">
+                        @*<label class="col-sm-1 control-label">Plant</label>*@
+                        <div class="col-sm-2">
+                            @Html.DropDownList("PlantID", null, "--Select Plant--", new { @id = "PlantID", @class = "stacked-label dropdown-toggle form-control", @name = "PlantID", @value = ViewData["PlantID"], @Required = "required" })
+                        </div>
+                        @*<label class="col-sm-1 control-label">Shop</label>*@
+                        <div class="col-sm-2">
+                            @Html.DropDownList("ShopID", null, "--Select Shop--", new { @id = "ShopID", @class = "stacked-label form-control", @name = "ShopID", @value = ViewData["ShopID"], @Required = "required" })
+                        </div>
+                        @*<label class="col-sm-1 control-label">Cell</label>*@
+                        <div class="col-sm-2">
+                            @Html.DropDownList("CellID", null, "--Select Cell--", new { @id = "CellID", @class = "stacked-label form-control", @name = "CellID", @value = ViewData["CellID"], @Required = "required" })
+                        </div>
+                        @*<label class="col-sm-1 control-label">Machine</label>*@
+                        <div class="col-sm-2">
+                            @Html.DropDownList("WorkCenterID", null, "--Select Machines--", new { @id = "WorkCenterID", @class = "stacked-label form-control", @name = "WorkCenterID", @value = ViewData["WorkCenterID"], @Required = "required" })
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="submit" class="btn btn-new" style="margin-bottom:8px;">Display</button>
+                        </div>
+                    </div>
+                    <table id="datatable-fixed-header" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Sl. No.</th>
+                                <th>Message No.</th>
+                                <th>Message Description</th>
+                                <th>Occurred ON</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@slno</td>
+                                    <td>@Html.DisplayFor(modelItem => item.MsgNo)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.MsgDesc)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.OccurredOn)</td>
+                                </tr>
+                                slno = slno + 1;
+                            }
+                        </tbody>
+                    </table>
+                    <input type="button" class="btn btn-new" style="margin-top: 10px;float: right;" value="Virtual HMI" id="VirtualHMI" name="VirtualHMI" />
+                    @*<a role="button" href="~/ProgramExecutionMonitor/Index" class="btn btn-new" style="margin-top: 10px;"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>*@
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<script>
+    $("#PlantID").on("change", function () {
+        $("#ShopID").empty();
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#PlantID option:selected").val();
+        $.getJSON("/ProgramExecutionMonitor/GetShop", { PlantID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#ShopID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                //$("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#ShopID").prepend("<option value='' selected='selected'></option>");
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+
+            var dropdownVal = "Plant";
+            $("#SummerizeAs").find('option[value=' + dropdownVal + ']').remove();
+        });
+
+        $.getJSON("/OEEDashboard/GetSummarizeDropDownValues", { Factor: "Plant" }, function (data) {
+            $("#SummarizeAs").empty();
+            $.each(data, function (index, item) {
+                $("#SummarizeAs").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+        });
+    });
+    $("#ShopID").on("change", function () {
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#ShopID option:selected").val();
+        $.getJSON("/ProgramExecutionMonitor/GetCell", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#CellID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/ProgramExecutionMonitor/GetWC_Shop", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/OEEDashboard/GetSummarizeDropDownValues", { Factor: "Shop" }, function (data) {
+            $("#SummarizeAs").empty();
+            $.each(data, function (index, item) {
+                $("#SummarizeAs").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+        });
+    });
+    $("#CellID").on("change", function () {
+        $("#WorkCenterID").empty();
+        var selectedID = $("#CellID option:selected").val();
+        $.getJSON("/ProgramExecutionMonitor/GetWC_Cell", { CellID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/OEEDashboard/GetSummarizeDropDownValues", { Factor: "Cell" }, function (data) {
+            $("#SummarizeAs").empty();
+            $.each(data, function (index, item) {
+                $("#SummarizeAs").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+        });
+    });
+    $("#WorkCenterID").on("change", function () {
+        $("#SummarizeAs").empty();
+    });
+</script>
+<script>
+    $("#VirtualHMI").click(function (e) {
+        var macID = $("#WorkCenterID").val();
+        //alert(macID);
+        if (macID == null || macID == '') {
+            alert("Select a Machine");
+        } else {
+            //PlantID,  ShopID,  CellID,  WorkCenterID
+            var plantID = $("#PlantID").val();
+            var shopID = $("#ShopID").val();
+            var cellID = $("#CellID").val();
+            window.location.href = "/ProgramExecutionMonitor/Index?PlantID=" + plantID + "&ShopID=" + shopID + "&CellID=" + cellID + "&WorkCenterID=" + macID;
+        }
+    });
+</script>

@@ -1,0 +1,380 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/120px-Tata_logoicon.ico" />
+    <title>TATA</title>
+    <!-- Bootstrap -->
+    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- NProgress -->
+    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../vendors/bootstrap-chosen.css">
+    <!-- Font Awesome -->
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- NProgress -->
+    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet" />
+    @*<link rel="stylesheet" type="text/css" href="../vendors/tooltip/tooltip.css">*@
+    <link href="~/vendors/tooltip/tooltip.css" rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    @*<link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">*@
+    <link href="~/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="~/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="~/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <!-- bootstrap-datetimepicker -->
+    <link href="~/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <!-- timeicker -->
+    <link href="~/vendors/
+          /timepicker.css" rel="stylesheet" />
+    <!-- Custom Theme Style -->
+    <link href="~/build/css/custom.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- ICONS -->
+    <link href="~/vendors/icons/fontawesome/fontawesome.css" rel="stylesheet" type="text/css" />
+    <link href="~/vendors/icons/linecons/linecons.css" rel="stylesheet" />
+    <link href="~/vendors/icons/spinnericon/spinnericon.css" rel="stylesheet" />
+    <link href="~/vendors/helpers/utils.css" rel="stylesheet" />
+    <link href="~/vendors/element/tile-box.css" rel="stylesheet" />
+
+    <!-- Compare -->
+    <link rel="stylesheet" href="~/vendors/lib/codemirror.css" />
+    <link rel="stylesheet" href="~/vendors/lib/mergely.css" />
+    <link rel="stylesheet" type="text/css" href="~/vendors/editor.css">
+</head>
+
+<body class="nav-md">
+    <style>
+        .errorMessage {
+            color: red;
+        }
+
+        .set_name {
+            margin-left: 10px;
+        }
+    </style>
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;" id="imageShow">
+                        <a href="~/Dashboard/Index" class="site_title"><img src="~/Images/CCSLogo.png" style="width:90px;" /></a>
+                    </div>
+                    <div class="navbar nav_title" style="border: 0;display:none" id="imageHide">
+                        <div>
+                            <a href="~/Dashboard/Index" class="site_title"><img src="~/Images/CCSLogo.png" style="width:90px" /></a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <ul class="nav side-menu sidemenubar">
+                                @*<li>
+                                        <a href="~/Dashboard/Dashboard">
+                                            <img src="~/images/dashboard.png" /><span class="set_name"> Dashboard</span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="~/ProgramExecutionMonitor/Index">
+                                            <img src="~/images/part.png" /><span class="set_name">Virtual HMI</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/ProgramTransfer/Index">
+                                            <img src="~/images/nc.png" /> <span class="set_name">NC Program Transfer</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a><img src="~/images/report.png" /><span class="set_name"> Reports</span> <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>
+                                                <a href="/Reports/Utilization_ABGraph">Utilization_AB Graph Report</a>
+                                            </li>
+                                            <li>
+                                                <a href="/Reports/OEEReport">OEE Report</a>
+                                            </li>
+                                            <li>
+                                                <a href="/Reports/CycleTime">Cycle Time Report</a>
+                                            </li>
+                                            <li>
+                                                <a href="/Reports/ToolLife">Tool Life Monitoring Sheet</a>
+                                            </li>
+                                            <li>
+                                                <a href="/DashboardReport/DashboardStatus">Dashboard Status</a>
+                                            </li>
+                                            <li>
+                                                <a href="/Reports/LossAnalysis">Loss Analysis</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="~/OperatorEntryAdmin/SelectMachineAdmin">
+                                            <img src="~/images/mach.png" /><span class="set_name"> Operator Input</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a><img src="~/images/part.png" /><span class="set_name"> Operator Module</span> <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>
+                                                <a href="/OperatorModule/Index">Operator Module</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <a><img src="~/images/part.png" /><span class="set_name"> Andon Scheduling </span><span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>
+                                                <a href="/AndonDisplay/ImageText">ANDON Scheduling</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+
+
+                                    <li>
+                                        <a><img src="~/images/mach.png" /><span class="set_name"> Machine Configuration</span> <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>
+                                                <a href="/Plant/Index">Plant Details</a>
+                                            </li>
+                                            <li>
+                                                <a href="/Shops/ShopList">Shop Details</a>
+                                            </li>
+                                            <li>
+                                                <a href="/Cells/CellsList">Cell Details</a>
+                                            </li>
+                                            <li>
+                                                <a href="/Machines/MachineList">Machine Details</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><img src="~/images/machinery-parts.png" /><span class="set_name">Tool configuration </span><span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>
+                                                <a href="/ToolLifeManagement/Index">Tool Life Management</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><img src="~/images/loss.png" /><span class="set_name"> Losses & Breakdown</span> <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>
+                                                <a href="/Productionloss/Index">Production Losses</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><img src="~/images/generals.png" /><span class="set_name">General configuration </span><span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>
+                                                <a href="/PartsManagement/Index">Parts Management</a>
+                                            </li>
+                                            <li>
+                                                <a href="/MultipleWorkOrder/Index">Multiple Work Order</a>
+                                            </li>
+                                            <li>
+                                                <a href="/PlannedBreaksManagement/Index">Planned Breaks</a>
+                                            </li>
+                                            <li>
+                                                <a href="/MailId/Index">MailID</a>
+                                            </li>
+                                            <li>
+                                                <a href="/Calendar/Calendar">Holiday Management</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><img src="~/images/shift.png" /><span class="set_name"> Shift Planner</span> <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>
+                                                <a href="/ShiftMethod/Index">Shift Method</a>
+                                            </li>
+                                            <li>
+                                                <a href="/ShiftDetails/Index">Shift Details</a>
+                                            </li>
+                                            <li>
+                                                <a href="/ShiftPlanner/Index">Shift Planner</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><img src="~/images/role.png" /><span class="set_name"> Roles & Users</span> <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            @if (ViewBag.roleid == 1)
+                                            {
+                                                <li>
+                                                    <a href="/Roles/Index">Roles</a>
+                                                </li>
+                                            }
+                                            <li>
+                                                <a href="/Login/Index">Users</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        @if (ViewBag.roleid == 1)
+                                        {
+                                            <a><i class="fa fa-home"></i><span class="set_name"> Role Module</span> <span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+
+                                                <li>
+                                                    <a href="/RoleModule/Index">Role Module</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/Modules/Index">Modules</a>
+                                                </li>
+                                            </ul>
+                                        }
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <img src="~/images/auto.png" /><span class="set_name"> Auto Report/Escalation</span> <span class="fa fa-chevron-down"></span>
+                                        </a>
+                                        <ul class="nav child_menu">
+                                            <li>
+                                                <a href="/AutomaticEmailReport/Index">Auto Email Report</a>
+                                            </li>
+                                            <li>
+                                                <a href="/EscalationMatrix/Index">Escalation Matrix</a>
+                                            </li>
+                                        </ul>
+                                    </li>*@
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                </div>
+            </div>
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    Welcome @ViewBag.Logout!
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li><a href="javascript:;">Help</a></li>
+                                    <li><a href="~/login/Logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            @RenderBody()
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                </div>
+                <center>
+                    <div class="clearfix"><a href="https://www.srkssolutions.com//">2019 © SRKS Software Solutions</a></div>
+                </center>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="~/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/MCAdmin/Menu.js"></script>
+
+    <!-- FastClick -->
+    <script src="~/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="~/vendors/nprogress/nprogress.js"></script>
+    <!-- validator -->
+    <script src="~/vendors/validator/validator.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="~/build/js/custom.js" type="text/javascript"></script>
+
+    @*<script src="../vendors/chosen-select.js" type="text/javascript"></script>*@
+
+    <!-- bootstrap-daterangepicker -->
+    <script src="~/vendors/moment/min/moment.min.js"></script>
+    <script src="~/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-datetimepicker -->
+    <script src="~/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- Compare -->
+    <script src="~/vendors/lib/codemirror.js"></script>
+    <script src="~/vendors/lib/mergely.js"></script>
+
+    <!-- Datatables -->
+    <script src="~/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="~/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="~/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="~/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="~/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="~/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="~/vendors/editor.js"></script>
+    @*<script type="text/javascript">
+            $(function () {
+                $('.chosen-select').chosen();
+            });
+        </script>*@
+    <script>
+
+        $('#myDatepicker2').datetimepicker({
+            format: 'YYYY/MM/DD'
+        });
+    </script>
+    <script>
+
+        $('#from').datetimepicker({
+            format: 'YYYY/MM/DD'
+        });
+    </script>
+    <script>
+
+        $('#to').datetimepicker({
+            format: 'YYYY/MM/DD'
+        });
+    </script>
+    <!-- Bootstrap Timepicker -->
+    <!--<link rel="stylesheet" type="text/css" href="../../assets/widgets/timepicker/timepicker.css">-->
+    @*<script type="text/javascript" src="../vendors/timepicker/timepicker.js"></script>*@
+    <script src="~/vendors/timepicker/timepicker.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        /* Timepicker */
+
+        $(function () {
+            "use strict";
+            $('.timepicker-example').timepicker();
+        });
+
+        $(document).ready(function () {
+            $("[data-toggle=tooltip]").tooltip();
+        });
+    </script>
+
+</body>
+</html>

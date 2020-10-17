@@ -1,0 +1,70 @@
+﻿@model SRKSDemo.Server_Model.tblshop
+@{
+    ViewBag.Title = "CreateDepartment";
+}
+
+<h2>CreateDepartment</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    if (Session["Error"] != null)
+    {
+        <p>@Session["Error"]</p>
+        {
+            Session["Error"] = null;
+        }
+    }
+
+    <div class="wrp clearfix">
+        @*style="background-color:red" box outside create role*@
+        <div class="fluid">
+            <div class="widget col-md- grid12">
+                <div class="widget-header" style="background-color:red">
+                    <div class="widget-title">
+                        <span style="font-style:oblique;font-size:100%">Create Shop Details</span>
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+                    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 40%">Plant Name</label>
+                    @Html.DropDownList("PlantID", null, "--Select Plant--", new { @id = "PlantID", @class = "form-control", @name = "Plant", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = ViewData["Plant"] })
+                    @Html.ValidationMessageFor(model => model.PlantID)
+
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal;padding-top:2%; width: 20%; color:blue;font-style:oblique">Shop Name</label>
+                    @Html.TextBoxFor(model => model.ShopName, new { @id = "Department", @class = "form-control", @name = "Department", style = "width:89.7%", @placeholder = "Enter Department Name", @required = "required" })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color:blue;font-style:oblique">Shop Description</label>
+                    @Html.TextBoxFor(model => model.ShopDesc, new { @id = "DepartmentDesc", @class = "form-control", @name = "DepartmentDesc", style = "width:89.7%", @placeholder = "Enter Department Description", @required = "required" })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color:blue;font-style:oblique">Shop Display Name</label>
+                    @Html.TextBoxFor(model => model.Shopdisplayname, new { @id = "DepartmentDisplayName", @class = "form-control", @name = "DepartmentDisplayName", style = "width:89.7%", @placeholder = "Enter Department DisplayName", @required = "required" })
+
+
+
+
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Create" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit;margin-top:2%;background-color:orange;color:black;font-size:95%" />
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div> <!-- /Class-fluid-->
+    </div>
+    @Html.HiddenFor(Model => Model.ShopID)
+    @Html.HiddenFor(Model => Model.PlantID)
+}
+
+<style>
+    input {
+        font-style: oblique;
+        color: blue;
+    }
+</style>

@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutForMaster.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="wrp clearfix">
+        @*style="background-color:red" box outside create role*@
+        <div class="fluid">
+            <div id="error" style="width: 50%">
+                @if (Session["Error"] != null)
+                {
+                    if (Session["Error"] != "")
+                    {
+                        <pre>
+<span style="font-family:Calibri">@Session["Error"]</span>
+                    </pre>
+                        Session["Error"] = null;
+                    }
+                }
+            </div>
+            <div class="widget col-md- grid10">
+                <div class="widget-header" style="background-color: #38353c">
+                    <div class="widget-title">
+                        <div style="font-style: oblique; font-size: 100%">Select Machine</div>
+                    </div>
+                </div>
+                <!-- /widget-header -->
+                <!-- /widget-header -->
+                <div class="widget-content pad20f">
+                    <div id="DateRange" class="container" style="font-family: Calibri; font-size: 20px">
+                        <div class="row">
+                            <div class='col-xs-3'>
+                                <div class='form-group'>
+                                    <label class="control-label">Select Machine</label>
+                                    <div class="editor-field" style="align-items: center">
+                                        @Html.DropDownList("RHID", (SelectList)ViewData["RHID"], "--Select Machine--", new { @id = "RoleID1", @class = "dropdown form-control red dropdown-toggle", style = "width:89.7%;", @name = "RoleID", @required = "required" })
+                                        @*@Html.ValidationMessageFor(model => model.RHID)*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div style="width: 3%; display: inline-block; height: inherit"></div>
+                            @Html.ActionLink(" Back ", "Index", "Dashboard", new { }, new { @class = "btn blue stacked-input fa fa-reply ", @style = "text-decoration:none;display:inline-block" })
+                            <div style="width: 10%; display: inline-block; height: inherit"></div>
+                            <input type="submit" value="Show HMI" class="btn blue stacked-input fa fa-reply" style="width: 10%; display: inline-block; height: inherit; margin-top: 2%" />*@
+                        <div style="width: 3%; display: inline-block; height: inherit"></div>
+                        @Html.ActionLink(" Back ", "Index", "Dashboard", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                        <div style="width: 10%; display: inline-block; height: inherit"></div>
+                        <input type="submit" value="Show PartEntry Screen" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit; margin-top: 2%; background-color: orange; color: black; font-size: 95%" />
+
+                    </div>
+                </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+        <!-- /Class-fluid-->
+    </div>
+
+}
+<script type="text/javascript" src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/Content1/SuperTable/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/jquery.dataTables.js"></script>
+<style>
+    input {
+        font-style: oblique;
+        color: blue;
+    }
+</style>
+
+<script>
+    setTimeout(function () {
+        $('#error').fadeOut('slow');
+    }, 15000); // <-- time in milliseconds
+</script>

@@ -1,0 +1,2447 @@
+﻿@model IList<i_facilitylibrary.DAL.tbllivehmiscreen>
+@{
+    /**/
+
+    ViewBag.Title = "MWCIndex";
+    Layout = null;
+    string Date = DateTime.Now.Date.ToString("dd-MM-yyyy");
+    int count = 0;
+    string jshift = null;
+    var prod = ViewBag.ProdFAI;
+    var j = Session["SubmitClicked"];
+    var k = Session["FromDDL"];
+
+    int roleid = Convert.ToInt32(Session["RoleID"]);
+    int machineid = Convert.ToInt32(ViewBag.machineID);
+    var slno = 1;
+    var hmiid = 0;
+    if (Model.Count != 0)
+    {
+        hmiid = Model[0].HMIID;
+    }
+    else { }
+    int M = 0;
+    int inOrder = 0;
+    //int Route = 0;
+    int IsWorkOrder = 0;
+    if (Convert.ToInt32(Session["flag"]) == 1)
+    {
+        int.TryParse(Convert.ToString(Session["isWorkOrder"]), out IsWorkOrder);
+    }
+    else
+    {
+        IsWorkOrder = 0;
+    }
+    //int.TryParse(Convert.ToString(Session["Route"]), out Route);
+
+}
+@*//creating a dropdown*@
+@{
+    List<SelectListItem> Shifts = new List<SelectListItem>();
+    Shifts.Add(new SelectListItem
+    {
+        Text = "A",
+        Value = "A"
+    });
+    Shifts.Add(new SelectListItem
+    {
+        Text = "B",
+        Value = "B",
+    });
+    Shifts.Add(new SelectListItem
+    {
+        Text = "C",
+        Value = "C",
+    });
+    Shifts.Add(new SelectListItem
+    {
+        Text = "G",
+        Value = "G",
+    });
+}
+
+@*@{
+        List<SelectListItem> Prod_FAI = new List<SelectListItem>();
+
+        Prod_FAI.Add(new SelectListItem
+        {
+            Text = "FAI",
+            Value = "FAI",
+        });
+        Prod_FAI.Add(new SelectListItem
+        {
+            Text = "PRR",
+            Value = "PRR"
+        });
+        Prod_FAI.Add(new SelectListItem
+        {
+            Text = "Prod",
+            Value = "Prod",
+        });
+        Prod_FAI.Add(new SelectListItem
+        {
+            Text = "Trial",
+            Value = "Trial"
+        });
+        Prod_FAI.Add(new SelectListItem
+        {
+            Text = "RM Sizeing",
+            Value = "RM Sizeing",
+        });
+    }*@
+
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="~/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/font-awesome-4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/toastr.css">
+    <link rel="stylesheet" type="text/css" href="~/css/pe-icon-7-filled.css">
+    <link rel="stylesheet" type="text/css" href="~/css/pe-icon-7-stroke.css">
+
+    @*Disable buttons and their Colors*@
+    <style>
+        .disableClick {
+            pointer-events: none;
+        }
+
+        .RedClassDisPointer {
+            background-color: #FF0000;
+            pointer-events: none;
+        }
+
+        .RedClass {
+            background-color: #FF0000;
+        }
+
+        .NoHoverRed:hover {
+            border: 1px solid red;
+            background-color: #FF0000;
+        }
+
+        pre {
+            white-space: pre-wrap; /* css-3 */
+            white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+            white-space: -pre-wrap; /* Opera 4-6 */
+            white-space: -o-pre-wrap; /* Opera 7 */
+            word-wrap: break-word; /* Internet Explorer 5.5+ */
+        }
+
+        .vr {
+            width: 2px;
+            background-color: #000;
+            position: relative;
+            top: 1%;
+            height: 100%;
+            bottom: 0;
+            left: 5%;
+        }
+
+        .vericaltext {
+            width: 1px;
+            word-wrap: break-word;
+            font-family: monospace; /* this is just for good looks */
+            white-space: pre; /* this is for displaying whitespaces */
+        }
+    </style>
+    @* Parent & child Divs *@
+    <style>
+        div.parent3 {
+            border: 1px solid red;
+            width: 100%;
+        }
+
+        div.child {
+            width: 21%;
+            float: left;
+            text-align: left;
+            -webkit-text-size-adjust: 100%;
+            font-size: 1.2vw;
+        }
+
+        div.child1 {
+            width: 21%;
+            float: left;
+            height: 19%;
+            text-align: left;
+            padding-top: 0.2vh;
+            -webkit-text-size-adjust: 80%;
+            font-size: 1.2vw;
+        }
+
+        div.child2 {
+            width: 10%;
+            float: left;
+            height: 19%;
+            text-align: left;
+            padding-top: 0.2vh;
+            -webkit-text-size-adjust: 80%;
+            font-size: 1.2vw;
+        }
+
+        div.header {
+            -webkit-text-size-adjust: 100%;
+            font-size: 3vw;
+        }
+
+        div.subheader {
+            -webkit-text-size-adjust: 100%;
+            font-size: 2vw;
+        }
+    </style>
+
+    <style type="text/css">
+        table {
+            border-spacing: 1px;
+        }
+
+        input {
+            width: 100%;
+        }
+
+        orange {
+            background-color: red;
+        }
+
+        green {
+            background-color: red;
+        }
+
+        pink {
+            background-color: red;
+        }
+    </style>
+
+    <script src="~/js/jquery-2.1.4.min.js"></script>
+    @*<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>*@
+
+
+    <script>
+        //$(function () {
+        //    setTimeout(xyz(), 8000);
+
+        //});
+
+        //function xyz() {
+        //    alert(0)
+        //    var ue = $("#cjtextboxop").val();
+        //    if (ue.length == 0) {
+        //        $("#cjtextboxop").prop("disabled", false);
+        //    } else {
+        //        alert(1);
+        //    }
+        //}
+
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+            var t = setTimeout(function () { startTime() }, 500);
+
+        }
+
+        //function MacStatus() {
+        //    $.ajax({
+        //        url: "/ManualHMIScreen/MacStatus",
+        //        type: "POST",
+        //        dataType: "json",
+        //        //data: { Prefix: GetCurrentSearchTerm(req.term), AllVal: req.term },
+        //        success: function (data) {
+        //        }
+        //    })
+        //}
+
+        function SessionTimeout() {
+            //$.ajax({
+            //    url: "/NewHMIScreen/SessionTimeOutChecker",
+            //    type: "POST",
+            //    dataType: "json",
+            //    //data: { Prefix: GetCurrentSearchTerm(req.term), AllVal: req.term },
+            //    success: function (data) {
+            //        if (parseInt(data) < 3) {
+            //            //alert("You have " + data + " Minutes before SessionOut");
+            //        } else {
+            //            //alert("You have " + data + " Minutes before SessionOut");
+            //        }
+            //    }
+            //})
+        }
+        setInterval(SessionTimeout, 60000);
+
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+            return i;
+        }
+
+    </script>
+
+
+</head>
+
+@*<body onload="startTime()" onbeforeunload="MacStatus()">*@
+@*<body onbeforeunload="MacStatus()">*@
+<body>
+    @*@using (Html.BeginForm())*@
+    @*@using (Html.BeginForm(" Index", "NewHMIScreen" , FormMethod.Post, new { enctype="multipart/form-data" })) *@
+    @using (Html.BeginForm())
+    {@Html.AntiForgeryToken() @Html.ValidationSummary(true) <div id="ErrorDiv" style="z-index: 1000; top: 0; left: 0; width: auto; position: absolute; margin-left: 60%">
+
+        @if (Session["ModeError"] != null)
+        {
+            <pre>
+<span style="font-family:Calibri;font-size:3vh;color:red">@Session["ModeError"]</span>
+                </pre>
+        }
+        @if (Session["Error"] != null)
+        {
+            <pre>
+<span style="font-family:Calibri;font-size:3vh;color:red">@Session["Error"]</span>
+                    </pre>
+        }
+        @if (Session["VError"] != null)
+        {
+            <pre>
+<span style="font-family:Calibri;font-size:3vh;color:red">@Session["VError"]</span>
+                    </pre>
+            Session["VError"] = null;
+        }
+        @if (Session["ErM"] != null)
+        {
+            <pre>
+<span style="font-family:Calibri;font-size:3vh;color:red">@Session["ErM"]</span>
+                    </pre>
+        }
+    </div>
+
+    {
+        Session["Error"] = null;
+        Session["ModeError"] = null;
+        Session["VError"] = null;
+    }
+
+
+    @*////for (int 0 = 0; 0 < Model.Count; 0++)
+        ////{*@
+    if (count == 0)
+    {
+        <div style="font-family: Calibri; font-size: 99%; padding-left: 1%; padding-bottom: 1%">
+            <div class="parent3" style="border: none; width: 100%; height: 5%">
+                @*<div class="header" style="margin-left: 20%; display: inline; color: #2e6da4;"><b>@Html.DisplayFor(m => m[0].tblmachinedetail.MachineDispName)</b></div>*@@* Nexus 535C-||-MS-02-04*@
+                <div class="header" style="margin-left: 20%; display: inline; color: #2e6da4; font-size: 2.25vw"><b>@ViewBag.MacDispName</b></div>
+                @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+                {
+                    <div class="header" style="display: inline; float: left; border-radius: 5px; padding-top: 2vh">@Html.ActionLink(" Home Page ", "Dashboard", new { id = 0 }, new { @class = "btn btn-primary", @style = "color:white;text-decoration:none;font-size:1.2vw;font-weight:thick" })</div>
+                }
+                @if (ViewBag.roleid == 3)
+                {
+                    <div class="header" style="display: inline; float: left; border-radius: 5px; padding-top: 2vh">@Html.ActionLink(" Logout ", "Logout", "Login", new { id = 0 }, new { @class = "btn btn-primary", @style = "color:white;text-decoration:none;font-size:1.2vw;font-weight:thick" })</div>
+                }
+                @* @for (int k = 0; k < Model.Count; k++)
+                    { *@
+                @if (Model[0].Status == 0 || Model[0].Status == 2)
+                {
+                    //if (Model[0].isWorkOrder == 1)
+                    if (IsWorkOrder == 1)
+                    {
+                        <div class="header" style="display: inline; float: left; padding-top: 2vh; padding-left: 7%; width: 9vw" id="reworkdiv">
+                            <button id="reworkorder" onclick="Rework(event)" class="btn btn-success" style="font-size: 1.2vw; width: auto">ReWork Order</button>
+                        </div>
+                        @*<div class="header" style="display: inline; float: left; padding-top: 2vh; padding-left: 7%; width: 9vw" id="reworkClickedMsg">
+                                <button class="btn btn-success" style="font-size: 1.2vw; width: auto" disabled>ReWork Order is Started</button>
+                            </div>*@
+                    }
+                    else
+                    {
+                        <div class="header" style="display: inline; float: left; padding-top: 2vh; padding-left: 7%; width: 9vw" id="reworkdiv">
+                            <button id="reworkorder" onclick="Rework(event)" class="btn btn-primary" style="font-size: 1.2vw; width: auto">ReWork Order</button>
+                        </div>
+                    }
+                }
+                @* }*@
+
+            </div>
+        </div>
+        count++;
+    }
+    //}
+    <input type="hidden" id="selectedValue" value="@ViewBag.selectedValues" name="selectedValue" />
+    <div style="width: 85%; height: 2%"></div>
+    <div style="font-family: Calibri; font-size: 98%; padding-left: 1%">
+
+        <div style="color: white; width: 100%">.</div>
+        <div class="wrp clearfix" style="padding-left: 1%; float: left">
+            <div class="fluid">
+                <div class="wrapper">
+                    <section class="content">
+                        <div class="row">
+
+                            <div class="widget-content  pad20f">
+                                <article class="widget widget__form">
+                                    <div class="widget-content  pad20f">
+                                        <div class="widget__content table-responsive">
+
+                                            <table class="table table-striped" style="width: 98%">
+                                                <tbody>
+                                                    @if (Model[0].Status == 0 || Model[0].Status == 2)
+                                                    {
+                                                        <tr style="background-color: white">
+                                                            @*;float:left*@
+                                                            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%; font-weight: bold">Operator </td>
+                                                            <td style="width: 10%; text-align: center; font-family: Helvetica; font-size: 85%;">
+                                                                @if (ViewBag.hide != null)
+                                                                {
+                                                                    <input type="hidden" id="hdnId" value="1" />
+                                                                    @Html.TextBoxFor(m => m[0].OperatorDet, new { @id = "cjtextboxop", @name = "cjtextboxop", @class = "autosaveCommon j_length", @maxlength = 10, @disabled = "disabled" })
+                                                                }
+                                                                else
+                                                                {
+                                                                    <input type="hidden" id="hdnId" value="2" />
+                                                                    @Html.TextBoxFor(m => m[0].OperatorDet, new { @id = "cjtextboxop", @name = "cjtextboxop", @class = "autosaveCommon j_length j_int", @maxlength = 10 })
+                                                                }
+
+                                                            </td>
+                                                            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%; font-weight: bold">Shift </td>
+                                                            <td style="width: 10%; text-align: center; font-family: Helvetica; font-size: 85%">
+
+                                                                @* @{
+                                                                    string shift = Model[0].Shift;
+                                                                    string js = shift;
+                                                                    }*@
+                                                                @*@ViewBag.shift*@
+                                                                @* @if (ViewBag.hide != null)
+                                                                    {
+                                                                        string shift = Model[0].Shift;
+                                                                        @Html.DropDownList("Shift", new List<SelectListItem>() { new SelectListItem { Text = "--Select Shift--", Value = "--Select Shift--" }, new SelectListItem { Text = "A", Value = "A" }, new SelectListItem { Text = "B", Value = "B" }, new SelectListItem { Text = "C", Value = "C" }, new SelectListItem { Text = "G", Value = "G" } }, new { disabled = "disabled", @onchange = "jshift = this.value", @id = "jdrop", @class = "form-control", @style = "width:40%;height:45%;font-size:1.0vw;display:inline", @name = "Shift", })
+                                                                        @Html.ValidationMessageFor(model => model[0].Shift)
+                                                                        <div style="display: inline; width: 5%">&nbsp</div>
+                                                                        @Html.ActionLink("Change", "changeVisibelityNorm", new { }, new { @id = "hbd", @class = "btn btn-primary", @style = "width:55%;height:45%;font-size:1.0vw;color:white;font-weight:thick;display:inline" })
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        string shift = Model[0].Shift;
+                                                                        @Html.DropDownList("Shift", new List<SelectListItem>() { new SelectListItem { Text = "--Select Shift--", Value = "--Select Shift--" }, new SelectListItem { Text = "A", Value = "A" }, new SelectListItem { Text = "B", Value = "B" }, new SelectListItem { Text = "C", Value = "C" }, new SelectListItem { Text = "G", Value = "G" } }, new { @onchange = "jshift = this.value", @id = "jdrop", @class = "form-control", @style = "width:40%;height:45%;font-size:1.0vw;display:inline", @name = "Shift", })
+                                                                        @Html.ValidationMessageFor(model => model[0].Shift)
+                                                                        <div style="display: inline; width: 5%">&nbsp</div>
+                                                                        @Html.ActionLink("Set", "changeShiftNorm", new { Shift = jshift, op = Model[0].OperatiorID, mid = Model[0].tblmachinedetail.MachineID }, new { @id = "setbutton", @class = "btn btn-primary", @style = "width:55%;height:45%;font-size:1.0vw;color:white;font-weight:thick;display:inline" })
+                                                                    }*@
+
+                                                                @*Working fine as of 2017-01-13*@
+                                                                @if (ViewBag.hide != null)
+                                                                {
+                                                                    int dat = ViewBag.hide;
+                                                                    @Html.TextBoxFor(m => m[0].Shift, new { @id = "cjtextboxshift", @name = "cjtextboxshift", @style = "width:20%;font-size:1.0vw;display:inline", @class = "autosaveCommon j_length", @disabled = "disabled", @maxlength = 1 })
+
+                                                                    @Html.ValidationMessageFor(model => model[0].Shift)
+                                                                    <div style="display: inline; width: 1%">&nbsp</div>
+
+                                                                    @Html.ActionLink("Change", "changeVisibilityNorm", new { id = Model[0].HMIID }, new { @class = "btn btn-primary changingshift ", @style = "width:55%;font-size:1.0vw;color:white;font-weight:thick;display:none" })
+                                                                    <button id="changeshift" onclick="shfitChange(event)" class="btn btn-primary setchange" style="font-size: .90vw;">change</button>
+                                                                }
+                                                                else
+                                                                {
+                                                                    @Html.TextBoxFor(m => m[0].Shift, new { @id = "cjtextboxshift", @class = "shiftInput j_length autosaveCommon", @style = "width:20%;font-size:1.0vw;display:inline", @maxlength = 1, @name = "cjtextboxshift", })
+                                                                    <div style="display: inline; height: 5%; width: 1%; color: white">.&nbsp</div>
+                                                                    @Html.ActionLink("Set", "changeShiftNorm", "ManualHMIScreen", new { @id = "setbutton", @style = "display:none" })
+                                                                    <button id="setshift" name="setshift" class="btn btn-primary setchange" style="font-size: .90vw;">Set</button>
+                                                                }
+                                                            </td>
+
+                                                            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%; font-weight: bold">Date </td>
+                                                            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                @Date
+                                                            </td>
+
+                                                            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%; font-weight: bold">Time </td>
+                                                            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                <span id="txt"></span>
+                                                            </td>
+                                                            <td>
+                                                                @*@if (Model[0].isWorkOrder == 1)*@
+                                                                @if (IsWorkOrder == 1)
+                                                                {
+                                                                    <div style="display: inline; float: left; background-color: red; margin: 3px 3px 3px 3px" id="reworkClickedMsg">
+                                                                        ReWorkOrder Started
+                                                                    </div>
+
+                                                                }
+                                                            </td>
+
+                                                        </tr>
+
+
+
+                                                        @*<tr style="float:left">
+                                                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">Date </td>
+                                                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                    @Date
+                                                                </td>
+
+                                                                 <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">Time </td>
+                                                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%" >
+                                                                    <span id="txt"></span>
+                                                                </td>
+                                                            </tr>*@
+                                                        <tr class="spacer"></tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+
+                                            <table style="width: 80%; margin-left: 10%">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <b>Total WO :</b>  @ViewBag.TotalWOCount
+                                                        </td>
+                                                        <td>
+                                                            <b>WO's Started :</b> @ViewBag.WOStartedCount
+                                                        </td>
+                                                        @* <td><b>WO's On Hold :</b> @ViewBag.WOOnHoldCount
+                                                            </td>*@
+                                                        <td>
+                                                            <b>WO's Yet to Start :</b> @ViewBag.WONotStartedCount
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+
+                                            <div style="width: 100%; color: white">&nbsp.</div>
+                                            <table class="table table-striped" style="width: 98%">
+                                                <thead>
+                                                    <tr class="text-centre" style="background-color: orange">
+                                                        <th style="text-align: center; font-size: 95%">Sl.No.</th>
+                                                        <th style="text-align: center; font-size: 95%; display: none" class="cp">CB</th>
+
+                                                        <th style="text-align: center; font-size: 95%">WO No.</th>
+                                                        <th style="text-align: center; font-size: 95%">PartNo</th>
+                                                        <th style="text-align: center; font-size: 95%; width: 10%">OP No.</th>
+                                                        <th style="text-align: center; font-size: 95%">Project</th>
+                                                        <th style="text-align: center; font-size: 95%">Prod/FAI</th>
+                                                        @*@if (Route == 1)
+                                                            {
+                                                            <th style="text-align: center; font-size: 95%">Nesting Sheet No</th>
+                                                            }*@
+                                                        <th style="text-align: center; font-size: 95%">WO Qty</th>
+                                                        <th style="text-align: center; font-size: 95%">ProcessedQty</th>
+                                                        <th style="text-align: center; font-size: 95%">Del Qty</th>
+                                                        @if (roleid != 2)
+                                                        {
+                                                            <th style="text-align: center; font-size: 95%" class="StartButtons">Start</th>
+                                                            <th style="text-align: center; font-size: 95%" class="StartButtons">Hold/Release</th>
+                                                            <th style="text-align: center; font-size: 95%" class="StartButtons">JobFinish</th>
+                                                            <th style="text-align: center; font-size: 95%" class="StartButtons">Remove</th>
+                                                            <th style="text-align: center; font-size: 95%" class="StartButtons">Split WO</th>
+                                                            <th style="text-align: center; font-size: 95%" class="StartButtons"></th>
+                                                        }
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="spacer"></tr>
+                                                    <tr class="spacer"></tr>
+                                                    @for (int r = 0; r < Model.Count; r++)
+                                                    {
+                                                        if (Model[r].Status == 0 || Model[r].Status == 2)
+                                                        {
+                                                            var a = Model[r].Prod_FAI;
+                                                            <tr style="background-color: white">
+
+                                                                <td class="hmiid" style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%; display: none; " value='@Model[r].HMIID'>
+                                                                    @Model[r].HMIID
+                                                                </td>
+                                                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                    @slno
+                                                                </td>
+                                                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%; display: none" class="HiddenDDLIDtd">
+                                                                    <input type="checkbox" , class="HiddenDDLID" id='@Model[r].HMIID' />
+                                                                </td>
+
+                                                                @*To Disable WO Details when its from DDLList*@
+                                                                @if (Convert.ToString(Model[r].DDLWokrCentre) == null)
+                                                                {
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.TextBoxFor(m => m[r].Work_Order_No, new { @id = "cjtextbox4", @name = "textbox4", @class = "cjtextbox4 jscan autosave j_int j_length", @maxlength = 40 })
+                                                                    </td>
+                                                                    <td style="text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.TextBoxFor(m => m[r].PartNo, new { @id = "cjtextbox3", @name = "textbox3", @class = "cjtextbox3 jscan  autosave j_length", @maxlength = 40 })
+                                                                    </td>
+                                                                    <td style="text-align: center; font-family: Helvetica; font-size: 85%; width: 10%">
+                                                                        @Html.TextBoxFor(m => m[r].OperationNo, new { @id = "cjtextbox5", @name = "textbox5", @class = "cjtextbox5 autosave j_int j_length", @maxlength = 10 })
+                                                                    </td>
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.TextBoxFor(m => m[r].Project, new { @id = "cjtextbox1", @name = "textbox1", @class = " cjtextbox1 autosave j_AlphNum j_length", @maxlength = 40 })
+                                                                    </td>
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.DropDownListFor(model => model[r].Prod_FAI, new SelectList(ViewBag.Prod_FAI, "Value", "Text", Model[r].Prod_FAI), "-Select-", new { @id = "Prod_FAI", @class = "Prod_FAI", @name = "Prod_FAI", @style = "font-size:1.2vw;display:inline" })
+                                                                    </td>
+                                                                    @*if (Route == 1)
+                                                                        {
+                                                                            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                                @Html.TextBoxFor(m => m[r].SheetNoList, new { @id = "SheetNo", @name = "SheetNo", @class = "SheetNo", @maxlength = 40 })
+                                                                            </td>
+                                                                        }*@
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.TextBoxFor(m => m[r].Target_Qty, new { @id = "cjtextbox6", @name = "cjtextbox6", @class = "cjtextbox6 j_int autosave j_length", @maxlength = 9 })
+                                                                    </td>
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.TextBoxFor(m => m[r].Work_Order_No, new { @id = "cjtextbox4", @name = "textbox4", @class = "cjtextbox4 jscan j_int autosave  j_length", @maxlength = 40, @disabled = "disabled" })
+                                                                    </td>
+                                                                    <td style="text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.TextBoxFor(m => m[r].PartNo, new { @id = "cjtextbox3", @name = "textbox3", @class = "cjtextbox3 jscan autosave j_length", @maxlength = 40, @disabled = "disabled" })
+                                                                    </td>
+                                                                    <td style="text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.TextBoxFor(m => m[r].OperationNo, new { @id = "cjtextbox5", @name = "textbox5", @class = "cjtextbox5 autosave j_int j_length", @maxlength = 10, @disabled = "disabled" })
+                                                                    </td>
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.TextBoxFor(m => m[r].Project, new { @id = "cjtextbox1", @name = "textbox1", @class = " cjtextbox1 autosave j_AlphNum j_length", @maxlength = 40, @disabled = "disabled" })
+                                                                    </td>
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.DropDownListFor(model => model[r].Prod_FAI, new SelectList(ViewBag.Prod_FAI, "Value", "Text", Model[r].Prod_FAI), "-Select-", new { @id = "Prod_FAI", @class = "Prod_FAI", @name = "Prod_FAI", @style = "font-size:1.2vw;display:inline" })
+                                                                    </td>
+                                                                    @*if (Route == 1)
+                                                                        {
+                                                                            <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                                @Html.TextBoxFor(m => m[r].SheetNoList, new { @id = "SheetNo", @name = "SheetNo", @class = "SheetNo", @maxlength = 40 })
+                                                                            </td>
+                                                                        }*@
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.TextBoxFor(m => m[r].Target_Qty, new { @id = "cjtextbox6", @name = "cjtextbox6", @class = "cjtextbox6 j_int autosave j_length", @maxlength = 9, @disabled = "disabled" })
+                                                                    </td>
+
+                                                                }
+
+                                                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                    @Html.TextBoxFor(m => m[r].ProcessQty, new { @id = "cjtextbox9", @name = "cjtextbox9", @class = "j_int j_length", @maxlength = 9, @readonly = "readonly", @style = "background-color:lightblue" })
+                                                                    @Html.HiddenFor(m => m[r].ProcessQty, new { @id = "cjtextbox9", @name = "cjtextbox9", @class = "j_int j_length", @maxlength = 9, disabled = "disabled" })
+                                                                    @Html.HiddenFor(m => m[r].Rej_Qty, new { @id = "cjtextbox7", @name = "cjtextbox7", @class = "j_int autosave", @Value = "0" })
+                                                                </td>
+
+                                                                @* <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.TextBoxFor(m => m[r].Delivered_Qty, new { @id = "cjtextbox8", @name = "cjtextbox8", @class = "j_int autosave j_length cjtextbox8", @maxlength = 9 })
+                                                                    </td>*@
+
+                                                                @*  @if (roleid != 2)
+                                                                    {
+                                                                *@
+
+                                                                @if (Model[r].Date != null)
+                                                                {
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.TextBoxFor(m => m[r].Delivered_Qty, new { @id = "cjtextbox8", @name = "cjtextbox8", @class = "j_int autosave j_length cjtextbox8", @maxlength = 9 })
+                                                                    </td>
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @* @Html.ActionLink(" ", "IndividualSubmit", new { HMIID = Model[r].HMIID }, new { @class = "IndividualSubmit green btn-lg fa fa-arrow-circle-right fa-1x ", @style = "float:left;text-decoration:none" })*@
+                                                                        @Html.ActionLink(" ", "IndividualSubmit", new { HMIID = Model[r].HMIID }, new { @id = @Model[r].HMIID, @class = " btn-lg fa fa-arrow-circle-right fa-1x IndividualSubmit ", @style = "float:left;background-color:lightgreen;text-decoration:none", @disabled = "disabled" })
+                                                                        @*<input type="button" class=" btn-lg fa fa-arrow-circle-right fa-1x" />*@
+                                                                    </td>
+                                                                }
+                                                                else
+                                                                {
+
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.TextBoxFor(m => m[r].Delivered_Qty, new { @id = "cjtextbox8", @name = "cjtextbox8", @class = "j_int autosave j_length cjtextbox8", @maxlength = 9, @disabled = "disabled" })
+                                                                    </td>
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.ActionLink(" ", "IndividualSubmit", new { HMIID = Model[r].HMIID }, new { @id = @Model[r].HMIID, @class = " btn-lg fa fa-arrow-circle-right fa-1x IndividualSubmit", @style = "float:left;background-color:#FFA500;text-decoration:none" })
+                                                                    </td>
+                                                                }
+                                                                @if (Model[r].IsHold == 1)
+                                                                {
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.ActionLink(" ", "EndHoldIndividual", new { hmiiid = Model[r].HMIID }, new { @class = "EndHoldIndividualLink HoldLink orange btn-lg fa  fa-lock fa-1x ", @style = "background-color:yellow;text-decoration:none;display:none" })
+                                                                        <button class="EndHoldIndividual Hold orange btn-lg fa  fa-lock fa-1x" style="background-color: yellow; text-decoration: none"></button>
+                                                                    </td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.ActionLink(" ", "IndividualHold", new { HMIID = Model[r].HMIID }, new { @class = "IndividualHold Hold btn-lg fa fa-unlock-alt fa-1x ", @style = "background-color:#FFA500;text-decoration:none" })
+                                                                    </td>
+                                                                }
+                                                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                    @Html.ActionLink(" ", "IndividualFinish", new { HMIID = Model[r].HMIID }, new { @class = "IndividualFinish pink btn-lg fa fa-check-square-o fa-1x ", @style = "background-color:#FFA500;text-decoration:none" })
+                                                                </td>
+                                                                @*@if (Model[r].Date != null)
+                                                                    {
+
+                                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.TextBoxFor(m => m[r].Delivered_Qty, new { @id = "cjtextbox8", @name = "cjtextbox8", @class = "j_int autosave j_length cjtextbox8", @maxlength = 9 })
+                                                                        </td>
+
+                                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+
+                                                                            @Html.ActionLink(" ", "IndividualSubmit", new { HMIID = Model[r].HMIID }, new { @id = @Model[r].HMIID, @class = " btn-lg fa fa-arrow-circle-right fa-1x IndividualSubmit ", @style = "float:left;background-color:lightgreen;text-decoration:none", @disabled = "disabled" })
+
+                                                                        </td>
+                                                                    }
+                                                                    else
+                                                                    {
+
+                                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.TextBoxFor(m => m[r].Delivered_Qty, new { @id = "cjtextbox8", @name = "cjtextbox8", @class = "j_int autosave j_length cjtextbox8", @maxlength = 9, @disabled = "disabled" })
+                                                                        </td>
+
+                                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.ActionLink(" ", "IndividualSubmit", new { HMIID = Model[r].HMIID }, new { @id = @Model[r].HMIID, @class = " btn-lg fa fa-arrow-circle-right fa-1x IndividualSubmit", @style = "float:left;background-color:#FFA500;text-decoration:none" })
+                                                                        </td>
+                                                                    }
+
+                                                                    @if (Model[r].IsHold == 1)
+                                                                    {
+                                                                        <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                            @Html.ActionLink(" ", "EndHoldIndividual", new { hmiiid = Model[r].HMIID }, new { @class = "EndHoldIndividualLink HoldLink orange btn-lg fa  fa-lock fa-1x ", @style = "background-color:yellow;text-decoration:none;display:none" })
+                                                                            <button class="EndHoldIndividual Hold orange btn-lg fa  fa-lock fa-1x" style="background-color: yellow; text-decoration: none"></button>
+                                                                        </td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                    }
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.ActionLink(" ", "IndividualFinish", new { HMIID = Model[r].HMIID }, new { @class = "IndividualFinish pink btn-lg fa fa-check-square-o fa-1x ", @style = "background-color:#FFA500;text-decoration:none" })
+                                                                    </td>*@
+
+                                                                @if (Model[r].Date != null)
+                                                                {
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        <button class="orange btn-lg fa fa-trash-o fa-1x" style="background-color: #FFA500; text-decoration: none" disabled><i class="icon-remove-sign"></i></button>
+                                                                    </td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                        @Html.ActionLink(" ", "EndHoldIndividual", new { hmiiid = Model[r].HMIID }, new { @class = "EndHoldIndividualLink HoldLink orange btn-lg fa  fa-lock fa-1x ", @style = "background-color:yellow;text-decoration:none;display:none" })
+                                                                        <button class="RemoveWC orange btn-lg fa fa-trash-o fa-1x" onclick="myFunRemoveWO(@Model[r].HMIID)" value='@Model[r].HMIID' style="background-color: #FFA500; text-decoration: none"><i class="icon-remove-sign"></i></button>
+                                                                    </td>
+                                                                }
+                                                                <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                                                    @if (Model[r].SplitWO == "Yes")
+                                                                    {
+                                                                        @Html.CheckBox("SplitWO", new { @class = "SplitWO sw ", @checked = "checked", @style = "width:30px;height:30px" })
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        @Html.CheckBox("SplitWO", new { @class = "SplitWO sw ", @style = "width:30px;height:30px" })
+                                                                    }
+                                                                </td>
+                                                                <td style="display: none">
+                                                                    @Html.ActionLink("jf", "IndividualHold", new { id = Model[r].HMIID }, new { @class = "btn btn-primary sendHoldIndi", @style = "color:white;font-size:1.2vw;font-weight:thick;display:none" })
+                                                                    @Html.ActionLink("jf", "IndividualFinish", new { id = Model[r].HMIID }, new { @class = "btn btn-primary sendFinishedIndi", @style = "color:white;font-size:1.2vw;font-weight:thick;display:none" })
+
+                                                                    @Html.HiddenFor(m => Model[r].HMIID)
+                                                                    @Html.HiddenFor(m => Model[r].MachineID)
+                                                                    @Html.HiddenFor(m => Model[r].OperatiorID)
+                                                                    @Html.HiddenFor(m => Model[r].OperatorDet)
+                                                                    @Html.HiddenFor(m => Model[r].Status)
+                                                                    @Html.HiddenFor(m => Model[r].Date)
+                                                                    @Html.HiddenFor(m => Model[r].CorrectedDate)
+                                                                    @Html.HiddenFor(m => Model[r].Shift)
+                                                                    @Html.HiddenFor(m => Model[r].Time)
+                                                                    @Html.HiddenFor(m => Model[r].isUpdate)
+                                                                    @Html.HiddenFor(m => Model[r].DoneWithRow)
+                                                                    @Html.HiddenFor(m => Model[r].isWorkInProgress)
+                                                                    @Html.HiddenFor(m => Model[r].isWorkOrder)
+
+                                                                    @Html.HiddenFor(m => Model[r].DDLWokrCentre)
+                                                                    @Html.HiddenFor(m => Model[r].Delivered_Qty)
+                                                                    @Html.HiddenFor(m => Model[r].OperationNo)
+                                                                    @Html.HiddenFor(m => Model[r].PartNo)
+                                                                    @Html.HiddenFor(m => Model[r].ProcessQty)
+                                                                    @Html.HiddenFor(m => Model[r].Prod_FAI)
+
+                                                                    @Html.HiddenFor(m => Model[r].Project)
+                                                                    @Html.HiddenFor(m => Model[r].Rej_Qty)
+                                                                    @Html.HiddenFor(m => Model[r].Work_Order_No)
+                                                                    @Html.HiddenFor(m => Model[r].IsMultiWO)
+                                                                    @Html.HiddenFor(m => Model[r].PEStartTime)
+                                                                    @Html.HiddenFor(m => Model[r].Target_Qty)
+
+                                                                </td>
+                                                                @* }*@
+                                                            </tr>
+                                                            slno = slno + 1;
+                                                        }
+                                                    }
+                                                    <tr class="spacer"></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div style="color: white; width: 85%; padding-top: 4vh;">.</div>
+
+        <div style="width: 100%; padding-right: 2%">
+
+            @* <div style="display: inline; float: left; width: 9vw" id="wipwos">
+                    <button class="btn btn-primary" style="font-size: 1.2vw;">WIP WO's</button>
+                </div>*@
+
+            @Html.ActionLink("WIP WO's ", "WorkInProgressList", new { id = Convert.ToInt32(ViewBag.machineID) }, new { @class = "btn btn-primary wipwo", @style = "color:white;font-size:1.2vw;font-weight:thick;display:none" })
+
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        @*<div style="display: inline; float: left; width: 9vw" id="wipwos">
+                                <button class="btn btn-primary" style="font-size: 1.2vw;">WIP WO's</button>
+                            </div>*@
+                    </td>
+                    <td>
+                        @Html.ActionLink("WIP WO's ", "WorkInProgressList", new { id = Convert.ToInt32(ViewBag.machineID) }, new { @class = "btn btn-primary wipwo", @style = "color:white;font-size:1.2vw;font-weight:thick;display:none" })
+                    </td>
+                    <td>
+                        <div style="display: inline; float: left; class="ddlClass">
+                            @if (Convert.ToInt32(Session["SubmitClicked"]) != 1)
+                            {
+                                @Html.ActionLink("DDL", "DDLList", new { id = Convert.ToInt32(ViewBag.machineID) }, new { @class = "btn btn-primary DDL ddlClass ddlClassSpecific", @style = "color:white;font-size:1.2vw;font-weight:thick" })
+                            }
+                            else
+                            {
+                                //Commented For Now 2016-12-27
+                                @Html.ActionLink("DDL", "DDLList", new { id = Convert.ToInt32(ViewBag.machineID) }, new { @class = "btn btn-primary DDL ddlClass ddlClassSpecific", @style = "color:white;font-size:1.2vw;font-weight:thick" })
+                                @*<button class="btn btn-primary ddlClass" style="color: white; font-size: 1.2vw; font-weight: 600">DDL</button>*@
+                            }
+                        </div>
+                    </td>
+                    <td>
+                        <div style="display: inline; float: left; padding-left: 5%; width: 7vw">
+                            <button class="btn btn-primary Startall" id="StartAll" style="font-size: 1.2vw;" onclick="StartAllClick(event)">Start All</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="display: inline; float: left; padding-left: 5%; width: 7vw">
+                            <button class="btn btn-primary " id="HoldAll" onclick="myFunctionHoldAll(event)" style="font-size: 1.2vw;">IDLE</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="display: inline; float: left; padding-left: 5%; width: 9vw">
+                            <button class="btn btn-primary " id="GenericWork" onclick="myFunctionGenericWork(event)" style="font-size: 1.2vw;">GenericWork</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="display: inline; float: left; padding-left: 5%; width: 9vw" id="jobFinished">
+                            <button class="btn btn-primary " id="JobFinish" onclick="myFunctionFinishAll(event)" style="font-size: 1.2vw;">Job Finish</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="display: inline; float: left; padding-left: 5%; width: 9vw">
+                            <button class="btn btn-primary " id="PartialFinish" onclick="myFunctionPartial(event)" style="font-size: 1.2vw;">Partial Finish</button>
+                        </div>
+                    </td>
+                    @*<td>
+                            <div style="display: inline; float: left" class="BreakD">@Html.ActionLink(" BreakDown(BD)", "BreakDownEntry", new { id = Model[0].MachineID }, new { @class = "btn btn-primary Breakdown", @style = "color:white;font-size:1.2vw;font-weight:thick" })</div>
+                        </td>
+                        <td>
+                            <div style="display: inline; float: left" class="PlannedM">@Html.ActionLink("Planned Maintenance", "Maintenance", new { id = Model[0].MachineID }, new { @class = "btn btn-primary PM", @style = "color:white;font-size:1.2vw;font-weight:thick" })</div>
+                        </td>
+                        <td>
+                            <div style="display: inline; float: left; width: 7vw">@Html.ActionLink("BD List ", "BreakDownList", new { id = Convert.ToInt32(ViewBag.machineID) }, new { @class = "btn btn-primary", @style = "color:white;font-size:1.2vw;font-weight:thick" })</div>
+                        </td>*@
+                    <td style="width: auto">
+                        <div style="display: inline; float: left; width: 7vw">@Html.ActionLink("Idle List ", "IdleList", new { id = Convert.ToInt32(ViewBag.machineID) }, new { @class = "btn btn-primary", @style = "color:white;font-size:1.2vw;font-weight:thick" })</div>
+                    </td>
+                    @*<td style="width: auto">
+                            <div style="display: inline; float: left; width: 5vw" id="removeWODiv">
+                                <button class="btn btn-primary " id='removeWO' value="@Model[0].HMIID" style="font-size: 1.2vw;" onclick="RemoveAllClick()">Remove WO</button>
+                            </div>
+                        </td>*@
+                </tr>
+
+            </table>
+        </div>
+        <div style="width: 85%; height: 1vh"></div>
+        @*}*@
+
+    </div>
+    <div class="test" id="test">
+        <div style="width: 100%; color: white">&nbsp.</div>
+        @if (ViewBag.item != null)
+        {
+            <table class="table table-striped" style="width: 98%">
+                <thead>
+                    <tr class="text-centre" style="background-color: orange">
+                        <th style="text-align: center; font-size: 95%">Sl.No.</th>
+
+                        <th style="text-align: center; font-size: 95%">WO No.</th>
+                        <th style="text-align: center; font-size: 95%">Operation No</th>
+                        <th style="text-align: center; font-size: 95%">Message</th>
+                    </tr>
+
+
+
+                    @foreach (var i in ViewBag.item)
+                    {
+                        M = M + 1;
+                        <tr>
+                            <td style="text-align: center; font-size: 95%">@M</td>
+                            <td style="text-align: center; font-size: 95%">@i.WorkorderNo</td>
+                            <td style="text-align: center; font-size: 95%">@i.OperationNo</td>
+                            <td style="text-align: center; font-size: 95%">@i.Errmsg</td>
+
+                        </tr>
+                    }
+
+
+                </thead>
+            </table>
+        }
+    </div>
+    <div style="font-family: Calibri; font-size: 100%; padding-top: 8vh">
+        <div class="parent3" style="border: none; width: 100%; height: 5%"></div>
+    </div>
+    <input type="submit" value="" class="btn btn-primary btn-lg" id="loginForm" name="loginForm" hidden="hidden" style="display: none;" />
+}
+    <div id="dialog-confirm" title=" Release Confirmation ?" style="height: 5%;">
+        <p>
+        </p>
+    </div>
+
+    <div id="dialog-confirm-1" title=" Split WorkOrder Confirmation ?" style="height: 5%; color: blue">
+        <p>
+        </p>
+    </div>
+    <input type="hidden" id="hdn_macId" value="@ViewBag.machineId" />
+</body>
+</html>
+@*<link href="~/css/jquery-ui.css" rel="stylesheet" />*@
+@*<script src="~/js/jquery-ui.js"></script>*@
+@*<link href="~/Content1/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" />
+    <script src="~/Content1/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>*@
+<script src="~/js/jValidations.js"></script>
+<script src="~/js/jquery-1.11.1.min.js"></script>
+<script src="~/js/Jquery-ui-1.11.1.min.js"></script>
+<script src="~/Scripts/LoginDetailsCapture.js"></script>
+
+@*<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>*@
+
+@*<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>*@
+@*<script src="~/js/jquery-migrate-3.0.0.js"></script>*@
+
+
+@*This code should be the First to Execute*@
+
+
+@*This code should be the First to Execute*@
+<script>
+    if ($('#setbutton').length) {
+        //$('#cjtextboxshift').prop("disabled", true);
+        //$('#cjtextboxop').prop("disabled", true);
+        //$(".setchange").prop("disabled", true);
+
+        $('#Prod_FAI').prop("disabled", true);
+        $('#RemoveAutoSave').prop("disabled", true);
+        $('#PartialFinish').prop("disabled", true);
+        $('#JobFinished').prop("disabled", true);
+        $('#JobFinish').prop("disabled", true);
+        $('#JobFinished').addClass('disbaleClick');
+        $('#JobFinish').addClass('disbaleClick');
+        $('.DDL').css('pointer-events', 'none');
+        $('.DDL').css('background-color', '#7BA9D0');
+        $('.EnterDelivQty').removeAttr('href');
+        $('.EnterDelivQty').addClass('RedClassDisPointer');
+        $('.Breakdown').css('pointer-events', 'none');
+        $('.Breakdown').css('background-color', '#7BA9D0');
+        $('.PM').css('pointer-events', 'none');
+        $('.PM').css('background-color', '#7BA9D0');
+        //$('#reworkdiv').prop("disabled", true);
+        //$('#reworkorder').prop("disabled", true);
+        $('.cjtextbox1').prop("disabled", true);
+        $('.cjtextbox3').prop("disabled", true);
+        $('.cjtextbox4').prop("disabled", true);
+        $('.cjtextbox5').prop("disabled", true);
+        $('.cjtextbox6').prop("disabled", true);
+        $('.cjtextbox8').prop("readonly", true);
+
+
+        $('.Prod_FAI').prop("disabled", true);
+        $('.IndividualSubmit').css('pointer-events', 'none');
+        $('.Hold').css('pointer-events', 'none');
+        $('.IndividualFinish').css('pointer-events', 'none');
+        $('#StartAll').prop("disabled", true);
+        $('#HoldAll').prop("disabled", true);
+        $('#GenericWork').prop("disabled", true);
+        $('.RemoveWC').prop("disabled", true);
+        $('#cjtextboxop').val('');
+    }
+    //else {
+    //var length = $("input:text").length;
+    //var project = $('#cjtextbox1').val();
+    //if (($.trim(project)).length == 0) {
+    ////if (length <= 9) {
+    //    //alert("blahif");
+    //    $("#ddl").prop("disabled", false);
+    //    $('#reworkdiv').prop("disabled", true);
+    //    $('#reworkorder').prop("disabled", true);
+    //    $('#PartialFinish').prop("disabled", true);
+    //    $('#JobFinished').prop("disabled", true);
+    //    $('#JobFinish').prop("disabled", true);
+    //}
+    ////else if (($.trim(project)).length == 0 && length >= 9)
+    ////{
+    ////    $('#reworkdiv').prop("disabled", false);
+    ////    $('#reworkorder').prop("disabled", false);
+    ////}
+    //else {
+    //    //alert("blahElse");
+    //    $("#ddl").prop("disabled", true);
+    //    //$('#reworkdiv').prop("disabled", false);
+    //    //$('#reworkorder').prop("disabled", false);
+    //    $('#reworkdiv').prop("disabled", false);
+    //    $('#reworkorder').prop("disabled", false);
+    //    $('#PartialFinish').prop("disabled", false);
+    //    $('#JobFinished').prop("disabled", false);
+    //    $('#JobFinish').prop("disabled", false);
+    //    $('.cjtextbox8').prop("readonly", false);
+    //}
+    //}
+</script>
+
+
+<script>
+
+    $(function () {
+        $("#cjtextboxop").autocomplete({
+            source: function (request, response) {
+                var text = this.value;
+                var OperatorID = $("#cjtextboxop").val();
+                $.ajax({
+                    url: "/ManualHMIScreen/OperatorDetails",
+                    type: "POST",
+                    dataType: "json",
+                    data: { Prefix: request.term, OperatorID },
+                    success: function (data) {
+                        if (data.length > 0) {
+                            response($.map(data, function (item) {
+                                return { label: item, value: item };
+                            }))
+
+                        }
+                        else
+                            $("#cjtextboxop").val('');
+                    }
+
+                })
+            },
+            messages: {
+                noResults: "", results: ""
+            }
+        });
+    });
+
+</script>
+
+<script>
+        $(document).ready(function (e) {
+            var macid = @ViewBag.machineID;
+            @*var CorrectedDate =@ViewBag.coretddt;*@
+            $.get('/ManualHMIScreen/GetReworkstatus', { MachineID: macid }, function (res) {
+                if (res == "Success") {
+
+                    $('#reworkdiv').prop("disabled", true);
+                    $('#reworkorder').prop("disabled", true);
+                    $('#PartialFinish').prop("disabled", true);
+                    $('#JobFinished').prop("disabled", true);
+                    $('#JobFinish').prop("disabled", true);
+                }
+                else if (res == "fail") {
+                    $('#reworkdiv').prop("disabled", false);
+                    $('#reworkorder').prop("disabled", false);
+                    $('#PartialFinish').prop("disabled", true);
+                    $('#JobFinished').prop("disabled", true);
+                    $('#JobFinish').prop("disabled", true);
+                }
+                else if (res == "WorkOrder") {
+                    $('#reworkdiv').prop("disabled", false);
+                    $('#reworkorder').prop("disabled", false);
+                    $('#PartialFinish').prop("disabled", false);
+                    $('#JobFinished').prop("disabled", false);
+                    $('#JobFinish').prop("disabled", false);
+                }
+            });
+
+
+
+        });
+</script>
+<script>
+    if (parseInt('@Session["empty"]') == 1) {
+            $("#test").hide();
+        }
+        else {
+            $("#test").show();
+        }
+</script>
+
+
+@*disable enter key*@
+<script>
+
+    $('#loading').fadeOut(1000);
+    $(document).keypress(function (event) {
+        if (event.keyCode === 10 || event.keyCode === 13) {
+            //alert("Enter Key");
+            event.preventDefault();
+        }
+    });
+</script>
+
+@*
+    <script>
+        $(document).on("change", ".opera", function (e) {
+            var operano = $("#cjtextboxop").val();
+
+            for (var i = 0; i <= operano; i++) {
+                $("#test1").append("<div id='operatorid' class='row row-space'><label>operatorid '" + i + "': </label><div id='operatorid1' style='width: auto; text - align: center; font - family: Helvetica; font - size: 85 %'><input name='operatorid' type='Number' style='border: 1px solid Black' id='opid' class='btnop' value='0' required /><span id='errorMessage2' style='color: red'></span></div></div>");
+            }
+
+        });
+
+    </script>*@
+
+@*Different Modes Check*@
+<script>
+                    $(document).ready(function (e) {
+                        // alert("blah");
+                        $.getJSON("/ManualHMIScreen/JsonBreakdownChecker", function (data) {
+                            if (data == "BREAKDOWN") {
+                                $('#cjtextboxshift').prop("disabled", true);
+                                $('#cjtextboxop').prop("disabled", false);
+                                $('#Prod_FAI').prop("disabled", true);
+                                $('#RemoveAutoSave').prop("disabled", true);
+                                $('#PartialFinish').prop("disabled", true);
+                                $('#JobFinished').prop("disabled", true);
+                                $('#JobFinish').prop("disabled", true);
+                                $('#JobFinished').addClass('disbaleClick');
+                                //$("#ddl").prop("disabled", true);
+                                //$('.ddlClass').prop("disabled", true);
+                                // $('.ddlClassSpecific').prop("disabled", true);
+                                //$('.ddlClassSpecific').removeAttr('href');
+
+                                $('.DDL').css('pointer-events', 'none');
+                                $('.DDL').css('background-color', '#7BA9D0');
+
+                                $('.EnterDelivQty').removeAttr('href');
+                                $('.EnterDelivQty').addClass('RedClassDisPointer');
+                                $('.Breakdown').addClass('RedClass NoHoverRed');
+                                //$('.PM').addClass('disableClick');
+                                $('.PM').css('pointer-events', 'none');
+                                $('.PM').css('background-color', '#7BA9D0');
+
+                                $('#ddlClass').addClass('disbaleClick');
+                                $('#reworkdiv').prop("disabled", true);
+                                $('#reworkorder').prop("disabled", true);
+                                $('.cjtextbox1').prop("disabled", true);
+                                $('.cjtextbox3').prop("disabled", true);
+                                $('.cjtextbox4').prop("disabled", true);
+                                $('.cjtextbox5').prop("disabled", true);
+                                $('.cjtextbox6').prop("disabled", true);
+                                $('.cjtextbox8').prop("disabled", true);
+
+                                $(".setchange").prop("disabled", true);
+                                $('.Prod_FAI').prop("disabled", true);
+                                $('.IndividualSubmit').css('pointer-events', 'none');
+                                $('.Hold').css('pointer-events', 'none');
+                                $('.IndividualFinish').css('pointer-events', 'none');
+                                $('#StartAll').prop("disabled", true);
+                                $('#HoldAll').prop("disabled", true);
+                                $('#GenericWork').prop("disabled", true);
+                                $('.RemoveWC').prop("disabled", true);
+                            }
+                            else if (data == "PM") {
+                                $('#cjtextboxshift').prop("disabled", true);
+                                $('#cjtextboxop').prop("disabled", true);
+                                $('#Prod_FAI').prop("disabled", true);
+                                $('#RemoveAutoSave').prop("disabled", true);
+                                $('#PartialFinish').prop("disabled", true);
+                                $('#JobFinished').prop("disabled", true);
+                                $('#JobFinish').prop("disabled", true);
+                                $('#JobFinished').addClass('disbaleClick');
+                                $('#JobFinish').addClass('disbaleClick');
+                                // $("#ddl").prop("disabled", true);
+                                //$('.ddlClass').prop("disabled", true);
+                                $('.DDL').css('pointer-events', 'none');
+                                $('.DDL').css('background-color', '#7BA9D0');
+
+                                //$('.ddlClassSpecific').prop("disabled", true);
+                                //$('.ddlClassSpecific').removeAttr('href');
+                                $('.EnterDelivQty').removeAttr('href');
+                                $('.EnterDelivQty').addClass('RedClassDisPointer');
+                                //$('.Breakdown').addClass('disableClick');
+                                $('.Breakdown').css('pointer-events', 'none');
+                                $('.Breakdown').css('background-color', '#7BA9D0');
+
+                                $('.PM').addClass('RedClass NoHoverRed');
+                                $('#ddlClass').addClass('disbaleClick');
+                                $('#reworkdiv').prop("disabled", true);
+                                $('#reworkorder').prop("disabled", true);
+                                $('.cjtextbox1').prop("disabled", true);
+                                $('.cjtextbox3').prop("disabled", true);
+                                $('.cjtextbox4').prop("disabled", true);
+                                $('.cjtextbox5').prop("disabled", true);
+                                $('.cjtextbox6').prop("disabled", true);
+                                $('.cjtextbox8').prop("disabled", true);
+                                $(".setchange").prop("disabled", true);
+                                $('.Prod_FAI').prop("disabled", true);
+                                $('.IndividualSubmit').css('pointer-events', 'none');
+                                $('.Hold').css('pointer-events', 'none');
+                                $('.IndividualFinish').css('pointer-events', 'none');
+                                $('#StartAll').prop("disabled", true);
+                                $('#HoldAll').prop("disabled", true);
+                                $('#GenericWork').prop("disabled", true);
+                                $('.RemoveWC').prop("disabled", true);
+
+                            }
+
+                        })
+                        $.getJSON("/ManualHMIScreen/JsonIdleChecker", function (data) {
+                            //alert(data)
+                            if (data == "true") {
+                                $('#cjtextboxshift').prop("disabled", true);
+                                $('#cjtextboxop').prop("disabled", true);
+                                $('#Prod_FAI').prop("disabled", true);
+                                $('#RemoveAutoSave').prop("disabled", true);
+                                $('#PartialFinish').prop("disabled", true);
+                                $('#JobFinished').prop("disabled", true);
+                                $('#JobFinish').prop("disabled", true);
+                                $('#JobFinished').addClass('disbaleClick');
+                                $('#JobFinish').addClass('disbaleClick');
+                                //$("#ddl").prop("disabled", true);
+                                //$('.ddlClass').prop("disabled", true);
+                                //$('.ddlClassSpecific').prop("disabled", true);
+                                //$('.ddlClassSpecific').removeAttr('href');
+                                $('.DDL').css('pointer-events', 'none');
+                                $('.DDL').css('background-color', '#7BA9D0');
+                                $('.EnterDelivQty').removeAttr('href');
+                                $('.EnterDelivQty').addClass('RedClassDisPointer');
+                                //$('.Breakdown').addClass('disableClick');
+                                $('.Breakdown').css('pointer-events', 'none');
+                                $('.Breakdown').css('background-color', '#7BA9D0');
+                                //$('.PM').addClass('RedClass NoHoverRed');
+                                $('.PM').css('pointer-events', 'none');
+                                $('.PM').css('background-color', '#7BA9D0');
+
+                                //$('#ddlClass').addClass('disbaleClick');
+                                $('#reworkdiv').prop("disabled", true);
+                                $('#reworkorder').prop("disabled", true);
+                                $('.cjtextbox1').prop("disabled", true);
+                                $('.cjtextbox3').prop("disabled", true);
+                                $('.cjtextbox4').prop("disabled", true);
+                                $('.cjtextbox5').prop("disabled", true);
+                                $('.cjtextbox6').prop("disabled", true);
+                                $('.cjtextbox8').prop("readonly", true);
+
+                                $(".setchange").prop("disabled", true);
+                                $('.IndividualSubmit').css('pointer-events', 'none');
+                                $('.Hold').css('pointer-events', 'none');
+                                $('.IndividualFinish').css('pointer-events', 'none');
+                                $('#StartAll').prop("disabled", true);
+                                $('#HoldAll').prop("disabled", false);
+                                $('#GenericWork').prop("disabled", true);
+                                $('.RemoveWC').prop("disabled", true);
+                            }
+                        });
+                        $.getJSON("/ManualHMIScreen/JsonGenericWorkChecker", function (data) {
+                            if (data == "true") {
+                                $('#cjtextboxshift').prop("disabled", true);
+                                $('#cjtextboxop').prop("disabled", true);
+                                $('#Prod_FAI').prop("disabled", true);
+                                $('#RemoveAutoSave').prop("disabled", true);
+                                $('#PartialFinish').prop("disabled", true);
+                                $('#JobFinished').prop("disabled", true);
+                                $('#JobFinish').prop("disabled", true);
+                                $('#JobFinished').addClass('disbaleClick');
+                                $('#JobFinish').addClass('disbaleClick');
+                                //$("#ddl").prop("disabled", true);
+                                //$('.ddlClass').prop("disabled", true);
+                                //$('.ddlClassSpecific').prop("disabled", true);
+                                //$('.ddlClassSpecific').removeAttr('href');
+                                $('.DDL').css('pointer-events', 'none');
+                                $('.DDL').css('background-color', '#7BA9D0');
+                                $('.EnterDelivQty').removeAttr('href');
+                                $('.EnterDelivQty').addClass('RedClassDisPointer');
+                                //$('.Breakdown').addClass('disableClick');
+                                $('.Breakdown').css('pointer-events', 'none');
+                                $('.Breakdown').css('background-color', '#7BA9D0');
+                                // $('.PM').addClass('RedClass NoHoverRed');
+                                $('.PM').css('pointer-events', 'none');
+                                $('.PM').css('background-color', '#7BA9D0');
+                                //$('#ddlClass').addClass('disbaleClick');
+                                $('#reworkdiv').prop("disabled", true);
+                                $('#reworkorder').prop("disabled", true);
+                                $('.cjtextbox1').prop("disabled", true);
+                                $('.cjtextbox3').prop("disabled", true);
+                                $('.cjtextbox4').prop("disabled", true);
+                                $('.cjtextbox5').prop("disabled", true);
+                                $('.cjtextbox6').prop("disabled", true);
+                                $('.cjtextbox8').prop("readonly", true);
+
+                                $(".setchange").prop("disabled", true);
+                                $('.Prod_FAI').prop("disabled", true);
+                                $('.IndividualSubmit').css('pointer-events', 'none');
+                                $('.Hold').css('pointer-events', 'none');
+                                $('.IndividualFinish').css('pointer-events', 'none');
+                                $('#StartAll').prop("disabled", true);
+                                $('#HoldAll').prop("disabled", true);
+                                $('#GenericWork').prop("disabled", false);
+                                $('.RemoveWC').prop("disabled", true);
+                            }
+                        });
+                        @*var hmiid =@ViewBag.HMIID;
+                        $.get("/ManualHMIScreen/GetAllOperator", { hmiid: hmiid }, function (res) {
+                            if (res != "") {
+                                var operano = res.split(',');
+                                if (parseInt('@Session["ShiftC"]') == 2) {
+                                    $('#cjtextboxop').val('');
+                                }
+                                else {
+                                    $('#cjtextboxop').val(operano.length);
+                                }
+                                for (var i = 0; i < operano.length; i++) {
+                                    //$("#test1").append("<div class='col-sm-1'><label style='margin-left: 150px;'>operatorid '" + i + "': </label><input name='operatorid' type='text' style='border: 1px solid black;margin-left: 154px;' value='" + operano[i] + "' id='opid_" + i + "' class='btnop' disabled='disabled' required /></div>");
+                                    $("#test1").append("<td>OpId'" + i + "':</td><td><input name='operatorid' class='txtoperator' type='text' value='" + operano[i] + "' id='opid_" + i + "' disabled = 'disabled'/></td>");
+                                }
+                            }
+                            else {
+                                $('#cjtextboxop').val('');
+                            }
+                        });*@
+                    });
+</script>
+
+<script>
+    if (parseInt('@Session["FromDDL"]') == 1) {
+        // alert("In 1 "+'@Session["FromDDL"]')
+        $('#cjtextboxshift').prop("disabled", false);
+        $('#cjtextboxop').prop("disabled", false);
+        $('#Prod_FAI').prop("disabled", false);
+        $('#RemoveAutoSave').prop("disabled", false);
+        $('#PartialFinish').prop("disabled", true);
+        $('#JobFinished').prop("disabled", true);
+        $('#JobFinish').prop("disabled", true);
+        $("#ddl").prop("disabled", true);
+        $('#reworkdiv').prop("disabled", true);
+        $('#reworkorder').prop("disabled", true);
+        $('#cjtextbox1').prop("disabled", true);
+        $('#cjtextbox3').prop("disabled", true);
+        $('#cjtextbox4').prop("disabled", true);
+        $('#cjtextbox5').prop("disabled", true);
+        $('#cjtextbox6').prop("disabled", true);
+        $('#cjtextbox8').prop("readonly", true);
+
+    }
+    else if (parseInt('@Session["FromDDL"]') == 2) {
+        // alert("In 2")
+        //alert(parseInt('@Session["FromDDL"]'))
+        $('#cjtextboxshift').prop("disabled", false);
+        $('#cjtextboxop').prop("disabled", false);
+        $('#Prod_FAI').prop("disabled", false);
+        $('#RemoveAutoSave').prop("disabled", false);
+        $('#PartialFinish').prop("disabled", true);
+        $('#JobFinished').prop("disabled", true);
+        $('#JobFinish').prop("disabled", true);
+        $("#ddl").prop("disabled", false);
+        $('#reworkdiv').prop("disabled", false);
+        $('#reworkorder').prop("disabled", false);
+        $('#cjtextbox1').prop("disabled", false);
+        $('#cjtextbox3').prop("disabled", false);
+        $('#cjtextbox4').prop("disabled", false);
+        $('#cjtextbox5').prop("disabled", false);
+        $('#cjtextbox6').prop("disabled", false);
+        $('.cjtextbox8').prop("readonly", true);
+        $('#cjtextbox9').prop("readonly", true);
+
+    }
+    else if (parseInt('@Session["FromDDL"]') == 3) {
+        //alert("In 3")
+        $('#cjtextboxshift').prop("disabled", true);
+        $('#cjtextboxop').prop("disabled", true);
+        $('#Prod_FAI').prop("disabled", false);
+        $('#RemoveAutoSave').prop("disabled", false);
+        $('#PartialFinish').prop("disabled", true);
+        $('#JobFinished').prop("disabled", true);
+        $('#JobFinish').prop("disabled", true);
+        $("#ddl").prop("disabled", true);
+        $('#reworkdiv').prop("disabled", false);
+        $('#reworkorder').prop("disabled", false);
+        $('#cjtextbox1').prop("disabled", true);
+        $('#cjtextbox3').prop("disabled", true);
+        $('#cjtextbox4').prop("disabled", true);
+        $('#cjtextbox5').prop("disabled", true);
+        $('#cjtextbox6').prop("disabled", true);
+        $('.cjtextbox8').prop("readonly", true);
+        $('#cjtextbox9').prop("readonly", true);
+    }
+    else if (parseInt('@Session["FromDDL"]') == 4) {
+        // alert('@Session["FromDDL"]')
+        // alert("In 4")
+        $('#cjtextboxshift').prop("disabled", false);
+        $('#cjtextboxop').prop("disabled", false);
+        $('#Prod_FAI').prop("disabled", false);
+        $('#RemoveAutoSave').prop("disabled", false);
+        $("#ddl").prop("disabled", true);
+        $('#reworkdiv').prop("disabled", false);
+        $('#reworkorder').prop("disabled", false);
+        $('#PartialFinish').prop("disabled", true);
+        $('#JobFinished').prop("disabled", true);
+        $('#JobFinish').prop("disabled", true);
+        $('#cjtextbox1').prop("disabled", true);
+        $('#cjtextbox3').prop("disabled", true);
+        $('#cjtextbox4').prop("disabled", true);
+        $('#cjtextbox5').prop("disabled", true);
+        $('#cjtextbox6').prop("disabled", true);
+        //$('#cjtextbox7').prop("disabled", true);
+        $('#cjtextbox8').prop("disabled", true);
+        $('#cjtextbox9').prop("disabled", true);
+    }
+
+    else {
+        //alert("nothing"+'@Session["FromDDL"]')
+        //$('#cjtextboxshift').prop("disabled", true);
+        //$('#cjtextboxop').prop("disabled", true);
+        //$('#Prod_FAI').prop("disabled", true);
+        $('#cjtextbox1').prop("disabled", true);
+        $('#cjtextbox3').prop("disabled", true);
+        $('#cjtextbox4').prop("disabled", true);
+        $('#cjtextbox5').prop("disabled", true);
+        $('#cjtextbox6').prop("disabled", true);
+        //$('#cjtextbox7').prop("disabled", true);
+        $('#cjtextbox9').prop("readonly", true);
+        $('#RemoveAutoSave').prop("disabled", false);
+        @*var project = $('#cjtextbox1').val();
+            if (($.trim(project)).length == 0) {
+                //alert("blahif");
+                $("#ddl").prop("disabled", false);
+                $('#reworkdiv').prop("disabled", true);
+                $('#reworkorder').prop("disabled", true);
+                $('#PartialFinish').prop("disabled", true);
+                $('#JobFinished').prop("disabled", true);
+                $('#JobFinish').prop("disabled", true);
+            }
+            else {
+                //alert("blahElse");
+                $("#ddl").prop("disabled", true);
+                $('#reworkdiv').prop("disabled", false);
+                $('#reworkorder').prop("disabled", false);
+                $('#PartialFinish').prop("disabled", false);
+                $('#JobFinished').prop("disabled", false);
+                $('#JobFinish').prop("disabled", false);
+                $('.cjtextbox8').prop("readonly", false);
+        }
+        count = parseInt('@Session["count"]');
+        if (count >= 1) {
+            $('#reworkdiv').prop("disabled", false);
+            $('#reworkorder').prop("disabled", false);
+        }*@
+    }
+
+//From Index Post Method
+if (parseInt('@Session["SubmitClicked"]') == 1) {
+        // alert("submitClicked "+'@Session["SubmitClicked"]')
+    $('#cjtextboxshift').prop("disabled", true);
+    $('#cjtextboxop').prop("disabled", true);
+    $('#Prod_FAI').prop("disabled", true);
+    $('#RemoveAutoSave').prop("disabled", true);
+    $('#PartialFinish').prop("disabled", false);
+    $('#JobFinished').prop("disabled", false);
+    $('#JobFinish').prop("disabled", false);
+    $(".ddlClass").prop("disabled", true);
+    $('#reworkdiv').prop("disabled", true);
+    $('#reworkorder').prop("disabled", true);
+    $('.cjtextbox8').prop("readonly", false);
+    $('.cjtextbox8').prop("disabled", false);
+}
+
+    @*if (parseInt('@Session["Started"]') == 1)
+    {
+          $('#JobFinished').prop("disabled", false);
+                    $('#JobFinish').prop("disabled", false);
+
+                    $('#PartialFinish').prop("disabled", false);
+                    $("#ddl").prop("disabled", true);
+                    $('.ddlClass').css('pointer-events', 'none');
+                    $('.ddlClass').css('background-color', '#7BA9D0');
+    }*@
+    @*if (parseInt('@Session["ddl"]') == 1) {
+        $('#reworkdiv').prop("disabled", false);
+        $('#reworkorder').prop("disabled", false);
+    }
+    else {
+        $('#reworkdiv').prop("disabled", true);
+        $('#reworkorder').prop("disabled", true);
+    }*@
+
+</script>
+
+@*<script>
+        $(document).on("click", ".ddlClass", function (e) {
+            $('#reworkdiv').prop("disabled", false);
+            $('#reworkorder').prop("disabled", false);
+        });
+    </script>*@
+<script>
+    $("#SelectMultipleWOButton").on("click", function (e) {
+        e.preventDefault();
+        //alert("blah");
+        var Urldata = $(this).siblings('a:first').attr('href');
+        //alert(data);
+        $("#dialog-confirm").dialog({
+            resizable: true,
+            height: 50,
+            width: 400,
+            modal: true,
+            //position: 'center',
+            buttons: {
+                "YES": function () {
+                    window.location.href = Urldata;
+                },
+                "NO": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+        $('#dialog-confirm').dialog('option', 'position', 'center');
+
+    });
+
+    function StartAllClick() {
+
+        var searchIDs = $(".hmiid").map(function () {
+            return $(this).attr('value');
+        }).get(); // <----
+        // console.log(searchIDs);
+        var ids = "";
+        for (var i = 1; i < searchIDs.length; i++) {
+            if (ids == "") {
+                ids = searchIDs[i];
+            } else {
+                ids = ids + "," + searchIDs[i];
+            }
+        }
+
+        var values = $("#selectedValue").val(ids);
+        var datas = {};
+        datas.values = ids;
+        $.ajax({
+            type: "POST",
+            url: '/ManualHMIScreen/GetMaxbatchNo',
+            async: false,
+            data: { "values": ids },
+            datatype: "json",
+            success: function (response) {
+                if (response) {
+
+                }
+            }
+        });
+    }
+</script>
+
+<script>
+    $(".cjtextbox8").keypress(function (event) {
+        if (event.keyCode === 40) {
+            $(this).parents('tr:first').next("tr:first").children(".cjtextbox8").focus();
+        }
+        else if (event.keyCode === 38) {
+            $(this).parents('tr:first').prev("tr:first").children(".cjtextbox8").focus();
+        }
+    });
+</script>
+
+
+
+
+@*Block UI After Submit(Based on lightgreen so dont mess)*@
+
+<script>
+
+    $(document).ready(function (e) {
+        $('.IndividualSubmit').filter(function () {
+            var match = 'rgb(144, 238, 144)';
+            if ($(this).css('background-color') == match) {
+                $('#reworkdiv').prop("disabled", true);
+                $('#reworkorder').prop("disabled", true);
+            }
+        }).first()
+    });
+
+</script>
+
+<script>
+
+    $(".EndHoldIndividual").on("click", function (e) {
+        e.preventDefault();
+        //alert("blah");
+        var Urldata = $(this).siblings('a:first').attr('href');
+        //alert(data);
+        $("#dialog-confirm").dialog({
+            resizable: true,
+            height: 50,
+            width: 400,
+            modal: true,
+            //position: 'center',
+            buttons: {
+                "YES": function () {
+                    window.location.href = Urldata;
+                },
+                "NO": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+        $('#dialog-confirm').dialog('option', 'position', 'center');
+
+    });
+</script>
+
+@* Scanned Data *@
+<script>
+
+    $(".jscan").keydown(function (event) {
+        //event.preventDefault();
+        if (event.keyCode == 13) {
+            var selectedID = $(this).parents('td:first').siblings("td.hmiid").html(); //Perfect
+            var ValEntered = $(this).val();
+            $(this).val('');
+            //alert(selectedID + " " + ValEntered);
+            $.getJSON("/ManualHMIScreen/PopulateWODetails", { hmiid: selectedID, WOData: ValEntered }, function (data) {
+                if (data === "true") {
+                    //alert("true");
+                    window.location.reload(true);
+                } else if (data === "false") {
+                    //alert("false");
+                    window.location.reload(true);
+                } else {
+                    alert(data);
+                }
+            });
+        }
+    });
+</script>
+
+@*Remove WO*@
+<script>
+
+    $(document).on("click", ".RemoveWC", function (e) {
+        e.preventDefault();
+        //alert("blah");
+        var hmiIDData = $(this).attr("value")
+        //alert(hmiIDData);
+
+        $.ajax({
+            url: "/ManualHMIScreen/JsonCheckerRemoveWO",
+            async: false,
+            data: { Hmiid: hmiIDData },
+            success: function (data) {
+                if (data == "true") {
+                    //alert(data);
+                    window.location.reload();
+                } else {
+                    alert(data);
+                }
+            }
+        });
+    });
+
+</script>
+
+@* DeliveredQty Down/Up Arrow *@
+<script>
+
+    $(".cjtextbox8").keydown(function (e) {
+        switch (e.which) {
+            //case 37: // left
+            //    break;
+
+            case 38: // up
+                $(this).closest('tr').prev().find('.cjtextbox8').focus();
+                //alert("up arrow");
+                break;
+
+            //case 39: // right
+            //    break;
+
+            case 40: // down
+                //alert("down Arrow");
+                $(this).closest('tr').next().find('.cjtextbox8').focus();
+                break;
+            default: return; // exit this handler for other keys
+        }
+        e.preventDefault(); // prevent the default action (scroll / move caret)
+    });
+</script>
+<script>
+
+    $(document).ready(function (e) {
+        $('.IndividualSubmit').filter(function () {
+            var match = 'rgb(144, 238, 144)';
+            // alert(match);
+            // var count = 0;
+            if ($(this).css('background-color') == match) {
+                // alert($(this).attr('id'))
+                $(this).parents('td:first').siblings("td").children(".Prod_FAI").prop("disabled", true);
+                $(this).parents('td:first').siblings("td").children("input#cjtextbox1").prop("disabled", true);
+                $(this).parents('td:first').siblings("td").children("input#cjtextbox3").prop("disabled", true);
+                $(this).parents('td:first').siblings("td").children("input#cjtextbox4").prop("disabled", true);
+                $(this).parents('td:first').siblings("td").children("input#cjtextbox5").prop("disabled", true);
+                $(this).parents('td:first').siblings("td").children("input#cjtextbox6").prop("disabled", true);
+                $('.DDL').css('pointer-events', 'none');
+                $('.DDL').css('background-color', '#7BA9D0');
+                $('#StartAll').prop("disabled", true);
+                $('#JobFinished').prop("disabled", false);
+                $('#JobFinish').prop("disabled", false);
+
+                $('#PartialFinish').prop("disabled", false);
+                // count = count + 1;
+            }
+            //if (count > 0) {
+            //    $('#StartAll').prop("disabled", true);
+            //} else {
+            //    $('#StartAll').prop("disabled", false);
+            //}
+        })
+
+        //$('.IndividualSubmit').filter(function () {
+        //    var match = 'rgb(0, 0, 0)';
+        //    if ($(this).css('background-color') == match) {
+        //        alert($(this).attr('id'))
+        //    }
+        //    return ($(this).css('background-color') == match);
+        //}).each(function (i, obj) {
+        //    alert(this.id)
+        //});
+
+        //$('.IndividualSubmit').filter(function () {
+        //    alert($(this).attr('id'))
+        //    return ($(this).css('background-color') == "lightgreen");
+        //}).css('background-color', 'green'); // change background color of all black spans
+
+    });
+</script>
+
+
+@*<script>
+        if (@ViewBag.ddl == 1) {
+            $('#reworkdiv').prop("disabled", false);
+            $('#reworkorder').prop("disabled", false);
+        }
+        else {
+        }
+
+        if (Session["flag"] == null) {
+            $('#reworkdiv').prop("disabled", true);
+            $('#reworkorder').prop("disabled", true);
+        }
+    </script>*@
+<script>
+    if (parseInt('@Session["ddl"]') == 1) {
+        $('#reworkdiv').prop("disabled", false);
+        $('#reworkorder').prop("disabled", false);
+    }
+    else {
+    }
+
+</script>
+
+@*Refresh Every 5 Minutes*@
+@*<script>
+     function RefreshEvery5Minutes() {
+         window.location.reload();
+     } setInterval(RefreshEvery5Minutes, (3 * 60 * 1000))
+    </script>*@
+
+@*changingshift*@
+<script>
+      var availableOpt = [];
+                    // alert('@ViewBag.hide');
+                    $(document).ready(function (e) {
+                        $.getJSON("/ManualHMIScreen/GetOperatorData", {}, function (result) {
+                            for (var i = 0; i < result.length; i++) {
+                                var dt = result[i].toString();
+                                availableOpt.push(dt);
+                            }
+
+                        });
+                    });
+                    var operano = 0;
+                    function shfitChange(e) {
+                        //document.getElementById('hiddentextbox').value = "";
+                        e.preventDefault();
+                        //alert("Blah")
+
+                        var wd = 1;
+                        //$("#test1").hide();
+                        var shiftchangeurl = $(".changingshift").attr("href") + "?wd=" + wd;
+                        // alert(shiftchangeurl);
+                        window.location = shiftchangeurl;
+                    }
+
+                    $("#setshift").on("click", function (e) {
+                        e.preventDefault();
+                        var opName = $('#cjtextboxop').val();
+                        var shift = $("#cjtextboxshift").val();
+                        if (($.trim(opName)).length > 0 && ($.trim(shift)).length > 0) {
+                            // var shiftchangeurl = $("#setbutton").attr("href");
+                            //alert(shiftchangeurl);
+                            var blah = '@Url.Action("changeShiftNorm", "ManualHMIScreen")' + "?Shift=" + shift;
+                            //alert(blah);
+                            window.location = blah;
+                            //"ManualHMIScreen/changeShiftNorm?Shift=" + shift;
+                        }
+                        else {
+                            alert("Please enter Operator Name and Shift.")
+                            return false;
+                        }
+                    });
+
+                    //$(document).on("change", ".opera", function (e) {
+                    //    $("#test1").html('');
+                    //    var ccsdata = "";
+                    //    operano = $("#cjtextboxop").val();
+                    //    for (var i = 1; i <= operano; i++) {
+                    //        ccsdata += "<td>OpId'" + i + "':</td><td><input name='operatorid' class='txtoperator' type='text' id='opid_" + i + "'/></td>";
+
+                    //    }
+                    //    $("#test1").append(ccsdata);
+                    //    for (var j = 0; j <= operano; j++) {
+                    //        $('opid_' + j).autocomplete(availableOpt);
+                    //    }
+                    //});
+                    $("#setshift").on("click", function (e) {
+                        e.preventDefault();
+                        //var opName = $('#cjtextboxop').val();
+                        var operano = $('.opera').val();
+                        var Optid = "";
+                        var shift = $("#cjtextboxshift").val();
+                        //for (var i = 1; i <= operano; i++) {
+                        //    Optid += $("#opid_" + i + "").val() + ",";
+                        //}
+                        if (($.trim(Optid)).length > 0 && ($.trim(shift)).length > 0) {
+                            // var shiftchangeurl = $("#setbutton").attr("href");
+                            //alert(shiftchangeurl);
+                            var blah = '@Url.Action("changeShiftNorm", "ManualHMIScreen")' + "?Shift=" + shift + "&Optid=" + Optid;
+                            //alert(blah);
+                            window.location = blah;
+                            //"ManualHMIScreen/changeShiftNorm?Shift=" + shift;
+                        }
+                        else {
+                            alert("Please enter Operator Name and Shift.")
+                            return false;
+                        }
+                    });
+
+</script>
+
+@*//for ShiftValidation*@
+<script>
+
+    $('.shiftInput').keypress(function (key) {
+        if ((key.charCode == 97 || key.charCode == 98 || key.charCode == 99 || key.char == 103 || key.charCode == 65 || key.charCode == 66 || key.charCode == 67 || key.charCode == 71) || (key.charCode > 49 && key.charCode < 51) && (key.charCode != 45)) { }
+        else { return false };
+    });
+</script>
+
+@*submit is clicked*@
+<script>
+
+    $(".RemoveAutoSave").click(function (e) {
+        var PorF = $('#Prod_FAI option:selected').val();
+        var shift = $('#cjtextboxshift').val(); var opName = $('#cjtextboxop').val();
+        var project = $('#cjtextbox1').val(); var partno = $('#cjtextbox3').val(); var wono = $('#cjtextbox4').val();
+        var opno = $('#cjtextbox5').val(); var tqty = $('#cjtextbox6').val();
+        if (($.trim(shift)).length == 0 || ($.trim(opName)).length == 0 || ($.trim(project)).length == 0 || ($.trim(PorF)).length == 0 || ($.trim(partno)).length == 0 || ($.trim(wono)).length == 0 || ($.trim(opno)).length == 0 || ($.trim(tqty)).length == 0) {
+            alert("Enter All Details.")
+            e.preventDefault();
+        }
+        else {
+
+        }
+    });
+</script>
+<script>
+
+    $(".sheetno").on("change", function (e) {
+        var selectedID = $(this).parents('td:first').siblings("td.hmiid").html(); //Perfect
+        var Value = $(this).val();
+        $.getJSON("/ManualHMIScreen/AutoSaveListNo", { HMIID: selectedID, value: Value }, function (data) {
+        });
+    });
+</script>
+<script>
+
+    function myFunRemoveWO(id) {
+        //e.preventDefault();
+        //alert($("#removeWO").attr('value'));
+        //var selectedID = $(this).val();
+        $.getJSON("/ManualHMIScreen/JsonRemoveWO", { hmiid: id }, function (data) {
+            if (data === "true") {
+                window.location.reload();
+            }
+            else {
+                alert("You cannot remove WorkOrder After Submit is Clicked.");
+            }
+        });
+    }
+</script>
+@*ReworkOrder*@
+<script>
+    function Rework() {
+        //e.preventDefault();
+        var values = $(".hmiid").map(function () { return $(this).html().trim(); }).get();
+        var ids = "";
+        for (var i = 0; i < values.length; i++) {
+            if (ids == "") {
+                ids = values[i];
+            }
+            else {
+                ids = ids + "," + values[i];
+            }
+        }
+        var datas = {};
+        datas.values = ids;
+
+        $.ajax({
+            type: "POST",
+            url: '/ManualHMIScreen/ReworkOrderClicked',
+            async: false,
+            data: { "values": values },
+            datatype: "json",
+            success: function (response) {
+                if (response) {
+                    window.location.reload(true);
+                }
+            }
+        });
+        return false;
+    }
+</script>
+@*AutoPopulate Partno*@
+@*
+    <script>
+        //var wono = $(this).parents('td:first').siblings("td").children("input#cjtextbox4").val();
+
+        $("input#cjtextbox4").focusout(function (e) {
+
+            var wonoNew = $(this).val();
+            //alert(wonoNew)
+            var htmlString = $(this).html();
+            //var htmlString = $(this).html();
+            //$(this).text(htmlString);
+            var jdata = null;
+
+            $.ajax({
+                url: "/ManualHMIScreen/partBasedOnWONo",
+                async: false,
+                data: { wono: wonoNew },
+                success: function (data) {
+                    //$(this).parents('td:first').siblings("td").children("input#cjtextbox3").val(jdata);
+                    jdata = data;
+                }
+            });
+
+            if (jdata != null) {
+                $(this).parents('td:first').siblings("td").children("input#cjtextbox3").val(jdata);
+                $(this).parents('td:first').siblings("td").children("input#cjtextbox3").focus();
+                $(this).parents('td:first').siblings("td").children("input#cjtextbox5").focus();
+                //alert("new jdata " + jdata);
+                //alert("new "+wonoNew);
+            } else {
+                $(this).parents('td:first').siblings("td").children("input#cjtextbox3").focus();
+            }
+        });
+
+    </script>*@
+
+@*AutoSave*@
+<script>
+    $(".autosave").focusout(function (e) {
+        //var selectedID = $(this).parents().siblings().find("td.hmiid").html();
+        //var selectedID = $(this).parents().find("td.hmiid").html(); //its giving 1st row no matter what.
+        //var selectedID = $(this).parents().prev().find("td.hmiid").html(); //.prev and .next are giving right.
+        var selectedID = $(this).parents('td:first').siblings("td.hmiid").html(); //Perfect
+        //var selectedID = $(this).closest('td').find('td.hmiid:first').html();
+        //alert(selectedID);
+        var Field = $(this).attr('id');
+        //alert(Field);
+        var Value = $(this).val();
+        $.getJSON("/ManualHMIScreen/AutoSave", { HMIID: selectedID, field: Field, value: Value }, function (data) {
+            $.each(data, function (index, item) {
+                //$("#WorkCenter").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+        });
+    });
+    $(".autosaveCommon").on('change', function (e) {
+        var Field = $(this).attr('id');
+        //alert(Field);
+        var Value = $(this).val();
+
+        $.post("/ManualHMIScreen/AutoSaveOPName", { field: Field, value: Value }, function (msg) {
+            //alert(msg);
+        });
+        // alert(Value)
+        //$.getJSON("/ManualHMIScreen/AutoSaveOPName", { field: Field, value: Value }, function (data) {
+        //    $.each(data, function (index, item) {
+        //        //$("#WorkCenter").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+        //    });
+        //});
+    });
+</script>
+<script>
+    $(".Prod_FAI").on("change", function (e) {
+        var selectedID = $(this).parents('td:first').siblings("td.hmiid").html(); //Perfect
+        //alert(selectedID);
+        var Field = $(this).attr('id');
+        //var Value = $('#Prod_FAI option:selected').val();
+        ////alert(Field);
+        //alert(Value);
+        var Value = $(this).val();
+        //alert(Value);
+        $.getJSON("/ManualHMIScreen/AutoSave", { HMIID: selectedID, field: Field, value: Value }, function (data) {
+        });
+    });
+</script>
+
+@*Individual JobFinish*@
+<script>
+    $(".IndividualFinish").click(function (e) {
+        //document.getElementById('hiddentextbox').value = "";
+        e.preventDefault();
+
+        //var target = $('#cjtextbox6').val();
+        //var rejected = $('#cjtextbox9').val();
+        //var delivered = $('#cjtextbox8').val();
+
+        var target = $(this).parents('td:first').siblings("td").children("input#cjtextbox6").val(); //Perfect target
+        //alert(target)
+        var rejected = $(this).parents('td:first').siblings("td").children("input#cjtextbox9").val(); //Perfect Processed
+        var delivered = $(this).parents('td:first').siblings("td").children("input#cjtextbox8").val(); //Perfect delivered.
+
+        var inter = parseInt(rejected) + parseInt(delivered);
+        if (target == "" || target == null || target == " ") {
+            alert("Target Must be equal to Processed + Delivered");
+            e.preventDefault();
+        }
+        else {
+            var opName = $('#cjtextboxop').val();
+            //var PorF = $('#Prod_FAI option:selected').val();
+            //var project = $('#cjtextbox1').val();
+            //var partno = $('#cjtextbox3').val();
+            //var wono = $('#cjtextbox4').val();
+            //var opno = $('#cjtextbox5').val();
+            //var tqty = $('#cjtextbox6').val();
+            var sqty = rejected;
+            var dqty = delivered;
+
+            var PorF = $(this).parents('td:first').siblings("td").children(".Prod_FAI").val(); //Perfect
+            //alert("PorF " + PorF);
+            var project = $(this).parents('td:first').siblings("td").children("input#cjtextbox1").val();
+            var partno = $(this).parents('td:first').siblings("td").children("input#cjtextbox3").val();
+            var wono = $(this).parents('td:first').siblings("td").children("input#cjtextbox4").val();
+            var opno = $(this).parents('td:first').siblings("td").children("input#cjtextbox5").val();
+            var tqty = $(this).parents('td:first').siblings("td").children("input#cjtextbox6").val();
+
+            if (($.trim(opName)).length > 0 && ($.trim(project)).length > 0 && ($.trim(PorF)).length > 0 && ($.trim(partno)).length > 0 && ($.trim(wono)).length > 0 && ($.trim(opno)).length > 0 && ($.trim(tqty)).length > 0 && ($.trim(sqty)).length > 0 && ($.trim(dqty)).length > 0) {
+                if (target == inter) {
+
+                    var $cj8 = $(this).parents('td:first').siblings("td").children("input#cjtextbox8").val(); //Perfect
+                    var jack = $(this).attr("href") + "&cjtextbox8=" + $cj8;
+                    //alert("Target Matched Rejected + Delivered")
+                    //alert(jack);
+                    window.location = jack;
+                }
+                else {
+                    alert("Processed + Delivered Quantity Must be equal to Target");
+                    e.preventDefault();;
+                }
+            }
+            else {
+                alert("Please enter all the details before proceeding");
+                e.preventDefault();
+            }
+        }
+
+        return false;
+    });
+</script>
+
+@*IndividualHold*@
+<script>
+    $(".IndividualHold").click(function (e) {
+        //document.getElementById('hiddentextbox').value = "";
+        e.preventDefault();
+        //alert("Blah")
+
+        var target = $(this).parents('td:first').siblings("td").children("input#cjtextbox6").val(); //Perfect target
+        //alert(target)
+        var rejected = $(this).parents('td:first').siblings("td").children("input#cjtextbox9").val(); //Perfect Processed
+        var delivered = $(this).parents('td:first').siblings("td").children("input#cjtextbox8").val(); //Perfect delivered.
+
+        var inter = parseInt(rejected) + parseInt(delivered);
+        if (target == "" || target == null || target == " " || rejected == "" || rejected == null || rejected == " " || delivered == "" || delivered == null || delivered == " ") {
+            alert("Target or Delivered QTY Cannot be Empty")
+        }
+        else {
+            var opName = $('#cjtextboxop').val();
+            //alert($.trim(opName).length)
+            //alert(opName)
+            //var PorF = $('#Prod_FAI option:selected').val();
+            //var project = $('#cjtextbox1').val();
+            //var partno = $('#cjtextbox3').val();
+            //var wono = $('#cjtextbox4').val();
+            //var opno = $('#cjtextbox5').val();
+            //var tqty = $('#cjtextbox6').val();
+            //var sqty = $('#cjtextbox9').val();
+            //var dqty = $('#cjtextbox8').val();
+
+            var sqty = rejected;
+            var dqty = delivered;
+
+            var PorF = $(this).parents('td:first').siblings("td").children(".Prod_FAI").val(); //Perfect
+            //alert("PorF " + PorF);
+            var project = $(this).parents('td:first').siblings("td").children("input#cjtextbox1").val();
+            var partno = $(this).parents('td:first').siblings("td").children("input#cjtextbox3").val();
+            var wono = $(this).parents('td:first').siblings("td").children("input#cjtextbox4").val();
+            var opno = $(this).parents('td:first').siblings("td").children("input#cjtextbox5").val();
+            var tqty = $(this).parents('td:first').siblings("td").children("input#cjtextbox6").val();
+
+
+            if (($.trim(opName)).length > 0 && ($.trim(project)).length > 0 && ($.trim(PorF)).length > 0 && ($.trim(partno)).length > 0 && ($.trim(wono)).length > 0 && ($.trim(opno)).length > 0 && ($.trim(tqty)).length > 0 && ($.trim(sqty)).length > 0 && ($.trim(dqty)).length > 0) {
+                if (parseInt(target) > inter) {
+                    //document.getElementById('loginForm').click();
+                    //alert("blah")
+                    // var $rwvalue = $("#reworkorderhidden").val();
+                    var $cj8 = $(this).parents('td:first').siblings("td").children("input#cjtextbox8").val();
+                    var jack = $(this).attr("href") + "&cjtextbox8=" + $cj8;
+                    //alert("URL " + jack);
+                    window.location = jack;
+                }
+                else {
+                    alert("Processed QTY + Delivered QTY  Must Not Exceed Target")
+                }
+            } else {
+                alert("Please enter all the details before proceeding")
+            }
+        }
+    });
+</script>
+
+@*Individual Submit*@
+<script>
+    $(".IndividualSubmit").click(function (e) {
+        e.preventDefault();
+
+        var opName = $('#cjtextboxop').val();
+        //var shift = $('#cjtextboxshift').val();
+        var shift = 'A';
+        var PorF = $(this).parents('td:first').siblings("td").children(".Prod_FAI").val(); //Perfect
+        var project = $(this).parents('td:first').siblings("td").children("input#cjtextbox1").val();
+        var partno = $(this).parents('td:first').siblings("td").children("input#cjtextbox3").val();
+        var wono = $(this).parents('td:first').siblings("td").children("input#cjtextbox4").val();
+        var opno = $(this).parents('td:first').siblings("td").children("input#cjtextbox5").val();
+        var tqty = $(this).parents('td:first').siblings("td").children("input#cjtextbox6").val();
+
+        if (($.trim(opName)).length > 0 && ($.trim(shift)).length > 0 && ($.trim(project)).length > 0 && ($.trim(PorF)).length > 0 && ($.trim(partno)).length > 0 && ($.trim(wono)).length > 0 && ($.trim(opno)).length > 0 && ($.trim(tqty)).length > 0) {
+            var jack = $(this).attr("href");
+            //alert("URL " + jack);
+            window.location = jack;
+            //} else {
+            //    alert("Please enter all the details before Start")
+            //}
+        }
+    });
+</script>
+
+<script>
+    function myFunctionPartial(e) {
+        //alert("blah PF")
+        e.preventDefault();
+        //var selectedID = $(this).parents('td:first').siblings("td.hmiid").html(); //Perfect
+        var values = $("td.hmiid").map(function () { return $(this).html().trim(); }).get();
+        var url = '/ManualHMIScreen/OverAllPartial?HMIIDs=' + values;
+        ////alert(url);
+        var oneofthemisChecked = 0;
+        if ($('input:checked').length > 0) {
+            oneofthemisChecked = 1;
+        }
+        if (oneofthemisChecked == 1) {
+            $("#dialog-confirm-1").dialog({
+                resizable: true,
+                height: 50,
+                modal: true,
+                buttons: {
+                    "Yes": function () {
+                        window.location.href = url;
+                    },
+                    Cancel: function () {
+                        $("#dialog-confirm-1").dialog("close");
+                    },
+                }
+            })
+                .open();
+        } else {
+            window.location.href = url;
+        }
+
+
+    }
+
+    function myFunctionHoldAll(e) {
+        //alert("blah Hold")
+        e.preventDefault();
+        //var selectedID = $(this).parents('td:first').siblings("td.hmiid").html(); //Perfect
+        //var values = $("td.hmiid").map(function () { return $(this).html().trim(); }).get();
+        var url = '/ManualHMIScreen/DownCodeEntry';
+        //alert(url);
+        window.location.href = url;
+    }
+
+    function myFunctionFinishAll(e) {
+        ////alert("blah Finish")
+        e.preventDefault();
+
+        var values = $("td.hmiid").map(function () { return $(this).html().trim(); }).get();
+        var url = '/ManualHMIScreen/OverAllFinish?HMIIDs=' + values;
+        //alert(url);
+        window.location.href = url;
+    }
+
+    function myFunctionGenericWork(e) {
+        //alert("blah Generic")
+        e.preventDefault();
+        //var selectedID = $(this).parents('td:first').siblings("td.hmiid").html(); //Perfect
+        //var values = $("td.hmiid").map(function () { return $(this).html().trim(); }).get();
+        var url = '/ManualHMIScreen/GenericWork';
+        //alert(url);
+        window.location.href = url;
+    }
+</script>
+
+<script>
+        $(document).ready(function (e) {
+            var macid = @ViewBag.machineID;
+            @*var CorrectedDate =@ViewBag.coretddt;*@
+            $.get('/ManualHMIScreen/GetReworkstatus', { MachineID: macid }, function (res) {
+                if (res == "Success") {
+
+                    $('#reworkdiv').prop("disabled", false);
+                    $('#reworkorder').prop("disabled", false);
+                    $('#PartialFinish').prop("disabled", true);
+                    $('#JobFinished').prop("disabled", true);
+                    $('#JobFinish').prop("disabled", true);
+                }
+                else if (res == "fail") {
+                    $('#reworkdiv').prop("disabled", false);
+                    $('#reworkorder').prop("disabled", false);
+                    $('#PartialFinish').prop("disabled", true);
+                    $('#JobFinished').prop("disabled", true);
+                    $('#JobFinish').prop("disabled", true);
+                }
+                else if (res == "WorkOrder") {
+                    $('#reworkdiv').prop("disabled", false);
+                    $('#reworkorder').prop("disabled", false);
+                    $('#PartialFinish').prop("disabled", false);
+                    $('#JobFinished').prop("disabled", false);
+                    $('#JobFinish').prop("disabled", false);
+                }
+            });
+
+
+
+        });
+</script>
+
+@*AutoSuggest*@
+<script>
+    //$(".cjtextbox4").change(function (e) {
+    //    var hint = $(this).val;
+    //   //alert(hint);
+    //});
+
+    $(".cjtextbox4").autocomplete({
+        minLength: 2,
+        source: function (req, resp) {
+            //var jval = $(this).val();
+            //alert(jval)
+            $.ajax({
+                url: "/ManualHMIScreen/GetWorkOrders",
+                type: "POST",
+                dataType: "json",
+                data: { Prefix: GetCurrentSearchTerm(req.term), AllVal: req.term },
+                success: function (data) {
+                    resp($.map(data, function (item) {
+                        return { label: item.WorkOrder, value: item.WorkOrder };
+                    }))
+                }
+            })
+        },
+        select: function (event, ui) {
+            var LastValue = splitCurrentText(this.value);
+            LastValue.pop();
+            LastValue.push(ui.item.value);
+            //LastValue.push("");
+            //this.value = LastValue.join(",");
+            this.value = LastValue;
+            return false;
+        },
+        focus: function () {
+            return false;
+        }
+    });
+    //PartNo
+    //$(".cjtextbox3").autocomplete({
+    //    source: function (req, resp) {
+    //        $.ajax({
+    //            url: "/ManualHMIScreen/GetPartNos",
+    //            type: "POST",
+    //            dataType: "json",
+    //            data: { Prefix: GetCurrentSearchTerm(req.term), AllVal: req.term },
+    //            success: function (data) {
+    //                resp($.map(data, function (item) {
+    //                    return { label: item.MaterialDesc, value: item.MaterialDesc };
+    //                }))
+    //            }
+    //        })
+    //    },
+    //    select: function (event, ui) {
+    //        var LastValue = splitCurrentText(this.value);
+    //        LastValue.pop();
+    //        LastValue.push(ui.item.value);
+    //        LastValue.push("");
+    //        //this.value = LastValue.join(",");
+    //        return false;
+    //    },
+    //    focus: function () {
+    //        return false;
+    //    }
+    //});
+    //OpNo 2017-01-20
+    //$(".cjtextbox5").autocomplete({
+    //    source: function (req, resp) {
+    //        $.ajax({
+    //            url: "/ManualHMIScreen/GetOpNos",
+    //            type: "POST",
+    //            dataType: "json",
+    //            data: { Prefix: GetCurrentSearchTerm(req.term), AllVal: req.term, WoNo: GetWoNo($(this).parents('td:first').siblings("td").children("input#cjtextbox4").val()), PartNo: GetPNo($(this).parents('td:first').siblings("td").children("input#cjtextbox3").val()) },
+    //            success: function (data) {
+    //                resp($.map(data, function (item) {
+    //                    return { label: item.OperationNo, value: item.OperationNo };
+    //                }))
+    //            }
+    //        })
+    //    },
+    //    select: function (event, ui) {
+    //        var LastValue = splitCurrentText(this.value);
+    //        LastValue.pop();
+    //        LastValue.push(ui.item.value);
+    //        LastValue.push("");
+    //        //this.value = LastValue.join(",");
+    //        return false;
+    //    },
+    //    focus: function () {
+    //        return false;
+    //    }
+    //});
+    function splitCurrentText(LastTerm) {
+        return LastTerm.split(/,\s*/);
+    }
+
+    function GetCurrentSearchTerm(LastTerm) {
+        return splitCurrentText(LastTerm).pop();
+    }
+
+    //function GetWoNo(e) {
+    //    alert(e);
+    //    return e;
+    //}
+
+    //function GetPNo(e) {
+    //    alert(e)
+    //    return e;
+    //    //var a = t[0].parents('td:first').siblings("td").children("input#cjtextbox4").val();
+    //    //alert(a)
+    //    //return t.parents('td:first').siblings("td").children("input#cjtextbox4").val();
+    //}
+</script>
+
+@*Based on WO suggest PartNo.*@
+<script>
+    //Populate Other fields based on wo,partno,opno
+    //$("#cjtextbox4").on("focusout", function (e) {
+    //    //alert("blah");
+    //    var wono = $(this).val();
+    //    alert(wono);
+    //    $.getJSON("/ManualHMIScreen/GetPartNosFromWo", { WoNo: wono }, function (data) {
+    //        var $focused = $(':focus');
+    //        alert("" + $focused.prop('id'));
+
+    //        $focused.autocomplete({
+    //            source: "",
+    //            minLength: 2
+    //        });
+    //    });
+    //});
+</script>
+
+@*Close Error Div*@
+<script>
+    setTimeout(function () {
+        $('#errordiv').fadeout('slow');
+    }, 15000); // <-- time in milliseconds
+</script>
+
+<script>
+    setTimeout(function () {
+        startTime();
+    }, 1000);
+</script>
+<script>
+                    if (parseInt('@Session["split"]') == 1) {
+                        $(".SplitWO").prop("checked", false);
+                    }
+</script>
+
+@* AutoSave SplitWO*@
+<script>
+    $(".SplitWO").on("change", function (e) {
+        var selectedID = $(this).parents('td:first').siblings("td.hmiid").html(); //Perfect
+        //alert(selectedID);
+        var Value = $(this).val();
+        //alert(Value);
+        if ($(this).is(":checked")) {
+            Value = "Yes";
+        }
+        else if ($(this).is(":not(:checked)")) {
+            Value = "No";
+        }
+        var aCheckBox = $(this);
+        $.getJSON("/ManualHMIScreen/AutoSaveSplitWO", { HMIID: selectedID, SplitWO: Value }, function (data) {
+            //alert(data)
+            if (data == "") {
+                $(this).attr("checked", false);
+                aCheckBox.prop('checked', false).checkboxradio('refresh');
+            } else if (data == "failure") {
+                $(this).attr("checked", false);
+                //aCheckBox.prop('checked', false).checkboxradio('refresh');
+                alert("if Delivered Qty is 0 you can not able to split the Work Order");
+                $(".SplitWO").prop("checked", false);
+
+            }
+        });
+    });
+</script>
+
+
+
+

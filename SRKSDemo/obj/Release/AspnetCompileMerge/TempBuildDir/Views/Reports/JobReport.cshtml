@@ -1,0 +1,293 @@
+﻿
+@{
+    ViewBag.Title = "JobReport";
+    Layout = "~/Views/Shared/_LayoutForMaster.cshtml";
+}
+
+
+<style>
+    .ui-datepicker-month, .ui-datepicker-year {
+        color: blue;
+    }
+
+    .fields {
+        width: 79.5%;
+        white-space: nowrap;
+    }
+
+    .first {
+        display: inline-block;
+        width: 10%;
+        float: none;
+        padding-left: 0px;
+        padding-right: -2px;
+        margin-right: -2px;
+        white-space: nowrap;
+    }
+
+    .second {
+        display: inline-block;
+        padding-right: 0px;
+        white-space: normal;
+    }
+
+    .pad {
+        padding-left: 9%;
+    }
+</style>
+
+@{
+    List<SelectListItem> ProdFAI = new List<SelectListItem>();
+
+    ProdFAI.Add(new SelectListItem
+    {
+        Text = "OverAll",
+        Value = "OverAll",
+    });
+    ProdFAI.Add(new SelectListItem
+    {
+        Text = "Production",
+        Value = "Production",
+    });
+    ProdFAI.Add(new SelectListItem
+    {
+        Text = "FAI",
+        Value = "FAI",
+    });
+    ProdFAI.Add(new SelectListItem
+    {
+        Text = "Others",
+        Value = "Others",
+    });
+    //ProdFAI.Add(new SelectListItem
+    //{
+    //    Text = "DeltaFAI",
+    //    Value = "DeltaFAI",
+    //});
+    //ProdFAI.Add(new SelectListItem
+    //{
+    //    Text = "ProtoType",
+    //    Value = "ProtoType",
+    //});
+    //ProdFAI.Add(new SelectListItem
+    //{
+    //    Text = "TASLRequirement",
+    //    Value = "TASLRequirement",
+    //});
+    //ProdFAI.Add(new SelectListItem
+    //{
+    //    Text = "InWork",
+    //    Value = "InWork",
+    //});
+    //ProdFAI.Add(new SelectListItem
+    //{
+    //    Text = "ReleasedLev1",
+    //    Value = "ReleasedLev1",
+    //});
+    //ProdFAI.Add(new SelectListItem
+    //{
+    //    Text = "ProtoTypeLev1",
+    //    Value = "ProtoTypeLev1"
+    //});
+}
+
+@*<script></script>*@
+
+
+@using (Html.BeginForm("JobReport", "Reports", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @*@Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)*@
+    <div class="wrp clearfix">
+        @*style="background-color:red" box outside create role*@
+        <div class="fluid">
+            <div class="widget col-md- grid12">
+                <div class="widget-header" style="background-color: red">
+                    <div class="widget-title">
+                        <span style="font-style: oblique; font-size: 100%">Job/Production Report</span>
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div id="Error">
+                    @if (TempData["Error"] != null)
+                    {
+                        <input type="hidden" id="shiftOverrideConfirm" name="shiftOverrideConfirm" value="0" />
+                    }
+                </div>
+
+                <div class="widget-content pad20f">
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; padding-top: 2%; margin-left: 2%; color: blue; font-style: oblique">Plant Name</label>
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; margin-left: 2%; width: 20%; color: blue; font-style: oblique">Shop Name</label>
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; margin-left: 2%; color: blue; font-style: oblique">Cell Name</label>
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; margin-left: 2%; width: 20%; color: blue; font-style: oblique">WorkCenter Name</label>
+
+                    @Html.DropDownList("PlantID", null, "--Select Plant--", new { @id = "PlantID", @class = "stacked-label", @name = "PlantID", @required = "required", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["PlantID"] })
+                    @*@Html.DropDownListFor(model => model.PlantID, ViewBag.Plant as IEnumerable<SelectListItem>, "--Select Plant--", new { @id = "PlantID", @class = "stacked-label", @name = "PlantID", @required = "required", @style = "margin-left: 2%;aria-expanded:false;width:20%" })*@
+
+                    @*@Html.DropDownListFor(model => model.ShopID, ViewBag.Shop as IEnumerable<SelectListItem>, "--Select Shop--", new { @id = "ShopID", @class = "stacked-label", @name = "ShopID", @style = "margin-left: 2%;aria-expanded:false;width:20%" })*@
+                    @Html.DropDownList("ShopID", null, "--Select Shop--", new { @id = "ShopID", @class = "stacked-label", @name = "ShopID", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["ShopID"] })
+
+                    @*@Html.DropDownListFor(model => model.CellID, ViewBag.Cell as IEnumerable<SelectListItem>, "--Select Cell--", new { @id = "CellID", @class = "stacked-label", @name = "CellID", @style = "margin-left: 2%;aria-expanded:false;width:20%" })*@
+                    @Html.DropDownList("CellID", null, "--Select Cell--", new { @id = "CellID", @class = "stacked-label", @name = "CellID", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["CellID"] })
+
+                    @*@Html.DropDownListFor(model => model.MachineID, ViewBag.WCID as IEnumerable<SelectListItem>, "--Select WorkCenter--", new { @id = "WorkCenterID", @class = "stacked-label", @name = "WorkCenterID", @style = "margin-left: 2%;aria-expanded:false;width:20%" })*@
+                    @Html.DropDownList("WorkCenterID", null, "--Select WC--", new { @id = "WorkCenterID", @class = "stacked-label", @name = "WorkCenterID", @style = "margin-left: 2%;aria-expanded:false;width:20%", @value = ViewData["WorkCenterID"] })
+
+                    <br />
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; margin-left: 2%; width: 20%; color: blue; font-style: oblique">Start Date</label>
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; margin-left: 2%; color: blue; font-style: oblique">End Date</label>
+                    @*<label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; padding-top: 2%; margin-left: 2%; color: blue; font-style: oblique">Operator</label>*@
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; margin-left: 2%; color: blue; font-style: oblique">Prod/FAI</label>
+
+                    <br />
+                    @Html.TextBox("StartDate", null, new { @id = "from", @name = "from", @class = "second fdate", @style = "margin-left: 2%;aria-expanded:false;width:20%", @placeholder = "Enter StartDate", @required = "required" })
+                    @Html.TextBox("EndDate", null, new { @id = "to", @name = "to", @class = "second fdate", @style = "margin-left: 2%;aria-expanded:false;width:20%", @placeholder = "Enter EndDate ", @required = "required" })
+                    @*@Html.TextBox("OperatorName", null, new { @id = "OperatorName", @name = "OperatorName", @class = "second ", @style = "margin-left: 2%;aria-expanded:false;width:20%", @placeholder = "Enter OperatorName" })*@
+                    @Html.DropDownList("ProdFAI", ProdFAI, new { @id = "ProdFAI", @name = "ProdFAI", @class = "stacked-label", @style = "margin-left: 2%;aria-expanded:false;width:20%" })
+
+                    <br />
+                    <br />
+                    <div style="width: 25%;color:white; display: inline-block; height: inherit">.</div>
+                    <input type="submit" value="Submit" id="submitsrks" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit; margin-top: 2%; background-color: orange; color: black; font-size: 95%" />
+                </div>
+
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+        <!-- /Class-fluid-->
+    </div>
+
+}
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/Content1/jquery.datetimepicker.js" type="text/javascript"></script>
+<script>
+    $(".fdate").keypress(function (event) { event.preventDefault(); });
+</script>
+<script>
+    $("#PlantID").on("change", function () {
+        $("#ShopID").empty();
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#PlantID option:selected").val();
+        $.getJSON("/ShiftPlanner/GetShop", { PlantID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#ShopID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#ShopID").prepend("<option value='' selected='selected'></option>");
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+    });
+
+    $("#ShopID").on("change", function () {
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#ShopID option:selected").val();
+        $.getJSON("/ShiftPlanner/GetCell", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#CellID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/ShiftPlanner/GetWC_Shop_MWC", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+
+    });
+
+    $("#CellID").on("change", function () {
+        $("#WorkCenterID").empty();
+        var selectedID = $("#CellID option:selected").val();
+        $.getJSON("/ShiftPlanner/GetWC_Cell_MWC", { CellID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+    });
+
+    //$("#ShopID").on("change", function () {
+    //    $("#CellID").empty();
+    //    $("#WorkCenterID").empty();
+    //    var selectedID = $("#ShopID option:selected").val();
+    //    $.getJSON("/ShiftPlanner/GetCell", { ShopID: selectedID }, function (data) {
+    //        $.each(data, function (index, item) {
+    //            $("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+    //        });
+    //        $("#CellID").prepend("<option value='' selected='selected'></option>");
+    //    });
+
+    //    $.getJSON("/Report/GetWC_Shop_MWC", { ShopID: selectedID }, function (data) {
+    //        $.each(data, function (index, item) {
+    //            $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+    //        });
+    //        $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+    //    });
+
+    //});
+
+    //$("#CellID").on("change", function () {
+    //    $("#WorkCenterID").empty();
+    //    var selectedID = $("#CellID option:selected").val();
+    //    $.getJSON("/Report/GetWC_Cell_MWC", { CellID: selectedID }, function (data) {
+    //        $.each(data, function (index, item) {
+    //            $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+    //        });
+    //        $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+    //    });
+    //});
+</script>
+
+<script>
+    setTimeout(function () {
+        $('#Error').fadeOut('slow');
+    }, 30000); // <-- time in milliseconds
+</script>
+
+@*<script type="text/javascript">
+        var j = jQuery.noConflict();
+        j(document).ready(function () {
+            $(".fdate").datepicker({ dateFormat: 'd-m-yy', maxDate: "-1d" });
+        });
+    </script>*@
+<script>
+    $(function () {
+        var dateFormat = "mm/dd/yy",
+            from = $("#from")
+                .datepicker({
+                    minDate: new Date(2016, 11 - 1, 21),
+                    maxDate: '+50Y',
+                    defaultDate: "+1w",
+                    maxDate: "-1d",
+                })
+                .on("change", function () {
+                    to.datepicker("option", "minDate", getDate(this));
+                }),
+            to = $("#to").datepicker({
+                defaultDate: "+1w",
+                maxDate: "-1d",
+            })
+                .on("change", function () {
+                    from.datepicker("option", "maxDate", getDate(this));
+                });
+
+        function getDate(element) {
+            var date;
+            try {
+                date = $.datepicker.parseDate(dateFormat, element.value);
+            } catch (error) {
+                date = null;
+            }
+
+            return date;
+        }
+    });
+</script>

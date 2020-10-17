@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0b0c1c4a6b3e4cea8e17d04283f8804e" Name="Diagram1">
+        <EntityTypeShape EntityType="i_facility_shaktiModel.alarm_history_master" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.configuration_tblpmchecklist" Width="1.5" PointX="5.25" PointY="148.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.configuration_tblpmcheckpoint" Width="1.5" PointX="8.25" PointY="148.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.configuration_tblprimitivemaintainancescheduling" Width="1.5" PointX="5.25" PointY="154.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.configuration_tblsensorgroup" Width="1.5" PointX="19.5" PointY="140.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.configurationtblmachinesensor" Width="1.5" PointX="21.75" PointY="150.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.configurationtblsensordatalink" Width="1.5" PointX="21" PointY="106.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.configurationtblsensormaster" Width="1.5" PointX="21.75" PointY="120.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.dashboard_menus" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.frommail" Width="1.5" PointX="10.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.Graph_Data" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.handle_no_ping" Width="1.5" PointX="7.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.jobcard_details" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.LossDetail" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.mailmaster" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.menu_styles" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.message_code_master" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.message_history_master" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.monthdata" Width="1.5" PointX="7.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.operationlog" Width="1.5" PointX="9.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.parameter" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.parameters_master" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.pcb_details" Width="1.5" PointX="2.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.pcb_parameters" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.pcbdaq" Width="1.5" PointX="4.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.pcbdaqin_tbl" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.pcbdps_master" Width="1.5" PointX="14.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.program_master" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.QualtiyRaw_piweb" Width="1.5" PointX="16.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.sharathtable" Width="1.5" PointX="16.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.shift_master" Width="1.5" PointX="16.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.sidebar_menus" Width="1.5" PointX="6.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.smtpdetail" Width="1.5" PointX="8.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_autoreport_log" Width="1.5" PointX="7.5" PointY="138.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_autoreportbasedon" Width="1.5" PointX="3" PointY="140.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_autoreportsetting" Width="1.5" PointX="5.25" PointY="142.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_autoreporttime" Width="1.5" PointX="3" PointY="143.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_axisdet" Width="1.5" PointX="18.75" PointY="107.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_axisdetails1" Width="1.5" PointX="10.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_axisdetails2" Width="1.5" PointX="12.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_CycleTimeAnalysis" Width="1.5" PointX="18.75" PointY="111.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_deletedProgDet" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_genericfilepath" Width="1.5" PointX="2.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_livecbmparameters" Width="1.5" PointX="18.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_machinestatusrealtime" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_multiwoselection" Width="1.5" PointX="21" PointY="156.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_OEEDetails" Width="1.5" PointX="18.75" PointY="117.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_oeereportasdivision" Width="1.5" PointX="18.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_ProdAndonDisp" Width="1.5" PointX="24" PointY="159.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_ProdManMachine" Width="1.5" PointX="21" PointY="204.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_ProdOrderLosses" Width="1.5" PointX="18.75" PointY="131.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_reportmaster" Width="1.5" PointX="3" PointY="147.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_SaveNCProgVer" Width="1.5" PointX="18.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_servodetails" Width="1.5" PointX="18.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_UtilReport" Width="1.5" PointX="18.75" PointY="135.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblactivitylog" Width="1.5" PointX="14.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblalarmdetail" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblAndonDispDet" Width="1.5" PointX="8.25" PointY="154.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblAndonImageTextScheduledDisplay" Width="1.5" PointX="8.25" PointY="142.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblapp_paths" Width="1.5" PointX="20.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblatccounter" Width="1.5" PointX="20.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblBachUplossofentry" Width="1.5" PointX="20.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblBackupoeedashboardvariable" Width="1.5" PointX="20.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblbottelneck" Width="1.5" PointX="11.25" PointY="148.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblBreadownAndLossReport" Width="1.5" PointX="10.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblbreakdown" Width="1.5" PointX="19.5" PointY="127.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblBreakdowncode" Width="1.5" PointX="22.5" PointY="131.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblBreakDownTickect" Width="1.5" PointX="24.75" PointY="148.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblcell" Width="1.5" PointX="11.25" PointY="155" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblcellpart" Width="1.5" PointX="13.5" PointY="156.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblcustomer" Width="1.5" PointX="16.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbldailyprodstatu" Width="1.5" PointX="18.75" PointY="144.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbldaytiming" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblddl" Width="1.5" PointX="0.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblDDLStatu" Width="1.5" PointX="2.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbldowntimecategory" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbldowntimedetail" Width="1.5" PointX="8" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblemailescalation" Width="1.5" PointX="13.5" PointY="148" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblendcode" Width="1.5" PointX="22.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblescalationlog" Width="1.5" PointX="4.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblgenericworkcode" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblgenericworkentry" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblhistpm" Width="1.5" PointX="6.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblhmiscreen" Width="1.5" PointX="18.75" PointY="154.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblholdcode" Width="1.5" PointX="22.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblHolidayManagment" Width="1.5" PointX="22.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblholiday" Width="1.5" PointX="22.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblHolidayTypeMaster" Width="1.5" PointX="22.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbllivedailyprodstatu" Width="1.5" PointX="18.75" PointY="163.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbllivehmiscreen" Width="1.5" PointX="18.75" PointY="167.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbllivelossofentry" Width="1.5" PointX="13.5" PointY="135.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbllivemanuallossofentry" Width="1.5" PointX="24.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbllivemode" Width="1.5" PointX="21.75" PointY="142.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbllivemultiwoselection" Width="1.5" PointX="21" PointY="169.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbllossescode" Width="1.5" PointX="11.25" PointY="140.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbllossofentry" Width="1.5" PointX="13.5" PointY="140.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblmachineallocation" Width="1.5" PointX="24.75" PointY="144.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblmachineaxisdetail" Width="1.5" PointX="24.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblmachinecategory" Width="1.5" PointX="24.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblmachinedetail" Width="1.5" PointX="16.5" PointY="142.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblmailid" Width="1.5" PointX="12.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblmaintainanceProdBrDetail" Width="1.5" PointX="24.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblmanuallossofentry" Width="1.5" PointX="24.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblmasterparts_st_sw" Width="1.5" PointX="8.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblmimic" Width="1.5" PointX="18.75" PointY="185.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblmode" Width="1.5" PointX="13.5" PointY="161.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblmodetemp" Width="1.5" PointX="26.75" PointY="157.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblmodulehelper" Width="1.5" PointX="18.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblmodulemaster" Width="1.5" PointX="24.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblmodule" Width="1.5" PointX="29.75" PointY="166.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblmultipleworkorder" Width="1.5" PointX="27.75" PointY="149" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblNcProgramTransferMain" Width="1.5" PointX="18.75" PointY="201.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblnetworkdetailsforddl" Width="1.5" PointX="26.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbloeedashboardfinalvariable" Width="1.5" PointX="26.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbloeedashboardvariable" Width="1.5" PointX="26.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbloeedashboardvariablestoday" Width="1.5" PointX="26.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblOperatorDashboard" Width="1.5" PointX="18.75" PointY="205.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbloperatordetail" Width="1.5" PointX="2.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblOperatorHeader" Width="1.5" PointX="18.75" PointY="209.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblOperatorLoginDetail" Width="1.5" PointX="25.5" PointY="132.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblOperatorMachineDetail" Width="1.5" PointX="27.75" PointY="144.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblpartlearningreport" Width="1.5" PointX="4.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblpart" Width="1.5" PointX="21" PointY="112.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblpartscountandcutting" Width="1.5" PointX="18.75" PointY="217.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblpartwisesp" Width="1.5" PointX="14.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblPiweb_AdjOEE" Width="1.5" PointX="20.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblPiweb_Loss" Width="1.5" PointX="28.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblpiweb_OEE" Width="1.5" PointX="28.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblpiweb_util" Width="1.5" PointX="28.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblplannedbreak" Width="1.5" PointX="24.75" PointY="128.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblplant" Width="1.5" PointX="0.75" PointY="125.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblpmsdetail" Width="1.5" PointX="18.75" PointY="223" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.TblPMSNotification_Master" Width="1.5" PointX="18.75" PointY="148.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblPrecentColour" Width="1.5" PointX="28.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblPresentTool" Width="1.5" PointX="10.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblpriorityalarm" Width="1.5" PointX="28.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblProdPlanMaster" Width="1.5" PointX="28.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblprogramtransferhistory" Width="1.5" PointX="28.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblQuality_Piweb" Width="1.5" PointX="28.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblrejectqty" Width="1.5" PointX="32" PointY="155.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblrejectreason" Width="1.5" PointX="29.75" PointY="155" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblreportholder" Width="1.5" PointX="16.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblReworkReason" Width="1.5" PointX="30.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblrolemodulelink" Width="1.5" PointX="32" PointY="160.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblrole" Width="1.5" PointX="27.5" PointY="164.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblSAPInput" Width="1.5" PointX="30.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblsendermailid" Width="1.5" PointX="30.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblSetupMaint" Width="1.5" PointX="24.75" PointY="139.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblshift_breaks" Width="1.5" PointX="30.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblshift_mstr" Width="1.5" PointX="22.5" PointY="138" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblshiftdetail" Width="1.5" PointX="5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblshiftdetails_machinewise" Width="1.5" PointX="18.75" PointY="236.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblshiftmethod" Width="1.5" PointX="2.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblshiftplanner" Width="1.5" PointX="27.75" PointY="138.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblShiftUtilReport" Width="1.5" PointX="18.75" PointY="246.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblshop" Width="1.5" PointX="3" PointY="171.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblStdToolLife" Width="1.5" PointX="30.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblTcfApprovedMaster" Width="1.5" PointX="18.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbltcflossofentry" Width="1.5" PointX="30.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblTcfModule" Width="1.5" PointX="20.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblTempLiveLossOfEntry" Width="1.5" PointX="22.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblToolCounter" Width="1.5" PointX="24.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbltoollifeoperator" Width="1.5" PointX="18.75" PointY="251" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbltosapfilepath" Width="1.5" PointX="30.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbltosapshopname" Width="1.5" PointX="30.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblunit" Width="1.5" PointX="18.75" PointY="102.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbluser" Width="1.5" PointX="29.75" PointY="160.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblwolossess" Width="1.5" PointX="6.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblwolossessBackup" Width="1.5" PointX="8.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblworeport" Width="1.5" PointX="10.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblworeportBackup" Width="1.5" PointX="12.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblworkorderentry" Width="1.5" PointX="18.75" PointY="262.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.Temp_tblmode" Width="1.5" PointX="26.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.user_menus" Width="1.5" PointX="32.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.weekdata" Width="1.5" PointX="0.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_livecbmdetails" Width="1.5" PointX="32.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tbl_livetblsensorvalue" Width="1.5" PointX="32.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.tblAndonDisplayRotate" Width="1.5" PointX="32.75" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="i_facility_shaktiModel.cellID_tblcell_tblpmchecklist" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.plantID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.pmcpID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.shopID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_cellID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.plantid_tblplant" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.shopid_tblshop" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.cellid_tblprimitivemaintainancescheduling2223" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.machineID_tblprimitivemaintainancescheduling2223" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.PlantID_tblprimitivemaintainancescheduling2223" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.ShopID_tblprimitivemaintainancescheduling2223" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblkl_tblMachineSensor" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.SID_FK_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbllk_tblMachineSensor" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.axisid" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.logfreqid" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.unit" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.uid" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tbl_autoreport_log_AutoReportID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tbl_autoreportsetting_BasedOnID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tbl_autoreportsetting_ReportCellID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tbl_autoreportsetting_ReportID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tbl_autoreportsetting_ReportPlantID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tbl_autoreportsetting_ReportShopID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tbl_autoreportsetting_ReportTimeID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tbl_autoreportsetting_ReportWorkCentreID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tbl_axisdet_AxisMachineIDIdx" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbl_CycleTimeAnalysis_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbl_machinestatusrealtime_tbl_machinestatusrealtime" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.fkHMIID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbl_OEEDetails_tbl_MachineDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbl_ProdAndonDisp_tbl_ProdAndonDisp" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbl_ProdAndonDisp_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbl_ProdAndonDisp_tblworkorderentry" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbl_ProdManMachine_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbl_ProdManMachine_tblworkorderentry" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbl_ProdOrderLosses_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbl_UtilReport_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblAndonDispDEt_tblcell" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblAndonDispDEt_tblplant" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblAndonDispDEt_tblshop" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblAndonImageTextScheduledDisplay_tblcell" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblAndonImageTextScheduledDisplay_tblplant" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblAndonImageTextScheduledDisplay_tblshop" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.CellID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.cpid" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.MachineID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.PlantID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.ShopID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblbreakdown_tbllossescodes" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbllivemode_tblbreakdown" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblmodetemp_tblbreakdown" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblBreakDownTickect_tbllossescodes" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblBreakDownTickect_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblBreakDownTickect_tblOperatorLoginDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblBreakDownTickect_tblOperatorLoginDetails1" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.CellID_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_TblPMSNotification_Master_tblcell" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblcell_PlantsId" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblcell_ShopId" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblemailescalation_CellIDFK" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblmachinedetails_CellIDtblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblmultipleworkorder_CellIDtblMWO" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblrejectreason_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblshiftplanner_CellIDshiftplanner" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tbldailyprodstatus_MachineID1" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tbldowntimedetails_tbldowntimedetails_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblemailescalation_tbllossescodes" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblemailescalation_tbllossescodes1" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblemailescalation_tbllossescodes2" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblemailescalation_PlantIDFK" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblemailescalation_ShopIDFK" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblemailescalation_WCIDFK" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblgenericworkentry_GenericWorkID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.MachineIDhmi" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tbllivedailyprodstatus_MachineIDLDPS" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbllivehmiscreen_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.fkwoliveHMIID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbllivelossofentry_tbllossescodes" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbllivemode_tbllossescodes" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblmode_tblmachinedetails1" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbllossofentry_tbllossescodes" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbllossofentry_tbllossescodes1" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblmode_tbllossescodes" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblmode_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblmodetemp_tbllossescodes" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblSetupMaint_tbllossescodes" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.macid" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.shiftid" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.userid" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblmodetemp_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblNcProgramTransferMain_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblOperatorDashboard_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblOperatorHeader_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblOperatorMachineDetails_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblpmsdetails_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_TblPMSNotification_Master_tblmachinedetails1" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblSetupMaint_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblShiftUtilReport_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tbltoollifeoperator_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblworkorderentry_tblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.MachineID_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblmachinedetails_PlantIDtblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblmachinedetails_ShopIDtblmachinedetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblmimics_MachineID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblmultipleworkorder_WCIDtblMWO" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblrejectreason_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblshiftdetails_machinewise_MachineIDShiftWise" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblshiftplanner_MachineIDshiftplanner" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblusers_MachineFkforUser" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblrolemodulelink_tblmodules" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblmultipleworkorder_PlantIDtblMWO" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblmultipleworkorder_ShopIdtblMWO" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblOperatorLoginDetails_tblroles" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblOperatorMachineDetails_tblOperatorLoginDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblparts_tblparts" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblparts_tblunit" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblplannedbreak_shiftbreak" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblplant_tblplant" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_TblPMSNotification_Master_tblplant2" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblshiftplanner_PlantIDshiftplanner" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblshop_PlantID" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_TblPMSNotification_Master_tblshop" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblrejectqty_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblrolemodulelink_tblroles" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblrolemodulelink_InsertedBy_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblusers_primaryrole" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.FK_tblusers_secondary" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblusers_PrimaryRole" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblusers_SecondaryRole" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblshiftdetails_ShiftMethodIDshiftmethod" ManuallyRouted="false" />
+        <AssociationConnector Association="i_facility_shaktiModel.tblshiftplanner_ShopIDshiftplanner" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="i_facility_shaktiModel.menu" Width="1.5" PointX="15.375" PointY="32.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

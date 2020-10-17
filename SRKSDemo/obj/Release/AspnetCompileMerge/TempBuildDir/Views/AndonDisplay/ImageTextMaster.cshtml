@@ -1,0 +1,296 @@
+﻿@model SRKSDemo.Server_Model.tblAndonImageTextScheduledDisplay
+
+@{
+    ViewBag.Title = "ImageTextMaster";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- page content -->
+<div class="container body">
+    <div class="main_container">
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Image Text Andon</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                @using (Html.BeginForm("ImageTextMaster", "AndonDisplay", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal bordered-row" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="item form-group">
+                                            <label class="control-label col-sm-4 col-xs-12" for="type">
+                                                Plant
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                @Html.DropDownList("plant", null, "--Select Plant--", new { @id = "plantID", @class = "form-control Plant", @name = "plant", @required = "required", @value = ViewData["plant"], @onchange = "changeplantstatus();" })
+                                                @Html.HiddenFor(m => m.PlantID, new { @id = "PlantID" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="item form-group">
+                                            <label class="control-label col-sm-4 col-xs-12" for="type">
+                                                Section
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                @Html.DropDownList("dept", null, "--Select Section--", new { @id = "DepartmentID", @class = "form-control DepartmentID", @name = "DepartmentID", @required = "required", @value = ViewData["dept"], @onchange = "changedeptstatus();" })
+                                                @Html.HiddenFor(m => m.ShopID, new { @id = "ShopID" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="item form-group">
+                                            <label class="control-label col-sm-4 col-xs-12" for="type">
+                                                Cell
+                                            </label>
+                                            <div class="col-sm-8 col-xs-12">
+                                                @Html.DropDownList("cell", null, "--Select Cell--", new { @id = "MachineCategoryID", @class = "form-control MachCat", @name = "MachineCategory", @required = "required", @value = ViewData["cell"], @onchange = "changecellstatus();" })
+                                                @Html.HiddenFor(m => m.CellID, new { @id = "CellID" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <label class="control-label col-sm-4 col-xs-12" for="type">Start Date</label>
+                                        <div class="col-sm-8">
+                                            <div class="form-group">
+                                                <div class='input-group date' id='datetimepicker1' onchange="startdate()" oninput="enddate()">
+                                                    @Html.HiddenFor(m => m.StartDateTime, new { @id = "StartDateTime" })
+                                                    <input type='text' class="form-control" required />
+                                                    <span class="input-group-addon"  onclick="startdate()" >
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="control-label col-sm-4 col-xs-12" for="type">End Date</label>
+                                        <div class="col-sm-8">
+                                            <div class="form-group">
+                                                <div class='input-group date' id='datetimepicker2' onchange="enddate()"  oninput="enddate()">
+                                                    @Html.HiddenFor(m => m.EndDateTime, new { @id = "EndDateTime" })
+                                                    <input type='text' class="form-control" required/>
+                                                    <span class="input-group-addon" onclick="enddate()">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @Html.HiddenFor(m => m.TextToDisplay, new { @id = "TextToDisplay" })
+                                    <div class="col-sm-4">
+                                        <label class="control-label col-sm-7 col-xs-12" for="type">Show Default ANDON Screens</label>
+                                        <div class="col-sm-5">
+                                            <select class="form-control1" tabindex="2" id="DefaultAndon" onchange="defaultandon()" required>
+                                                <option value="" selected disabled>Select option</option>
+                                                <option value="1">Yes</option>
+                                                <option value="0" selected>No</option>
+                                            </select>
+                                            @Html.HiddenFor(m => m.DefaultScreenVisible, new { @id = "DefaultScreenVisible" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="item form-group">
+                                            <label class="control-label col-sm-4 col-xs-12">Display Items</label>
+                                            <div class="col-sm-8 col-xs-12" style="padding-top: 4px;" >
+                                                <input type="radio" name="cars" value="1" class="car" required="required">&nbsp;&nbsp;Image&nbsp;&nbsp;
+                                                <input type="radio" name="cars" value="2" class="car">&nbsp;&nbsp;Text&nbsp;&nbsp;
+                                                <input type="radio" name="cars" value="3" class="car">&nbsp;&nbsp;Image & Text
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-offset-1 col-sm-10">
+                                        <div id="and1" class="desc" style="display: none; padding: 10px 0px 10px 40px;">
+                                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                <img id="preview1" alt="your image" width="210" height="210" style="max-width: 100%;display:inline-table" class="fileinput-preview thumbnail">
+                                                <img id="preview2" alt="your image" width="210" height="210" style="max-width: 100%;display:inline-table" class="fileinput-preview thumbnail">
+                                                <img id="preview3" alt="your image" width="210" height="210" style="max-width: 100%;display:inline-table" class="fileinput-preview thumbnail">
+                                
+                                                <div>
+                                                    <span>
+                                                        <input value="@ViewBag.AndonImages" type="hidden" id="AndonImages" />
+                                                        <input type="file" accept='image/*' class="form-control" id="imageFile" name="imageFile" onchange="imageFileChange(this)" style="width: 21%" multiple>
+                                              
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            </div>
+                                    </div>
+                                    <div class="col-sm-offset-1 col-sm-10">
+                                        <div id="and2" class="desc" style="display: none; padding:10px 0px 10px 40px;">
+                                            <textarea id="txtEditor"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                   
+
+                               
+                                    <a role="button" href="/AndonDisplay/ImageText" class="btn btn-new" style="margin-top: 10px; margin-left: 5px;"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                                    <button type="submit" class="btn btn-new float-right" style="margin-top: 10px;" onclick="lastclick()"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->
+<!-- jQuery -->
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+@if (ViewBag.AndonImages == null || ViewBag.AndonImages == "")
+{
+    <script>
+        $(function () {
+            var basesf = 'no-image-icon-6.png';
+            //basesf = 'http://.com/AndonImages/' + basesf;
+            basesf = '../images/' + basesf;
+            if (basesf.length > 0) {
+                $("#AndonImagesPreview1").attr('src', basesf);
+            }
+        });
+    </script>
+}
+else
+{
+    <script>
+        $(function () {
+            var basesf = $("#AndonImages").val();
+            //basesf = 'http://.com/AndonImages/' + basesf;
+            basesf = '../AndonImages/' + basesf;
+            if (basesf.length > 0) {
+                $("#AndonImagesPreview1").attr('src', basesf);
+            }
+        });
+    </script>
+}
+
+<script>
+
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            format: 'YYYY-MM-D HH:mm',
+
+        });
+    });
+    $(function () {
+        $('#datetimepicker2').datetimepicker({
+            format: 'YYYY-MM-D HH:mm',
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".car").click(function () {
+            var test = $(this).val();
+            $(".desc").hide();
+            if (test == 3) {
+                $("#and1").show();
+                $("#and2").show();
+            } else {
+                $("#and" + test).show();
+            }
+
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $("#txtEditor").Editor();
+    });
+    $(document).ready(function () {
+        $("#txtEditor1").Editor();
+    });
+</script>
+<script>
+    $(".Plant").on("change", function (e) {
+        var PID = $(this).val();
+        //alert(PID)
+        //debugger;
+        $.getJSON("/Machines/FetchDept", { PID: PID }, function (data) {
+            $(".DepartmentID").empty();
+            $(".DepartmentID").append("<option value = ''> --Select Shop-- </option>")
+            $.each(data, function (index, item) {
+                $(".DepartmentID").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+            });
+        });
+    });
+
+    $(".DepartmentID").on("change", function (e) {
+        var DeptID = $(this).val();
+        //alert(DeptID)
+        $.getJSON("/Machines/FetchCat", { DeptID: DeptID }, function (data) {
+            $(".MachCat").empty();
+            $(".MachCat").append("<option value = ''> --Select Cell-- </option>")
+            $.each(data, function (index, item) {
+                $(".MachCat").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+            });
+        });
+    });
+</script>
+<script>
+    function changeplantstatus() {
+        var plantID = $("#plantID").val();
+        $("#PlantID").val(plantID);
+    }
+    function changedeptstatus() {
+        var DepartmentID = $("#DepartmentID").val();
+        $("#ShopID").val(DepartmentID);
+    }
+    function changecellstatus() {
+        var MachineCategoryID = $("#MachineCategoryID").val();
+        $("#CellID").val(MachineCategoryID);
+    }
+    function startdate() {
+        var startdate = $("#datetimepicker1").val();
+        $("#StartDateTime").val(startdate);
+    }
+    function enddate() {
+        var enddate = $("#datetimepicker2").val();
+        $("#EndDateTime").val(enddate);
+    }
+    function defaultandon() {
+        var DefaultAndon = $("#DefaultAndon").val();
+        $("#DefaultScreenVisible").val(DefaultAndon);
+        if (DefaultAndon == "0") {
+            $(".car").attr('required','required');
+        } else {
+            $(".car").removeAttr('required', 'required');
+        }
+    }
+    function lastclick() {
+        var htmlVal = $(".Editor-editor").html();
+        $("#TextToDisplay").val(htmlVal);
+    }
+
+    $(function () {
+        $("#datetimepicker1").val('');
+        $("#datetimepicker2").val('');
+        var DefaultAndon = '0';
+        $("#DefaultScreenVisible").val(DefaultAndon);
+    })
+</script>
+<script>
+    function imageFileChange(val) {
+        document.getElementById('preview1').src = window.URL.createObjectURL(val.files[0]);
+        document.getElementById('preview2').src = window.URL.createObjectURL(val.files[1])
+        document.getElementById('preview3').src = window.URL.createObjectURL(val.files[2])
+    }
+</script>

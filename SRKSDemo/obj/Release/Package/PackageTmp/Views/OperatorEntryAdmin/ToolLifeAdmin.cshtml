@@ -1,0 +1,60 @@
+﻿@model IEnumerable<SRKSDemo.ServerModel.tbltoollifeoperator>
+@{
+    ViewBag.Title = "ToolLifeAdmin";
+    Layout = "~/Views/Shared/_OperatorAdminLayout.cshtml";  
+}
+
+<div class="">
+    <div class="x_panel">
+        <div class="x_content">
+
+            <table id="datatable-fixed-header" class="table table-striped table-bordered dt-responsive nowrap ToolLifeData" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Sl No.</th>
+                        <th>Tool Number</th>
+                        <th>CT Code</th>
+                        <th>Tool Name</th>
+                        <th>Standard Tool Life</th>
+                        <th>Tool Life Counter</th>
+                        @*<th>Action</th>*@
+                    </tr>
+                </thead>
+                <tbody id="container">
+                    @Html.Partial("ToolLifeDataAdmin", Model)
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    //function resetCounter() {
+    //    var id = $("#sbmtModal").val();
+    //    var resetreason = $("#resetreason").val();
+    //    window.location = "/OperatorEntry/ResetToolLifeCounter?id=" + id + "&resetreason=" + resetreason + "";
+    //}
+    //function btnReset(val) {
+    //    $("#sbmtModal").val(val);
+    //}
+    //window.setInterval(function () {
+    //    $('.ToolLifeData').load('/OperatorEntryAdmin/ToolLifeDataAdmin');
+    //}, 15000);
+</script>
+<script type="text/javascript">
+   
+    
+        window.setInterval(function () {
+            window.reload();
+        @*var machineId = $("#machineId").val();
+        $.ajax({
+            url: '@Url.Action("ToolLifeDataAdmin")',
+            type: 'GET',
+            cache: false,
+            data: { machineId: machineId }
+        }).done(function (result) {
+            $('#container').html('');
+                $('#container').html(result);
+            });*@
+       
+    }, 15000);
+</script>

@@ -1,0 +1,32 @@
+﻿@model SRKSDemo.Server_Model.tblmodule
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%">Module Name </label>
+    @Html.TextBoxFor(model => model.Module, new { @id = "Module", @class = "form-control", @name = "Module", style = "width:89.7%", @placeholder = "Enter Module Name", @required = "required" })
+
+
+    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%">Module Display Name </label>
+    @Html.TextBoxFor(model => model.ModuleDispName, new { @id = "ModuleDispName", @class = "form-control", @name = "ModuleDispName", style = "width:89.7%", @placeholder = "Enter Module Display Name", @required = "required" })
+
+
+
+    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%">Module Description </label>
+    @Html.TextBoxFor(model => model.ModuleDesc, new { @id = "ModuleDescription", @class = "form-control", @name = "ModuleDescription", style = "width:89.7%", @placeholder = "Enter Module Description", @required = "required" })
+
+
+
+    <div style="width: 3%; display: inline-block; height: inherit"></div>
+    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+    <div style="width: 20%; display: inline-block; height: inherit"></div>
+    <input type="submit" value="Create" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit;margin-top:2%;background-color:orange;color:black;font-size:95%" />
+
+
+}
+

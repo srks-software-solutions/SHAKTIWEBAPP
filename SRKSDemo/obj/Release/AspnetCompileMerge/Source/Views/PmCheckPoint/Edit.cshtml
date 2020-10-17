@@ -1,0 +1,214 @@
+﻿@model SRKSDemo.PmCheckPoint
+@{
+    ViewBag.Title = "Check Point";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container body">
+    <div class="main_container">
+        <div class="right_col" role="main">
+            <div class="">
+
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Check Point </h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                @using (Html.BeginForm("Edit", "PmCheckPoint", FormMethod.Post))
+                                {
+
+                                    <div class="x_content">
+                                        <form class="form-horizontal form-label-left" novalidate>
+                                            <div class="row row-space">
+                                                @Html.HiddenFor(model => model.pmCheckPoint.pmcpID, new { @id = "pmcfID" })
+                                                <label class="col-sm-1 control-label">Plant</label>
+                                                <div class="col-sm-3">
+                                                    @Html.HiddenFor(model => model.pmCheckPoint.PlantID, new { @id = "plantID" })
+
+                                                    @Html.DropDownList("plant", null, "--Select plant--", new { @id = "plant", @class = "form-control", @name = "plant", @required = "required", @value = "@ViewData['plant']" })
+                                                </div>
+                                                <label class="col-sm-1 control-label">Shop</label>
+                                                <div class="col-sm-3">
+                                                    @Html.HiddenFor(model => model.pmCheckPoint.ShopID, new { @id = "shopID" })
+                                                    @Html.DropDownList("shop", null, "--Select Shop--", new { @id = "shop", @class = "form-control", @name = "shop", @required = "required", @value = "@ViewData['shop']" })
+                                                </div>
+                                                <label class="col-sm-1 control-label">Cell</label>
+                                                <div class="col-sm-3">
+                                                    @Html.HiddenFor(model => model.pmCheckPoint.CellID, new { @id = "CellID" })
+                                                    @Html.DropDownList("cell", null, "--Select Cell--", new { @id = "cell", @class = "form-control", @name = "cell", @required = "required", @value = "@ViewData['cell']" })
+                                                </div>
+                                                <label class="col-sm-1 control-label">Type Of CheckPoint</label>
+                                                <div class="col-sm-3">
+
+                                                    @Html.TextBoxFor(model => model.pmCheckPoint.TypeofCheckpoint, new { @id = "TypeOfCheckPoint", @class = "form-control", @name = "TypeOfCheckPoint", style = "width:89.7%", @placeholder = "Enter TypeOfCheckPoint", @required = "required" })
+                                                </div>
+                                                <label class="col-sm-1 control-label">Check List</label>
+                                                <div class="col-sm-3">
+                                                    @Html.TextBoxFor(model => model.pmCheckPoint.CheckList, new { @id = "CheckList", @class = "form-control", @name = "CheckList", style = "width:89.7%", @placeholder = "Enter CheckList", @required = "required" })
+                                                </div>
+                                                <label class="col-sm-1 control-label">How</label>
+                                                <div class="col-sm-3">
+                                                    @Html.TextBoxFor(model => model.pmCheckPoint.How, new { @id = "How", @class = "form-control", @name = "How", style = "width:89.7%", @placeholder = "Enter How", @required = "required" })
+                                                </div>
+                                                <label class="col-sm-1 control-label">Value</label>
+                                                <div class="col-sm-3">
+                                                    @Html.TextBoxFor(model => model.pmCheckPoint.Value, new { @id = "Value", @class = "form-control", @name = "Value", style = "width:89.7%", @placeholder = "Enter Value", @required = "required" })
+                                                </div>
+                                                <label class="col-sm-1 control-label">Frequency</label>
+                                                <div class="col-sm-3">
+                                                    @Html.TextBoxFor(model => model.pmCheckPoint.frequency, new { @id = "Frequency", @class = "form-control", @name = "Frequency", style = "width:89.7%", @placeholder = "Enter Frequency", @required = "required" })
+
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="generate-btn">
+                                            <a id="" href="/PmCheckPoint/Index" type="submit" class="btn btn-new"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                                            <button type="submit" class="btn btn-new float-right updatebtn"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Update</button>
+
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    @Html.HiddenFor(model => model.pmCheckPoint.CreatedOn, new { @id = "CreatedOn" })
+    @Html.HiddenFor(model => model.pmCheckPoint.CreatedBy, new { @id = "CreatedBy" })
+    @Html.HiddenFor(model => model.pmCheckPoint.Isdeleted, new { @id = "IsDeleted" })
+    <script src="~/js/jquery-2.1.4.min.js"></script>
+    @if (TempData["Message"] != null)
+    {
+        <input type="hidden" id="Message" value="@TempData["Message"]" />
+        <script type="text/javascript">
+            $(function () {
+                var message = $("#Message").val();
+                if (message != "") {
+                    $("#errorMessage").html(message);
+
+
+                }
+            });
+        </script>
+    }
+
+    <script>
+        $(document).on('click', '.updatebtn', function (e) {
+            var pmcpid = $("#pmcfID").val();
+            var plant = $("#plant").val();
+            var shop = $("#shop").val();
+            var cell = $("#cell").val();
+            var typeofcheckpoint = $("#TypeOfCheckPoint").val();
+            var checklist = $("#CheckList").val();
+            var How = $("#How").val();
+            var frequency = $("#Value").val();
+            var value = $("#Frequency").val();
+            $.get("/PmCheckPoint/update", {
+                plant: plant, shop: shop, cell: cell, typeofcheckpoint: typeofcheckpoint, value: value, How: How,
+                frequency: frequency, pmcpid: pmcpid, checklist: checklist
+            }, function (res) {
+                if (res != null) {
+                    alert("Data Updated successfully");
+                    window.location.href = "/PmCheckPoint/Index";
+                }
+                alert("Data Updated successfully");
+                window.location.href = "/PmCheckPoint/Index";
+            });
+
+        });
+    </script>
+    <script>
+        $(".control").on("click", function (e) {
+            var CellID = $(this).attr("id")
+            //alert(CellCategoryID)
+            $.getJSON("/PmCheckPoint/GetcheckpointById", { Id: CellID }, function (data) {
+                $.each(data, function (index, item) {
+                    $("#TypeOfCheckPoint").val((item.typeofcheckpoint));
+
+
+                });
+            }
+                                            }
+
+
+    </script>
+    <script>
+        $(document).ready(function (e) {
+
+                   // $(".BottelneckMachine").on("click", function (e) {
+            var pmcpid = $("#pmcfID").attr("id");
+                    $.getJSON("/PmCheckPoint/GetcheckpointById", { pmcpid: pmcpid }, function (data) {
+                        $.each(data, function (index, item) {
+                            //$("#pmcfID").val(item.pmc
+                            //$("#plant").val(item.plant);
+                            //$("#shop").val((item.shop));
+                            //$("#cell").val((item.cell));
+                            //$("#TypeOfCheckPoint").val((item.TypeOfCheckPoint));pid);
+                            //$("#CheckList").val((item.CheckList));
+                            //$("#How").val((item.how));
+                            //$("#Value").val((item.Value));
+                            //$("#Frequency").val((item.Frequency));
+
+                            var PID = item.plant;
+                            $.getJSON("/PmCheckList/FetchShop", { PID: PID }, function (data) {
+                                $("#shop").empty();
+                                $("#shop").append("<option value = ''> --Select shop-- </option>");
+                                $.each(data, function (index, item) {
+                                    $("#shop").append("<option value = '" + item.Value + "'>" + item.Text + "</option>");
+                                });
+                                $("#shop").val(item.shop);
+                            });
+
+
+                            var SID = item.shop;
+                            $.getJSON("/PmCheckList/FetchCell", { SID: SID }, function (data) {
+                                $("#cell").empty();
+                                $("#cell").append("<option value = ''> --Select cell-- </option>");
+                                $.each(data, function (index, item) {
+                                    $("#cell").append("<option value = '" + item.Value + "'>" + item.Text + "</option>");
+                                });
+                                $("#cell").val(item.cell);
+                            });
+                            //var PID = $(this).val();
+                            //$.getJSON("/BottelNeckMachine/FetchShop", { PID: PID }, function (data) {
+                            //    $("#shop").empty();
+                            //    $("#shop").append("<option value = ''> --Select shop-- </option>");
+                            //    $.each(data, function (index, item) {
+                            //        $("#shop").append("<option value = '" + item.Value + "'>" + item.Text + "</option>");
+                            //    });
+                            //    $("#shop").val(item.DepartmentId);
+                            //});
+
+                            //$("#shop").on("change", function (e) {
+                            //    var SID = $(this).val();
+                            //    var PID = $("#plant").val();
+                            //    $.getJSON("/BottelNeckMachine/FetchCell", { PID: PID, SID: SID }, function (data) {
+                            //        $("#cell").empty();
+                            //        $("#cell").append("<option value = ''> --Select Cell-- </option>");
+                            //        $.each(data, function (index, item) {
+                            //            $("#cell").append("<option value = '" + item.Value + "'>" + item.Text + "</option>");
+                            //        });
+                            //        $("#cell").val(item.cellID);
+                            //    });
+                            //});
+
+
+                        });
+                    });
+                    return false;
+            });
+    </script>
+

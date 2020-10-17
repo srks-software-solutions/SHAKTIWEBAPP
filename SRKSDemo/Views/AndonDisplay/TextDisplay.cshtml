@@ -1,0 +1,72 @@
+﻿@model SRKSDemo.Server_Model.tblAndonImageTextScheduledDisplay
+@{
+    ViewBag.Title = "TextDisplay";
+    Layout = "~/Views/Shared/ImageTextLayout.cshtml";
+}
+<style type="text/css">
+    html, body {
+        height: 100%;
+        margin: 0;
+        background: #ffffff;
+    }
+
+    #wrapper {
+        min-height: 100%;
+    }
+</style>
+<div class="right_col" id="wrapper" style="margin-left: 0px;">
+    <div class="row">
+                        <div class="col-sm-12" id="divTxt">
+                            <div style="display: table; height: 400px; position: relative;
+                                overflow: hidden;">
+                                <div style="position: absolute; top: 50%;display: table-cell; vertical-align: middle;">
+                                    <!-- Write backend code here -->
+                                    <input type="hidden" id="txtToDisplay" value=" @TempData["TextToDisplay"]" />
+                                </div>
+                            </div>
+                        </div>
+    </div>
+</div>
+<!-- jQuery -->
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var myInterval = false;
+        myInterval = setInterval(function () {
+            var iScroll = $(window).scrollTop();
+            if (iScroll + $(window).height() == $(document).height()) {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 1000);
+            } else {
+                iScroll = iScroll + 550;
+                $('html, body').animate({
+                    scrollTop: iScroll
+                }, 2000);
+            }
+        }, 2000);
+    });
+</script>
+<script>
+    $(function () {
+        var dta = $("#txtToDisplay").val();
+        $("#divTxt").html(dta);
+    })
+</script>
+<script>
+    $(function () {
+        var cellId = $("#cellIdSession").val();
+        $.ajax({
+            type: "POST",
+            data: { 'cellId': cellId, 'Page': 4 },
+            url: "/AndonDisplay/GetStatus",
+            async: false,
+            success: function (data) {
+                $("#cycleType").val(data);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("", "There is some issue in network");
+            }
+        });
+    });
+</script>

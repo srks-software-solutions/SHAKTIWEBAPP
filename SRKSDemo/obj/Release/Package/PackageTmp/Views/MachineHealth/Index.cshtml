@@ -1,0 +1,123 @@
+﻿@{
+
+    ViewBag.Title = "MachineHealth";
+    Layout = "~/Views/Shared/layoutnew.cshtml";
+}
+
+
+
+<div class="item">
+
+    <div class="col-sm-12">
+        <div style="text-align:center;color:white"><h3>Machine Health Monitor</h3></div>
+    </div>
+</div>
+
+<div class="clear-fix"></div>
+
+
+<div class="row">
+    <div class="col-lg-3 col-sm-3 col-xs-3">
+        <div class="dropdown" style="padding-left:10px;">
+            <input type="hidden" id="minvalue" value="@ViewBag.item" />
+            <input type="hidden" id="maxvalue" value="@ViewBag.items" />
+            @Html.DropDownList("Plant", null, "Select Plant", new { @id = "PlantID", @class = "form-control", @name = "PlantName", @required = "required", @value = ViewData["Plant"] })
+        </div>
+
+    </div>
+
+
+    <div class="col-lg-3 col-sm-3 col-xs-3">
+        <div class="dropdown">
+            @Html.DropDownList("Shop", null, "Select Shop", new { @id = "shop", @class = "form-control Shop", @name = "ShopName", @required = "required", @value = ViewData["Shop"] })
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-sm-3 col-xs-3">
+        <div class="dropdown">
+            @Html.DropDownList("Cell", null, "Select Cell", new { @id = "cell", @class = "form-control", @name = "CellName", @required = "required", @value = ViewData["Cell"] })
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-sm-3 col-xs-3">
+        <div class="dropdown" style="padding-right:10px;">
+            @Html.DropDownList("Machine", null, "Select Mahine", new { @id = "Machine", @class = "form-control", @name = "MachineName", @required = "required", @value = ViewData["Machine"] })
+        </div>
+    </div>
+</div>
+<div class="clear-fix"></div>
+@*<br />*@
+<div class="row">
+    <div class="col-lg-3 col-sm-3 col-xs-3">
+        <div class="dropdown" style="padding-left:10px;">
+            @Html.DropDownList("Parameter", null, "Select Parameter Name", new { @id = "SMID_parameters1", @class = "form-control", @name = "SensorDesc", @required = "required", @value = ViewData["Parameter"] })
+        </div>
+
+    </div>
+
+    <div class="col-lg-3 col-sm-3 col-xs-3">
+        <div class="textbox">
+            @Html.TextBox("txtFrmDate", DateTime.Now.ToString("dd-MMM-yyyy"), new { @Class = "textinput", @readonly = "readonly" })
+        </div>
+
+    </div>
+</div>
+<div class="item">
+    <div class="col-sm-12">
+        <div class="dash-img-border" style="margin-top:13px;">
+            <div style="padding: 0 0px 0 19px;"><span class="dash-title">Test</span></div>
+            <div class="chartwrapper">
+                <div id="chartdiv1" class="chartdiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-sm-3 col-xs-3">
+    <div class="dropdown">
+        @Html.DropDownList("Parameter", null, "Select Parameter Name", new { @id = "SMID_parameters2", @class = "form-control", @name = "SensorDesc", @required = "required", @value = ViewData["Parameter"] })
+    </div>
+</div>
+<div class="item">
+    <div class="col-sm-12">
+        <div class="dash-img-border" style="margin-top:13px;">
+            <div style="padding: 0 0px 0 19px;"><span class="dash-title">Test</span></div>
+            <div class="chartwrapper">
+                <div id="chartdiv2" class="chartdiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-sm-3 col-xs-3">
+    <div class="dropdown">
+        @Html.DropDownList("Parameter", null, "Select Parameter Name", new { @id = "SMID_parameters3", @class = "form-control", @name = "SensorDesc", @required = "required", @value = ViewData["Parameter"] })
+    </div>
+</div>
+<div class="item">
+    <div class="col-sm-12">
+        <div class="dash-img-border" style="margin-top:13px;">
+            <div style="padding: 0 0px 0 19px;"><span class="dash-title">Test</span></div>
+            <div class="chartwrapper">
+                <div id="chartdiv3" class="chartdiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- jQuery -->
+<!-- Bootstrap -->
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="~/js/swiper.min.js"></script>
+<script src="~/js/moment/amcharts.js"></script>
+<script src="~/js/moment/serial.js"></script>
+<script src="~/js/moment/gauge.js"></script>
+<script src="~/js/moment/light.js"></script>
+@*<script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+    <script src="https://www.amcharts.com/lib/3/gauge.js"></script>
+    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>*@
+@*<script src="~/js/moment/dataloader.min.js"></script>*@
+<script src="~/js/moment/Health.js"></script>

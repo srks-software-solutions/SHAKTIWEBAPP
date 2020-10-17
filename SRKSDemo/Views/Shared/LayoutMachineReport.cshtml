@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SRKSDemo</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/120px-Tata_logoicon.ico" />
+    <!-- bootstrap -->
+    <link href="~/css/bootstrap/bootstrap.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/css/font-awesome-4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/toastr.css">
+
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/css/pe-icon-7-filled.css">
+    <link rel="stylesheet" type="text/css" href="~/css/pe-icon-7-stroke.css">
+
+
+    <style>
+        div.header {
+            -webkit-text-size-adjust: 100%;
+            font-size: 2vw;
+            color: blue;
+        }
+
+        body {
+            background: #fff;
+        }
+    </style>
+
+    @*    <style>
+            div.parent3 {
+                border-bottom: 1px solid red;
+                width: 100%;
+                color: blue;
+            }
+            div.parent1 {
+
+                width: 100%;
+                color: blue;
+            }
+            div.childMDetails {
+                width: 20%;
+                float: left;
+                -webkit-text-size-adjust: 100%;
+                font-size: 1.2vw;
+                color: blue;
+            }
+        </style>
+
+            <style>
+            div.parent {
+                border: 2px solid red;
+                width: 100%;
+                color: blue;
+                border: none;
+                height: 3vh;
+            }
+
+            div.childcolor {
+                width: 5%;
+                height: 90%;
+                float: right;
+                -webkit-text-size-adjust: 100%;
+                display: inline;
+                margin-left: 1vw;
+                text-align: right;
+                border-radius: 10px;
+            }
+
+            div.childtext {
+                width: auto;
+                height: 90%;
+                float: right;
+                -webkit-text-size-adjust: 100%;
+                font-size: 1vw;
+                color: black;
+                display: inline;
+                text-align: left;
+                /*margin-right: 1vw;
+                border-radius: 10px;*/
+                font-family: Calibri;
+                font-style: oblique;
+                font-weight: bold;
+            }
+        </style>*@
+
+</head>
+<body onload="startTime()" style="width: 100%;">
+    <div id="wrapper" style="width: 100%;">
+        <div id="top">
+            @if (ViewBag.roleid < 3)
+            {
+                <div class="main-logo">
+                    <a href="~/Dashboard/Index" onclick="return true;">
+                        <img src="~/Images/120px-Tata_logo.png" style="width:35%;height:35%" />
+                    </a>
+                    @*<p style="color:green;font-size:100%;">@Html.ActionLink("Tata", "Index", "Dashboard", new { @Styles="font-size:70%"})</p>*@
+                </div>
+            }
+            @if (ViewBag.roleid == 3)
+            {
+                <div class="main-logo">
+                    <a href="~/HMIScree/Index" onclick="return true;">
+                        <img src="~/Images/120px-Tata_logo.png" style="width: 35%; height: 35%" />
+                    </a>
+                </div>
+            }
+            @*  @if (ViewBag.roleid == 4)
+                {
+                <div class="main-logo">
+                    <a href="~/MimicsDashboard/Index" onclick="return true;">
+                        <img src="~/Images/120px-Tata_logo.png" style="width:35%;height:35%" /></a>
+                </div>
+                }*@
+
+            @* @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+                {
+                       <a href="~/Dashboard/Index.cshtml" style="padding-top:1%">.
+                       <div class="main-logo">
+                               @Html.ActionLink("Mimics Dashboard", "Index", "MimicsDashboard", new { }, new { @class = "btn btn-lavender ", @style = "color:white;backgroundcolor:brown;font-size:90%" })
+                       </div>
+                           </a>
+                }*@
+
+            @if (ViewBag.roleid == 5)
+            {
+                <a href="~/Dashboard/Index.cshtml">
+                    .
+                    <div class="main-logo" style="padding-top:1%">
+                        @*<a href="~/Dashboard/Index.cshtml">Dashboard</a>*@
+                        @Html.ActionLink("Dashboard", "Index", "Dashboard", new { }, new { @class = "btn btn-lavender ", @style = "color:white;backgroundcolor:brown;font-size:90%" })
+                        @*<img src="~/Images/120px-Tata_logo.png" style="width: 35%; height: 35%" /></a>*@
+                        @*<p style="color:green;font-size:100%;">@Html.ActionLink("Tata", "Index", "Dashboard", new { @Styles="font-size:70%"})</p>*@
+                    </div>
+                </a>
+            }
+            @*@if (ViewBag.roleid == 4)
+                {
+                    <a href="~/MachineStatus/Index.cshtml" style="padding-top:1%">.
+                    <div class="main-logo">
+                            @Html.ActionLink("Mimics Dashboard", "Index", "MimicsDashboard", new { }, new { @class = "btn btn-lavender ", @style = "color:white;backgroundcolor:brown;font-size:90%" })
+                    </div>
+                        </a>
+                }*@
+
+            <div style="width:40%;float:left;padding-left:10%;display:inline;color:white;text-align:center;font-size:1.8vw;padding-top:.5%">
+                Shop Floor RealTime Status
+            </div>
+
+
+            <div class="profile-nav" style="display:inline;float:right">
+                <div style="display: inline; color: white">
+                    Welcome  @ViewBag.Logout
+                </div>
+
+
+                <div style="display: inline; color: white;">
+                    @*@Html.ActionLink("Logout", "Logout", "Login", new { @class="btn red btn-primary", @style="color:white"})*@
+                    <b><a href="~/Login/Logout" class="btn red">Logout</a>  </b>
+                </div>
+            </div>
+
+            <div style="float: right;display:inline;padding-right:5%;padding-top:.5%">
+                <ul>
+                    <li style="color:white">
+                        @*<span id="time" style="color:white"></span>*@
+                        @ViewBag.StartDate
+                    </li>
+                </ul>
+            </div>
+
+            @*to display the TimeLine*@
+            <!--<div id="top"  style="top:10%;height:auto;padding-left:0px;overflow:hidden;width:100%;margin-left:0px">
+                <div  class="parent3" style="padding-left: 1%">
+                    @for (var i = 0; i <= 24; i++)
+                    {
+                        var val = (i + 6) % 24;
+                        if (val == 0)
+                        { val = 00; }
+                        if (val > 9)
+                        {
+                        <div class="child">
+                            @val:00
+                        </div>
+                }
+                else
+                {
+                    var val1 = "0" + val;
+                        <div class="child">
+                            @val1:00
+                        </div>
+                }
+            }
+                </div>
+                <div class="parent3" style="padding-left: 1%">
+                    @for (var i = 0; i <= 48; i++)
+                    {
+                        if (i % 2 == 0)
+                        {
+                        <div class="child1">
+                            00
+                        </div>
+                }
+                else
+                {
+                        <div class="child1">
+                            30
+                        </div>
+                }
+            }
+                </div>
+                <br />
+                <div class="parent3" style="padding-left: 1%">
+                    @for (var i = 0; i <= 48; i++)
+                    {
+                        <div class="child1">
+                            |
+                        </div>
+                    }
+                </div>
+            </div>-->
+            @*Endof to display the TimeLine*@
+
+
+        </div>
+
+        @RenderBody()
+    </div>
+
+    <!-- /content -->
+    <footer class="footer">
+        <a href="http://www.srkssolutions.com/">2016 � SRKS Software Solutions</a>
+    </footer>
+
+    <!-- /wrapper -->
+
+</body>
+</html>
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="~/js/prefixfree.min.js"></script>
+<script type="text/javascript" src="~/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="~/js/jquery-ui.js"></script>
+<script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/js/excanvas.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.flot.js"></script>
+<script type="text/javascript" src="~/js/jquery.flot.resize.js"></script>
+<script type="text/javascript" src="~/js/jquery.sparkline.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.hashchange.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.easytabs.min.js"></script>
+<script type="text/javascript" src="~/js/toastr.min.js"></script>
+@*turnoff autocomplete in all input fields*@
+<script>
+    $(document).ready(function () {
+        $(document).on('focus', ':input', function () {
+            $(this).attr('autocomplete', 'off');
+        });
+    });
+</script>
+<script>
+    $(window).load(function () {
+
+        //for dummy loading screen
+        $('#loading').fadeOut(1000);
+
+        //for dropdown collapse
+        $('.collapsible > a').click(function () {
+            $(this).parent().toggleClass('open');
+            if ($(this).parent().siblings().hasClass('open')) {
+                $(this).parent().siblings().removeClass('open');
+            }
+            return false;
+        });
+    });
+</script>
+<script>
+    function startTime() {
+        var today = new Date();
+        //testing
+        //alert(today);
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        var mon = today.getMonth();
+        var date = today.getDate() + "/" + (mon+1) + "/" + today.getFullYear();
+        document.getElementById('time').innerHTML = date +" "+ h + ":" + m + ":" + s;
+        var t = setTimeout(function () { startTime() }, 500);
+    }
+
+    function checkTime(i) {
+        if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+        return i;
+    }
+</script>

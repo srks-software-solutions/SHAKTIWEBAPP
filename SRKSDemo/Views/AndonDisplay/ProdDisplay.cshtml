@@ -1,0 +1,315 @@
+﻿@model IList<SRKSDemo.Server_Model.tbl_ProdAndonDisp>
+@{
+    ViewBag.Title = "Production Status of Machine";
+    int count = Model.Count();
+    Layout = "~/Views/Shared/_VHMILayout.cshtml";
+    int jd1 = 1;
+    int slno = 1;
+    int[,] colorval = new int[ViewBag.macCount, 10];
+    colorval = (int[,])Session["colordata"];
+
+    int[] machineids = new int[ViewBag.macCount];
+    // machineids = Session["macid"];
+
+    int[] machids = new int[ViewBag.macCount];
+    machids = (int[])Session["macid"];
+    int maclopper = 0;
+    foreach (var item in machids)
+    {
+        machineids[maclopper++] = Convert.ToInt32(item);
+    }
+}
+<input type="hidden" id="cycleType" value="1,1,0,0-1" />
+<input type="hidden" id="cellIdSession" value="@Session["CellId"].ToString()" />
+<div class="right_col" role="main" style="margin-left: 0px;">
+    <style>
+        .dataTables_info {
+            display: none;
+        }
+    </style>
+    <div class="panel-group mar-t-60" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        @ViewBag.CellName
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body" id="body-table">
+                    @for (var n = 1; n <= ViewBag.macCount; n++)
+                    {
+                        slno = 1;
+
+        <table class="andon-table table">
+            <thead>
+                @for (var ja = 0; ja < count; ja++)
+                {
+                    if (Model[ja].MachineID == machineids[n - 1])
+                    {
+                        <tr>
+                            <th colspan="14" class="main-table-header">@Model[ja].tblmachinedetail.MachineDisplayName</th>
+                        </tr>
+                        <tr>
+                            <th>Sl no.</th>
+                            <th>Work_Order_No.</th>
+                            <th>PartNo</th>
+                            <th>Opn. No.</th>
+                            <th>Operator ID</th>
+                            <th>Target_Qty</th>
+                            <th>Processed Qty.</th>
+                            <th>Delivered_Qty</th>
+                            <th>Scrap Qty</th>
+                            @*<th>Total Qty</th>*@
+                            <th>Utilization %</th>
+                            <th>Total Operating Time</th>
+                            <th>Total Setup</th>
+                            <th>Total Loss</th>
+                        </tr>
+                        break;
+                    }
+                }
+               
+            </thead>
+            <tbody>
+                @for (var j = 0; j < count; j++)
+                {
+                    if (Model[j].MachineID == machineids[n - 1])
+                    {
+                <tr>
+                    <td>@slno</td>
+                    <td>@Model[j].tbllivehmiscreen.Work_Order_No</td>
+                    <td>@Model[j].tbllivehmiscreen.PartNo</td>
+                    <td>@Model[j].tbllivehmiscreen.OperationNo</td>
+                    <td>@Model[j].tbllivehmiscreen.OperatorDet</td>
+                    <td>@Model[j].tbllivehmiscreen.Target_Qty</td>
+                    <td>@Model[j].tbllivehmiscreen.ProcessQty</td>
+                    <td>@Model[j].tbllivehmiscreen.Delivered_Qty</td>
+                    <td>@Model[j].tbllivehmiscreen.Rej_Qty</td>
+
+                    <td>@Model[j].UtilPercent %</td>
+                    <td>@Model[j].TotalOperatingTime</td>
+                    <td>@Model[j].TotalSetup</td>
+                    <td>@Model[j].TotalLoss</td>
+                    @*<td>@Model[j].tbllivehmiscreen.ProdOrderQty</td>*@
+
+
+                </tr>
+                        slno++;
+                    }
+                }
+            </tbody>
+        </table>
+    }
+                </div>
+            </div>
+        </div>
+    </div><!-- /.panel-group -->
+</div>
+
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+<script src="~/js/jquery.cookie.js"></script>
+@*<script>
+    var jq = jQuery.noConflict();
+    setTimeout(function () {
+        var dataLoadFromServer = $("#cycleType").val();
+        var nextUrl = "";
+        var pageStatus = "";
+        var cookieValue = jq.cookie("timerCookie");
+        var cellId = $("#cellIdSession").val();
+        var nextPageStatusCookie = jq.cookie("pageStatus");
+        if (nextPageStatusCookie == null) {
+            nextPageStatusCookie = dataLoadFromServer;
+        }
+        $.ajax({
+            type: "POST",
+            data: { 'pageStatus': nextPageStatusCookie, 'cellId': cellId },
+            url: "/AndonDisplay/CookiePageRedirector",
+            async: false,
+            success: function (data) {
+                var arry = data.split('%');
+                nextUrl = arry[0];
+                pageStatus = arry[1];
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("", "There is some issue in network");
+            }
+        });
+
+        if (cookieValue == null || cookieValue == "") {
+            var count = parseInt(1);
+            jq.cookie('timerCookie', count);
+            jq.cookie('pageStatus', nextPageStatusCookie);
+        } else {
+            var cookieValueToIncrease = jq.cookie("timerCookie");
+            var intCookieValue = parseInt(cookieValueToIncrease) + 1;
+            jq.cookie('timerCookie', intCookieValue);
+        }
+        if (parseInt(cookieValue) > 1) {
+            jq.removeCookie("timerCookie");
+            jq.cookie('pageStatus', pageStatus);
+            window.location.href = nextUrl;
+        }
+        else {
+            window.location.reload();
+        }
+    }, 30000);
+</script>*@
+<script>
+    var jq = jQuery.noConflict();
+    setTimeout(function () {
+        var dataLoadFromServer = $("#cycleType").val();
+        var nextUrl = "";
+        var pageStatus = "";
+        var cellId = $("#cellIdSession").val();
+        var cookieValue = jq.cookie("timerCookie");
+        var nextPageStatusCookie = jq.cookie("pageStatus");
+        if (cookieValue == "NaN" || typeof cookieValue == "undefined") {
+            jq.cookie('timerCookie', '');
+            jq.cookie('pageStatus', '');
+            window.location.reload();
+        }
+
+        if (nextPageStatusCookie == "") {
+
+            nextPageStatusCookie = dataLoadFromServer;
+        }
+        var arrySplitItemFromDb = dataLoadFromServer.split('-');
+        var arrySplitItemFromCookiee = nextPageStatusCookie.split('-');
+        if (arrySplitItemFromCookiee[0] == arrySplitItemFromDb[0])
+        {
+            $.ajax({
+                type: "POST",
+                data: { 'pageStatus': nextPageStatusCookie, 'cellId': cellId },
+                url: "/AndonDisplay/CookiePageRedirector",
+                async: false,
+                success: function (data) {
+                    var arry = data.split('%');
+                    nextUrl = arry[0];
+                    pageStatus = arry[1];
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                   // alert("", "There is some issue in network");
+                }
+            });
+            if (cookieValue == null || cookieValue == "") {
+                var count = parseInt(1);
+                jq.cookie('timerCookie', count);
+                jq.cookie('pageStatus', nextPageStatusCookie);
+            }
+            else {
+                var cookieValueToIncrease = jq.cookie("timerCookie");
+                var intCookieValue = parseInt(cookieValueToIncrease) + 1;
+                jq.cookie('timerCookie', intCookieValue);
+            }
+            if (parseInt(cookieValue) > 1) {
+                jq.removeCookie("timerCookie");
+                jq.cookie('pageStatus', pageStatus);
+                window.location.href = nextUrl;
+            }
+            else {
+                window.location.reload();
+            }
+        } else {
+            nextPageStatusCookie = dataLoadFromServer;
+            $.ajax({
+                type: "POST",
+                data: { 'pageStatus': nextPageStatusCookie, 'cellId': cellId },
+                url: "/AndonDisplay/CookiePageRedirector",
+                async: false,
+                success: function (data) {
+                    var arry = data.split('%');
+                    nextUrl = arry[0];
+                    pageStatus = arry[1];
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                  //  alert("", "There is some issue in network");
+                }
+            });
+            if (cookieValue == null || cookieValue == "") {
+                var count = parseInt(1);
+                jq.cookie('timerCookie', count);
+                jq.cookie('pageStatus', nextPageStatusCookie);
+            }
+            else {
+                var cookieValueToIncrease = jq.cookie("timerCookie");
+                var intCookieValue = parseInt(cookieValueToIncrease) + 1;
+                jq.cookie('timerCookie', intCookieValue);
+            }
+            //if (parseInt(cookieValue) > 1) {
+            //    jq.removeCookie("timerCookie");
+            //    jq.cookie('pageStatus', pageStatus);
+            //    window.location.href = nextUrl;
+            //}
+            //else {
+                jq.removeCookie("timerCookie");
+                jq.cookie('pageStatus', pageStatus);
+                window.location.href = nextUrl;
+                //window.location.reload();
+            //}
+        }
+    }, 30000);
+</script>
+<script>
+    jq(function () {
+        var cellId = jq("#cellIdSession").val();
+        jq.ajax({
+            type: "POST",
+            data: { 'cellId': cellId, 'Page': 2  },
+            url: "/AndonDisplay/GetStatus",
+            async: false,
+            success: function (data) {
+                jq("#cycleType").val(data);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("", "There is some issue in network");
+            }
+        });
+    });
+</script>
+@*<script>
+    var jq = jQuery.noConflict();
+    setTimeout(function () {
+
+        var cookieValue = jq.cookie("timerCookie");
+        if (cookieValue == null || cookieValue == "") {
+            var count = parseInt(1);
+            jq.cookie('timerCookie', count);
+        } else {
+            var cookieValueToIncrease = jq.cookie("timerCookie");
+            var intCookieValue = parseInt(cookieValueToIncrease) + 1;
+            jq.cookie('timerCookie', intCookieValue);
+        }
+        if (parseInt(cookieValue) == 3) {
+            jq.removeCookie("timerCookie");
+            window.location.href = '/AndonDisplay/MachineStatus';
+        }
+        else {
+            window.location.reload();
+        }
+    }, 60000);
+</script>*@
+
+@*<script>setTimeout(function () { window.location.reload(); }, 60000 * 1)</script>*@
+
+@*<script>
+    var jq = jQuery.noConflict();
+    jq(document).ready(function () {
+        var myInterval = false;
+        myInterval = setInterval(function () {
+            var iScroll = jq(window).scrollTop();
+            if (iScroll + jq(window).height() == jq(document).height()) {
+                jq('html, body').animate({
+                    scrollTop: 0
+                }, 1000);
+            } else {
+                iScroll = iScroll + 550;
+                jq('html, body').animate({
+                    scrollTop: iScroll
+                }, 2000);
+            }
+        }, 12000);
+    });
+</script>*@
+

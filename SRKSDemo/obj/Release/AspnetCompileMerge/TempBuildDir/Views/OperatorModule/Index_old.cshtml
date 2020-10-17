@@ -1,0 +1,148 @@
+﻿@model i_facility.Models.OperatorModule
+    @{
+        ViewBag.Title = "Index";
+        var slno = 1;
+    }
+
+
+    <h2></h2>@* induces gap between button and container top*@
+    <div style="width: 2%; display: inline-block; height: inherit"></div>
+    @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+    {
+        @Html.ActionLink("Add New", "Create", new { }, new { @class = "btn orange btn-lg ", @style = "color:black;width:30%;height:70%;backgroundcolor:red;font-size:90%" })
+
+        <button type="button" class="btn orange btn-lg import" style = "color:black;width:30%;height:70%;backgroundcolor:red;font-size:90%" ><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Import</button>
+
+        @*@Html.ActionLink("Import", "ImportOperatorData", new { }, new { @class = "btn orange btn-lg Import", @style = "color:black;width:30%;height:70%;backgroundcolor:red;font-size:90%" })*@
+
+        @Html.ActionLink("Export", "ExportOperatorData", new { }, new { @class = "btn orange btn-lg ", @style = "color:black;width:30%;height:70%;backgroundcolor:red;font-size:90%" })
+
+    }
+    <div class="wrp clearfix">
+        <div class="fluid">
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title" style="font-size: 125%">
+                        Operator Details
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+                    <div class="widget__content table-responsive table-hover">
+
+                        @if (Session["Error"] != null)
+                        {
+                            <div id="Error">
+                                <pre>
+<span style="font-family:Calibri">@Session["Error"]</span>
+                            </pre>
+                            </div>
+                            Session["Error"] = null;
+                        }
+
+                        <table class="table">
+                            <thead>
+                                <tr class="text-centre" style="background-color: orange">
+                                    <th style="text-align: center; font-size: 95%">Sl.No.</th>
+                                    <th style="text-align: center; font-size: 95%">Dept</th>
+                                    <th style="text-align: center; font-size: 95%">Operator Name</th>
+                                    <th style="text-align: center; font-size: 95%">Operator Id</th>
+
+                                    @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+                                    {
+                                        <th style="text-align: center; font-size: 95%">Edit</th>
+                                        <th style="text-align: center; font-size: 95%">Delete</th>
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="spacer"></tr>
+                                <tr class="spacer"></tr>
+                                @foreach (var item in Model.OPdetailsList)
+                                {
+                                <tr>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @slno
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.Dept)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.OperatorName)
+                                    </td>
+                                    <td style="width: auto; text-align: center; font-family: Helvetica; font-size: 85%">
+                                        @Html.DisplayFor(modelItem => item.OperatorID)
+                                    </td>
+
+                                    @if (ViewBag.roleid == 1 || ViewBag.roleid == 2)
+                                    {
+                                        <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Edit">
+                                            @Html.ActionLink(" ", "Edit", new { id = item.OPID }, new { @class = " blue  btn-lg fa fa-edit", @style = "color:white;text-decoration:none" })
+                                        </td>
+                                        <td style="width: auto; text-align: center; font-family: Helvetica" data-toggle="tooltip" title="Delete">
+                                            @{
+                                                var id = item.OPID;
+                                                @Html.ActionLink(" ", "Delete", new { id = item.OPID }, new { @id = id, @class = " red btn-lg fa fa-trash DeleteModel", @style = "color:white;text-decoration:none" })
+                                            }
+                                        </td>
+                                    }
+                                </tr>
+                                    slno = slno + 1;
+                                }
+                                <tr class="spacer"></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+                <!-- /widget-content -->
+
+            </div>
+            <!-- /widget -->
+        </div>
+        <div id="dialog-confirm" title=" Delete Confirmation ?" style="height: 5%; color: blue">
+            <p>
+            </p>
+        </div>
+    </div>
+
+    <script src="~/js/jquery-2.1.4.min.js"></script>
+
+
+    <script>
+        setTimeout(function () {
+            $('#Error').fadeOut('slow');
+        }, 15000); // <-- time in milliseconds
+    </script>
+
+
+    <script>
+        //This model window is from https://jqueryui.com/dialog/#modal-confirmation
+        $(".DeleteModel").on("click", (function (e) {
+            var MyHref = $(this).prop('href');
+            e.preventDefault();
+            $("#dialog-confirm").dialog({
+                dialogClass: 'myTitleClass',
+                resizable: true,
+                height: 50,
+                modal: true,
+                buttons: {
+                    "Delete Plant": function () {
+                        window.location.href = MyHref;
+                    },
+                    Cancel: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        }));
+    </script>
+
+<script>
+    $(document).on("click", ".import", function (e) {
+        window.location = "/OperatorModule/ImportOperator";
+    });
+
+</script>

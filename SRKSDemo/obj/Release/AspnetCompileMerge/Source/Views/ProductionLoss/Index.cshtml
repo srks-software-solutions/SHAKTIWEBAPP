@@ -1,0 +1,601 @@
+﻿@model SRKSDemo.ProductionLossModel
+@{
+    ViewBag.Title = "Index";
+}
+@{
+
+    List<SelectListItem> LossReason = new List<SelectListItem>();
+    LossReason.Add(new SelectListItem
+    {
+        Text = "IDLE",
+        Value = "IDLE",
+    });
+    LossReason.Add(new SelectListItem
+    {
+        Text = "Setup",
+        Value = "Setup",
+    });
+    LossReason.Add(new SelectListItem
+    {
+        Text = "BREAKDOWN",
+        Value = "BREAKDOWN",
+    });
+
+    List<SelectListItem> ContributeTo = new List<SelectListItem>();
+    ContributeTo.Add(new SelectListItem
+    {
+        Text = "ProductionLoss",
+        Value = "ProductionLoss",
+    });
+    ContributeTo.Add(new SelectListItem
+    {
+        Text = "QualityLoss",
+        Value = "QualityLoss",
+    });
+    ContributeTo.Add(new SelectListItem
+    {
+        Text = "AvailabilityLoss",
+        Value = "AvailabilityLoss",
+    });
+}
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Loss Details</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li><button type="button" class="btn btn-default" data-toggle="modal" data-target="#create-plant" style="margin-top: 10px;"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Add New</button></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table id="datatable-fixed-header" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Loss Category</th>
+                                    <th>Loss Code Level1</th>
+                                    <th>Loss Code Level2</th>
+                                    <th>Loss Code Level3</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model.ProductionLossList)
+                                {
+                                    <tr>
+                                        <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                            @Html.DisplayFor(modelItem => item.MessageType)
+                                        </td>
+                                        @if (Convert.ToInt32(item.LossCodesLevel) == 1)
+                                        {
+                                            <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                @Html.DisplayFor(modelItem => item.LossCode)
+                                            </td>
+
+                                            <td></td>
+                                            <td></td>
+                                        }
+                                        @if (Convert.ToInt32(item.LossCodesLevel) == 2)
+                                        {
+                                            if (Convert.ToString(item.LossCodesLevel1ID) != null)
+                                            {
+                                                SRKSDemo.Server_Model.i_facility_shaktiEntities1 db = new SRKSDemo.Server_Model.i_facility_shaktiEntities1();
+                                                int losscodeid = Convert.ToInt32(item.LossCodesLevel1ID);
+                                                var lossdetailsDesc = db.tbllossescodes.Where(m => m.IsDeleted == 0 && m.LossCodeID == losscodeid).Select(m => m.LossCode).FirstOrDefault();
+                                                <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                    @lossdetailsDesc
+                                                </td>
+
+                                                <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                    @Html.DisplayFor(modelItem => item.LossCode)
+                                                </td>
+
+                                                <td></td>
+                                            }
+                                        }
+                                        @if (Convert.ToInt32(item.LossCodesLevel) == 3)
+                                        {
+                                            if (Convert.ToString(item.LossCodesLevel1ID) != null)
+                                            {
+                                                SRKSDemo.Server_Model.i_facility_shaktiEntities1 db = new SRKSDemo.Server_Model.i_facility_shaktiEntities1();
+                                                int losscodeid = Convert.ToInt32(item.LossCodesLevel1ID);
+                                                var lossdetailsDesc = db.tbllossescodes.Where(m => m.IsDeleted == 0 && m.LossCodeID == losscodeid).Select(m => m.LossCode).FirstOrDefault();
+                                                <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                    @lossdetailsDesc
+                                                </td>
+                                                int losscode2id = Convert.ToInt32(item.LossCodesLevel2ID);
+                                                var lossdetails2Desc = db.tbllossescodes.Where(m => m.IsDeleted == 0 && m.LossCodeID == losscode2id).Select(m => m.LossCode).FirstOrDefault();
+                                                <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                    @lossdetails2Desc
+                                                </td>
+                                                <td style="width: auto; font-family: Helvetica; font-size: 85%">
+                                                    @Html.DisplayFor(modelItem => item.LossCode)
+                                                </td>
+                                            }
+                                        }
+                                        <td>
+                                            <ul class="actionbtnn">
+                                                <li class="actionbtn"><a role="button" href="@Url.Action("Edit", "ProductionLoss", new { id = item.LossCodeID })" id="@(@item.LossCodeID)" class="btn btn-round btn-info ProductionLoss1" data-title="Edit" data-toggle="modal" data-target="#edit-plant"><i class="fa fa-pencil fa-lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Edit Loss Details"></i></a></li>
+                                                @*   <li class="actionbtn"><button class="btn btn-round btn-info LossProduction" data-id="@item.LossCodeID" onclick="deleteTargetName('@item.LossCodeID')" data-title="Edit" data-toggle="modal" data-target="#edit-plant"><i class="fa fa-pencil fa-lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Edit Production Loss details"></i></button></li>*@
+                                                <li class="actionbtn"><button class="btn btn-round btn-danger deleteItem" data-id="@item.LossCodeID" onclick="deleteTargetName('@item.LossCodeID')" data-title="Edit" data-toggle="modal" data-target="#delete-plant"><i class="fa fa-trash fa-lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Delete Production Loss details"></i></button></li>
+                                                
+                                                <!-- Delete Modal Start -->
+                                                <div class="modal fade" id="delete-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                                                   <input type="hidden" id="LossDelete_@item.LossCodeID" value="@item.LossCode"/>
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title" id="myModalLabel"></h4>
+                                                                <div class="x_panel">
+                                                                    <div class="x_title">
+                                                                        <h5>Delete Production Loss Details</h5>
+                                                                    </div>
+                                                                    <div class="x_content">
+                                                                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Detail?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="alert-danger">Loss Code </label>&nbsp;&nbsp;<label class="alert-danger" id="deleterName"></label></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                @*Html.ActionLink("Delete Production", "Delete", "ProductionLoss", new { id = item.LossCodeID }, new { @class = "btn btn-round btn-danger" })*@
+                                                                <button type="button" class="btn btn-danger btnContinueDelete"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                                                                @**<button type="button" class="btn btn-danger btnContinueDelete"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>  *@
+                                                                <button type="button" class="btn btn-info" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Delete Modal Finish -->
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- edit Modal Start -->
+<li class="actionbtn"><button class="btn btn-round btn-info Loss1" style="display:none" data-title="Edit" data-toggle="modal" data-target="#edit-plant"><i class="fa fa-pencil fa-lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Edit Production Loss details"></i></button></li>
+@using (Html.BeginForm("Edit", "ProductionLoss", FormMethod.Post))
+{
+    <div class="modal fade" id="edit-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h5>Edit Production Loss Detail</h5>
+                        </div>
+                        <div class="x_content">
+                            <form class="form-horizontal form-label-left" novalidate>
+                                <div class="row row-space form-inline">
+                                    <div class="radio radio-primary col-sm-offset-4">
+                                        <input type="radio" name="radio2" id="radio4" value="option1">
+                                        <label for="radio4">
+                                            Level1
+                                        </label>
+                                    </div>
+                                    <div class="radio radio-primary">
+                                        <input type="radio" name="radio2" id="radio5" value="option2">
+                                        <label for="radio5">
+                                            Level2
+                                        </label>
+                                    </div>
+                                    <div class="radio radio-primary">
+                                        <input type="radio" name="radio2" id="radio6" value="option3">
+                                        <label for="radio6">
+                                            Level3
+                                        </label>
+                                    </div>
+                                </div>
+                                <div id="divs1">
+                                    <div id="div4">
+                                        <div class="row row-space">
+                                            <label class="col-sm-4 control-label">Loss Code</label>
+                                            <div class="col-sm-5">
+                                                @Html.HiddenFor(model => model.ProductionLoss.LossCodeID, new { @id = "EditLossCodeID", @class = "form-control", @name = "LossCodesLevel" })
+                                                @Html.TextBoxFor(model => model.ProductionLoss.LossCode, new { @class = "form-control1", @id = "EditLosscode", @placeholder = "Loss Code" })
+                                                @*<input type="text" class="form-control1" id="" placeholder="Loss Code">*@
+                                            </div>
+                                        </div>
+                                        <div class="row row-space">
+                                            <label class="col-sm-4 control-label">Loss Code Description</label>
+                                            <div class="col-sm-5">
+                                                @Html.TextBoxFor(model => model.ProductionLoss.LossCodeDesc, new { @class = "form-control1", @id = "EditLossCodeDesc", @placeholder = "Loss Code Description" })
+                                                @*<input type="text" class="form-control1" id="" placeholder="Loss Code Description">*@
+                                            </div>
+                                        </div>
+                                        <div id="div5" class="row row-space" style="display: none;">
+                                            <label class="col-sm-4 control-label">Level1</label>
+                                            <div class="col-sm-5">
+                                                @Html.DropDownList("Level1", null, "--Select Level1--", new { @id = "EditLevel1", @class = "form-control1 clearDropdown", @name = "Level1", @style = "aria-expanded:false;", @value = ViewData["Level1"] })
+
+                                            </div>
+                                        </div>
+                                        <div id="div6" class="row row-space" style="display: none;">
+                                            <label class="col-sm-4 control-label">Level2</label>
+                                            <div class="col-sm-5">
+                                                @Html.DropDownList("Level2", null, "--Select Level2--", new { @id = "EditLevel2", @class = "form-control1 clearDropdown", @name = "Level2", @style = "aria-expanded:false;", @value = ViewData["Level2"] })
+                                            </div>
+                                        </div>
+                                        @Html.HiddenFor(model => model.ProductionLoss.LossCodesLevel, new { @id = "EditLossCodesLevel", @class = "form-control", @name = "LossCodesLevel", @Value = 1 })
+                                        <div class="row row-space">
+                                            <label class="col-sm-4 control-label">Loss Category</label>
+                                            <div class="col-sm-5">
+                                                @Html.DropDownListFor(model => model.ProductionLoss.MessageType, LossReason, "--Select LossReason--", new { @id = "EditMessageType", @name = "MessageType", @class = "form-control1 clearDropdown", @style = "aria-expanded:false;", @required = "required", @value = ViewData["LossReason"] })
+
+                                            </div>
+                                        </div>
+                                        <div class="row row-space">
+                                            <label class="col-sm-4 control-label">Contributes To</label>
+                                            <div class="col-sm-5">
+                                                @Html.DropDownListFor(model => model.ProductionLoss.ContributeTo, ContributeTo, "--Select Contributesto--", new { @id = "EditContributeTo", @name = "ContributeTo", @class = "form-control1 clearDropdown", @style = "aria-expanded:false;", @required = "required", @value = ViewData["ContributeTo"] })
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-info"><i class="fa fa-floppy-o" aria-hidden="true"></i> Update</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- edit Modal Finish -->
+}
+
+@*using (Html.BeginForm("Create", "ProductionLoss", FormMethod.Post))
+    {*@
+<!-- create Modal Start -->
+<!--div class="modal fade" id="create-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">-->
+@using (Html.BeginForm("Create", "ProductionLoss", FormMethod.Post, new { @class = "form-horizontal bordered-row" }))
+{
+                                                <!-- create Modal Start -->
+    <div class="modal fade" id="create-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h5>Create Production Loss Detail</h5>
+                        </div>
+                        <div class="x_content">
+                            <form class="form-horizontal form-label-left" novalidate>
+                                <div class="row row-space form-inline">
+                                    <div class="radio radio-primary col-sm-offset-4">
+                                        <input type="radio" name="radio1" id="radio1" value="option1" checked="checked">
+                                        <label for="radio1">
+                                            Level1
+                                        </label>
+                                    </div>
+                                    <div class="radio radio-primary">
+                                        <input type="radio" name="radio1" id="radio2" value="option2">
+                                        <label for="radio2">
+                                            Level2
+                                        </label>
+                                    </div>
+                                    <div class="radio radio-primary">
+                                        <input type="radio" name="radio1" id="radio3" value="option3">
+                                        <label for="radio3">
+                                            Level3
+                                        </label>
+                                    </div>
+                                </div>
+                                <div id="divs">
+                                    <div id="div1">
+                                        <div class="row row-space">
+
+                                            @Html.HiddenFor(model => model.ProductionLoss.LossCodesLevel, new { @id = "LossCodesLevel", @class = "form-control", @name = "LossCodesLevel", @Value = 1 })
+                                            <div class="row row-space">
+                                                <label class="col-sm-4 control-label">Loss Category</label>
+                                                <div class="col-sm-5">
+                                                    @Html.DropDownListFor(model => model.ProductionLoss.MessageType, LossReason, "--Select LossReason--", new { @id = "MessageType", @name = "MessageType", @class = "form-control1 clearDropdown", @style = "aria-expanded:false;", @required = "required", @value = ViewData["LossReason"] })
+                                                </div>
+
+                                                <label class="col-sm-4 control-label">Loss Code</label>
+                                                <div class="col-sm-5">
+                                                    @*@Html.HiddenFor(model => model.ProductionLoss.LossCodeID, new { @id = "LossCodescreate", @class = "form-control", @name = "LossCodesLevel", @Value = 1 })*@
+                                                    @Html.HiddenFor(model => model.ProductionLoss.LossCodesLevel, new { @id = "LossCodesLevel", @class = "form-control", @name = "LossCodesLevel", @Value = 1 })
+                                                    @Html.TextBoxFor(model => model.ProductionLoss.LossCode, new { @class = "form-control1", @placeholder = "Loss Code", @required = "required" })
+                                                    @*<input type="text" class="form-control1" id="" placeholder="Loss Code">*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row row-space">
+                                            <label class="col-sm-4 control-label">Loss Code Description</label>
+                                            <div class="col-sm-5">
+                                                @Html.TextBoxFor(model => model.ProductionLoss.LossCodeDesc, new { @class = "form-control1", @placeholder = "Loss Code Description", @required = "required" })
+                                                @*<input type="text" class="form-control1" id="" placeholder="Loss Code Description">*@
+                                            </div>
+                                        </div>
+                                        <div id="div2" class="row row-space" style="display: none;">
+                                            <label class="col-sm-4 control-label">Level1</label>
+                                            <div class="col-sm-5">
+                                                @Html.DropDownList("Level1", null, "--Select Level1--", new { @id = "Level1", @class = "form-control1 clearDropdown", @name = "Level1", @style = "aria-expanded:false;", @value = ViewData["Level1"] })
+                                            </div>
+                                        </div>
+                                        <div id="div3" class="row row-space" style="display: none;">
+                                            <label class="col-sm-4 control-label">Level2</label>
+                                            <div class="col-sm-5">
+                                                @Html.DropDownList("Level2", null, "--Select Level2--", new { @id = "Level2", @class = "form-control1 clearDropdown", @name = "Level2", @style = "aria-expanded:false;", @value = ViewData["Level2"] })
+                                            </div>
+                                        </div>
+
+                                        <div class="row row-space">
+                                            <label class="col-sm-4 control-label">Contributes To</label>
+                                            <div class="col-sm-5">
+                                                @Html.DropDownListFor(model => model.ProductionLoss.ContributeTo, ContributeTo, "--Select Contributesto--", new { @id = "ContributeTo", @name = "ContributeTo", @class = "form-control1 clearDropdown", @style = "aria-expanded:false;", @required = "required", @value = ViewData["ContributeTo"] })
+                                                @*<select class="form-control1" tabindex="2" id="type">
+                                                        <option value="" selected disabled>Select Contributes To</option>
+                                                        <option value="United States">Job Order</option>
+                                                        <option value="United Kingdom">Machine Type</option>
+                                                    </select>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-info submission"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+                                            <!-- create Modal Finish -->
+}
+<!-- /page content -->
+<script src="~/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+
+
+<script type="text/javascript">
+        $(function () {
+            var $divs = $('#divs > div');
+            $divs.first().show()
+
+        });
+        $(document).ready(function () {
+            $('#radio1').click(function () {
+                $('#div2').hide();
+                $('#div1').show();
+                $("#LossCodesLevel").val(1);
+            });
+            $('#radio2').click(function () {
+                $('#div1').show();
+                $('#div3').hide();
+                $('#div2').show();
+                $("#LossCodesLevel").val(2);
+                $('#div2').show();
+
+            });
+            $('#radio3').click(function () {
+
+                $('#div1').show();
+                $('#div3').show();
+                $("#LossCodesLevel").val(3);
+                $('#div2').show();
+            });
+        });
+</script>
+
+<script type="text/javascript">
+        $(function () {
+            var $divs = $('#divs > div');
+            $divs.first().show()
+
+        });
+        $(document).ready(function () {
+            $('#radio4').click(function () {
+                $('#div6').hide();
+                $('#div5').hide();
+                $("#EditLossCodesLevel").val(1);
+            });
+            $('#radio5').click(function () {
+                $('#div5').show();
+                $('#div6').hide();
+                $("#EditLossCodesLevel").val(2);
+                $('#div5').show();
+            });
+            $('#radio6').click(function () {
+
+                $('#div5').show();
+                $('#div6').show();
+                $("#EditLossCodesLevel").val(3);
+                $('#div5').show();
+            });
+        });
+</script>
+
+<script>
+        $(".ProductionLoss1").on("click", function (e) {
+            $(".Loss1").click();
+            e.preventDefault();
+            var PRDRLOID = $(this).attr("id")
+            debugger;
+            $.getJSON("/ProductionLoss/GetProductionLossById", { PRDRLOID: PRDRLOID }, function (data) {
+                $.each(data, function (index, item) {
+                    $("#EditLossCodeID").val(item.LossCodeID)
+                    $("#EditLosscode").val((item.Lcode));
+                    $("#EditLossCodeDesc").val((item.Lcodedesc));
+                    $("#EditMessageType").val((item.messagetype));
+                    $("#EditContributeTo").val((item.Contributesto));
+                    var LevelId = item.Lcodelevel;
+
+                    if (LevelId == 1) {
+                        $("#radio4").prop('checked', true);
+                        $("#radio5").prop('checked', false);
+                        $("#radio6").prop('checked', false);
+                        $("#radio4").attr('disabled', true);
+                        $("#radio5").attr('disabled', true);
+                        $("#radio6").attr('disabled', true);
+                        $('#div5').hide();
+                        $('#div6').hide();
+                    }
+                    else if (LevelId == 2) {
+
+                        $("#radio5").prop('checked', true);
+                        $("#radio4").prop('checked', false);
+                        $("#radio6").prop('checked', false);
+                        $("#radio4").attr('disabled', true);
+                        $("#radio5").attr('disabled', true);
+                        $("#radio6").attr('disabled', true);
+                        $("#Level1").prop("required", true);
+                        $("#Level2").prop("required", false);
+                        $('#div5').show();
+                        $('#div6').hide();
+
+                    }
+                    else if (LevelId == 3) {
+
+                        $("#radio4").prop('checked', false);
+                        $("#radio5").prop('checked', false);
+                        $("#radio6").prop('checked', true);
+                        $("#radio4").attr('disabled', true);
+                        $("#radio5").attr('disabled', true);
+                        $("#radio6").attr('disabled', true);
+                        $("#Level1").prop("required", true);
+                        $("#Level2").prop("required", false);
+                        $('#div5').show();
+                        $('#div6').show();
+                    }
+
+                    var PID = item.LocodeLevel1id;
+                    $.getJSON("/ProductionLoss/FetchLevel1CodesForedit", { PID: PID }, function (data) {
+                        $("#EditLevel1").empty();
+                        $("#EditLevel1").append("<option value = ''> --Select Shop-- </option>")
+                        $.each(data, function (index, item) {
+                            $("#EditLevel1").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+                        });
+                        $("#EditLevel1").val(item.LocodeLevel1id);
+                    });
+                    var LevelId = item.LocdeLevel2Id;
+                    $.getJSON("/ProductionLoss/FetchLevel2LosscodesEdit", { LevelId: LevelId }, function (data) {
+                        $("#EditLevel2").empty();
+                        $("#EditLevel2").append("<option value = ''> --Select Shop-- </option>")
+                        $.each(data, function (index, item) {
+                            $("#EditLevel2").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+                        });
+                        $("#EditLevel2").val(item.LocdeLevel2Id);
+                    });
+                });
+            });
+            return false;
+        });
+
+</script>
+<script>
+        //Cascading
+        $("#MessageTtype").on("change", function () {
+            //  $("#Level2").empty();
+            var selectedID = $("#MessageType option:selected").val();
+            $.getJSON("/ProductionLoss/GetBreakdowns", { BREAKDOWN: selectedID }, function (data) {
+                $("#Level2").empty();
+                $.each(data, function (index, item) {
+                    $("#Level1").prepend("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                });
+                $("#Level2").prepend("<option value='' selected='selected'></option>");
+
+            });
+        });
+</script>
+
+<script>
+        $("#Level1").on("change", function () {
+            $("#Level2").empty();
+            $("#Level2").prepend("<option value='0' selected='selected'>SELECT</option>");
+            var LevelId = $("#Level1 option:selected").val();
+            $.getJSON("/ProductionLoss/FetchLevel2Losscodes", { LevelId: LevelId }, function (data) {
+                // $("#Level2").empty();
+                $.each(data, function (index, item) {
+                    $("#Level2").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                });
+               
+            });
+
+
+
+        });
+
+</script>
+
+        <script>
+                $("#Level2").on("change", function (e) {
+                    e.preventDefault();
+                    var LeveId = $(this).val();
+                    $.getJSON("/ProductionLoss/ ", { LevelId: LeveId }, function (data) {
+                        // $("#Level2").empty();
+                        //  $("#Level2").append("<option value = ''> --Select Level2-- </option>")
+                        $.each(data, function (index, item) {
+                            $("#Level2").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+                        });
+                    });
+                });
+        </script>
+
+
+
+@*
+
+    <script>
+            $("#Level1").on("change", function (e) {
+                e.preventDefault();
+                var LossCodesLevel1ID = $(this).val();
+                $.getJSON("/ProductionLoss/FetchLevel22Losscodes", { LossCodesLevel1ID: LossCodesLevel1ID }, function (data) {
+                    $("#Level2").empty();
+                    $("#Level2").append("<option value = ''> --Select Level2-- </option>")
+                    $.each(data, function (index, item) {
+                        $("#Level2").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+                    });
+                });
+            });
+    </script>*@
+
+    
+<script>
+
+        function deleteTargetName(productvariant) {
+            $(".deleteTargetName").empty();
+            $(".deleteTargetName").html("Delete Parts Name: " + productvariant);
+        }
+
+        var item_to_delete;
+        $(".deleteItem").click(function (e) {
+            item_to_delete = $(this).data('id');
+            var item = $("#LossDelete_" + item_to_delete).val();
+            $("#deleterName").html('');
+            $("#deleterName").html(item);
+            // alert(item_to_delete);
+        });
+        $('.btnContinueDelete').click(function () {
+            window.location = "/ProductionLoss/Delete/" + "?id=" + item_to_delete;
+        });
+
+</script>

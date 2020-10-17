@@ -1,0 +1,213 @@
+﻿@model SRKSDemo.Server_Model.tblOperatorLoginDetail
+@{
+    ViewBag.Title = "Operator Login Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .error {
+        color: red;
+        margin-left: 5px;
+    }
+</style>
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+
+            </div>
+        </div>
+
+
+        @Html.ValidationSummary()
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Operator Details</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form class="form-horizontal form-label-left" id="fromDiv" novalidate>
+                            <div class="control-group" id="fields">
+                                <div class="controls">
+                                    <div class="row row-space">
+                                        <label class="col-sm-2 control-label">Operator Id</label>
+                                        <div class="col-sm-6">
+
+                                            @Html.TextBoxFor(model => model.operatorId, new { @id = "operatorId", @class = "form-control", @name = "operatorId", style = "width:89.7%", @placeholder = "Enter operatorId", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="row row-space">
+                                        <label class="col-sm-2 control-label">Operator Name</label>
+                                        <div class="col-sm-6">
+
+                                            @Html.TextBoxFor(model => model.operatorName, new { @id = "operatorName", @class = "form-control", @name = "operatorName", style = "width:89.7%", @placeholder = "Enter operator Name", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="row row-space">
+                                        <label class="col-sm-2 control-label">Role</label>
+                                        <div class="col-sm-6">
+                                            @Html.DropDownList("Roles", null, "--Select Role--", new { @id = "RoleID", @class = "form-control", @name = "Role", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = ViewData["Roles"] })
+                                            @Html.ValidationMessageFor(model => model.roleId)
+                                        </div>
+                                    </div>
+                                    <div class="row row-space">
+                                        <label class="col-sm-2 control-label">Operator UserName</label>
+                                        <div class="col-sm-6">
+
+                                            @Html.TextBoxFor(model => model.operatorUserName, new { @id = "operatorUserName", @autocomplete = "off", @class = "form-control", @name = "operatorUserName", style = "width:89.7%", @placeholder = "Enter operatorUser Name", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="row row-space">
+                                        <label class="col-sm-2 control-label">Operator Email Address</label>
+                                        <div class="col-sm-6">
+
+                                            @Html.TextBoxFor(model => model.operatorEmailId, new { @id = "operatorEmailId", @type = "email", @class = "form-control", @name = "operatorEmailId", style = "width:89.7%", @placeholder = "Enter Operator Email Address", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="row row-space">
+                                        <label class="col-sm-2 control-label">Operator Mobile Number</label>
+                                        <div class="col-sm-6">
+
+                                            @Html.TextBoxFor(model => model.operatorMobileNo, new { @id = "operatorMobileNo", @class = "form-control", @name = "operatorMobileNo", style = "width:89.7%", @placeholder = "Enter Operator Mobile Number", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="row row-space">
+                                        <label class="col-sm-2 control-label">Operator Password</label>
+                                        <div class="col-sm-6">
+
+                                            @Html.TextBoxFor(model => model.operatorPwd, new { @id = "operatorPwd", @class = "form-control", @name = "operatorPwd", @type = "password", style = "width:89.7%", @placeholder = "Enter Operator Password", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="row row-space">
+                                        <label class="col-sm-2 control-label">Number Of Machines</label>
+                                        <div class="col-sm-6">
+
+                                            @Html.TextBoxFor(model => model.NumOfMachines, new { @id = "NumOfMachines", @class = "form-control", @name = "NumOfMachines", style = "width:89.7%", @placeholder = "Enter Number Of Machines", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="row row-space">
+                                        <label class="col-sm-2 control-label">Machine Details</label>
+                                        <div class="col-sm-6">
+                                            @Html.DropDownList("machineDetails", null, "--Select Machine--", new { @id = "machineDetails", @class = "macMyDetails form-control1 SensorDataLink", @name = "machineDetails", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['machineDetails']" })
+                                        </div>
+                                    </div>
+                                    <div class="row row-space">
+                                        <label class="col-sm-2 control-label">&nbsp</label>
+                                        <div class="col-sm-6" id="xyz">
+                                            <div id="divmy"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="generate-btn">
+                                <a id="" href="/OperatorLoginDetails/Index" type="submit" class="btn btn-new"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                                <button type="submit" onclick="return submitBtnClick()" class="btn btn-new float-right savebtn"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+
+                            </div>
+                        </form>
+                        @*}*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+    $('#NumOfMachines').on('change', function () {
+        var counter = parseInt($("#NumOfMachines").val());
+        $("#xyz").html('');
+        $("#xyz").html(' <div id="divmy"></div>');
+        for (var i = 0; i < counter - 1; i++) {
+            $('#machineDetails').clone().insertAfter("#divmy");
+        }
+    });
+
+
+    function submitBtnClick() {
+        var operatorId = $('#operatorId').val();
+        var operatorName = $('#operatorName').val();
+        var Role = $('#RoleID').val();
+        var operatorUserName = $('#operatorUserName').val();
+        var operatorPwd = $('#operatorPwd').val();
+        var operatorMobileNo = $('#operatorMobileNo').val();
+        var NumOfMachines = $('#NumOfMachines').val();
+        var operatorEmailId = $('#operatorEmailId').val();
+        var option_all = $(".macMyDetails option:selected").map(function () {
+            return $(this).text();
+        }).get().join(',');
+
+        var hasError = false;
+        var emailReg = /^([a-zA-Z0-9_\.\-\+])+\@@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+        if (operatorId == '' || operatorName == '' || Role == '' || operatorUserName == '' || operatorPwd == '' || operatorMobileNo == '' || NumOfMachines == '') {
+
+            if (operatorEmailId == '') {
+                $("#emailDiv").remove();
+                $("#operatorEmailId").after("<div id='emailDiv'><span class='error'>Enter email address.</span></div>");
+
+                hasError = true;
+            }
+
+
+            else if (!emailReg.test(operatorEmailId)) {
+                $("#emailDiv").remove();
+                $("#operatorEmailId").after("<div id='emailDiv'><span class='error'>Enter a valid email address.</span>");
+                hasError = true;
+            }
+            else {
+                $("#emailDiv").remove();
+            }
+
+            alert("Please Enter all the Details");
+        //if (operatorId == '' || operatorName == '' || Role == '' || operatorUserName == '' || operatorPwd == '' || operatorMobileNo == '' || NumOfMachines == '') {
+
+        }
+        else {
+            var datas = {};
+            datas.operatorId = operatorId;
+            datas.operatorName = operatorName;
+            datas.machineids = option_all;
+            datas.operatorUserName = operatorUserName;
+            datas.operatorEmailId = operatorEmailId;
+            datas.operatorPwd = operatorPwd;
+            datas.operatorMobileNo = operatorMobileNo;
+            datas.NumOfMachines = NumOfMachines;
+            datas.roleId = Role;
+
+            $.ajax({
+                url: '/OperatorLoginDetails/CreateOperatorLogin',
+                type: 'POST',
+                async: false,
+                data: datas,
+                success: function (data) {
+                    if (data == "Created") {
+                        window.location = '/OperatorLoginDetails/Index';
+                    }
+                },
+                failure: function (xhr, textStatus, errorThrown) {
+                    alert('request failed');
+                }
+            });
+            return false;
+            //}
+            //else {
+            //    alert("Enter all data before submission")
+            //}
+        }
+    }
+
+
+</script>
+}
+
+
+

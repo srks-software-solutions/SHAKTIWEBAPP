@@ -1,0 +1,187 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>UNIT WORKS - Virtual HMI Screen</title>
+    <!-- Bootstrap -->
+    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="~/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="~/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="~/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="~/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="~/vendors/starrr/dist/starrr.css" rel="stylesheet">
+    <!--table -->
+    <link href="~/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="~/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    @*<link href="~/build/css/custom.css" rel="stylesheet">*@
+    <link href="~/build/css/custom.css" rel="stylesheet" />
+</head>
+<body class="nav-sm">
+    <input type="hidden" id="cycleType" value="@TempData["FirstTimePageSetter"]" />
+    <input type="hidden" id="cellIdSession" value="@Session["CellId"].ToString()" />
+    <div class="container body">
+        <div class="">
+          
+            @RenderBody()
+
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="~/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="~/vendors/nprogress/nprogress.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="~/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="~/vendors/iCheck/icheck.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="~/vendors/moment/min/moment.min.js"></script>
+    <script src="~/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="~/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+    <script src="~/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+    <script src="~/vendors/google-code-prettify/src/prettify.js"></script>
+    <!-- jQuery Tags Input -->
+    <script src="~/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <!-- Switchery -->
+    <script src="~/vendors/switchery/dist/switchery.min.js"></script>
+    <!-- Select2 -->
+    <script src="~/vendors/select2/dist/js/select2.full.min.js"></script>
+    <!-- Parsley -->
+    <script src="~/vendors/parsleyjs/dist/parsley.min.js"></script>
+    <!-- Autosize -->
+    <script src="~/vendors/autosize/dist/autosize.min.js"></script>
+    <!-- jQuery autocomplete -->
+    <script src="~/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+    <!-- starrr -->
+    <script src="~/vendors/starrr/dist/starrr.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="~/build/js/custom.js"></script>
+    <!-- Datatables -->
+    <script src="~/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="~/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="~/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+<script src="~/js/jquery.cookie.js"></script>
+<script>
+    var dataLoadFromServer = $("#cycleType ").val();
+    var jq = jQuery.noConflict();
+    setTimeout(function () {
+        var nextUrl = "";
+        var pageStatus = "";
+        var cellId = $("#cellIdSession").val();
+        var cookieValue = jq.cookie("timerCookie");
+        var nextPageStatusCookie = jq.cookie("pageStatus");
+        if (nextPageStatusCookie == null) {
+            nextPageStatusCookie = dataLoadFromServer;
+        }
+        else {
+            var arrySplitItemFromDb = dataLoadFromServer.split('-');
+            var arrySplitItemFromCookiee = nextPageStatusCookie.split('-');
+            if (arrySplitItemFromCookiee[0] == arrySplitItemFromDb[0])
+            {
+                $.ajax({
+                    type: "POST",
+                    data: { 'pageStatus': nextPageStatusCookie, 'cellId': cellId },
+                    url: "/AndonDisplay/CookiePageRedirector",
+                    async: false,
+                    success: function (data) {
+                        var arry = data.split('%');
+                        nextUrl = arry[0];
+                        pageStatus = arry[1];
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("", "There is some issue in network");
+                    }
+                });
+                if (cookieValue == null || cookieValue == "") {
+                    var count = parseInt(1);
+                    jq.cookie('timerCookie', count);
+                    jq.cookie('pageStatus', nextPageStatusCookie);
+                }
+                else {
+                    var cookieValueToIncrease = jq.cookie("timerCookie");
+                    var intCookieValue = parseInt(cookieValueToIncrease) + 1;
+                    jq.cookie('timerCookie', intCookieValue);
+                }
+                if (parseInt(cookieValue) == 3) {
+                    jq.removeCookie("timerCookie");
+                    jq.cookie('pageStatus', pageStatus);
+                    window.location.href = nextUrl;
+                }
+                else {
+                    window.location.reload();
+                }
+            } else {
+                nextPageStatusCookie = dataLoadFromServer;
+                $.ajax({
+                    type: "POST",
+                    data: { 'pageStatus': nextPageStatusCookie, 'cellId': cellId },
+                    url: "/AndonDisplay/CookiePageRedirector",
+                    async: false,
+                    success: function (data) {
+                        var arry = data.split('%');
+                        nextUrl = arry[0];
+                        pageStatus = arry[1];
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("", "There is some issue in network");
+                    }
+                });
+                if (cookieValue == null || cookieValue == "") {
+                    var count = parseInt(1);
+                    jq.cookie('timerCookie', count);
+                    jq.cookie('pageStatus', nextPageStatusCookie);
+                }
+                else {
+                    var cookieValueToIncrease = jq.cookie("timerCookie");
+                    var intCookieValue = parseInt(cookieValueToIncrease) + 1;
+                    jq.cookie('timerCookie', intCookieValue);
+                }
+                if (parseInt(cookieValue) == 3) {
+                    jq.removeCookie("timerCookie");
+                    jq.cookie('pageStatus', pageStatus);
+                    window.location.href = nextUrl;
+                }
+                else {
+                    window.location.reload();
+                }
+            }
+        }
+
+    }, 60000);
+</script>

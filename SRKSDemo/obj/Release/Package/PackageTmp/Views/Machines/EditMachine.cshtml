@@ -1,0 +1,432 @@
+﻿@model SRKSDemo.Server_Model.tblmachinedetail
+@{
+    ViewBag.Title = "Machine List";
+
+}
+<div class="right_col" role="main">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Machine List</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        @using (Html.BeginForm("EditMachine", "Machines", FormMethod.Post, new { @class = "form-horizontal bordered-row" }))
+                        {
+                            <form class="form-horizontal form-label-left" novalidate>
+                                <div class="row row-space">
+                                    <label class="col-sm-1 control-label">Plant</label>
+                                    <div class="col-sm-3">
+                                        @Html.HiddenFor(model => model.MachineID, new { @id = "EditMachineID", @class = "form-control", @required = "required" })
+                                        @Html.DropDownList("Plant", null, "--Select Plant--", new { @id = "EditPlant", @class = "form-control", @name = "Plant", @required = "required", @value = "@ViewData['Plant']" })
+                                    </div>
+                                    <label class="col-sm-1 control-label">Shop</label>
+                                    <div class="col-sm-3">
+                                        @Html.DropDownList("dept", null, "--Select Shop--", new { @id = "Editdeptid", @class = "form-control", @name = "dept", @required = "required", @value = "@ViewData['dept']" })
+                                    </div>
+                                    <label class="col-sm-1 control-label">Cell</label>
+                                    <div class="col-sm-3">
+                                        @Html.DropDownList("cell", null, "--Select Cell--", new { @id = "EditMachineCategory", @class = "form-control", @name = "dept", @required = "required", @value = "@ViewData['cell']" })
+                                    </div>
+                                </div>
+                                <div class="row row-space">
+                                    <label class="col-sm-1 control-label">M/c Name</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.MachineName, new { @id = "EditMachineName", @class = "form-control", @name = "CellName", @placeholder = "Enter Machine Name", @required = "required", @onchange = "macNameCheckEdit();", @oninput = "macNameCheckEdit();" })
+
+                                    </div>
+                                    <label class="col-sm-1 control-label adjust-label">M/c Description</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.MachineDescription, new { @id = "EditMachineDescription", @class = "form-control", @name = "MachineDescription", @placeholder = "Enter Machine Description", @required = "required" })
+
+                                    </div>
+                                    <label class="col-sm-1 control-label">M/c Display</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.MachineDisplayName, new { @id = "EditMachineDisplayName", @class = "form-control", @name = "MachineDisplayName", @placeholder = "Enter Machine DisplayName", @required = "required" })
+
+                                    </div>
+                                    @*<label class="col-sm-1 control-label">Asset Code</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.AssetCode, new { @id = "EditAssetCode", @class = "form-control", @name = "AssetCode", @placeholder = "Enter AssetCode", @required = "required" @*, @onchange = "AssetCodeCheckEdit();", @oninput = "AssetCodeCheckEdit();"*@})
+
+                                        @*<span id="errorMessage" style="color:red"></span>
+                                    </div>*@
+                                    <label class="col-sm-1 control-label">Opration No</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.OperationNumber, new { @id = "EditOperationNumber", @class = "form-control", @name = "Operation Number", @placeholder = "Enter Operation_Number", @required = "required" })
+
+                                    </div>
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-3">
+                                        <span id="plantErrorEdit" class="errorMessage"></span>
+                                    </div>
+                                    @*</div>*@
+                                    <label class="col-sm-1 control-label">Is BottelNeck</label>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" id="isbottelneck" onchange="changebottelneck()">
+                                            <option value="" selected disabled>--Select Is BottelNeck--</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                    @Html.HiddenFor(model => model.IsBottelNeck, new { @id = "IsBottelNeck" })
+                                    <script>
+                                        function changebottelneck() {
+                                            var valId = $("#isbottelneck").val();
+                                            $("#IsBottelNeck").val(valId);
+                                        }
+                                    </script>
+                                </div>
+                                <div class="row row-space">
+                                    <label class="col-sm-1 control-label">Is FirstMachine</label>
+                                    <div class="col-sm-3">
+
+                                        <select class="form-control" id="isfirstmachine" onchange="changefirstmachine()">
+                                            <option value="" selected disabled>--Select Is FirstMachine--</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                    @Html.HiddenFor(model => model.IsFirstMachine, new { @id = "IsFirstMachine" })
+                                    <script>
+                                        function changefirstmachine() {
+                                            var valId = $("#isfirstmachine").val();
+                                            $("#IsFirstMachine").val(valId);
+                                        }
+                                    </script>
+                                    <label class="col-sm-1 control-label adjust-label">Is LastMachine</label>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" id="islastmachine" onchange="changelastmachine()">
+                                            <option value="" selected disabled>--Select Is LastMachine--</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                    @Html.HiddenFor(model => model.IsLastMachine, new { @id = "IsLastMachine" })
+                                    <script>
+                                        function changelastmachine() {
+                                            var valId = $("#islastmachine").val();
+                                            $("#IsLastMachine").val(valId);
+                                        }
+                                    </script>
+                                </div>
+                                <div class="row row-space">
+                                    <label class="col-sm-1 control-label">M/c IP Address</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.IPAddress, new { @id = "IPAddress", @class = "form-control", @name = "Machine IPAddress", @placeholder = "Enter IP Address", @required = "required" })
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <button class="btn btn-new getmacdata">Connect</button>
+                                    </div>
+                                </div>
+                                <div class="row row-space">
+                                </div>
+                                <div class="row row-space">
+                                    <label class="col-sm-1 control-label">Controller Type</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.ControllerType, new { @id = "EditControllerType", @class = "form-control", @name = "ControllerType", @placeholder = "Enter Controller Type", @required = "required" })
+                                    </div>
+                                    <label class="col-sm-1 control-label">M/c Model</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.MachineModel, new { @id = "EditMachineModel", @class = "form-control", @name = "MachineModel", @placeholder = "Enter Machine Model", @required = "required" })
+                                    </div>
+                                    <label class="col-sm-1 control-label">M/c Make</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.MachineMake, new { @id = "EditMachineMake", @class = "form-control", @name = "MachineMake", @placeholder = "Enter Machine Make", @required = "required" })
+                                    </div>
+                                </div>
+                                <div class="row row-space">
+                                    <label class="col-sm-1 control-label">Model Type</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.ModelType, new { @id = "EditModelType", @class = "form-control", @name = "ModelType", @placeholder = "Enter Model Type", @required = "required" })
+                                    </div>
+                                    <label class="col-sm-1 control-label">No of Axis</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.CurrentControlAxis, new { @id = "EditCurrentControlAxis", @class = "form-control", @name = "CurrentControlAxis", @placeholder = "Enter No of Axis", @required = "required" })
+                                    </div>
+                                    <label class="col-sm-1 control-label">Max Axis</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.NoOfAxis, new { @id = "EditNoOfAxis", @class = "form-control", @name = "NoofAxis", @placeholder = "Enter Max Axis", @required = "required" })
+                                    </div>
+                                </div>
+                                <div class="row row-space">
+                                    <label class="col-sm-1 control-label">Machine Type</label>
+                                    <div class="col-sm-3">
+                                        @Html.DropDownList("plant", null, "--Select Machine Type--", new { @id = "MachineType", @class = "form-control Plant", @name = "MachineType", @required = "required", @value = ViewData["MachineType"] })
+                                    </div>
+                                    <label class="col-sm-1 control-label">Is Parameters</label>
+                                    @Html.HiddenFor(model => model.IsParameters, new { @id = "IsParameters" })
+                                    <div class="col-sm-3">
+                                        <select class="form-control" tabindex="2" id="isParam" onchange="changeParam()">
+                                            <option value="" selected disabled>--Select Is Parameters--</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+
+                                    </div>
+                                    <script>
+                                        function changeParam() {
+                                            var valId = $("#isParam").val();
+                                            $("#IsParameters").val(valId);
+                                        }
+                                    </script>
+                                    <label class="col-sm-1 control-label">Is PCB</label>
+                                    <div class="col-sm-3">
+                                        @Html.HiddenFor(model => model.IsPCB, new { @id = "IsPCB" })
+                                        <select class="form-control" tabindex="2" id="isPcb" onchange="changepcb()">
+                                            <option value="" selected disabled>--Select Is PCB--</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <script>
+                                    function changepcb() {
+                                        var valId = $("#isPcb").val();
+                                        $("#IsPCB").val(valId);
+                                    }
+                                </script>
+                                <div class="row row-space">
+                                    <label class="col-sm-1 control-label">Is Normal WC</label>
+                                    <div class="col-sm-3">
+                                        @Html.HiddenFor(model => model.IsNormalWC, new { @id = "IsNormalWC" })
+                                        <select class="form-control" tabindex="2" id="isNormalWC" onchange="changeNormalWC()">
+                                            <option value="" selected disabled>--Select Is Normal WC--</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+
+                                    </div>
+                                    <script>
+                                        function changeNormalWC() {
+                                            var valId = $("#isNormalWC").val();
+                                            $("#IsNormalWC").val(valId);
+                                        }
+                                    </script>
+                                    <label class="col-sm-1 control-label">Manual WC ID</label>
+                                    <div class="col-sm-3">
+                                        @Html.DropDownList("plant", null, "--Select Manual WC ID--", new { @id = "ManualWCID", @class = "form-control Plant", @name = "ManualWCID", @required = "required", @value = ViewData["ManualWCID"] })
+                                    </div>
+                                    <label class="col-sm-1 control-label">Mac Type</label>
+                                    <div class="col-sm-3">
+                                        @Html.DropDownList("plant", null, "--Select Is Mac Type--", new { @id = "MacType", @class = "form-control Plant", @name = "MacType", @required = "required", @value = ViewData["MacType"] })
+                                    </div>
+                                </div>
+                                <div class="row row-space">
+                                    <label class="col-sm-1 control-label">M/c Model Type</label>
+                                    <div class="col-sm-3">
+                                        @Html.DropDownList("plant", null, "--Select Machine Model Type--", new { @id = "MachineModelType", @class = "form-control Plant", @name = "MachineModelType", @required = "required", @value = ViewData["MachineModelType"] })
+                                    </div>
+                                    <label class="col-sm-1 control-label adjust-label">Mac Conn Name</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.MacConnName, new { @id = "MacConnName", @class = "form-control", @name = "MacConnName", @placeholder = "Enter Mac Conn Name", @required = "required" })
+                                        @Html.HiddenFor(model => model.MacConnName, new { @id = "macname" })
+                                    </div>
+                                    <label class="col-sm-1 control-label">Spindle Axis</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.SpindleAxis, new { @id = "SpindleAxis", @class = "form-control", @name = "SpindleAxis", @placeholder = "Enter Spindle Axis", @required = "required" })
+                                        @Html.HiddenFor(model => model.SpindleAxis, new { @id = "spindle" })
+                                    </div>
+                                </div>
+                                <div class="row row-space">
+                                    <label class="col-sm-1 control-label">Tab IP Address</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.TabIPAddress, new { @id = "TabIPAddress", @class = "form-control", @name = "TabIPAddress", @placeholder = "Enter Tab IP Address", @required = "required" })
+                                    </div>
+                                    <label class="col-sm-1 control-label">M/c Lock Bit</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.MachineLockBit, new { @id = "MachineLockBit", @class = "form-control", @name = "MachineLockBit", @placeholder = "Enter M/c Lock Bit", @required = "required" })
+                                    </div>
+                                    <label class="col-sm-1 control-label">M/c Setup Bit</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.MachineSetupBit, new { @id = "MachineSetupBit", @class = "form-control", @name = "MachineSetupBit", @placeholder = "Enter M/c Setup Bit", @required = "required" })
+                                    </div>
+                                </div>
+                                <div class="row row-space">
+                                    <label class="col-sm-1 control-label">M/c Main Bit</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.MachineMaintBit, new { @id = "MachineMaintBit", @class = "form-control", @name = "MachineMaintBit", @placeholder = "Enter M/c Main Bit", @required = "required" })
+                                    </div>
+                                    <label class="col-sm-1 control-label adjust-label">M/c Tool Life Bit</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.MachineToolLifeBit, new { @id = "MachineToolLifeBit", @class = "form-control", @name = "MachineToolLifeBit", @placeholder = "Enter M/c Tool Life Bit", @required = "required" })
+                                    </div>
+                                    <label class="col-sm-1 control-label">M/c Unlock Bit</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.MachineUnlockBit, new { @id = "MachineUnlockBit", @class = "form-control", @name = "MachineUnlockBit", @placeholder = "Enter M/c Unlock Bit", @required = "required" })
+                                    </div>
+                                </div>
+                                <div class="row row-space">
+                                    <label class="col-sm-1 control-label">M/c Idle Bit</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.MachineIdleBit, new { @id = "MachineIdleBit", @class = "form-control", @name = "MachineIdleBit", @placeholder = "Enter M/c Idle Bit", @required = "required" })
+                                    </div>
+                                    <label class="col-sm-1 control-label">M/c Idle Min</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.MachineIdleMin, new { @id = "MachineIdleMin", @class = "form-control", @name = "MachineIdleMin", @placeholder = "Enter M/c Idle Min", @required = "required" })
+                                    </div>
+                                    <label class="col-sm-1 control-label adjust-label">Enable Lock Logic</label>
+                                    <div class="col-sm-3">
+                                        @Html.HiddenFor(model => model.EnableLockLogic, new { @id = "EnableLockLogic" })
+                                        <select class="form-control" tabindex="2" id="enableLockLogic" onchange="changeLockLogic()">
+                                            <option value="" selected disabled>--Select Enable Lock Logic--</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <script>
+                                    function changeLockLogic() {
+                                        var valId = $("#enableLockLogic").val();
+                                        $("#EnableLockLogic").val(valId);
+                                    }
+                                </script>
+                                <div class="row" style="padding: 0 10px;">
+                                    <a href="/Machines/MachineList" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-chevron-left"></span> Back</a>
+                                    <button type="submit" id="btnSubmitEdit" class="btn btn-info submission pull-right"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Update</button>
+                                </div>
+                            </form>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $("#EditPlant").on("change", function (e) {
+            var PID = $(this).val();
+            $.getJSON("/BottelNeckMachine/FetchShop", { PID: PID }, function (data) {
+                $("#Editdeptid").empty();
+                $("#Editdeptid").append("<option value = ''> --Select Shop-- </option>");
+                $.each(data, function (index, item) {
+                    $("#Editdeptid").append("<option value = '" + item.Value + "'>" + item.Text + "</option>");
+                });
+            });
+        });
+
+        $("#Editdeptid").on("change", function (e) {
+            var SID = $(this).val();
+            var PID = $("#EditPlant").val();
+            $.getJSON("/BottelNeckMachine/FetchCell", { PID: PID, SID: SID }, function (data) {
+                $("#EditMachineCategory").empty();
+                $("#EditMachineCategory").append("<option value = ''> --Select Cell-- </option>");
+                $.each(data, function (index, item) {
+                    $("#EditMachineCategory").append("<option value = '" + item.Value + "'>" + item.Text + "</option>");
+                });
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var IsBottelNeck = $('#IsBottelNeck').val();
+        $("#isbottelneck").val(IsBottelNeck);
+        var IsFirstMachine = $('#IsFirstMachine').val();
+        $("#isfirstmachine").val(IsFirstMachine);
+        var IsLastMachine = $('#IsLastMachine').val();
+        $("#islastmachine").val(IsLastMachine);
+        var IsParameters = $('#IsParameters').val();
+        $("#isParam").val(IsParameters);
+        var IsPCB = $('#IsPCB').val();
+        $("#isPcb").val(IsPCB);
+        var IsNormalWC = $('#IsNormalWC').val();
+        $("#isNormalWC").val(IsNormalWC);
+        var EnableLockLogic = $('#EnableLockLogic').val();
+        $("#enableLockLogic").val(EnableLockLogic);
+        var editMachineID = $("#EditMachineID").val();
+        $.getJSON("/Machines/MachineById", { Id: editMachineID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#MacConnName").val((item.MacConnName));
+                $("#SpindleAxis").val((item.spindleAxis));
+            });
+        });
+
+    });
+
+</script>
+@if (TempData["Message"] != null)
+{
+    <input type="hidden" id="Message" value="@TempData["Message"]" />
+    <script type="text/javascript">
+            $(function () {
+                var message = $("#Message").val();
+                if (message !== "") {
+                    //$("#dialog").dialog();
+                    @*<p>@TempData["Message"]</p>*@
+                    $("#errorMessage").html(message);
+
+
+                }
+            });
+    </script>
+}
+<script>
+    function macNameCheckEdit() {
+        var machineName = $("#EditMachineName").val();
+        var PlantID = $("#EditPlant").val();
+        var shopId = $("#Editdeptid").val();
+        var cellId = $("#EditMachineCategory").val();
+        var editMachineID = $("#EditMachineID").val();
+        $.ajax({
+            type: "POST",
+            data: { 'plantID': PlantID, 'shopId': shopId, 'cellId': cellId, 'machineName': machineName, 'editMachineID': editMachineID },
+            url: "/Machines/MacNameDuplicateCheckEdit",
+            async: false,
+            success: function (data) {
+                if (data === "notok") {
+                    $("#plantErrorEdit").html('Machine already exists');
+                    $("#btnSubmitEdit").attr('disabled', 'disabled');
+                } else {
+                    $("#plantErrorEdit").html('');
+                    $("#btnSubmitEdit").removeAttr('disabled', 'disabled');
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("", "There is some issue in network");
+            }
+        });
+    }
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#EditMachineName').change(function () {
+            var val = $('#EditMachineName').val();
+            $('#EditMachineDisplayName').val(val);
+
+        });
+    });
+</script>
+<script>
+    $('.getmacdata').click(function () {
+        var ipadd = $("#EditIPAddress").val();
+        if (ipadd === null || ipadd === '') {
+            alert("Enter the IP Address of the Machine before Clicking Connect Button.");
+        } else {
+            $.getJSON("/Machines/GetMacDetail", { IPAdd: ipadd }, function (data) {
+                var splitdata = JSON.stringify(data).replace(/"/gi, '').split('[');
+                var eck = splitdata[1].split(']');
+                var check = eck[0].split(',');
+                $("#EditControllerType").val(check[0]);
+                $("#EditModelType").val(check[1]);
+                $("#EditCurrentControlAxis").val(check[2]);
+                $("#EditNoOfAxis").val(check[3]);
+            });
+        }
+    });
+</script>

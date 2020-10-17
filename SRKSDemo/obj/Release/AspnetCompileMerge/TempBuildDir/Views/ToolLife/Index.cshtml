@@ -1,0 +1,266 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Tool Life</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#create-plant" style="margin-top: 10px;"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Add New</button>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="form-horizontal">
+                            <div class="col-sm-2 col-sm-offset-1">
+                                @Html.DropDownList("PlantID", null, "--Select Plant--", new { @id = "PlantID", @class = "stacked-label dropdown-toggle form-control", @name = "PlantID", @value = ViewData["PlantID"], @Required = "required" })
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.DropDownList("ShopID", null, "--Select Shop--", new { @id = "ShopID", @class = "stacked-label form-control", @name = "ShopID", @value = ViewData["ShopID"], @Required = "required" })
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.DropDownList("CellID", null, "--Select Cell--", new { @id = "CellID", @class = "stacked-label form-control", @name = "CellID", @value = ViewData["CellID"], @Required = "required" })
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.DropDownList("WorkCenterID", null, "--Select Machines--", new { @id = "WorkCenterID", @class = "stacked-label form-control", @name = "WorkCenterID", @value = ViewData["WorkCenterID"], @Required = "required" })
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="submit" class="btn btn-new" style="margin-bottom:8px;">Fetch</button>
+                            </div>
+                        </div>
+                        <table id="datatable-fixed-header" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Sl No.</th>
+                                    <th>Machine</th>
+                                    <th>Tool Number</th>
+                                    <th>Tool Name</th>
+                                    <th>Standard Life</th>
+                                    <th>Tool Life Counter</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>MCA18</td>
+                                    <td>08531</td>
+                                    <td>Tool</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>
+                                        <ul class="actionbtnn">
+                                            <li class="actionbtn">
+                                                <button class="btn btn-round btn-info" data-title="Edit" data-toggle="modal" data-target="#reset-plant">
+                                                    <i class="fa fa-refresh fa-lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="" data-original-title="Reset"></i>
+                                                </button>
+                                            </li>
+                                            <li class="actionbtn">
+                                                <button class="btn btn-round btn-danger" data-title="Edit" data-toggle="modal" data-target="#delete-plant">
+                                                    <i class="fa fa-trash fa-lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Delete Role details"></i>
+                                                </button>
+                                            </li>
+                                         </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- create Modal Start -->
+                        <div class="modal fade" id="create-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel"></h4>
+                                        <div class="x_panel">
+                                            <div class="x_title">
+                                                <h5>Create Life Tool</h5>
+                                            </div>
+                                            <div class="x_content">
+                                                <form class="form-horizontal form-label-left" novalidate>
+                                                    <div class="row row-space">
+                                                        <label class="col-sm-5 control-label">Tool Number</label>
+                                                        <div class="col-sm-6">
+                                                            @*<input type="text" class="form-control1" id="" placeholder="Tool Number">*@
+                                                            @Html.TextBox("ToolNumber", null, new { @id = "ToolNumber", @class = "form-control1", @placeholder = "Tool Number" })
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row row-space">
+                                                        <label class="col-sm-5 control-label">Tool Name</label>
+                                                        <div class="col-sm-6">
+                                                            @*<input type="text" class="form-control1" id="" placeholder="Tool Name">*@
+                                                            @Html.TextBox("ToolName", null, new { @id = "ToolName", @class = "form-control1", @placeholder = "Tool Name" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="row row-space">
+                                                        <label class="col-sm-5 control-label">Standard Life</label>
+                                                        <div class="col-sm-6">
+                                                            @*<input type="text" class="form-control1" id="" placeholder="Standard Life">*@
+                                                            @Html.TextBox("StandardLife", null, new { @id = "StandardLife", @class = "form-control1", @placeholder = "Standard Life" })
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-info"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- create Modal Finish -->
+                        <!-- Reset Modal Start -->
+                        <div class="modal fade" id="reset-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel"></h4>
+                                        <div class="x_panel">
+                                            <div class="x_title">
+                                                <h5>Reset Tool Life Details</h5>
+                                            </div>
+                                            <div class="x_content">
+                                                <form class="form-horizontal form-label-left" novalidate>
+                                                    <div class="row row-space">
+                                                        <label class="col-sm-5 control-label">Reason for tool Change</label>
+                                                        <div class="col-sm-6">
+                                                            @*<textarea class="form-control" placeholder="Reason for tool Change"></textarea>*@
+                                                            @Html.TextArea("ReasnToolChange", null, new { @id = "ReasnToolChange", @class = "form-control", @placeholder = "Reason for tool Change" })
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-info"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Reset Modal Finish -->
+                        <!-- Delete Modal Start -->
+                        <div class="modal fade" id="delete-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel"></h4>
+                                        <div class="x_panel">
+                                            <div class="x_title">
+                                                <h5>Delete Tool Life Detail</h5>
+                                            </div>
+                                            <div class="x_content">
+                                                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Detail?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="alert-danger">Tool Number:</label>&nbsp;&nbsp;<label class="alert-danger">1</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                                        <button type="button" class="btn btn-info" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Delete Modal Finish -->
+                    </div>
+             </div>
+         </div>
+    </div>
+</div>
+@*<script>
+    $(document).ready(function () {
+        $('#datatable-fixed-header').DataTable({
+            "lengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]]
+        });
+    });
+</script>*@
+
+@*Mac Hierarchy Dropdowns*@
+<script>
+    $("#PlantID").on("change", function () {
+        $("#ShopID").empty();
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#PlantID option:selected").val();
+        $.getJSON("/ProgramExecutionMonitor/GetShop", { PlantID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#ShopID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                //$("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#ShopID").prepend("<option value='' selected='selected'></option>");
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+
+            var dropdownVal = "Plant";
+            $("#SummerizeAs").find('option[value=' + dropdownVal + ']').remove();
+        });
+
+        $.getJSON("/OEEDashboard/GetSummarizeDropDownValues", { Factor: "Plant" }, function (data) {
+            $("#SummarizeAs").empty();
+            $.each(data, function (index, item) {
+                $("#SummarizeAs").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+        });
+    });
+    $("#ShopID").on("change", function () {
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#ShopID option:selected").val();
+        $.getJSON("/ProgramExecutionMonitor/GetCell", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#CellID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/ProgramExecutionMonitor/GetWC_Shop", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/OEEDashboard/GetSummarizeDropDownValues", { Factor: "Shop" }, function (data) {
+            $("#SummarizeAs").empty();
+            $.each(data, function (index, item) {
+                $("#SummarizeAs").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+        });
+    });
+    $("#CellID").on("change", function () {
+        $("#WorkCenterID").empty();
+        var selectedID = $("#CellID option:selected").val();
+        $.getJSON("/ProgramExecutionMonitor/GetWC_Cell", { CellID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/OEEDashboard/GetSummarizeDropDownValues", { Factor: "Cell" }, function (data) {
+            $("#SummarizeAs").empty();
+            $.each(data, function (index, item) {
+                $("#SummarizeAs").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+        });
+    });
+    $("#WorkCenterID").on("change", function () {
+        $("#SummarizeAs").empty();
+    });
+</script>

@@ -1,0 +1,168 @@
+﻿@model SRKSDemo.Server_Model.tblmultipleworkorder
+@{
+    var a = Session["Error"];
+    ViewBag.Title = "UnitWorks - MultiWorkOrder Create";
+    Layout = "~/Views/Shared/_LayoutForMaster.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="wrp clearfix">
+        @*style="background-color:red" box outside create role*@
+    <div class="fluid">
+        @*  <div id="ErrorBlock">
+                 <br />
+                <label style="display:inline;float:left">@Html.Raw(Session["Error"])</label>
+                @{
+                    Session["Error"] = null;
+                }
+            </div>*@
+        <div class="widget col-md- grid12">
+
+            <div class="widget-header" style="background-color: red">
+                <div class="widget-title">
+                    <span style="font-style: oblique; font-size: 100%">Enable New Work-Centre for Multi-WorkOrder</span>
+                </div>
+            </div>
+            <!-- /widget-header -->
+            <div class="widget-content pad20f">
+
+                <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color:blue;font-style:oblique">Multiple WO Name</label>
+                @Html.TextBoxFor(model => model.MultipleWOName, new { @id = "MultipleWOName", @class = "form-control", @name = "MultipleWOName", style = "width:40%", @placeholder = "Enter MultipleWO Name", @required = "required" })
+
+
+                <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color:blue;font-style:oblique">Multiple WO Description</label>
+                @Html.TextBoxFor(model => model.MultipleWODesc, new { @id = "MultipleWODesc", @class = "form-control", @name = "MultipleWODesc", style = "width:89.7%", @placeholder = "Enter MultipleWO Desc" })
+
+                <label for="input-1" class="stacked-label" style="resize: horizontal; width: 10%; color: blue; font-style: oblique">Plant Name</label>
+                @Html.DropDownListFor(model => model.PlantID, ViewBag.PlantID as IEnumerable<SelectListItem>, "--Select Plant--", new { @id = "PlantID", @class = "stacked-label", @name = "PlantID", @required = "required", @style = "aria-expanded:false;width:20%" })
+                @Html.ValidationMessageFor(model => model.PlantID)
+
+                <label for="input-1" class="stacked-label" style="resize: horizontal; padding-left: 5%; padding-top: 2%; width: 20%; color: blue; font-style: oblique">Shop Name</label>
+                @Html.DropDownListFor(model => model.ShopID, ViewBag.ShopID as IEnumerable<SelectListItem>, "--Select Shop--", new { @id = "ShopID", @class = "stacked-label", @name = "ShopID", @required = "required", @style = "aria-expanded:false;width:20%" })
+                @Html.ValidationMessageFor(model => model.ShopID)
+
+                <br />
+
+                <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; width: 10%; color: blue; font-style: oblique">Cell Name</label>
+                @Html.DropDownListFor(model => model.CellID, ViewBag.CellID as IEnumerable<SelectListItem>, "--Select Cell--", new { @id = "CellID", @class = "stacked-label", @name = "CellID", @style = "aria-expanded:false;width:20%" })
+                @Html.ValidationMessageFor(model => model.CellID)
+
+                <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; padding-left: 5%; width: 20%; color: blue; font-style: oblique">WorkCenter Name</label>
+                @Html.DropDownListFor(model => model.WCID, ViewBag.WCID as IEnumerable<SelectListItem>, "--Select WorkCenter--", new { @id = "WorkCenterID", @class = "stacked-label", @name = "WorkCenterID", @style = "aria-expanded:false;width:20%" })
+                @Html.ValidationMessageFor(model => model.WCID)
+
+                <br />
+                <br />
+                <div style="width: 3%; display: inline-block; height: inherit"></div>
+                @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                <div style="width: 20%; display: inline-block; height: inherit"></div>
+                <input type="submit" value="Enable" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit; margin-top: 2%; background-color: orange; color: black; font-size: 95%" />
+
+
+            </div>
+            <!-- /widget-content -->
+        </div>
+    </div>
+    <!-- /widget -->
+</div>
+<!-- /Class-fluid-->
+
+<!-- Modal -->
+if (Session["Error"] != null)
+{
+    <div id="dialog" title="Multi WO Conflict Msg ?" style="height: 5%">
+        <p>
+            @Html.Raw(@Session["Error"])
+            @{
+                Session["Error"] = null;
+            }
+        </p>
+    </div>
+}
+
+}
+
+<style>
+    input {
+        font-style: oblique;
+        color: blue;
+    }
+</style>
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+    setTimeout(function () {
+        $('#ErrorBlock').fadeOut('slow');
+    }, 15000); // <-- time in milliseconds
+</script>
+<script>
+    $("#PlantID").on("change", function () {
+        $("#ShopID").empty();
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#PlantID option:selected").val();
+        $.getJSON("/MultiWorkOrder/GetShop", { PlantID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#ShopID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#ShopID").prepend("<option value='' selected='selected'></option>");
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+    });
+
+    $("#ShopID").on("change", function () {
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#ShopID option:selected").val();
+        $.getJSON("/MultiWorkOrder/GetCell", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#CellID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/EMailEscalation/GetWC_Shop", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+
+    });
+
+    $("#CellID").on("change", function () {
+        $("#WorkCenterID").empty();
+        var selectedID = $("#CellID option:selected").val();
+        $.getJSON("/MultiWorkOrder/GetWC_Cell", { CellID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+    });
+</script>
+
+<script>
+    $(function () {
+        $("#dialog").dialog();
+    });
+</script>
+
+
+
+@*<script>
+        //This model window is from https://jqueryui.com/dialog/#modal-confirmation
+
+        alert(a);
+        alert(($.trim(a)).length > 0);
+            if (($.trim(a)).length > 0) {
+                $("#dialog-confirm").dialog({
+                    resizable: true,
+                    height: 150,
+                    modal: true,
+                }).show();
+            }
+    </script>*@

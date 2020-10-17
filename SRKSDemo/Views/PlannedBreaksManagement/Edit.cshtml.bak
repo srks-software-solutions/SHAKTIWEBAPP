@@ -1,0 +1,76 @@
+﻿@model SRKSDemo.ServerModel.tblplannedbreak
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+ <!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Planned Breaks Management</h3>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Planned Breaks Management</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      
+                        @using (Html.BeginForm("Edit","PlannedBreaksManagement", FormMethod.Post))
+                        {
+                        <form class="form-horizontal form-label-left" novalidate>
+                            <div class="control-group" id="fields">
+                                <div class="controls">
+                                    <div class="form">
+                                        <div class="entry input-group col-sm-12">
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-1 col-sm-3 col-xs-12">From Time</label>
+                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                    @Html.TextBoxFor(model => model.StartTime, new { @class = "form-control1 Starttime", @type = "time", @required = "required" })
+                                                </div>
+                                                <label class="control-label col-md-1 col-sm-3 col-xs-12">To Time</label>
+                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                    @Html.TextBoxFor(model => model.EndTime, new { @class = "form-control1 Endtime", @type = "time", @required = "required" })
+                                                </div>
+                                                <label class="control-label col-md-1 col-sm-3 col-xs-12">Reason</label>
+                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                    @Html.TextBoxFor(model => model.BreakReason, new { @class = "form-control1 Breakdown", @required = "required" })
+                                                </div>
+                                            </div>
+                                            @*<span class="input-group-btn">
+                                                <button class="btn btn-round btn-success btn-add" type="button">
+                                                    <span class="glyphicon glyphicon-plus"></span>
+                                                </button>
+                                            </span>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="generate-btn">
+                                @Html.HiddenFor(m=>m.BreakID)
+                                <a id="" href="/PlannedBreaksManagement/Index" type="submit" class="btn btn-new"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                                <button id="send" type="submit" class="btn btn-new float-right"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Update</button>
+                            </div>
+                        </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->

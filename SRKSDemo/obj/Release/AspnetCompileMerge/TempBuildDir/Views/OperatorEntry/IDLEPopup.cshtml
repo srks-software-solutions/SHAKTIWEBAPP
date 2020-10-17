@@ -1,0 +1,163 @@
+﻿@{
+    ViewBag.Title = "SRKSDemo - IDLE Selection";
+    Layout = "~/Views/Shared/_OperatorLayout.cshtml";
+}
+<div class="mp_content">
+    <h3>
+        IDLE / LOSS Window
+    </h3>
+    <form method="post" action="/OperatorEntry/IDLEPopup">
+        <div>
+            @foreach (var level in ViewBag.lossCodes)
+            {
+                if (ViewBag.level == 1)
+                {
+                    if (level.LossCodesLevel == ViewBag.level)
+                    {
+                        @*<button type="submit" name ="button" class="btn btn-primary"  action="/OperatorEntry/SettingWindow"  value="@level.LossCodeID"> @level.LossCode </button>*@
+                        <button type="button" name="buttonlevelOne" class="col-sm-2 col-xs-2 f-s-18 btn btn-primary lossid" onclick="lastNode(@level.LossCodeID, 1)" value="@level.LossCodeID"> @level.LossCodeDesc </button>
+                    }
+                }
+                if (ViewBag.level == 2)
+                {
+                    if (level.LossCodesLevel == ViewBag.level && level.LossCodesLevel1ID == ViewBag.lossCodeID)
+                    {
+                        @*<button type="submit" name ="button" class="btn btn-primary"  action="/OperatorEntry/SettingWindow"  value="@level.LossCodeID"> @level.LossCode </button>*@
+                        <button type="button" name="buttonlevelTwo" class="col-sm-2 col-xs-2 f-s-18 btn btn-primary lossid" onclick="lastNode(@level.LossCodeID, 2)" value="@level.LossCodeID"> @level.LossCodeDesc </button>
+                    }
+                }
+                if (ViewBag.level == 3)
+                {
+                    if (level.LossCodesLevel == ViewBag.level && level.LossCodesLevel2ID == ViewBag.lossCodeID)
+                    {
+                        <button type="button" name="button" class="col-sm-2 col-xs-2 f-s-18 btn btn-primary lossid" onclick="if (confirm('Are you sure?')) { window.location.href = '@Url.Action("SaveSetting", "OperatorEntry",new {  LossSelect= level.LossCodeID })'; }" value="@level.LossCodeID"> @level.LossCodeDesc </button>
+                    }
+                }
+            }
+            @if (ViewBag.MachineMode != "Setting" && ViewBag.MachineMode != "MNT")
+            {
+                @Html.ActionLink("Setting", "SettingWindow", "OperatorEntry", new { @class = "col-sm-2 col-xs-2 btn btn-primary f-s-18" })
+                @Html.ActionLink("Maintenance", "MaintenanceWindow", "OperatorEntry", new { @class = "col-sm-2 col-xs-2 btn btn-primary f-s-18" })
+            }
+            <input type="text" name="LossSelect" id="LossSelect" hidden="hidden" />
+        </div>
+    </form>
+</div>
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    function lastNode(LossCodeID, Level) {
+
+        var sorf = "Connected";
+        //$.ajax({
+        //    type: "POST",
+        //    url: "/OperatorEntry/ServerPing",
+        //    async: false,
+        //    success: function (data) {
+        //        var status = data;
+        //        if (status == "Connected") {
+        //            sorf = "Connected";
+        //        }
+        //        else {
+        //            sorf = "NotConnected";
+        //        }
+        //    },
+        //    error: function (XMLHttpRequest, textStatus, errorThrown) {
+        //        //if (textStatus == 'Unauthorized') {
+        //        //    alert('custom message. Error: ' + errorThrown);
+        //        //} else {
+        //        //    alert('custom message. Error: ' + errorThrown);
+        //        //}
+        //        sorf = "NotConnected";
+        //        toastr.warning("", "There is some issue in network");
+        //    }
+        //});
+
+        if (sorf == "Connected") {
+            //unblock();
+            $("#LossSelect").val(LossCodeID);
+        var dat = JSON.stringify({
+            'id': LossCodeID,
+            'lev': Level
+        });
+        var request = '/OperatorEntry/lastNodeIdleCheck/' + LossCodeID + '?lev=' + Level;
+        $.get(
+            request,
+            function (data) {
+                var response = String(data);
+                var response = response.split('/');
+                var LastNode = response[0].toString();
+                var buttonClickID = response[1].toString();
+                if (LastNode == "true") {
+                    if (confirm('Are you sure?')) {
+                        window.location.href = '@Url.Action("SaveIdle", "OperatorEntry")' + '?selectLoss=' + buttonClickID;
+                    }
+                } else
+                {
+                  //  $.post('/OperatorEntry/SettingWindow/?l=' + buttonClickID);
+                    //window.location.href = '/OperatorEntry/SettingWindow /?l = ' + buttonClickID;
+                    //$("form").attr("action", '/OperatorEntry/SettingWindow/?l =' + buttonClickID);
+                    $("form").attr("action", '/OperatorEntry/IDLEPopup');
+                    $("form").attr("name", "buttonlevelOne");
+                    $("form").attr("value", buttonClickID);
+                    $("form").attr("mode", "post");
+                    $("form").submit();
+                }
+            });
+        }
+        else {
+            toastr.error("", "No Internet Connectivity");
+            //block();
+        }
+
+        
+    }
+</script>
+<script>
+    function block() {
+        $(".btn").attr('disabled', 'disabled');
+    }
+
+    function unblock() {
+        $(".btn").removeAttr('disabled', 'disabled');
+    }
+
+</script>
+<link href="~/Content/toaster.css" rel="stylesheet" />
+<script src="~/Scripts/toaster.js"></script>
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "5000",
+        "hideDuration": "7000",
+        "timeOut": "5000",
+        "extendedTimeOut": "5000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "5000",
+        "hideDuration": "7000",
+        "timeOut": "5000",
+        "extendedTimeOut": "5000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+</script>

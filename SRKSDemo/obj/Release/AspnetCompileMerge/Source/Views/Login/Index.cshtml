@@ -1,0 +1,343 @@
+﻿@model SRKSDemo.UserModel
+@{
+    ViewBag.Title = "User";
+
+}
+
+<div class="right_col" role="main">
+    <div class="">
+
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>User </h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            @Html.ActionLink(" Add New", "Create", "Login", new { @class = "btn btn-default" }, new { @style = "margin-top: 10px; padding-top:7px;", @class = "btn btn-default fa fa-plus-square" })
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table id="datatable-fixed-header" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>User Name</th>
+                                    <th>Primary Role</th>
+                                    <th>Secondary Role</th>
+                                    <th>Display Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.UsersList)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.tblrole.RoleDesc)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.tblrole1.RoleDesc)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.DisplayName)</td>
+                                        <td>
+                                            <ul class="actionbtnn">
+
+
+                                                <li class="actionbtn"><a href="@Url.Action("Edit", "Login", new { id = item.UserID })" id="@(@item.UserID)" class="btn btn-round btn-info EditUser"><i class="fa fa-pencil fa_lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Edit User"></i></a></li>
+                                                <li class="actionbtn"><button class="btn btn-round btn-danger deleteItem" data-id="@item.UserID" onclick="deleteTargetName('@item.UserName')" data-title="Edit" data-toggle="modal" data-target="#delete-plant"><i class="fa fa-trash fa-lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Delete User"></i></button></li>
+
+                                                <!-- Delete Modal Start -->
+                                                <div class="modal fade" id="delete-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+
+                                                                <h4 class="modal-title" id="myModalLabel"></h4>
+                                                                <div class="x_panel">
+                                                                    <div class="x_title">
+                                                                        <h5>User</h5>
+                                                                    </div>
+                                                                    <div class="x_content">
+                                                                        <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Detail?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="alert-danger11">User Name:</label></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-danger btnContinueDelete"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                                                                <button type="button" class="btn btn-info" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Delete Modal Finish -->
+
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+
+                        <!-- create Modal Start -->
+                        @*@using (Html.BeginForm("Create", "Login", FormMethod.Post, new { @class = "form-horizontal bordered-row" }))
+                        {*@
+                            <div class="modal fade" id="create-plant">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel"></h4>
+                                            <div class="x_panel">
+                                                <div class="x_title">
+                                                    <h5>User</h5>
+                                                </div>
+                                                <div class="x_content">
+                                                    <form class="form-horizontal form-label-left" novalidate>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-5 control-label">User Name</label>
+                                                            <div class="col-sm-6">
+                                                                @Html.TextBoxFor(model => model.Users.UserName, new { @id = "UserName", @class = "form-control", @name = "UserName ", style = "width:89.7%", @placeholder = "User Name", @required = "required" })
+                                                                @*<input type="text" class="form-control1" id="" placeholder="User Name">*@
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-5 control-label">Password</label>
+                                                            <div class="col-sm-6">
+                                                                @Html.PasswordFor(model => model.Users.Password, new { @id = "Password", @class = "form-control", @name = "Password ", style = "width:89.7%", @placeholder = "Password ", @required = "required" })
+                                                                @*<input type="password" class="form-control1" id="" placeholder="Password">*@
+                                                            </div>
+                                                        </div>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-5 control-label">Display Name</label>
+                                                            <div class="col-sm-6">
+                                                                @Html.TextBoxFor(model => model.Users.DisplayName, new { @id = "DisplayName", @class = "form-control", style = "width:89.7%", @name = "DisplayName", @placeholder = "DisplayName", @required = "required" })
+                                                                @*<input type="text" class="form-control1" id="" placeholder="Display Name">*@
+                                                            </div>
+                                                        </div>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-5 control-label">Primary Role</label>
+                                                            <div class="col-sm-6">
+                                                                @Html.DropDownList("PrimaryRoleID", null, "--Select Role--", new { @id = "RoleID1", @class = "form-control", @name = "RoleID1", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = ViewData["PrimaryRoleID"] })
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row row-space">
+                                                            <label class="col-sm-5 control-label">Secondary Role</label>
+                                                            <div class="col-sm-6">
+                                                                @Html.DropDownList("SecondaryRoleID", (SelectList)ViewData["SecondaryRoleID"], "--Select Secondry Role--", new { @id = "RoleID2", @class = "dropdown form-control dropdown-toggle", style = "width:89.7%", @name = "RoleID", })
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="generate-btn">
+                                                            <a id="" href="/Login/Index" type="submit" class="btn btn-new"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                                                            <button type="submit" class="btn btn-new float-right savebtn"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        @*}*@
+                        <!-- create Modal Finish -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<li class="actionbtn"><button class="btn btn-round btn-info User1" style="display:none" data-title="Edit" data-toggle="modal" data-target="#edit-plant"><i class="fa fa-pencil fa-lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Edit User"></i></button></li>
+@*@using (Html.BeginForm("Edit", "Login", FormMethod.Post, new { @class = "form-horizontal bordered-row" }))
+{*@
+    <!-- edit Modal Start -->
+    <div class="modal fade" id="edit-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h5>User</h5>
+                        </div>
+                        <div class="x_content">
+                            <form class="form-horizontal form-label-left" novalidate>
+                                <div class="row row-space">
+                                    <label class="col-sm-5 control-label">User Name</label>
+                                    <div class="col-sm-6">
+                                        @Html.HiddenFor(model => model.Users.UserID, new { @id = "UserGUID", @class = "form-control", @name = "UserGUID ", @placeholder = "UserGUID", @required = "required" })
+                                        @Html.TextBoxFor(model => model.Users.UserName, new { @id = "EditUserName", @class = "form-control", @name = "UserName ", @placeholder = "User Name", @required = "required" })
+                                        @*<input type="text" class="form-control1" id="" placeholder="User Name">*@
+                                    </div>
+                                </div>
+
+                                <div class="row row-space">
+                                    <label class="col-sm-5 control-label">Password</label>
+                                    <div class="col-sm-6">
+                                        @Html.PasswordFor(model => model.Users.Password, new { @id = "EditPassword", @class = "form-control", @name = "Password ", @placeholder = "Password ", @required = "required" })
+                                        @*<input type="password" class="form-control1" id="" placeholder="Password">*@
+
+                                    </div>
+                                </div>
+                                <div class="row row-space">
+                                    <label class="col-sm-5 control-label">Display Name</label>
+                                    <div class="col-sm-6">
+                                        @Html.TextBoxFor(model => model.Users.DisplayName, new { @id = "EditDisplayName", @class = "form-control", @name = "DisplayName", @placeholder = "DisplayName", @required = "required" })
+                                        @*<input type="text" class="form-control1" id="" placeholder="Display Name">*@
+                                    </div>
+                                </div>
+                                <div class="row row-space">
+                                    <label class="col-sm-5 control-label">Primary Role</label>
+                                    <div class="col-sm-6">
+                                        @Html.DropDownList("PrimaryRoleID", null, "--Select Primary Role--", new { @id = "EditRoleID1", @class = "dropdown form-control dropdown-toggle", @name = "RoleID", @required = "required", @value = ViewData["PrimaryRole"] })
+
+                                    </div>
+                                </div>
+                                <div class="row row-space">
+                                    <label class="col-sm-5 control-label">Secondary Role</label>
+                                    <div class="col-sm-6">
+                                        @Html.DropDownList("SecondaryRoleID", null, "--Select Secondry Role--", new { @id = "EditRoleID2", @class = "dropdown form-control dropdown-toggle", @name = "RoleID", @value = ViewData["PrimaryRole"] })
+                                        @*<select class="form-control1" tabindex="2" id="type">
+                                            <option value="" selected disabled>Select Secondary Role</option>
+                                            <option value="United States">Operator</option>
+                                            <option value="United Kingdom">Admin</option>
+                                            </select>*@
+                                    </div>
+                                </div>
+
+                                @Html.HiddenFor(model => model.Users.UserID)
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-info updatebtn"><i class="fa fa-floppy-o" aria-hidden="true"></i> Update</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- edit Modal Finish -->
+@*}*@
+
+
+<!-- /page content -->
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+    $(".EditUser").on("click", function (e) {
+        $(".User1").click();
+        e.preventDefault();
+        var UserId = $(this).attr("id")
+        $.getJSON("/Login/GetUserById", { Id: UserId }, function (data) {
+            $.each(data, function (index, item) {
+                debugger;
+                $("#UserGUID").val(UserId);
+                $("#EditUserName").val((item.username));
+                $("#EditPassword").val((item.password));
+                $("#EditDisplayName").val((item.displayname));
+                $("#EditRoleID1").val((item.primaryrole));
+                $("#EditRoleID2").val((item.secondary));
+                var Primaryroleid = item.primaryrole;
+                $.ajaxSetup({ async: false });
+                $.getJSON("/Login/Fetchroles", { Primaryroleid: Primaryroleid }, function (data) {
+                    //  alert(data)
+                    $("#EditRoleID1").empty();
+                    $("#EditRoleID1").append("<option value = ''> --Select Shop-- </option>")
+                    $.each(data, function (index, item) {
+                        $("#EditRoleID1").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+                    });
+
+                });
+                $("#EditRoleID1").val(item.primaryrole);
+            });
+            return false;
+
+        });
+    });
+
+
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $(document).on('click', ".updatebtn", function (e) {
+            var UserName = $("#EditUserName").val();
+            var Password = $("#EditPassword").val();
+            var DisplayName = $("#EditDisplayName").val();
+            var RoleID1 = $("#EditRoleID1").val();
+            var RoleID2 = $("#EditRoleID2").val();
+            var userid = $("#UserGUID").val();
+            if (RoleID2 == "") {
+                $.post("/Login/UpdateData", {
+                    UserName: UserName, Password: Password, DisplayName: DisplayName, RoleID1: RoleID1, userid: userid
+
+                }, function (msg) {
+                    if (msg == "success") {
+
+                    }
+                    alert("Data Updated successfully");
+                    window.location.href = "/Login/Index";
+                });
+            }
+            else {
+                $.post("/Login/UpdateDat", {
+                    UserName: UserName, Password: Password, DisplayName: DisplayName, RoleID1: RoleID1, RoleID2: RoleID2, userid: userid
+
+                }, function (msg) {
+                    if (msg == "success") {
+
+                    }
+                    alert("Data Updated successfully");
+                    window.location.href = "/Login/Index";
+                });
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $(document).on('click', ".savebtn", function (e) {
+            var UserName = $("#UserName").val();
+            var Password = $("#Password").val();
+            var DisplayName = $("#DisplayName").val();
+            var RoleID1 = $("#RoleID1").val();
+            var RoleID2 = $("#RoleID2").val();
+            $.post("/Login/InsertData", {
+                UserName: UserName, Password: Password, DisplayName: DisplayName, RoleID1: RoleID1, RoleID2: RoleID2
+
+            }, function (msg) {
+                if (msg == "success") {
+                    alert("Data Saved successfully");
+                    window.location.href = "/Login/Index";
+                }
+            });
+        });
+    });
+</script>
+<script>
+
+    function deleteTargetName(productvariant) {
+        $(".deleteTargetName").empty();
+        $(".alert-danger11").html("User Name: " +
+            productvariant);
+    }
+
+    var item_to_delete;
+    $(".deleteItem").click(function (e) {
+        item_to_delete = $(this).data('id');
+        //alert(item_to_delete);
+    });
+    $('.btnContinueDelete').click(function () {
+        //  alert("hi");
+        window.location = "/Login/Delete/" + "?id=" + item_to_delete;
+    });
+
+</script>

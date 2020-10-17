@@ -1,0 +1,98 @@
+ @using (Html.BeginForm("Create", "ProductionLoss", FormMethod.Post))
+                                            {
+                                             <!-- create Modal Start -->
+                                                <div class="modal fade" id="create-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                <h4 class="modal-title" id="myModalLabel"></h4>
+                                                                <div class="x_panel">
+                                                                    <div class="x_title">
+                                                                        <h5>Create Production Loss Detail</h5>
+                                                                    </div>
+                                                                    <div class="x_content">
+                                                                        <form class="form-horizontal form-label-left" novalidate>
+                                                                            <div class="row row-space">
+                                                                                <div class="radio radio-primary col-sm-offset-4">
+                                                                                    <input type="radio" name="radio1" id="radio1" value="option1" checked="checked">
+                                                                                    <label for="radio1">
+                                                                                        Level1
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="radio radio-primary">
+                                                                                    <input type="radio" name="radio1" id="radio2" value="option2">
+                                                                                    <label for="radio2">
+                                                                                        Level2
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="radio radio-primary">
+                                                                                    <input type="radio" name="radio1" id="radio3" value="option3">
+                                                                                    <label for="radio3">
+                                                                                        Level3
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div id="divs">
+                                                                                <div id="div1">
+                                                                                    <div class="row row-space">
+                                                                                        <label class="col-sm-4 control-label">Loss Code</label>
+                                                                                        <div class="col-sm-5">
+                                                                                            @Html.TextBoxFor(model=> model.ProductionLoss.LossCode, new { @class= "form-control1" ,@placeholder= "Loss Code" })
+                                                                                            @*<input type="text" class="form-control1" id="" placeholder="Loss Code">*@
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row row-space">
+                                                                                        <label class="col-sm-4 control-label">Loss Code Description</label>
+                                                                                        <div class="col-sm-5">
+                                                                                            @Html.TextBoxFor(model=>model.ProductionLoss.LossCodeDesc,new { @class= "form-control1", @placeholder = "Loss Code Description" })
+                                                                                            @*<input type="text" class="form-control1" id="" placeholder="Loss Code Description">*@
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div id="div2" class="row row-space" style="display: none;">
+                                                                                        <label class="col-sm-4 control-label">Level1</label>
+                                                                                        <div class="col-sm-5">
+                                                                                            @Html.DropDownList("Level1", null, "--Select Level1--", new { @id = "Level1", @class = "form-control clearDropdown", @name = "Level1", @style = "aria-expanded:false;width:89.7%", @value = ViewData["Level1"] })
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div id="div3" class="row row-space" style="display: none;">
+                                                                                        <label class="col-sm-4 control-label">Level2</label>
+                                                                                        <div class="col-sm-5">
+                                                                                            @Html.DropDownList("Level2", null, "--Select Level2--", new { @id = "Level2", @class = "form-control clearDropdown", @name = "Level2", @style = "aria-expanded:false;width:89.7%", @value = ViewData["Level2"] })
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    @Html.HiddenFor(model => model.ProductionLoss.LossCodesLevel, new { @id = "LossCodesLevel", @class = "form-control", @name = "LossCodesLevel", @Value = 1 })
+                                                                                    <div class="row row-space">
+                                                                                        <label class="col-sm-4 control-label">Loss Category</label>
+                                                                                        <div class="col-sm-5">
+                                                                                            @Html.DropDownListFor(model => model.ProductionLoss.MessageType, LossReason,"--Select LossReason--" ,new { @id = "MessageType", @name = "MessageType", @class = "form-control clearDropdown", @style = "aria-expanded:false;width:89.7%", @required = "required", @value = ViewData["LossReason"] })
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row row-space">
+                                                                                        <label class="col-sm-4 control-label">Contributes To</label>
+                                                                                        <div class="col-sm-5">
+                                                                                            @Html.DropDownListFor(model => model.ProductionLoss.ContributeTo, ContributeTo, "--Select Contributesto--", new { @id = "ContributeTo", @name = "ContributeTo", @class = "form-control clearDropdown", @style = "aria-expanded:false;width:89.7%", @required = "required", @value = ViewData["ContributeTo"] })
+                                                                                            @*<select class="form-control1" tabindex="2" id="type">
+                                                                                                <option value="" selected disabled>Select Contributes To</option>
+                                                                                                <option value="United States">Job Order</option>
+                                                                                                <option value="United Kingdom">Machine Type</option>
+                                                                                            </select>*@
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="submit" class="btn btn-info"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+                                                                <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                                                                @*<button type="submit" class="btn btn-info"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+                                                                <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>*@
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <!-- create Modal Finish -->
+                                            }

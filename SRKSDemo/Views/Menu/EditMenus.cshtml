@@ -1,0 +1,177 @@
+﻿@model SRKSDemo.Server_Model.sidebar_menus
+@{
+    ViewBag.Title = "EditMenus";
+    Layout = "~/Views/Shared/_LayoutForRole.cshtml";
+
+    var DashboardAccess = new List<SelectListItem>();
+    DashboardAccess.Add(new SelectListItem() { Text = "Yes", Value = "1" });
+    DashboardAccess.Add(new SelectListItem() { Text = "No", Value = "2" });
+
+    var SidebarAccess = new List<SelectListItem>();
+    SidebarAccess.Add(new SelectListItem() { Text = "Yes", Value = "1" });
+    SidebarAccess.Add(new SelectListItem() { Text = "No", Value = "2" });
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Edit Menus</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        @using (Html.BeginForm("EditMenus", "Menu", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal form-label-left" }))
+                        {
+                            <div class="row row-space">
+                                <div class="row">
+                                    <label class="col-sm-2 control-label">Menu Name</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.MenuName, new { @id = "MenuName", @class = "form-control", @name = "MenuName", @placeholder = "Enter Menu Name", @required = "required", @Value = ViewBag.MenuName })
+                                    </div>
+                                    <label class="col-sm-2 control-label">Dashboard Access</label>
+                                    <div class="col-sm-3">
+                                        @Html.DropDownList("DashboardAccess", new SelectList(DashboardAccess, "Value", "Text"), "--Select value--", new { @id = "Dashboard", @class = "form-control", @name = "Dashboard", @placeholder = "DashboardAccess", @required = "required", @Value = ViewBag.Dashboard, @onchange = "enableMenuUrl();" })
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 control-label">Sidebar Access</label>
+                                    <div class="col-sm-3">
+                                        @Html.DropDownList("SidebarAccess", new SelectList(SidebarAccess, "Value", "Text"), "--Select value--", new { @id = "Sidebar", @class = "form-control", @name = "Sidebar", @placeholder = "SidebarAccess", @required = "required", @Value = ViewBag.Sidebar, @onchange = "enableDisplayOrder();" })
+                                    </div>
+                                    <label class="col-sm-2 control-label">Display Order</label>
+                                    <div class="col-sm-3">
+                                        @Html.DropDownList("DisplayOrder", null, "--Select Display Order--", new { @id = "displayOrder", @class = "form-control", @name = "DisplayOrder", @required = "required", @value = ViewData["DisplayOrder"] })
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 control-label">Menu URL</label>
+                                    <div class="col-sm-3">
+                                        @Html.TextBoxFor(model => model.MenuURL, new { @id = "menuUrl", @class = "form-control", @name = "MenuURL", @placeholder = "Enter Menu Url starting with /", @Value = ViewBag.MenuUrl })
+                                    </div>
+                                    <label class="col-sm-2 control-label">Image</label>
+                                    <div class="col-sm-5">
+                                        <div id="" class="desc" style=" padding: 10px 0px 10px 40px;">
+                                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                <img id="preview" alt="your image" width="210" height="210" style="max-width: 100%;display:inline-table" class="fileinput-preview thumbnail">
+
+                                                <div>
+                                                    <span>
+                                                        <input value="@ViewBag.Image" type="hidden" id="Images" name="getImage" />
+                                                        <input type="file" accept='image/*' class="form-control " id="imageFile" name="imageFile" onchange="imageFileChange(this)" style="width: 50%">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 control-label">Menu Style</label>
+                                    <div class="col-sm-3">
+                                        <input type="hidden" id="hdnMenuStyle" name="MenuStyle" />
+                                        @Html.DropDownList("MenuStyle", null, "--Select Menu Style--", new { @id = "menuStyle", @class = "form-control ", @name = "MenuStyle", @required = "required", @value = ViewData["MenuStyle"] })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding: 0 10px;">
+                                <a href="/Menu/MenusList" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-chevron-left"></span> Back</a>
+                                <button id="btnSubmit" type="submit" class="btn btn-info submission pull-right"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Update</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+@if (ViewBag.Image == null || ViewBag.Image == "")
+{
+    <script>
+        $(function () {
+            var basesf = 'no-image-icon-6.png';
+            basesf = '../images/' + basesf;
+            if (basesf.length > 0) {
+                $("#preview").attr('src', basesf);
+            }
+        });
+    </script>
+}
+else
+{
+    <script>
+        $(function () {
+            var basesf = $("#Images").val();
+            if (basesf != 0) {
+                $("#preview").attr('src', basesf)
+            }
+        });
+    </script>
+}
+
+<script>
+    var value = @ViewBag.Dashboard;
+    if (value != 0) {
+        document.getElementById("Dashboard").selectedIndex = value;
+        $("#menuStyle").removeAttr('disabled', 'disabled');
+    }
+    else {
+        document.getElementById("Dashboard").selectedIndex = 2;
+        $("#menuStyle").attr('disabled', 'disabled');
+    }
+</script>
+<script>
+    var value = @ViewBag.Sidebar;
+    if (value != 0) {
+        document.getElementById("Sidebar").selectedIndex = value;
+        $("#displayOrder").removeAttr('disabled', 'disabled');
+    }
+    else {
+        document.getElementById("Sidebar").selectedIndex = 2;
+        $("#displayOrder").attr('disabled', 'disabled');
+    }
+</script>
+
+<script>
+    function imageFileChange(val) {
+        document.getElementById('preview').src = window.URL.createObjectURL(val.files[0]);
+    }
+</script>
+
+<script>
+    function enableDisplayOrder() {
+        var value = $('#Sidebar').val();
+        if (value == 1) {
+            $("#displayOrder").removeAttr('disabled', 'disabled');
+        }
+        else {
+            $("#displayOrder").attr('disabled', 'disabled');
+        }
+    }
+
+    function enableMenuUrl() {
+        var value = $('#Dashboard').val();
+        if (value == 1) {
+            $("#menuStyle").removeAttr('disabled', 'disabled');
+        }
+        else {
+            $("#menuStyle").attr('disabled', 'disabled');
+        }
+    }
+</script>
+<script>
+    $("#menuStyle").on("change", function () {
+        $("#hdnMenuStyle").val($(this).find("option:selected").text());
+    });
+</script>

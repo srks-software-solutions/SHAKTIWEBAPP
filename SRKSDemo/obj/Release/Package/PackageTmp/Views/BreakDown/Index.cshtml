@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "Breakdown-Entry";
+    Layout = "~/Views/Shared/_LayoutForMaster.cshtml";
+}
+
+  <!-- page content -->
+<div class="right_col" role="main" style="margin-left: 0px;">
+    <div class="">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Breakdown Entry - <label class="label-level">Level 1</label></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <ol class="breadcrumb breadcrumb-col-cyan">
+                    IDLE Code is&nbsp;:
+                    <li><a href="javascript:void(0);">Setup</a></li>
+                    <li class="active">Job</li>
+                </ol>
+                <ol class="breadcrumb_time">
+                    <li>IDLE Start Time is&nbsp;:</li>
+                    <li class="time-loss">6/12/2017</li>
+                    <li class="time-loss">9:54:58 AM</li>
+                </ol>
+                <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="col-sm-3">
+                                <div class="child">
+                                    <a href="" data-toggle="modal" data-target="#create-plant">Setup</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="child">
+                                    <a href="">Waiting</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="child">
+                                    <a href="">Breaks</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="child">
+                                    <a href="">Cleaning</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="child">
+                                    <a href="">Coolant refill</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="child">
+                                    <a href="">IT - Network down</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="child">
+                                    <a href="">TPM</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="child">
+                                    <a href="">No Load</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="child">
+                                    <a href="">Self inspection</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="child">
+                                    <a href="">Special  Operations</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="child">
+                                    <a href="">M0 - Tool change</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="child">
+                                    <a href="">NC Program block search</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- create Modal Start -->
+                        <div class="modal fade" id="create-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <h4 class="modal-title" id="myModalLabel"></h4>
+                                        <div class="x_panel">
+                                            <div class="x_title">
+                                                <h5>Breakdown Confirmation?</h5>
+                                            </div>
+                                            <div class="xx_content">
+                                                <div class="padding-15"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> No Further Levels . Do you want to set <label class="label-unit">Raw material</label> as reason.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-info"><i class="fa fa-cog" aria-hidden="true"></i> Set as Reason</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- create Modal Finish -->
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->

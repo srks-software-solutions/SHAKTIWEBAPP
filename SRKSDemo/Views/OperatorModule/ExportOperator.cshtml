@@ -1,0 +1,86 @@
+﻿@model i_facility.Models.OperatorModule
+@{
+    ViewBag.Title = "OperatorModule";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="wrp clearfix">
+        @*style="background-color:red" box outside create role*@
+        <div class="fluid">
+            <div class="widget col-md- grid12">
+                <div class="widget-header" style="background-color: red">
+                    <div class="widget-title">
+                        <span style="font-style: oblique; font-size: 100%">Export Operator Details</span>
+                    </div>
+                </div>
+                <!-- /widget-header -->
+                <div id="ErrorBlock">
+                    @if (Session["Error"] != null)
+                    {
+                        <pre>
+<span style="font-family:Calibri">@Session["Error"]</span>
+                    </pre>
+                    }
+                    @{
+                        Session["Error"] = null;
+                    }
+                </div>
+                <div class="x_content">
+                    <form class="form-horizontal form-label-left" novalidate>
+                        <div class="row row-space">
+                            <div class="col-md-4">
+                                <input type="radio" name="UploadTypeRadio" id="radio1" value="OverWrite" checked="checked" onchange="radioChange();">
+                                <label for="radio1">
+                                    Over Write
+                                </label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="radio" name="UploadTypeRadio" id="radio2" value="New" onchange="radioChange();">
+                                <label for="radio2">
+                                    New List
+                                </label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="radio" name="UploadTypeRadio" id="radio3" value="Update" onchange="radioChange();">
+                                <label for="radio3">
+                                    Update
+                                </label>
+                            </div>
+                        </div>
+                        <input type="hidden" id="UploadType" name="UploadType" value="OverWrite" />
+                        <div class="row row-space">
+                            <label class="col-sm-4 control-label">Upload an Excel File</label>
+                            <div class="col-sm-7">
+                                <input type="file" name="file" id="importedFile" accept=".xls,.xlsx" class="form-control1">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-info"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+
+<script>
+    function radioChange() {
+        var value = $("input[name='UploadTypeRadio']:checked").val();
+        $("#UploadType").val(value);
+    }
+</script>
+
+
+@*<script>
+    $('.btnExport').click(function () {
+        window.location = "/OperatorModule/ExportOperatorData";
+    });
+</script>*@
+

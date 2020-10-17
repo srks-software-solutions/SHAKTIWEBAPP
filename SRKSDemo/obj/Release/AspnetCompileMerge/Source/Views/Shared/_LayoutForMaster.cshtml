@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1- strict.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta name="robots" content="noodp,noydir" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>i_facility - @ViewBag.Title</title>
+
+    <link rel="apple-touch-icon" sizes="144x144" href="~/Images/apple-touch-icon-ipad-retina.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="~/Images/apple-touch-icon-iphone-retina.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="~/Images/apple-touch-icon-ipad.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="~/Images/apple-touch-icon-iphone.png" />
+    @*<link rel="shortcut icon" type="image/x-icon" href="~/Images/120px-Tata_logoicon.ico" />*@
+
+    <!-- bootstrap -->
+    <link href="~/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/jquery.datetimepicker.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/font-awesome-4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/toastr.css" />
+
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/css/pe-icon-7-filled.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/pe-icon-7-stroke.css" />
+    <link href="~/css/font-awesome.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .ui-dialog .ui-dialog-title {
+            float: left;
+            margin: .1em 0;
+            white-space: nowrap;
+            width: 90%;
+            overflow: hidden;
+            color: black;
+            text-overflow: ellipsis;
+        }
+
+        .ui-button .ui-button-text {
+            display: block;
+            color: black;
+            line-height: normal;
+        }
+    </style>
+
+    <style type="text/css">
+        th {
+            background-color: orange;
+        }
+    </style>
+
+</head>
+<body>
+
+
+    @*<div id="loading">
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>*@
+
+    <div id="wrapper" style="height: auto">
+        <div id="top">
+            <div class="main-logo">
+                
+                    <a href="~/dashboard/dashboard" onclick="return true;">
+                        <img src="~/images/CCSLogo.png" style="width: 20%; height: 20%" />
+                    </a>
+                
+            </div>
+
+            <div class="m-nav"><i class="fa fa-bars"></i></div>
+
+            <div class="profile-nav">
+                <div style="display: inline; color: white">
+                    Welcome  @ViewBag.Logout
+                </div>
+
+
+                <div style="display: inline; color: white;">
+                    @*@Html.ActionLink("Logout", "Logout", "Login", new { @class="btn red btn-primary", @style="color:white"})*@
+                    <b><a href="~/Login/Logout" class="btn red">Logout</a>  </b>
+                </div>
+            </div>
+
+        </div>
+        <!-- /top -->
+
+        <div id="sidebar">
+            @* <div class="search">
+                    <input type="search" placeholder="Search here...">
+                    <i class="fa fa-search"></i>
+                </div>*@
+            <ul class="main-nav">
+
+                <li>
+                    <a href="~/Dashboard/Dashboard"> <img src="~/images/dashboard.png" />Dashboard</a>
+
+                </li>
+
+                @*<li>
+        <a href="~/ProgramExecutionMonitor/Index"> <img src="~/images/part.png" />Virtual HMI</a>*@
+                @*<ul class="nav child_menu">
+            <li>@Html.ActionLink("Virtual HMI", "Index", "ProgramExecutionMonitor")</li>
+        </ul>*@
+                @*</li>*@
+
+                <li class="collapsible">
+                    <a href="#" onclick="return false;">
+                        <img src="~/images/MDashboards.png" />
+                        &nbsp Machine Dashboards
+                    </a>
+                    @*<a href="~/Dashboard/Dashboard" onclick="return false;">
+
+            </a>*@
+                    <ul class="sub-menu">
+                        <li style="padding-top: 0px;">@Html.ActionLink("Machine Connectivity Status Dashboard", "NewDashboard2911", "Dashboard")</li>
+                        <li style="padding-top: 0px;">@Html.ActionLink("Centralized Dashboard", "MConnectivity2", "Dashboard")</li>
+                        <li style="padding-top: 0px;">@Html.ActionLink("Prv Day Machine Status", "DashboardStatus", "MachineStatusReport")</li>
+                        <li>@Html.ActionLink("Prod Andon Display", "proddisplay", "AndonDisplay")</li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="~/Dashboard/Dashboard">
+                        <img src="~/images/part.png" />
+                        &nbsp Virtual HMI
+                    </a>
+                </li>
+
+                <li>
+                    <a href="~/ProgramTransfer/Index">
+                        <img src="~/images/nc.png" />
+                        &nbsp NC Program Transfer
+                    </a>
+                </li>
+
+                <li class="collapsible">
+                    <a href="#" onclick="return false;">
+                        <img src="~/images/report.png" />
+                        &nbsp Report
+                    </a>
+                    <ul class="sub-menu">
+                        <li style="padding-top: 0px;">@Html.ActionLink("Main Utilization Report", "Utilization_ABGraph", "Reports")</li>
+                        <li style="padding-top: 0px;">@Html.ActionLink("OEE Report", "OEEReport", "Reports")</li>
+                        <li style="padding-top: 0px;">@Html.ActionLink("Job Report Card", "JobReport", "Reports")</li>
+                        <li style="padding-top: 0px;">@Html.ActionLink("Loss Register Report", "IdleList", "Reports")</li>
+                        <li style="padding-top: 0px;">@Html.ActionLink("Cycle Time Report", "CycleTime", "Reports")</li>
+                        <li style="padding-top: 0px;">@Html.ActionLink("Alaram Report", "AlaramReport", "Reports")</li>
+                    </ul>
+                </li>
+                <li class="collapsible">
+                    <a href="/PreventiveMaintainanceScheduling/Index" onclick="return false;">
+                        <img src="~/images/report.png" />
+                        &nbsp Preventive Maintainance
+                    </a>
+                    <ul class="sub-menu">
+                        
+                            <li>
+                                <a href="/PreventiveMaintainanceScheduling/Index">Preventive Maintainance Scheduling</a>
+                            </li>
+
+                            <li>
+                                <a href="/PmCheckPoint/Index">PmCheckPoint Details</a>
+                            </li>
+                            <li>
+                                <a href="/PmCheckList/Index">PmCheckList Details</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                <li class="collapsible">
+                    <a href="#" onclick="return false;">
+                        <img src="~/images/mach.png" />
+                        &nbsp Machine Configuration
+                    </a>
+                    <ul class="sub-menu">
+                        <li style="padding-top: 0px;">@Html.ActionLink("Plant Details", "Index", "Plant")</li>
+                        <li style="padding-top: 0px;">@Html.ActionLink("Shop Details", "ShopList", "Shops")</li>
+                        <li style="padding-top: 0px;">@Html.ActionLink("Cell Details", "CellsList", "Cells")</li>
+                        <li style="padding-top: 0px;">@Html.ActionLink("Machine Details", "MachineList", "Machines")</li>
+                    </ul>
+                </li>
+
+                <li class="collapsible">
+                    <a href="#" onclick="return false;">
+                        <img src="#" />&nbsp Losses & Breakdown
+                    </a>
+                    <ul class="sub-menu">
+                        <li>@Html.ActionLink("Idle Reason", "Index", "IdleCodes")</li>
+                        <li>@Html.ActionLink("BreakDown Reason", "Index", "BreakdownCodes")</li>
+                        <li>@Html.ActionLink("Hold Codes", "Index", "HoldCodes")</li>
+                        <li>@Html.ActionLink("Excel Upload", "ImportLossCodesDetails", "IdleCodes")</li>
+                        <li>@Html.ActionLink("UnIdentifiedLosses", "Index", "UnIdentifiedLossEntry")</li>
+
+                    </ul>
+                </li>
+
+                <li class="collapsible">
+                    <a href="#" onclick="return false;"><i class="fa fa-list"></i>General Config.</a>
+                    <ul class="sub-menu">
+                        @*@if (ViewBag.roleid == 1 || ViewBag.roleid == 2 )*@
+
+                        <li>@Html.ActionLink("STD Time & Weight", "Index", "MasterParts")</li>
+                        <li>@Html.ActionLink("Enable Multi-WO", "Index", "MultiWorkOrder")</li>
+                        <li>@Html.ActionLink("Generic Work", "Index", "GenericWork")</li>
+                        <li>@Html.ActionLink("Email Details", "Index", "MailIDs")</li>
+                        <li>@Html.ActionLink("Surface Area / Perimeter", "ImportPartWiseSP", "PartWiseSp")</li>
+                        <li>@Html.ActionLink("Units", "Index", "Units")</li>
+                    </ul>
+                </li>
+
+                <li class="collapsible">
+                    <a href="#" onclick="return false;">
+                        <img src="~/images/shift.png" />&nbsp Shift Planner
+                    </a>
+                    <ul class="sub-menu">
+                        @*@if (ViewBag.roleid == 1 || ViewBag.roleid == 2 )*@
+
+                        <li>@Html.ActionLink("ShiftMethod", "Index", "ShiftMethod")</li>
+                        <li>@Html.ActionLink("Shift Details", "Index", "ShiftDetails")</li>
+                        <li>@Html.ActionLink("Shift Planner", "Index", "ShiftPlanner")</li>
+                    </ul>
+                </li>
+
+                <li class="collapsible">
+                    <a href="#" onclick="return false;">
+                        <img src="~/images/role.png" />&nbsp Roles & Users
+                    </a>
+                    <ul class="sub-menu">
+                        @if (ViewBag.roleid == 1)
+                        {
+                            <li>@Html.ActionLink("Role", "Index", "Roles")</li>
+                        }
+                        <li>@Html.ActionLink("Users", "Index", "Login")</li>
+                    </ul>
+                </li>
+
+                <li class="collapsible">
+                    <a href="#" onclick="return false;">
+                        <img src="~/images/auto.png" />&nbsp Auto Report / Escalation
+                    </a>
+                    <ul class="sub-menu">
+                        <li>@Html.ActionLink("Auto Email Report", "Index", "AutomaticEmailReport")</li>
+                        <li>@Html.ActionLink("Escalation Matrix", "Index", "EscalationMatrix")</li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+        <!-- /sidebar -->
+        <div id="content" class="clearfix">
+            @RenderBody()
+        </div>
+        <!-- /content -->
+        <footer class="footer">
+            <a href="http://www.srkssolutions.com/">2019 © SRKS&nbspSoftware&nbspSolutions</a>
+        </footer>
+    </div>
+    <!-- /wrapper -->
+
+</body>
+</html>
+
+<script type="text/javascript" src="~/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="~/js/prefixfree.min.js"></script>
+<script type="text/javascript" src="~/js/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/js/jquery-ui.js"></script>
+<script type="text/javascript" src="~/js/excanvas.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.flot.js"></script>
+<script type="text/javascript" src="~/js/jquery.flot.resize.js"></script>
+<script type="text/javascript" src="~/js/jquery.sparkline.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.hashchange.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.easytabs.min.js"></script>
+<script type="text/javascript" src="~/js/toastr.min.js"></script>
+<script type="text/javascript" src="~/js/jquery-visibility.js"></script>
+
+
+<script type="text/javascript">
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+        var t = setTimeout(function () { startTime() }, 500);
+    }
+
+    function checkTime(i) {
+        if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+        return i;
+    }
+</script>
+
+@*turnoff autocomplete in all input fields*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).on('focus', ':input', function () {
+            $(this).attr('autocomplete', 'off');
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(window).load(function () {
+
+        //for dummy loading screen
+        $('#loading').fadeOut(1000);
+
+        //for dropdown collapse
+        $('.collapsible > a').click(function () {
+            $(this).parent().toggleClass('open');
+            if ($(this).parent().siblings().hasClass('open')) {
+                $(this).parent().siblings().removeClass('open');
+            }
+            return false;
+        });
+    });
+</script>
+<style type="text/css">
+    label {
+        color: blue;
+        font-style: oblique;
+    }
+</style>
+<style type="text/css">
+    span {
+        color: red;
+        font-size: 120%;
+    }
+</style>

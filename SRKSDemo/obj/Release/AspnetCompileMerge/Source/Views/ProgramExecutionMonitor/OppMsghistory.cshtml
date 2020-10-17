@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "OpMsgHistory";
+    int slno = 1;
+}
+
+<style>
+    td {
+        width: auto;
+        text-align: center;
+        font-family: Helvetica;
+        font-size: 85%;
+    }
+</style>
+
+<div class="wrp clearfix">
+    <div class="fluid">
+        <div class="widget grid12">
+            <div class="widget-header">
+                <div class="widget-title" style="font-size: 125%">
+                    Operator Message History
+                </div>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content pad20f">
+                <div class="widget__content table-responsive">
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <br />
+                    <br />
+                    <table class="table">
+                        <thead>
+                            <tr class="text-centre" style="background-color: orange">
+                                <th style="text-align: center; font-size: 95%">Sl.No.</th>
+                                <th style="text-align: center; font-size: 95%">Message No.</th>
+                                <th style="text-align: center; font-size: 95%">Message Desc.</th>
+                                <th style="text-align: center; font-size: 95%">Message Time </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="spacer"></tr>
+                            <tr class="spacer"></tr>
+
+
+                            <tr>
+                                <td>
+                                    @slno
+                                </td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+
+                            <tr class="spacer"></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <!-- /widget-content -->
+
+        </div>
+        <!-- /widget -->
+    </div>
+
+</div>

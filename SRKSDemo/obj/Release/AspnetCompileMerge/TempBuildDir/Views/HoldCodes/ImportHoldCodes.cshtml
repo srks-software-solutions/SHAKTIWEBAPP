@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "UnitWorks - ExcelUpload";
+}
+
+@*<link href="~/css/bootstrap.min.css" rel="stylesheet" />*@
+<link href="~/css/fileinput.css" rel="stylesheet" />
+<link href="~/css/fileinput.min.css" rel="stylesheet" />
+@using (Html.BeginForm("ImportHoldCodes", "HoldCodes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true) 
+    <div class="wrp clearfix">
+        <div class="fluid">
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title">Session["MachErrDetails"]
+                       Import Hold Codes
+                    </div>
+                </div>
+                <!-- /widget-header -->
+                <div class="widget-content pad20f">
+                     <div  id="Error">
+                    @if (Session["Errors"] != null)
+                    {
+                    <pre>
+<span style="font-family:Calibri">@Session["Errors"]</span>
+                    </pre>
+                    }
+                         @{
+    Session["Errors"] = null;
+                         }
+                        </div>
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 40%">New List / Update /Overright </label>
+                    <table>
+                        <tr>
+                             <td style="padding-left: 30px">OverWrite : @Html.RadioButton("UploadType","OverWrite", new {@class="RadioUploadType" , @checked = true})  </td>
+                            <td style="padding-left: 30px"> New List :   @Html.RadioButton("UploadType","New", new {@class="RadioUploadType" })  </td>
+                            <td style="padding-left: 30px">Update : @Html.RadioButton("UploadType", "Update", new {@class="RadioUploadType" }) </td>
+                           
+                            <td style="display:none"> <input type="hidden" id="UploadTypeText" name="UploadTypeText" /> </td>
+                        </tr>
+                    </table>
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 40%">Upload an Excel File</label>
+                    <input id="file" name="file" type="file" accept="xlsx/*" data-show-upload="false" data-show-remove="false" required="required">
+                    
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply btn-aqua fa-1x", @style = "text-decoration:none;display:inline-block" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Upload" class="" style="display: inline-block;color:white;background-color:#ea4335; margin-top: 3%; width: 30%;font-size:1.2vw" />
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+    </div>
+}
+
+@*http://plugins.krajee.com/file-input*@
+<script src="~/js/jquery-2.1.4.min.js"></script>
+@*<script src="~/js/bootstrap.min.js"></script>*@
+<script src="~/js/fileinput.js"></script>
+<script src="~/js/fileinput.min.js"></script>
+<script>
+    /* Initialize your widget via javascript as follows */
+    $("#file").fileinput({
+        previewFileType: "xlsx",
+        allowedFileExtensions: ["xls", "xlsx"],          //validate
+        maxFileSize: 4000,//maxFileSize in KB's
+        showRemove: true,
+        browseClass: "btn btn-primary btn-md",
+        browseLabel: "Select Excel File",
+        browseIcon: '<i class="fa fa-file-excel-o"></i>',
+        previewClass: "bg-warning",
+        msgInvalidFileExtension: "Select Only (xls or xlsx) Formats."
+    });
+</script>
+
+<script>
+    setTimeout(function () {
+        $('#Error').fadeOut('slow');
+    }, 30000); // <-- time in milliseconds
+</script>

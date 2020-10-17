@@ -1,0 +1,603 @@
+﻿@model SRKSDemo.PartsManagement
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string unitDesc = "";
+}
+
+@*<h2>Index</h2>*@
+
+@{
+    List<SelectListItem> stdUnitTime = new List<SelectListItem>();
+    stdUnitTime.Add(new SelectListItem
+    {
+        Text = "Seconds",
+        Value = "Seconds",
+    });
+    stdUnitTime.Add(new SelectListItem
+    {
+        Text = "Mins",
+        Value = "Mins",
+    });
+    stdUnitTime.Add(new SelectListItem
+    {
+        Text = "Hours",
+        Value = "Hours",
+    });
+
+}
+<style>
+    .error {
+        color: red;
+    }
+</style>
+@try
+{
+    <input type="hidden" value="@TempData["txtShow"].ToString()" id="txttoupdate" />
+}
+catch (Exception e)
+{
+    <input type="hidden" value="" id="txttoupdate" />
+}
+
+<div class="container body">
+    <div class="main_container">
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Parts Management</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li><button type="button" class="btn btn-default addClick" data-toggle="modal" data-target="#create-plant" style="margin-top: 10px;"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Add New</button></li>
+                                    <li><button type="button" class="btn btn-default" data-toggle="modal" data-target="#import-plant" style="margin-top: 10px;"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Import</button></li>
+                                    <li><button type="button" class="btn btn-default btnExport" style="margin-top: 10px;"><i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;Export</button></li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <table id="datatable-fixed-header" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Part No.</th>
+                                            <th>Operation No.</th>
+                                            <th>Standard Setup Time / Unit</th>
+                                            <th>Std Cycle Time</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.MasterPartsList)
+                                        {
+
+                                        <tr>
+
+                                            <td>@Html.DisplayFor(modelItem => item.FGCode)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.OperationNo)</td>
+                                            @if (item.IdealCycleTime.ToString() != null && item.IdealCycleTime.ToString() != "")
+                                            {
+                                                <td>@Html.DisplayFor(modelItem => item.IdealCycleTime) / @Html.DisplayFor(modelItem => item.tblunit.Unit, new { @class = "Label-unit" })</td>
+                                            }
+                                            else {
+                                                <td> 0 / @Html.DisplayFor(modelItem => item.tblunit.Unit)</td>
+                                            }
+                                            @if (item.StdMinorLoss != null && item.StdMinorLoss.ToString() != "")
+                                            {
+                                                <td>@Html.DisplayFor(modelItem => item.StdMinorLoss) / @Html.DisplayFor(modelItem => item.tblunit.Unit, new { @class = "Label-unit" })</td>
+                                            }
+                                            else {
+                                                <td> 0 / @Html.DisplayFor(modelItem => item.tblunit.Unit)</td>
+                                            }
+                                            <td>
+                                                <ul class="actionbtnn">
+
+                                                    <li class="actionbtn"><a href="@Url.Action("Edit", "PartsManagement", new {id = item.PartID})" id="@(@item.PartID)" class="btn btn-round btn-info EditStdTime" data-title="Edit" data-toggle="modal" data-target="#edit-plant"><i class="fa fa-pencil fa-lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Edit Shift Details"></i></a></li>
+
+
+                                                    <li class="actionbtn"><button class="btn btn-round btn-danger deleteItem" data-id="@item.PartID" onclick="deleteTargetName('@item.FGCode')" data-title="Edit" data-toggle="modal" data-target="#delete-plant"><i class="fa fa-trash fa-lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Delete Plant details"></i></button></li>
+
+                                                    @using (Html.BeginForm("Edit", "PartsManagement", FormMethod.Post))
+            {
+                                        <!-- edit Modal Start -->
+
+                                        <div class="modal fade" id="edit-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog modal-lg" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title" id="myModalLabel"></h4>
+                                                        <div class="x_panel">
+                                                            <div class="x_title">
+                                                                <h5>Edit Parts Management</h5>
+                                                            </div>
+                                                            <div class="x_content">
+                                                                <form class="form-horizontal form-label-left" novalidate>
+                                                                    <div class="row row-space">
+                                                                        <label class="col-sm-3 control-label">Part Number</label>
+                                                                        <div class="col-sm-3">
+
+                                                                            @Html.TextBoxFor(model => model.MasterParts.FGCode, new { @Id = "editPartNumber", @class = "form-control1", @placeholder = "Part Number", @required = "required", onchange = "editValidate()" })
+                                                                            <input type="hidden" id="hdnpid" name="hdnpid" value="" />
+                                                                            @*<input type="text" class="form-control1" id="" placeholder="Part Number">*@
+                                                                        </div>
+                                                                        <label class="col-sm-3 control-label">Operation Number</label>
+                                                                        <div class="col-sm-3">
+                                                                            @Html.TextBoxFor(model => model.MasterParts.OperationNo, new { @Id = "editOpNo", @class = "form-control1", @placeholder = "Operation Number", @required = "required", onchange = "editValidate()" })
+                                                                            @*<input type="text" class="form-control1" id="" placeholder="Operation Number">*@
+                                                                        </div>
+                                                                        <div class="col-md-6 control-label">
+                                                                            <span class="error" id="partoppnoerroredit"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row row-space">
+                                                                        <label class="col-sm-3 control-label">Std Setup Time</label>
+                                                                        <div class="col-sm-3">
+
+                                                                            @Html.TextBoxFor(model => model.MasterParts.Std_SetupTime, new { @Id = "Editstdsetuptimetxt", @class = "form-control1", @required = "required" })
+                                                                            @*<input type="text" class="form-control1" data-inputmask="'mask': '99:99'">*@
+                                                                        </div>
+                                                                        <label class="col-sm-3 control-label">Unit</label>
+                                                                        <div class="col-sm-3">
+                                                                            @Html.HiddenFor(model => model.MasterParts.UnitDesc, new { @Id = "hdnCycleUnit", @class = "form-control1", @required = "required" })
+                                                                            @Html.DropDownList("Unit", null, "--Select Unit--", new { @id = "UnitType", @class = "form-control", @name = "UnitType", @required = "required", @value = "@ViewData['Unit']",@onchange="changeCycleUnit();" })
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row row-space">
+                                                                        <label class="col-sm-3 control-label">Std Cycle Time</label>
+                                                                        <div class="col-sm-3">
+                                                                            @Html.TextBoxFor(model => model.MasterParts.IdealCycleTime, new { @Id = "EditStdChangeoverTimetxt", @class = "form-control1", @required = "required" })
+                                                                            @*<input type="text" class="form-control1" data-inputmask="'mask': '99:99'">*@
+                                                                        </div>
+                                                                        <label class="col-sm-3 control-label"></label>
+                                                                        <div class="col-sm-3">
+                                                                            @*@Html.DropDownListFor(model => model.MasterParts.StdChangeoverTimeUnit, stdUnitTime, "--Select Unit--", new { @id = "EditStdChangeoverTimedrp", @name = "editStdcnheoverTime", @class = "form-control1", @tabindex = "2", @required = "required" })*@
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        @*Html.HiddenFor(m => m.MasterParts.PARTSSTSWID);*@
+                                                        @Html.HiddenFor(m => m.MasterParts.PartID, new { @class = "PartsEditPKID" })
+                                                        <button type="submit" id="btnEdit" class="btn btn-info Updatechild"><i class="fa fa-floppy-o" aria-hidden="true"></i> Update</button>
+                                                        <button type="submit" class="UpdateMain" style="display:none"></button>
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- edit Modal Finish -->
+}
+
+                                                    <!-- Delete Modal Start -->
+                                                    <div class="modal fade" id="delete-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                    <h4 class="modal-title" id="myModalLabel"></h4>
+                                                                    <div class="x_panel">
+                                                                        <div class="x_title">
+                                                                            <h5>Delete Parts Management</h5>
+                                                                        </div>
+                                                                        <div class="x_content">
+                                                                            <div class="alert alert-danger">
+                                                                                <span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Detail?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="alert-danger11">Part No:</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-danger btnContinueDelete "><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                                                                        <button type="button" class="btn btn-info" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </ul>  <!-- Delete Modal Finish -->
+                                            </td>
+
+                                        </tr>
+
+                                        } <!-- Froeach Loop Finish -->
+                                    </tbody>
+
+
+                                </table>
+
+
+
+
+
+
+
+                                <button type="button" class="btn btn-info btn-lg mybtn" data-toggle="modal" data-target="#myModal" style="display:none"></button>
+                                <div id="myModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Shift Planner</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <span style="color:red;font-weight:bold;">This Part details exists</span>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                @using (Html.BeginForm("Create", "PartsManagement", FormMethod.Post))
+                                {
+                                    <!-- create Modal Start -->
+                                    <div class="modal fade" id="create-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                    <h4 class="modal-title" id="myModalLabel"></h4>
+                                                    <div class="x_panel">
+                                                        <div class="x_title">
+                                                            <h5>Create Parts Management</h5>
+                                                        </div>
+                                                        <div class="x_content form-horizontal">
+                                                            <form class="form-horizontal form-label-left" novalidate>
+                                                                <div class="row row-space">
+                                                                    <label class="col-sm-3 control-label">Part Number</label>
+                                                                    <div class="col-sm-3">
+                                                                        @Html.TextBoxFor(model => model.MasterParts.FGCode, new { @Id = "PartNumber", @class = "form-control1", @placeholder = "Part Number", @required = "required", onchange = "createValidate()" })
+                                                                        @*<input type="text" class="form-control1" id="" placeholder="Part Number">*@
+                                                                    </div>
+                                                                    <label class="col-sm-3 control-label">Operation Number</label>
+                                                                    <div class="col-sm-3">
+                                                                        @Html.TextBoxFor(model => model.MasterParts.OperationNo, new { @Id = "OpNo", @class = "form-control1", @placeholder = "Operation Number", @required = "required", onchange = "createValidate()" })
+                                                                    </div>
+                                                                    <div class="col-md-6 control-label">
+                                                                        <span class="error" id="partoppnoerror"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row row-space">
+                                                                    <label class="col-sm-3 control-label">Std Setup Time</label>
+                                                                    <div class="col-sm-3">
+                                                                        @Html.TextBoxFor(model => model.MasterParts.Std_SetupTime, new { @Id = "StdSetupTime", @class = "form-control1", @required = "required" })
+
+                                                                        @*<input type="text" class="form-control1" data-inputmask="'mask': '99:99'">*@
+                                                                    </div>
+                                                                    <label class="col-sm-3 control-label">Unit</label>
+                                                                    <div class="col-sm-3">
+                                                                        @Html.HiddenFor(model => model.MasterParts.UnitDesc, new { @Id = "hdnCycleUnitCreate", @class = "form-control1", @required = "required" })
+                                                                        @Html.DropDownList("Unit", null, "--Select Unit--", new { @id = "UnitTypeCreate", @class = "form-control", @name = "UnitTypeCreate", @required = "required", @value = "@ViewData['Unit']" ,@onchange="changeCreateUnitType()"})
+                                                                        @*@Html.DropDownListFor(model => model.MasterParts.StdSetupTimeUnit, stdUnitTime, "--Select Unit--", new { @id = "StdUnitTime", @name = "StdUnitTime", @class = "form-control1", @tabindex = "2", @required = "required" })*@
+                                                                    </div>
+                                                                </div>
+                                                                @*<div class="row row-space">
+                                                                    <label class="col-sm-3 control-label">Std Cutting Time</label>
+                                                                    <div class="col-sm-3">*@
+                                                                @*@Html.TextBoxFor(model => model.MasterParts.StdCuttingTime, new { @Id = "StdCuttingTime", @class = "form-control1", @required = "required" })*@
+                                                                @*<input type="text" class="form-control1" data-inputmask="'mask': '99:99'">*@
+                                                                @*</div>
+                                                                    <label class="col-sm-3 control-label">Std Cutting Time Unit</label>
+                                                                    <div class="col-sm-3">*@
+                                                                @*@Html.DropDownListFor(model => model.MasterParts.StdCuttingTimeUnit, stdUnitTime, "--Select Unit--", new { @id = "StdcuttingUnitTime", @name = "StdcuttingUnitTime", @class = "form-control1", @tabindex = "2", @required = "required" })*@
+                                                                @*</div>
+                                                                    </div>*@
+                                                                <div class="row row-space">
+                                                                    <label class="col-sm-3 control-label">Std Cycle Time</label>
+                                                                    <div class="col-sm-3">
+                                                                        @Html.TextBoxFor(model => model.MasterParts.IdealCycleTime, new { @Id = "StdChangeoverTime", @class = "form-control1", @required = "required" })
+                                                                        @*<input type="text" class="form-control1" data-inputmask="'mask': '99:99'">*@
+                                                                    </div>
+                                                                    <label class="col-sm-3 control-label"></label>
+                                                                    <div class="col-sm-3">
+                                                                        @*@Html.DropDownListFor(model => model.MasterParts.StdChangeoverTimeUnit, stdUnitTime, "--Select Unit--", new { @id = "StdcnheoverTime", @name = "StdcnheoverTime", @class = "form-control1", @tabindex = "2", @required = "required" })*@
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-info" id="btnAdd"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                                                    <!--    <button type="button" class="btn btn-info submitchild"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+                                                    <button type="submit" class="submitMain" style="display:none"></button>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- create Modal Finish -->
+
+                                }
+
+
+                                <div class="" style="padding-top:25px" id="divhdn">
+                                    <div class="x_content">
+                                        <table id="example" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Part No.</th>
+                                                    <th>Operation No.</th>
+                                                    <th>Message</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody id="rejectedFGCodeandPartNo">
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @using (Html.BeginForm("ImportMasterPartsstsw", "PartsManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <!-- /page content -->
+            <!-- import Modal Start -->
+            <div class="modal fade" id="import-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <h4 class="modal-title" id="myModalLabel"></h4>
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h5>Import Parts Management</h5>
+                                </div>
+                                <div class="x_content">
+                                    <form class="form-horizontal form-label-left" novalidate>
+                                        <div class="row row-space">
+                                            <div class="col-md-4">
+                                                <input type="radio" name="UploadTypeRadio" id="radio1" value="OverWrite" checked="checked" onchange="radioChange();">
+                                                <label for="radio1">
+                                                    Over Write
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="radio" name="UploadTypeRadio" id="radio2" value="New" onchange="radioChange();">
+                                                <label for="radio2">
+                                                    New List
+                                                </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input type="radio" name="UploadTypeRadio" id="radio3" value="Update" onchange="radioChange();">
+                                                <label for="radio3">
+                                                    Update
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="UploadType" name="UploadType" value="OverWrite" />
+                                        <div class="row row-space">
+                                            <label class="col-sm-4 control-label">Upload an Excel File</label>
+                                            <div class="col-sm-7">
+                                                <input type="file" name="file" id="importedFile" accept=".xls,.xlsx" class="form-control1">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-info"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- import Modal Finish -->
+        }
+
+    </div>
+</div>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+    $('.btnExport').click(function () {
+        window.location = "/PartsManagement/ExportMasterPartsSTDWeightTime/";
+    });
+</script>
+<script>
+
+    function deleteTargetName(productvariant) {
+        //alert (productvariant);
+        $(".deleteTargetName").empty();
+        $(".alert-danger11").html("part no: " +
+            productvariant);
+
+    }
+
+    var item_to_delete;
+    $(".deleteItem").click(function (e) {
+        item_to_delete = $(this).data('id');
+        //alert(item_to_delete);
+    });
+    $('.btnContinueDelete').click(function () {
+        window.location = "/PartsManagement/Delete/" + "?id=" + item_to_delete;
+    });
+
+</script>
+<script>
+    function radioChange() {
+        var value = $("input[name='UploadTypeRadio']:checked").val();
+        $("#UploadType").val(value);
+    }
+</script>
+<script>
+    function changeCycleUnit() {
+        var valueUnit = $("#UnitType").val();
+        $("#hdnCycleUnit").val(valueUnit);
+
+    }
+    function changeCreateUnitType() {
+        var valueUnit = $("#UnitTypeCreate").val();
+        $("#hdnCycleUnitCreate").val(valueUnit);
+    }
+</script>
+<script>
+    $(".EditStdTime").on("click", function (e) {
+        $("#partoppnoerroredit").html('');
+        $("#btnEdit").removeAttr('disabled', 'disabled');
+        e.preventDefault();
+        var Id = $(this).attr("id")
+        $.ajaxSetup({ async: false });
+        $.getJSON("/PartsManagement/GetpartsManagementdata", { Id: Id }, function (data) {
+            $.each(data, function (index, item) {
+                //alert(item.pid);
+                $("#hdnpid").val(item.pid);
+                $("#editPartNumber").val((item.partname));
+                $("#editOpNo").val((item.Operationum));
+                $("#Editstdsetuptimetxt").val((item.IdealCycleTime));
+                $("#EditStdChangeoverTimetxt").val((item.StdMinorLoss));
+                $("#UnitType").val((item.UnitDesc));
+                $("#hdnCycleUnit").val(item.UnitDesc);
+
+            })
+            return false;
+        });
+    });
+    $(".addClick").on("click", function (e) {
+        e.preventDefault();
+        $("#partoppnoerror").html('');
+        $("#btnAdd").removeAttr('disabled', 'disabled');
+    });
+</script>
+
+@*<script>
+        $(".addClick").on("click", function (e) {
+            e.preventDefault();
+           // var PkId = $(".EditStdTime").attr("Id");
+            var PkId = $("#hdnpid").val();
+            $(".PartsEditPKID").val(PkId);
+
+            alert($(".PartsEditPKID").val())
+            var partnum = $("#editPartNumber").val();
+            var opnum = $("#editOpNo").val();
+            $.getJSON("/PartsManagement/EditValidate", { partnum: partnum, PkId: PkId, opnum: opnum }, function (data) {
+                if (data == "Yes") {
+                    $(".mybtn").click();
+                }
+                else {
+                    $(".UpdateMain").click();
+                }
+            });
+            return false;
+        });
+    </script>*@
+@*<script>
+        $(".submitchild").on("click", function (e) {
+            e.preventDefault();
+            var PARTSSTSWID = $("#hdnpid").val();
+            var partnum = $("#PartNumber").val();
+            var opnum = $("#OpNo").val();
+            $.getJSON("/PartsManagement/EditValidate", { partnum: partnum, PkId: PkId, opnum: opnum }, function (data) {
+                if (data == "Yes") {
+                    $(".mybtncreate").click();
+                }
+                else {
+                    $(".submitMain").click();
+                }
+            });
+            return false;
+        });
+    </script>*@
+<script>
+    function createValidate() {
+        $("#partoppnoerror").html('');
+        var txtpartno = $("#PartNumber").val();
+        var txtopno = $("#OpNo").val();
+        var datas = {};
+        datas.partno = txtpartno;
+        datas.opno = txtopno;
+        datas.partId = "0";
+        $.ajax({
+            async: false,
+            url: "/PartsManagement/ValidationCheckForInsertion",
+            data: datas,
+            success: function (data) {
+                if (data == "True") {
+                    $("#partoppnoerror").html('');
+                    $("#btnAdd").removeAttr('disabled', 'disabled');
+
+                } else {
+                    $("#partoppnoerror").html('Part Number and Operation Number Already Exits');
+                    $("#btnAdd").attr('disabled', 'disabled');
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                if (jqXHR.status == 500) {
+                    alert('Internal error: ' + jqXHR.responseText);
+                } else {
+                    alert('Unexpected error.');
+                }
+            }
+        });
+    }
+
+    function editValidate() {
+        $("#partoppnoerroredit").html('');
+        var txtpartnum = $("#editPartNumber").val();
+        var txtopnum = $("#editOpNo").val();
+        var PARTSSTSWID = $("#hdnpid").val();
+        var datas = {};
+        datas.partno = txtpartnum;
+        datas.opno = txtopnum;
+        datas.partId = PARTSSTSWID;
+        $.ajax({
+            async: false,
+            url: "/PartsManagement/ValidationCheckForInsertion",
+            data: datas,
+            success: function (data) {
+                if (data == "True") {
+                    $("#partoppnoerroredit").html('');
+                    $("#btnEdit").removeAttr('disabled', 'disabled');
+
+                } else {
+                    $("#partoppnoerroredit").html('Part Number and Operation Number Already Exits');
+                    $("#btnEdit").attr('disabled', 'disabled');
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                if (jqXHR.status == 500) {
+                    alert('Internal error: ' + jqXHR.responseText);
+                } else {
+                    alert('Unexpected error.');
+                }
+            }
+        });
+    }
+</script>
+<script>
+    $(function () {
+        var txt = $("#txttoupdate").val();
+        if (txt != "") {
+            $("#divhdn").show();
+            $("#rejectedFGCodeandPartNo").html('');
+            $("#rejectedFGCodeandPartNo").html(txt);
+        } else {
+            $("#divhdn").hide();
+        }
+    });
+</script>

@@ -1,0 +1,127 @@
+﻿@model SRKSDemo.PmCheckList
+    @{ 
+    ViewBag.Title = "Check List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container body">
+    <div class="main_container">
+        <div class="right_col" role="main">
+            <div class="">
+
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Check List </h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <span>
+                                            @Html.ActionLink(" Add New", "Create", "PmCheckList", new { @class = "btn btn-default" }, new { @style = "margin-top: 10px; padding-top:7px;", @class = "btn btn-default fa fa-plus-square" })
+                                            @*<a role="button" href="create-shift-detail.html" class="btn btn-default " style="margin-top: 10px;"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Add New</a>*@
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <table id="datatable-fixed-header" class="table table-striped table-bordered dt-responsive" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+
+                                            <th>Plant Name</th>
+                                            <th>Shop Name</th>
+                                            <th>Cell Name</th>
+                                            <th>Type Of CheckPoint</th>
+                                            <th>CheckList Data</th>
+                                            <th>Frequency</th>
+                                            <th>Value</th>
+                                            <th style="width: 57px;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.pmchecklistlist)
+                                        {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.tblplant.PlantName)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.tblshop.ShopName)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.tblcell.CellName)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.configuration_tblpmcheckpoint.TypeofCheckpoint)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.CheckList)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Frequency)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Value)</td>
+                                            <td>
+                                                <ul class="actionbtnn">
+                                                    @*@Html.ActionLink(" ", "Edit", new { id = item.MSDID }, new { @class = " blue  btn-lg fa fa-edit", @style = "color:white;text-decoration:none" })*@
+                                                    <li class="actionbtn"><a href="@Url.Action("Edit", "PmCheckList", new {id = item.pmcid })" id="@(@item.pmcid)" style="margin-top:0px;" class="btn btn-round btn-info pmc" data-title="Edit" role="button"><i class="fa fa-pencil fa-lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Edit PmCheckList detail" style="line-height: 24px;"></i></a></li>
+
+                                                    @*<li class="actionbtn"><button class="btn btn-round btn-danger" data-title="Edit" data-toggle="modal" data-target="#delete-plant"><i class="fa fa-trash fa-lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Delete Shift detail"></i></button></li>*@
+                                                    <li class="actionbtn"><button class="btn btn-round btn-danger deleteItem" data-id="@item.pmcid" style="margin-top:0px;" onclick="deleteTargetName('@item.tblcell.CellName')" data-title="Edit" data-toggle="modal" data-target="#delete-plant"><i class="fa fa-trash fa-lg" aria-hidden="true" data-placement="top" data-toggle="tooltip" title="Delete Cell Details"></i></button></li>
+
+
+                                                    <!-- Delete Modal Begin -->
+
+                                                    <div class="modal fade" id="delete-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                    <h4 class="modal-title" id="myModalLabel"></h4>
+                                                                    <div class="x_panel">
+                                                                        <div class="x_title">
+                                                                            <h5> Check List </h5>
+                                                                        </div>
+                                                                        <div class="x_content">
+                                                                            <div class="alert alert-danger">
+                                                                                <span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Detail?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="alert-danger11">Cell Name:</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-danger btnContinueDelete "><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+                                                                        <button type="button" class="btn btn-info" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+
+    function deleteTargetName(productvariant) {
+        //alert (productvariant);
+        $(".deleteTargetName").empty();
+        $(".alert-danger11").html("Cell Name: " +
+            productvariant);
+
+    }
+
+    var item_to_delete;
+    $(".deleteItem").click(function (e) {
+        item_to_delete = $(this).data('id');
+        //alert(item_to_delete);
+    });
+    $('.btnContinueDelete').click(function () {
+        window.location = "/PmCheckList/Delete/" + "?id=" + item_to_delete;
+    });
+   
+
+</script>

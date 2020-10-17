@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "BreakDownEntry";
+    Layout = "~/Views/Shared/_VHMILayout.cshtml";
+    var s = Session["ItsLastLevel"];
+}
+<!-- page content -->
+<div class="right_col" role="main" style="margin-left: 0px;">
+    <div class="">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>
+                    Breakdown Entry -
+                    @if (ViewBag.BreakdownCode == null)
+                    {
+                        <label class="label-level">@ViewBag.Level</label>
+                    }
+                </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            @using (Html.BeginForm())
+            {
+                <div class="x_content">
+                    <div class="row">
+                        <input type="text" id="HiddenID" name="HiddenID" style="display:none" />  @*value= '@breakId'*@
+                        <input type="text" id="EndBreakdown" name="EndBreakdown" style="display:none" />
+                        @if (ViewBag.BreakdownCode == null)
+                        {
+                            <div class="col-sm-12">
+                                <div class="col-sm-3">
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="child">
+                                            @{
+                                                var breakCode = item.LossCode;
+                                                var breakId = item.LossCodeID;
+                                                @Html.ActionLink((string)breakCode, "BreakDownEntry", new { Bid = item.LossCodeID }, new { @id = item.LossCodeID, @class = "mychild" })
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <ol class="breadcrumb breadcrumb-col-cyan">
+                                Breakdown code is &nbsp;:
+                                <li><a href="javascript:void(0);">@ViewBag.BreakdownCode</a></li>
+                            </ol>
+                            <ol class="breadcrumb breadcrumb-col-cyan">
+                                Breakdown code is &nbsp;:
+                                <li><a href="javascript:void(0);">@ViewBag.BreakdownStartTime</a></li>
+                            </ol>
+                            <button id="endBreakdown" class="child1">End Breakdown</button>
+                        }
+                        }
+                        <button id="toEdit" style="display:none"></button>
+                    </div>
+                </div>
+            } @*End of form*@
+        </div>
+    </div>
+</div>
+<button class="displayPopUp" data-toggle="modal" data-target="#create-plant" style="display:none"></button>
+<!-- create Modal Start -->
+<div class="modal fade" id="create-plant" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel"></h4>
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h5>Breakdown Confirmation?</h5>
+                    </div>
+                    <div class="xx_content">
+                        <div class="padding-15"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <label class="label-unit">'@ViewBag.ItsLastLevel';</label> as reason.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info SetasReason"><i class="fa fa-cog" aria-hidden="true"></i> Set as Reason</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- create Modal Finish -->
+<!-- Modal -->
+<!-- /page content -->
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+
+    $(".child").click(function (e) {
+        e.preventDefault(e);
+        var UrlToRedirect = $(this).children(".mychild").attr("href");
+        window.location = UrlToRedirect;
+    });
+</script>
+
+<script>
+    //This ones for setting previous Level as reason
+    $("#PrevLevel").click(function (e) {
+        $("#HiddenID").val('@ViewBag.BreakdownId');
+        //just to be sure
+        var empty = "";
+        $("#EndBreakdown").val(empty);
+        $("#toEdit").click();
+    });
+</script>
+
+<script>
+    //This ones to end the Breakdown
+    $("#endBreakdown").click(function (e) {
+        e.preventDefault();
+        $("#EndBreakdown").val("true");
+        $("#HiddenID").val('@ViewBag.BreakdownId');
+        $("#toEdit").click();
+    });
+</script>
+
+<script>
+    $(function POPUPCALL() {
+        var a = '@ViewBag.ItsLastLevel';
+        if (a != "")
+        {
+            $(".displayPopUp").click();
+        }
+    });
+</script>
+<script>
+    //This ones to end the Breakdown
+    $(".SetasReason").click(function (e) {
+        e.preventDefault();
+        $("#HiddenID").val('@ViewBag.BreakDownID');
+      var empty = "";
+        $("#EndBreakdown").val(empty);
+        $("#toEdit").click();
+    });
+</script>

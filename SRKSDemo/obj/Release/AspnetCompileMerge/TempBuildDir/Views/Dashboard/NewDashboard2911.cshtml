@@ -1,0 +1,84 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> ifacility - shakti</title>
+    <link href="~/Content/calendar/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/customNew.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/CCSLogo.png" />
+</head>
+<body class="first-slide">
+
+
+    <div class="container">
+        <div id="loading" style="display:block">
+            <img src="~/images/loading1.gif" class="center img-responsive" style="width: 100px; position: absolute;top:50%;left:50%;z-index:99;">
+
+        </div>
+        <div class="col-sm-12" style="margin: 10px 0 -11px 0;">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8" style="text-align:center;">
+                @*<img src="~/images/TVS.png" style="width: 226px;">*@
+                <a href="~/dashboard/dashboard" class="site_title"><img src="~/images/CCSLogo.png" style="width: 100px;" /></a>
+            </div>
+
+        </div>
+        <div class="col-sm-12 dash-margin">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <h3 class="dash-h3">Machine Connectivity Status</h3>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="card col-sm-12 col-md-12">
+        <div class="MachinesHeader">
+        </div>
+    </div>
+
+    <div class="modal fade modal-lg" style="position: absolute;left: 250px;top: 150px;" data-keyboard="false" id="running" tabindex="-1">
+        <div class="dash-green dash-border ">
+            <img src="~/images/CNC_MACHINE.png" class="col-sm dash-green dash-border">
+            <button class="close" data-dismiss="modal" style="color:white">&times;</button>
+            <div class="MACDETNW1 col-sm-7 dash-green dash-border">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-lg" style="position: absolute;left: 250px;top: 150px;" data-keyboard="false" id="idle" tabindex="-1">
+        <div class="dash-amber dash-border">
+            <img src="~/images/CNC_MACHINE.png" class="col-sm dash-amber dash-border">
+            <button class="close" data-dismiss="modal" style="color:white">&times;</button>
+            <div class="MACDETNW1 col-sm-7 dash-amber dash-border">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-lg" style="position: absolute;left: 250px;top: 150px;" data-keyboard="false" id="breakdown" tabindex="-1">
+        <div class="dash-red dash-border">
+            <img src="~/images/CNC_MACHINE.png" class="col-sm dash-red dash-border">
+            <button class="close" data-dismiss="modal" style="color:white">&times;</button>
+            <div class="MACDETNW1 col-sm-7 dash-red dash-border">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-lg popup" style="position: absolute;left: 250px;top: 150px;" data-keyboard="false" id="poweroff" tabindex="-1">
+        <div class="dash-blue dash-border">
+            <img src="~/images/CNC_MACHINE.png" class="col-sm dash-blue dash-border">
+            <button class="close" data-dismiss="modal" style="color:white">&times;</button>
+            <div class="MACDETNW1 col-sm-7 dash-blue dash-border">
+            </div>
+        </div>
+    </div>
+
+    <script src="~/vendors/jquery/dist/jquery.js"></script>
+    <script src="~/vendors/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/moment/mcvDashboard.js"></script>
+</body>
+</html>

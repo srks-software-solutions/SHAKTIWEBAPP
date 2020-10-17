@@ -1,0 +1,128 @@
+﻿@model SRKSDemo.UserModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Session["Error"] != null)
+{
+    <p>@Session["Error"]</p>
+    {
+        Session["Error"] = null;
+    }
+}
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>User</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form class="form-horizontal form-label-left" id="fromDiv" novalidate>
+                            <div class="control-group" id="fields">
+                                <div class="controls">
+                                    <div class="row row-space">
+                                        @Html.HiddenFor(model => model.Users.UserID, new { @id = "userid" })
+                                        <label class="col-sm-5 control-label">User Name</label>
+                                        <div class="col-sm-6">
+                                            @Html.HiddenFor(model => model.Users.UserID, new { @id = "UserGUID", @class = "form-control", @name = "UserGUID ", @placeholder = "UserGUID", @required = "required" })
+                                            @Html.TextBoxFor(model => model.Users.UserName, new { @id = "EditUserName", @class = "form-control", @name = "UserName ", @placeholder = "User Name", @required = "required" })
+                                            @*<input type="text" class="form-control1" id="" placeholder="User Name">*@
+                                        </div>
+                                    </div>
+
+                                    <div class="row row-space">
+                                        <label class="col-sm-5 control-label">Password</label>
+                                        <div class="col-sm-6">
+                                            @Html.PasswordFor(model => model.Users.Password, new { @id = "EditPassword", @class = "form-control", @name = "Password ", @placeholder = "Password ", @required = "required" })
+                                            @*<input type="password" class="form-control1" id="" placeholder="Password">*@
+
+                                        </div>
+                                    </div>
+                                    <div class="row row-space">
+                                        <label class="col-sm-5 control-label">Display Name</label>
+                                        <div class="col-sm-6">
+                                            @Html.TextBoxFor(model => model.Users.DisplayName, new { @id = "EditDisplayName", @class = "form-control", @name = "DisplayName", @placeholder = "DisplayName", @required = "required" })
+                                            @*<input type="text" class="form-control1" id="" placeholder="Display Name">*@
+                                        </div>
+                                    </div>
+                                    <div class="row row-space">
+                                        <label class="col-sm-5 control-label">Primary Role</label>
+                                        <div class="col-sm-6">
+                                            @Html.DropDownList("PrimaryRoleID", null, "--Select Primary Role--", new { @id = "EditRoleID1", @class = "dropdown form-control dropdown-toggle", @name = "RoleID", @required = "required", @value = ViewData["PrimaryRole"] })
+
+                                        </div>
+                                    </div>
+                                    <div class="row row-space">
+                                        <label class="col-sm-5 control-label">Secondary Role</label>
+                                        <div class="col-sm-6">
+                                            @Html.DropDownList("SecondaryRoleID", null, "--Select Secondry Role--", new { @id = "EditRoleID2", @class = "dropdown form-control dropdown-toggle", @name = "RoleID", @value = ViewData["PrimaryRole"] })
+                                            @*<select class="form-control1" tabindex="2" id="type">
+                                                <option value="" selected disabled>Select Secondary Role</option>
+                                                <option value="United States">Operator</option>
+                                                <option value="United Kingdom">Admin</option>
+                                                </select>*@
+                                        </div>
+                                    </div>
+
+                                  
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="submit" class="btn btn-info updatebtn"><i class="fa fa-floppy-o" aria-hidden="true"></i> Update</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(document).on('click', ".updatebtn", function (e) {
+            var UserName = $("#UserName").val();
+            var Password = $("#Password").val();
+            var DisplayName = $("#DisplayName").val();
+            var RoleID1 = $("#RoleID1").val();
+            var RoleID2 = $("#RoleID2").val();
+            var userid = $("#userid").val();
+            if (RoleID2 == "") {
+                $.post("/Login/UpdateData", {
+                    UserName: UserName, Password: Password, DisplayName: DisplayName, RoleID1: RoleID1, userid: userid
+
+                }, function (msg) {
+                    if (msg == "success") {
+
+                    }
+                    window.location.href = "/Login/Index";
+                });
+            }
+            else {
+                $.post("/Login/UpdateDat", {
+                    UserName: UserName, Password: Password, DisplayName: DisplayName, RoleID1: RoleID1, RoleID2: RoleID2, userid: userid
+
+                }, function (msg) {
+                    if (msg == "success") {
+
+                    }
+                    window.location.href = "/Login/Index";
+                });
+            }
+        });
+    });
+</script>

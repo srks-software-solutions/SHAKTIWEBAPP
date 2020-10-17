@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "OEE Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Machine Status Report</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            @using (Html.BeginForm("DashboardStatus", "MachineStatusReport", FormMethod.Post, new { @class = "form-horizontal form-label-left", enctype = "multipart/form-data" }))
+            {
+                <div class="row">
+                    
+                    <div>
+                        <div>
+                            <label class="control-label1 col-md-2 col-sm-3 col-xs-12" style="display:none;">Date For Machine Status</label>
+                            <div class="col-md-2 col-sm-6 col-xs-12">
+                                <div class="">
+                                    <div class='input-group date myDatepicker4'>
+                                        <input type="text" id="FromDate" name="FromDate" class="form-control myDatepicker4" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-new col-sm-new-2 ListOfPrograms">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<!-- FastClick -->
+<script src="~/vendors/fastclick/lib/fastclick.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<!-- validator -->
+<script src="~/vendors/validator/validator.js"></script>
+
+<script src="~/vendors/chosen-select.js" type="text/javascript"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="~/vendors/moment/min/moment.min.js"></script>
+<script src="~/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap-datetimepicker -->
+<script src="~/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<link href="~/css/fileinput.css" rel="stylesheet" />
+<link href="~/css/fileinput.min.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    $(function () {
+        $('.chosen-select').chosen();
+    });
+</script>
+@*<script type="text/javascript">
+        /* Timepicker */
+        $('.myDatepicker3').datetimepicker({ format: 'hh:mm A' });
+    </script>*@
+<script type="text/javascript">
+    $('.myDatepicker4').datetimepicker({
+        format: 'YYYY-MM-DD',
+        maxDate: moment()
+    });
+</script>
+
+<script>
+    //Cascading
+    $("#PlantID").on("change", function () {
+        $("#ShopID").empty();
+        $("#CellID").empty();
+        $("#MachineID").empty();
+        var selectedID = $("#PlantID option:selected").val();
+        $.getJSON("/ShiftPlanner/GetShop", { PlantID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#ShopID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                //$("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#ShopID").prepend("<option value='' selected='selected'>All</option>");
+            $("#CellID").prepend("<option value='' selected='selected'>All</option>");
+            $("#MachineID").prepend("<option value='' selected='selected'>All</option>");
+        });
+    });
+
+    $("#ShopID").on("change", function () {
+        $("#CellID").empty();
+        $("#MachineID").empty();
+        var selectedID = $("#ShopID option:selected").val();
+        $.getJSON("/ShiftPlanner/GetCell", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#CellID").prepend("<option value='' selected='selected'>All</option>");
+            $("#MachineID").prepend("<option value='' selected='selected'>All</option>");
+        });
+    });
+
+    $("#CellID").on("change", function () {
+        $("#MachineID").empty();
+        var selectedID = $("#CellID option:selected").val();
+        //alert(selectedID);
+        $.getJSON("/ShiftPlanner/GetWC_Cell", { CellID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#MachineID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#MachineID").prepend("<option value='' selected='selected'>All</option>");
+        });
+    });
+</script>

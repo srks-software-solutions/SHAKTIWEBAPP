@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "Select Machine Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    <div class="container body">
+        <div class="main_container">
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Operator Entry Screen</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                                        <div class="form-horizontal">
+                                            <div class="col-sm-2">
+                                                @Html.DropDownList("PlantID", null, "--Select Plant--", new { @id = "PlantID", @class = "stacked-label dropdown-toggle form-control", @name = "PlantID", @value = ViewData["PlantID"], @Required = "required" })
+                                            </div>
+                                            <div class="col-sm-2">
+                                                @Html.DropDownList("ShopID", null, "--Select Section--", new { @id = "ShopID", @class = "stacked-label form-control", @name = "ShopID", @value = ViewData["ShopID"], @Required = "required" })
+                                            </div>
+                                            <div class="col-sm-2">
+                                                @Html.DropDownList("CellID", null, "--Select Cell--", new { @id = "CellID", @class = "stacked-label form-control", @name = "CellID", @value = ViewData["CellID"], @Required = "required" })
+                                            </div>
+                                            <div class="col-sm-2">
+                                                @Html.DropDownList("WorkCenterID", null, "--Select Machines--", new { @id = "WorkCenterID", @class = "stacked-label form-control", @name = "WorkCenterID", @value = ViewData["WorkCenterID"], @Required = "required" })
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <button type="submit" class="btn btn-new" style="margin-bottom:8px;">Display</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /page content -->
+}
+
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+@*Mac Hierarchy Dropdowns*@
+<script>
+    $("#PlantID").on("change", function () {
+        $("#ShopID").empty();
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#PlantID option:selected").val();
+        $.getJSON("/ProgramExecutionMonitor/GetShop", { PlantID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#ShopID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                //$("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#ShopID").prepend("<option value='' selected='selected'></option>");
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+
+            var dropdownVal = "Plant";
+            $("#SummerizeAs").find('option[value=' + dropdownVal + ']').remove();
+        });
+
+        $.getJSON("/OEEDashboard/GetSummarizeDropDownValues", { Factor: "Plant" }, function (data) {
+            $("#SummarizeAs").empty();
+            $.each(data, function (index, item) {
+                $("#SummarizeAs").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+        });
+    });
+    $("#ShopID").on("change", function () {
+        $("#CellID").empty();
+        $("#WorkCenterID").empty();
+        var selectedID = $("#ShopID option:selected").val();
+        $.getJSON("/ProgramExecutionMonitor/GetCell", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#CellID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/ProgramExecutionMonitor/GetWC_Shop", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/OEEDashboard/GetSummarizeDropDownValues", { Factor: "Shop" }, function (data) {
+            $("#SummarizeAs").empty();
+            $.each(data, function (index, item) {
+                $("#SummarizeAs").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+        });
+    });
+    $("#CellID").on("change", function () {
+        $("#WorkCenterID").empty();
+        var selectedID = $("#CellID option:selected").val();
+        $.getJSON("/ProgramExecutionMonitor/GetWC_Cell", { CellID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#WorkCenterID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#WorkCenterID").prepend("<option value='' selected='selected'></option>");
+        });
+
+        $.getJSON("/OEEDashboard/GetSummarizeDropDownValues", { Factor: "Cell" }, function (data) {
+            $("#SummarizeAs").empty();
+            $.each(data, function (index, item) {
+                $("#SummarizeAs").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+        });
+    });
+    $("#WorkCenterID").on("change", function () {
+        $("#SummarizeAs").empty();
+    });
+</script>

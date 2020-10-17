@@ -1,0 +1,200 @@
+﻿@model SRKSDemo.Models.SensorMaster
+@{
+    ViewBag.Title = "Sensor Master";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Sensor Master</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form class="form-horizontal form-label-left" id="fromDiv" novalidate>
+                            <div class="control-group" id="fields">
+                                <div class="controls">
+                                    <div class="row row-space">
+                                        <label class="col-sm-5 control-label">Module Type</label>
+                                        @Html.HiddenFor(model => model.sensormaster.IsAnalog, new { @id = "ModelType" })
+                                        <div class="col-sm-6">
+                                            <select class="form-control model" id="modeltype" onchange="changeModel()">
+                                                <option value="" selected disabled>--Select Module Type--</option>
+                                                <div class="row">
+                                                    <option id="iolink" value="0">IO Link</option>
+                                                </div>
+                                                <div class="row">
+                                                    <option id="analog" value="1">Analog</option>
+                                                </div>
+                                            </select>
+                                            <div id="btnio"></div>
+                                            <div id="lowhigh"></div>
+                                        </div>
+                                        <script src="~/js/jquery-2.1.4.min.js"></script>
+                                        <script>
+                                            function changeModel() {
+                                                var valId = $("#modeltype").val();
+                                                $("#ModelType").val(valId);
+                                            }
+                                        </script>
+                                        <script src="~/js/jquery-2.1.4.min.js"></script>
+                                        <script>
+                                            $(document).on("change", ".model", function (e) {
+                                                var id = $(this).val();
+                                                if (id == "0") {
+                                                    $("#btnio").append("<div id='ioid' class='col-sm-3'><label  style='margin-left: 30px; color: Black'>ScalingFactor:</label> <input name='scaling' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' type='Number' maxlength = '6' min='0' id='scalingfac1' class='scaling' required /></div>");
+                                                    $("#analogid1").hide();
+                                                    $("#sensorlimit1").hide();
+                                                    //$("#highid").hide();
+                                                    //$("#sensorlimit").hide();
+                                                    //$("#senlowid").hide();
+                                                    //$("#senhighid").hide();
+                                                }
+                                                if (id == "1") {
+                                                    $("#btnio").append("<div id='analogid1' class='row row-space'><div id='analogid' class='col-sm-2'><label>count: </label> </div><div id='lowid' style='margin-left: 30px;' style='margin-right: 30px;' class='col-sm-3'><label  style='margin-left: 30px;'>Low: </label> <input name='low' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' type='Number' maxlength='6' min='0' style='border: 1px solid Black' id='countlow' class='btn low' value='0' required /><span id='errorMessage2' style='color: red'></span></div>&nbsp;&nbsp;&nbsp;<div id='highid'  style='margin-left: 30px;' style='margin-right: 30px;' class='col-sm-3'><label  style='margin-left: 30px;'>High: </label> <input name='high' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' type='Number' maxlength='6' style='border: 1px solid Black' id='counthigh' class='btn high'  value='32768' required /><span id='errorMessage1' style='color: red'></span></div></div>");
+                                                    $("#btnio").append("<div id='sensorlimit1' class='row row-space'><div id='sensorlimit' class='col-sm-2'><label>SensorLimit: </label> </div><div id='senlowid' style='margin-left: 30px;' style='margin-right: 30px;' class='col-sm-3'><label  style='margin-left: 30px;'>Low: </label> <input name='low' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' type='Number' maxlength='6' min='0' style='border: 1px solid Black' id='sensorlimitlow' class='btn btn-low' required /><span id='errorMess' style='color: red'></span></div>&nbsp;&nbsp;&nbsp;<div id ='senhighid' style='margin-left: 30px;' style='margin-right: 30px;' class='col-sm-3'><label  style='margin-right: 30px;'>High: </label> <input name='high' oninput='javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' type='Number' maxlength='6' style='border: 1px solid Black' id='sensorlimithigh' class='btn btn-high' required /><span id='errorMessage' style='color: red'></span></div></div>");
+                                                    $("#ioid").hide();
+                                                }
+                                            });
+                                        </script>
+                                        <label class="col-sm-5 control-label">Channel Number</label>
+                                        <div class="col-sm-6">
+                                            @Html.TextBoxFor(model => model.sensormaster.ChannelNo, new { @id = "Editchannelno", @class = "form-control", style = "width:89.7%", @placeholder = "Enter Channel Number", @required = "required", @Type = "Number",min=0 })
+                                            @Html.HiddenFor(model => model.sensormaster.ChannelNo, new { @id = "channelnum" })
+                                            <span id="errorMessage" style="color:red"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row row-space">
+                                        <label class="col-sm-5 control-label">Memory Address</label>
+                                        <div class="col-sm-6">
+                                            @Html.TextBoxFor(model => model.sensormaster.MemoryAddress, new { @id = "Editmemoryadd", @class = "form-control", style = "width:89.7%", @placeholder = "Enter Memory Address", @required = "required" })
+                                            @Html.HiddenFor(model => model.sensormaster.MemoryAddress, new { @id = "Memoryaddress" })
+                                        </div>
+                                    </div>
+                                    <div class="row row-space">
+                                        <label class="col-sm-5 control-label">Unit Of Measurement</label>
+                                        <div class="col-sm-6">
+                                            @Html.DropDownList("Unit", null, "--Select Unit--", new { @id = "Editunit", @class = "form-control1 unit", @name = "unit", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['Unit']" })
+                                        </div>
+                                    </div>
+                                    <div class="row row-space">
+                                        <label class="col-sm-5 control-label">Sensor Group Name</label>
+                                        <div class="col-sm-6">
+                                            @Html.DropDownList("SensorGroupName", null, "--Select SensorGroupName--", new { @id = "EditSensorGroupName", @class = "form-control1 SensorGroupName", @name = "SensorGroupName", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['SensorGroupName']" })
+                                        </div>
+                                    </div>
+                                    <div class="row row-space">
+                                        <label class="col-sm-5 control-label">Sensor Name</label>
+                                        <div class="col-sm-6">
+                                            @Html.TextBoxFor(model => model.sensormaster.SensorDesc, new { @id = "EditSensorDesc", @class = "form-control", style = "width:89.7%", @placeholder = "Enter Sensor Name", @required = "required" })
+                                            @Html.HiddenFor(model => model.sensormaster.SensorDesc, new { @id = "Sensordesc" })
+                                        </div>
+                                    </div>
+                                    <div class="row row-space">
+                                        <label class="col-sm-5 control-label">Parameter</label>
+                                        <div class="col-sm-6">
+                                            @Html.DropDownList("SensorDataLink", null, "--Select SensorDataLink--", new { @id = "EditSensorDataLink", @class = "form-control1 SensorDataLink", @name = "SensorDataLink", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['SensorDataLink']" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="generate-btn">
+                                <a id="" href="/SensorMaster/Index" type="submit" class="btn btn-new"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                                <button type="submit" class="btn btn-new float-right savebtn"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+
+                            </div>
+                        </form>
+                        @*}*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $(document).on('click', ".savebtn", function (e) {
+            var channelnum = $("#Editchannelno").val();
+            var memoryadd = $("#Editmemoryadd").val();
+            var sid = $("#EditSensorGroupName").val();
+            var sensordesc = $("#EditSensorDesc").val();
+            var scalingfac = $("#scalingfac1").val();
+            var modeltype = $("#modeltype").val();
+            var countlow = $("#countlow").val();
+            var counthigh = $("#counthigh").val();
+            var sensorlimitlow = $("#sensorlimitlow").val();
+            var sensorlimithigh = $("#sensorlimithigh").val();
+            var uid = $("#Editunit").val();
+            var sdlid = $("#EditSensorDataLink").val();
+            if (modeltype == 1) {
+                $.post("/SensorMaster/InsertData", {
+                    channelnum: channelnum, memoryadd: memoryadd, sid: sid, sensordesc: sensordesc, modeltype: modeltype,
+                    countlow: countlow, counthigh: counthigh,
+                    sensorlimitlow: sensorlimitlow, sensorlimithigh: sensorlimithigh, uid: uid, sdlid: sdlid
+
+                }, function (msg) {
+                    if (msg !== "success") {
+                        alert("This Record Already Exists");
+                        window.location.href = "/SensorMaster/CreateSensorMaster";
+                    }
+                    else {
+                        alert("Data Saved successfully");
+                        window.location.href = "/SensorMaster/Index";
+                    }
+                });
+            }
+            else {
+                $.post("/SensorMaster/InsertDatawithio", {
+                    channelnum: channelnum, memoryadd: memoryadd, sid: sid, sensordesc: sensordesc, modeltype: modeltype,
+                    scalingfac: scalingfac, uid: uid, sdlid: sdlid
+
+                }, function (msg) {
+                    if (msg !== "success") {
+                        alert("This Record Already Exists");
+                        window.location.href = "/SensorMaster/CreateSensorMaster";
+                    }
+                    else {
+                       alert("Data Saved successfully");
+                        window.location.href = "/SensorMaster/Index";
+                    }
+                });
+            }
+
+        });
+    });
+</script>
+
+
+
+@if (TempData["Message"] != null)
+{
+    <input type="hidden" id="Message" value="@TempData["Message"]" />
+    <script type="text/javascript">
+        $(function () {
+            var message = $("#Message").val();
+            if (message !== "") {
+                $("#errorMessage").html(message);
+
+
+            }
+        });
+    </script>
+}
+
+   

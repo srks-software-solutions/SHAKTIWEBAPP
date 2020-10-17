@@ -1,0 +1,63 @@
+﻿@model SRKSDemo.Server_Model.tblSetupMaint
+
+@{
+    ViewBag.Title = "UnitWorks - SETTING";
+    Layout = "~/Views/Shared/_OperatorLayout.cshtml";
+}
+@if (Session["message"].ToString() != "nullinsess")
+{
+    <script>
+        function checkhref() {
+            $("#checkhref").attr("href", "/OperatorEntry/EndSetting?smValue=2");
+        }
+    </script>
+}
+else
+{
+    <script>
+        function checkhref() {
+            $("#checkhref").attr("href", "/OperatorEntry/EndSetting?smValue=1");
+        }
+    </script>
+}
+    <input id="SetupError" value="@ViewBag.SetupError" type="hidden" />
+<form method="post" action="/OperatorEntry/EndSetting">
+    <div class="">
+        <div class="">
+            @if (Session["message"].ToString() != "nullinsess")
+            {
+                <span class="label lblerror">@Session["message"].ToString()</span>
+            }
+            <div class="mp_content">
+                <h3>
+                    Setting to Production Window
+                </h3>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label class="set-label">
+                            Setting Start Time:
+                        </label>
+                        <label class="set-label">
+                            @Html.DisplayFor(m => m.StartTime)
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label class="set-label">
+                            Setting Reason:
+                        </label>
+                        <label class="set-label">
+                            @Html.DisplayFor(m => m.tbllossescode.LossCodeDesc)
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <a class="btn-start btn-info" id="checkhref" href="/OperatorEntry/EndSetting" onclick="checkhref();">
+                        Start Production
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

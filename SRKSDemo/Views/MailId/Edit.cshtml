@@ -1,0 +1,74 @@
+﻿@model SRKSDemo.Server_Model.tblmailid
+@{
+    ViewBag.Title = "Edit";
+}
+
+<style>
+    input {
+        font-style: oblique;
+        color: blue;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="wrp clearfix">
+        @*style="background-color:red" box outside create role*@
+        <div class="fluid">
+            <div class="widget col-md- grid12">
+
+                <div class="widget-header" style="background-color: red">
+                    <div class="widget-title">
+                        <span style="font-style: oblique; font-size: 100%">Editing MailID Details</span>
+                    </div>
+                </div>
+                <!-- /widget-header -->
+                <div id="ErrorBlock">
+                    @if (Session["Error"] != null)
+                {
+                        <pre>
+<span style="font-family:Calibri">@Session["Error"]</span>
+                    </pre>
+                    }
+                    @{
+                        Session["Error"] = null;
+                    }
+                </div>
+                <div class="widget-content pad20f">
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; width: 20%; color: blue; font-style: oblique"> Name</label>
+                    @Html.TextBoxFor(model => model.EmployeeName, new { @id = "Name", @class = "form-control j_text j_length", @name = "EmployeeName", style = "width:89.7%", @placeholder = "Enter Name", @required = "required", @maxlength = 30 })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">EmailID</label>
+                    @Html.TextBoxFor(model => model.EmailID, new { @id = "EmailID", @class = "form-control j_length", @name = "EmailID", style = "width:89.7%", @placeholder = "Enter EmailID", @required = "required", @maxlength = 40 })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">ContactNo</label>
+                    @Html.TextBoxFor(model => model.EmployeeContactNum, new { @id = "ContactNo", @class = "form-control j_int j_length", @name = "EmployeeContactNum", style = "width:89.7%", @placeholder = "Enter ContactNo", @required = "required", @maxlength = 10 })
+
+                    <div style="width: 3%; display: inline-block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Update" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit; margin-top: 2%; background-color: orange; color: black; font-size: 95%" />
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+        </div>
+        <!-- /widget -->
+    </div>
+    <!-- /Class-fluid-->
+                        @Html.HiddenFor(Model => Model.MailIDsID)
+                        @Html.HiddenFor(Model => Model.CreatedBy)
+                        @Html.HiddenFor(Model => Model.CreatedOn)
+                        @Html.HiddenFor(Model => Model.IsDeleted)
+                        }
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/js/jValidations.js"></script>s
+<script>
+    setTimeout(function () {
+        $('#ErrorBlock').fadeOut('slow');
+    }, 15000); // <-- time in milliseconds
+</script>

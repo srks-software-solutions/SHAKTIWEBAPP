@@ -1,0 +1,335 @@
+﻿@model IList<i_facilitylibrary.DAL.tblholdcode>
+@{
+    ViewBag.Title = "UnitWorks - HoldCodeEntry";
+    Layout = "~/Views/Shared/_SuperTable.cshtml";
+}
+
+<style>
+    div.parent {
+        border: 2px solid red;
+        width: 100%;
+        color: blue;
+        border: none;
+        height: 25vh;
+    }
+
+    .child {
+        width: 20%;
+        height: 50%;
+        float: left;
+        margin-top: 2%;
+        /*-webkit-text-size-adjust: 100%;*/
+        font-size: 1.5vw;
+        color: blue;
+        /*display: inline;*/
+        text-align: center;
+        vertical-align: middle;
+        line-height: 60px;
+        flex-align: center;
+        background-color: #eeee00;
+        padding-left: 10px;
+        margin-left: 3.2vw;
+        border-radius: 10px;
+        font-family: Calibri;
+        font-style: oblique;
+        word-wrap: break-word;
+    }
+
+    .child1 {
+        width: 20%;
+        height: 20%;
+        float: left;
+        margin-top: 2%;
+        -webkit-text-size-adjust: 100%;
+        font-size: 1.5vw;
+        color: blue;
+        /*display: inline;*/
+        text-align: center;
+        vertical-align: middle;
+        line-height: normal;
+        flex-align: center;
+        background-color: #eeee00;
+        padding-left: 10px;
+        margin-left: 3.2vw;
+        border-radius: 10px;
+        font-family: Calibri;
+        font-style: oblique;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+</style>
+<div style="margin-left:40%;padding-top:1%">
+    @{ if (ViewBag.roleid == 3)
+        { <span style="font-size: 1.5vw; color: orange">@ViewBag.macDispName</span>}
+    else
+    { <span style="font-size: 1.5vw; color: black">@ViewBag.macDispName</span>
+}
+    }
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="wrp clearfix ">
+        <div class="fluid">
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title">
+                        @if (ViewBag.LossCode == null)
+                        {
+                            <span>@ViewBag.breadScrum <div style="display:inline ;width:15%"></div>Select Level @ViewBag.Level Hold Code</span>
+                        }
+                        else
+                        {
+                            <span>This is Level-@ViewBag.Level Hold Code</span>
+                        }
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+
+                    @if (ViewBag.Level == 1 && Convert.ToInt32(ViewBag.Hmiid) != 0)
+                    {
+                        @Html.ActionLink("Partial Finish", "DirectPartialFinish", new { Hmiid = ViewBag.Hmiid }, new { @id = "DirectPF", @class = "btn btn-lg", @style = "text-decoration:none;color:black;font-size:large;font-weight:800" })
+                        <div style="display:inline-block;width:100%">&nbsp</div>
+                    }
+
+                    @if (ViewBag.WONo != null && ViewBag.PartNo != null && ViewBag.OpNo != null)
+                    {
+                        @*<span style="font-size:larger;font-weight:700">
+                                SplitWO : <span style="color:blue"> @ViewBag.SplitWO </span>
+                            </span>*@
+                        <span style="font-size:larger;font-weight:700">
+                            SplitWO : <span style="color:blue">
+                                @if (@ViewBag.SplitWO == "Yes")
+                                {
+                                    @Html.CheckBox("SplitWO", true, new { @class = "SplitWO sw", @checked = "checked", @style = "width:5%" })
+                                }
+                                else
+                                {
+                                    @Html.CheckBox("SplitWO", false, new { @class = "SplitWO sw", @style = "width:5%" })
+                                }
+                            </span>
+                        </span>
+                        <span style="font-size:larger;font-weight:700;padding-left:5%">
+                            WorkOrder No : <span style="color:blue"> @ViewBag.WONo </span>
+                        </span>
+                        <span style="font-size:larger;font-weight:700;padding-left:5%">
+                            Part No : <span style="color:blue"> @ViewBag.PartNo </span>
+                        </span>
+                        <span style="font-size:larger;font-weight:700;padding-left:5%">
+                            Operation No : <span style="color:blue"> @ViewBag.OpNo </span>
+                        </span>
+                        <br />
+                        <br />
+                    }
+
+                    <input type="text" id="Hmiid" name="Hmiid" style="display:none" />
+                    <input type="text" id="HiddenID" name="HiddenID" style="display:none" />  @*value= '@breakId'*@
+                    <input type="text" id="EndIdle" name="EndIdle" style="display:none" />
+
+                    <div class="parent" style="text-align:center">
+                        @foreach (var item in Model)
+                        {
+                            <div class="child">
+                                @{
+                                    var LossCode = item.HoldCode;
+                                    var LossId = item.HoldCodeID;
+                                    @Html.ActionLink((string)LossCode, "HoldCodeEntry", new { Hmiid = ViewBag.Hmiid, Bid = item.HoldCodeID }, new { @id = item.HoldCodeID, @class = "mychild", @style = "text-decoration:none;color:black;font-size:medium;font-weight:800;word-wrap: break-word;width:inherit;height:inherit" })
+                                    @*@breakCode*@
+
+                                }
+                            </div>
+                        }
+                    </div>
+
+                    @*Button to Go to controller*@
+                    <button id="toEdit" value=" @ViewBag.Hmiid " style="display:none"></button>
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="dialog-confirm" title="Plan Override Confirmation?" style="height: 5%">
+        <p>
+            <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+            @*@ViewBag.OverLappingPlanDetails*@
+            @Html.Raw(@ViewBag.ItsLastLevel)
+        </p>
+    </div>
+
+    <div id="dialog-confirm-1" title=" Split WorkOrder Confirmation ?" style="height: 5%; color: blue">
+        <p>
+        </p>
+    </div>
+
+}
+
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/js/jquery-visibility.js"></script>
+
+<script>setTimeout(function () { window.location.reload(); }, 60000)</script>
+
+<script>
+        $(".child").click(function (e) {
+            e.preventDefault(e);
+            var UrlToRedirect = $(this).children(".mychild").attr("href");
+            window.location = UrlToRedirect;
+        });
+</script>
+
+<script>
+    //This ones for setting previous Level as reason
+    $("#PrevLevel").click(function (e) {
+        $("#HiddenID").val('@ViewBag.LossId');
+
+        $("#Hmiid").val('@ViewBag.Hmiid');
+
+        //just to be sure
+        var empty = "";
+        $("#EndIdle").val(empty);
+        //$("#toEdit").click();
+    });
+</script>
+
+@*<script>
+        //This ones to end the Breakdown
+        $("#endBreakdown").click(function (e) {
+            e.preventDefault();
+            $("#EndIdle").val("true");
+            $("#HiddenID").val('@ViewBag.LossId');
+            $("#toEdit").click();
+        });
+    </script>*@
+
+<script>
+    //This model window is from https://jqueryui.com/dialog/#modal-confirmation
+    $(function () {
+        var a = '@ViewBag.ItsLastLevel';
+        if (($.trim(a)).length > 0) {
+            $("#dialog-confirm").dialog({
+                resizable: true,
+                height: 175,
+                modal: true,
+                buttons: {
+                    "Set as Reason": function () {
+                        $("#HiddenID").val('@ViewBag.LossId');
+                        $("#Hmiid").val('@ViewBag.Hmiid');
+                        var empty = "";
+                        $("#EndIdle").val(empty);
+                        $("#toEdit").click();
+                    },
+                    Cancel: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+@*//to bring it to focus only once*@
+@*<script>
+
+        if (parseInt('@Session["showIdlePopUp"]') == 1) {
+            if (!document.hasFocus()) {
+                window.focus();
+                window.open('http://www.google.com', '_blank').close();
+            }
+        }
+    </script>*@
+
+
+@*//script to checkfor ShiftEnd.*@
+<script type="text/javascript">
+    var roleid = parseInt('@Session["RoleID"]');
+    //alert(roleid)
+    if (roleid == 3) {
+        function checkShiftEnd() {
+            var j = "breakdownlist";
+            debugger;
+            var path = ' @Url.Action("checkShiftEnd", "HMIScree")';
+
+            $.getJSON(path, { rep: j }, function (data) {
+                if (data != null) {
+                    var MsgData = $.parseJSON(data);
+                    if (MsgData == "yes") {
+                        window.open('http://www.google.com', '_blank').close();
+                    }
+                    else {
+                        //alert("no")
+                    }
+                }
+                else {
+                    // alert("Not Found");
+                }
+            });
+
+        } setInterval(checkShiftEnd, 59000);
+    }
+</script>
+
+@* AutoSave SplitWO*@
+<script>
+    $(".SplitWO").on("change", function (e) {
+        var selectedID = '@ViewBag.Hmiid' ;
+        //alert(selectedID);
+        var Value = $(this).val();
+        //alert(Value);
+        if ($(this).is(":checked")) {
+            Value = "Yes";
+        }
+        else if ($(this).is(":not(:checked)")) {
+            Value = "No";
+        }
+        var aCheckBox = $(this);
+        $.getJSON("/ManualHMIScreen/AutoSaveSplitWO", { HMIID: selectedID, SplitWO: Value }, function (data) {
+            //alert(data)
+            if (!data) {
+                $(this).attr("checked", false);
+                aCheckBox.prop('checked', false).checkboxradio('refresh');
+            } else {
+                //alert("Inside Else")
+                //$("#SplitWO Msg").fadeIn(1000);
+            }
+        });
+    });
+</script>
+
+@* ModelWindow when PF is Clicked if checkBox is checked *@
+<script>
+        $("#DirectPF").on("click", function (e) {
+            e.preventDefault();
+            var url = $(this).attr("href");
+            //alert(url);
+            if ($(".SplitWO").is(":checked")) {
+                $("#dialog-confirm-1").dialog({
+                    resizable: true,
+                    height: 50,
+                    modal: true,
+                    buttons: {
+                        "Yes": function () {
+                            window.location.href = url;
+                        },
+                        Cancel: function () {
+                            $("#dialog-confirm-1").dialog("close");
+                        },
+                    }
+                })
+                    .open();
+            }
+            else {
+                window.location.href = url;
+            }
+        });
+</script>

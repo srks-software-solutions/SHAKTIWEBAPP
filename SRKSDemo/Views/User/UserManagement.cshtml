@@ -1,0 +1,150 @@
+﻿@{
+    ViewBag.Title = "UserManagement";
+    Layout = "~/Views/Shared/_LayoutForRole.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/Scripts/MCAdmin/UserManagement.js"></script>
+
+<div class="container body">
+    <div class="main_container">
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title" style="background: #005d9a;z-index: 9999999999;padding: 24px;">
+                                <h2 style="margin-top: -13px;">Role Management</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link" style="margin-top: -20px;"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="clear-fix"></div>
+                            <div class="x_content">
+                                <form class="form-horizontal form-label-left" novalidate>
+                                    <label class="col-sm-1 control-label" style="font-size: large;padding-top:0px">Roles</label>
+                                    <div class="col-sm-9">
+                                        @*<select name="select" id="selectUsers" class="form-control" style="width:inherit">
+                                                <option selected="selected" value="0">Select User</option>
+                                                <option value="1">User1</option>
+                                                <option value="2">User2</option>
+                                                <option value="3">User3</option>
+                                            </select>*@
+                                        @Html.DropDownList("Roles", null, "--Select Roles--", new { @id = "selectRoles", @class = "form-control", @name = "UserId", @style = "aria-expanded:false;", @required = "required", @value = ViewData["roles"] })
+                                    </div>
+                                    <div class="UserMng" style="margin-top: 35px;">
+                                        @*<div class="row form-group " style="margin-top: 35px;margin-left:10%">
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_Dashboard" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">1</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">Dashboard</label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_MachineConnectivityStatusDashboard" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">2</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">Machine Connectivity Status Dashboard</label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_CentralizedDashboard" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">3</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">Centralized Dashboard</label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_VirtualHMI" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">4</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">Virtual HMI</label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_NCProgramTransfer" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">5</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">NC Program Transfer</label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_Reports" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">6</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">Reports</label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_AndonScheduling" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">7</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">Andon Scheduling</label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_PreventiveMaintananceScheduling" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">8</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">Preventive Maintanance Scheduling</label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_MachineConfiguration" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">9</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">Machine Configuration</label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_SensorConfiguration" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">10</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">Sensor Configuration</label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_ToolConfiguration" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">11</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">Tool Configuration</label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_LossesBreakdown" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">12</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">Losses & Breakdown</label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_GeneralConfiguration" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">13</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">General Configuration</label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_ShiftPlanner" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">14</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">Shift Planner</label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_RolesUsers" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">15</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">Roles & Users</label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_AutoReportEscalation" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">16</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">Auto Report/Escalation</label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_UserManagement" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">17</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">User Management</label>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <input type="checkbox" class="chkmenu" id="Chk_MachineStatus" name="tech" value="" style="transform: scale(1.5); margin-right: 10px">
+                                                    <h1 style="display:none;">18</h1>
+                                                    <label for="text-input" class=" form-control-label" style="font-size: 15px; ">Machine Status</label>
+                                                </div>
+                                            </div>*@
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <button type="submit" class="btn btn-primary btn-sm" id="btnSubmit"> <i class="fa fa-dot-circle-o"></i> Submit</button>
+                                        <button type="reset" class="btn btn-danger btn-sm" id="btnReset"> <i class="fa fa-ban"></i> Reset</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="~/css/toaster.css" rel="stylesheet" />
+<script src="~/Scripts/toaster.js"></script>

@@ -1,0 +1,163 @@
+﻿@model SRKSDemo.Models.PreventiveMaintainanceScheduling
+@{
+    ViewBag.Title = "Preventive Maintainance Scheduling ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container body">
+    <div class="main_container">
+        <div class="right_col" role="main">
+            <div class="">
+
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Preventive Maintainance Scheduling </h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                @using (Html.BeginForm("PreventiveMaintainanceScheduling", "Edit", FormMethod.Post))
+                                {
+
+                                    <div class="x_content">
+                                        <form class="form-horizontal form-label-left" novalidate>
+                                            <div class="row row-space">
+                                                <label class="col-sm-1 control-label">Machine Name</label>
+                                                <div class="col-sm-3">
+                                                    @Html.HiddenFor(model => model.primitivemaintainancescheduling.MachineID, new { @id = "EditMachineID", @class = "form-control", @required = "required" })
+                                                    @Html.TextBoxFor(model => model.primitivemaintainancescheduling.MachineName, new { @id = "MachineName", @class = "form-control", @name = "MachineName", style = "width:89.7%", @placeholder = "Enter Machine Name", @required = "required" })
+                                                </div>
+                                                <label class="col-sm-1 control-label">Month</label>
+                                                <div class="col-sm-3">
+                                                    @Html.DropDownList("Month", null, "--Select Month--", new { @id = "Month", @class = "form-control", @name = "Month", @required = "required", @value = "@ViewData['Month']" })
+                                                </div>
+                                                <label class="col-sm-1 control-label">Week</label>
+                                                <div class="col-sm-3">
+                                                    @Html.DropDownList("Week", null, "--Select Week--", new { @id = "Week", @class = "form-control", @name = "Week", @required = "required", @value = "@ViewData['Week']" })
+                                                </div>
+                                                @*<span class="input-group-btn">
+                                                        <button class="btn btn-success btn-round btn-add" type="button">
+                                                            <span class="glyphicon glyphicon-plus"></span>
+                                                        </button>
+                                                    </span>*@
+                                            </div>
+                                        </form>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery-2.1.4.min.js"></script>
+    <script src="~/Content1/SuperTable/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/jquery.dataTables.js"></script>
+    @if (TempData["Message"] != null)
+    {
+        <input type="hidden" id="Message" value="@TempData["Message"]" />
+        <script type="text/javascript">
+            $(function () {
+                var message = $("#Message").val();ssss
+                if (message != "") {
+                    $("#errorMessage").html(message);
+
+
+                }
+            });
+        </script>
+    }
+    else
+    {
+
+        <script type="text/javascript">
+            $(function () {
+                $("#errorMessage").html(message);
+            });
+        </script>
+    }
+
+    <script>
+        //$("#Machine").on("Click", function (e) {
+        //    var PID = $(this).val();
+        //    $.getJSON("/Cells/FetchMachine", { PID: PID }, function (data) {
+        //        $("#Machine").empty();
+        //        $("#Machine").append("<option value = ''> --Select Machine-- </option>")
+        //        $.each(data, function (index, item) {
+        //            $("#Machine").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+        //        });
+        //    });
+        //});
+
+
+        $("#Month").on("click", function (e) {
+            var SID = $(this).val();
+            $.getJSON("/PreventiveMaintainanceScheduling/FetchMonth", { SID: SID }, function (data) {
+                $("#Month").empty();
+                $("#Month").append("<option value=''> --Select Month-- </option>")
+                $.each(data, function (index, item) {
+                    $("#Month").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+                });
+            });
+        });
+
+        $("#Week").on("click", function (e) {
+            var WID = $(this).val();
+            $.getJSON("/PreventiveMaintainanceScheduling/FetchWeek", { WID: WID }, function (data) {
+                $("#Week").empty();
+                $("#Week").append("<option value=''> --Select Week-- </option>")
+                $.each(data, function (index, item) {
+                    $("#Week").append("<option value = '" + item.Value + "'>" + item.Text + "</option>")
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $(".Machine").on("click", function (e) {
+            $(".Machine").click();
+
+            e.preventDefault();
+            var MachineID = $(this).attr("id")
+            //alert(CellCategoryID)
+            $.getJSON("/PreventiveMaintainanceScheduling/GetMachineNameById", { Id: MachineID }, function (data) {
+                $.each(data, function (index, item) {
+                    $("#Machine").val((item.machinename));
+                });
+            }
+                        }
+
+
+                            //<script type="text/javascript">
+                            //    $(function () {
+                            //        $(document).on('click', '.btn-add', function (e) {
+                            //            e.preventDefault();
+
+                            //            var controlForm = $('.controls .form'),
+                            //                currentEntry = $(this).parents('.entry:first'),
+                            //                newEntry = $(currentEntry.clone()).insertAfter(currentEntry);
+
+                            //            newEntry.find('input').val('');
+                            //            //newEntry.find('#planttype').val('');
+                            //            controlForm.find('.entry:not(:last) .btn-add')
+                            //                .removeClass('btn-add').addClass('btn-remove')
+                            //                .removeClass('btn-success').addClass('btn-danger')
+                            //                .html('<span class="glyphicon glyphicon-minus"></span>');
+                            //        }).on('click', '.btn-remove', function (e) {
+                            //            $(this).parents('.entry:first').remove();
+
+                            //            e.preventDefault();
+                            //            return false;
+                            //        });
+                            //    });
+    </script>
+
+

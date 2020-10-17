@@ -1,0 +1,230 @@
+﻿@model SRKSDemo.Models.SensorDataLink
+@{
+    ViewBag.Title = "Parameter List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Parameter List </h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        @using (Html.BeginForm("EditSensorDataLink", "SensorDataLink", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                        <div class="x_content">
+                            <form class="form-horizontal form-label-left" id="fromDiv" novalidate>
+                                <div class="control-group" id="fields">
+                                    <div class="controls">
+                                        <div class="row row-space">
+                                            @Html.HiddenFor(model => model.sensordatalink.ParameterTypeID, new { @id = "parameterid" })
+                                            @Html.HiddenFor(model => model.sensordatalink.AxisID, new { @id = "axisid" })
+                                            @Html.HiddenFor(model => model.sensordatalink.LogFreqUnitID, new { @id = "logfreqid" })
+
+                                            <label class="col-sm-5 control-label">Element Name</label>
+                                            <div class="col-sm-6">
+                                                @Html.TextBoxFor(model => model.sensordatalink.Element, new { @id = "Editelement", @class = "form-control", style = "width:89.7%", @placeholder = "Enter Element Name", @required = "required" })
+                                                @Html.HiddenFor(model => model.sensordatalink.Element, new { @id = "elementName" })
+                                                @*<span id="plantError" style="color:red"></span>*@
+                                            </div>
+                                            <label class="col-sm-5 control-label">Sub Element Name</label>
+                                            <div class="col-sm-6">
+
+                                                @Html.TextBoxFor(model => model.sensordatalink.SubElement, new { @id = "Editsubelement", @class = "form-control", style = "width:89.7%", @placeholder = "Enter Parameter Name", @required = "required" })
+                                                @Html.HiddenFor(model => model.sensordatalink.SubElement, new { @id = "subelementname" })
+                                                <span id="plantError" style="color:red"></span>
+                                            </div>
+                                            <label class="col-sm-5 control-label">Deterioration</label>
+                                            <div class="col-sm-6">
+
+                                                @Html.TextBoxFor(model => model.sensordatalink.Deterioration, new { @id = "EditDeterioration", @class = "form-control", style = "width:89.7%", @placeholder = "Enter Parameter Name", @required = "required" })
+                                                @Html.HiddenFor(model => model.sensordatalink.Deterioration, new { @id = "DeteriorationName" })
+                                                <span id="plantError" style="color:red"></span>
+                                            </div>
+                                            <label class="col-sm-5 control-label">Parameter Name</label>
+                                            <div class="col-sm-6">
+
+                                                @Html.TextBoxFor(model => model.sensordatalink.ParameterName, new { @id = "EditparameterName", @class = "form-control", style = "width:89.7%", @placeholder = "Enter Parameter Name", @required = "required" })
+                                                @Html.HiddenFor(model => model.sensordatalink.ParameterName, new { @id = "parameterName" })
+                                                <span id="errorMessage" style="color:red"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row row-space">
+                                            <label class="col-sm-5 control-label">Parameter Description</label>
+                                            <div class="col-sm-6">
+                                                @Html.TextBoxFor(model => model.sensordatalink.ParameterDesc, new { @id = "EditparameterDesc", @class = "form-control", style = "width:89.7%", @placeholder = "Enter parameter Description", @required = "required" })
+                                                @Html.HiddenFor(model => model.sensordatalink.ParameterDesc, new { @id = "parameterdesc" })
+                                            </div>
+                                        </div>
+                                        <label class="col-sm-5 control-label">Is Axis</label>
+                                        @Html.HiddenFor(model => model.sensordatalink.IsAxis, new { @id = "IsAxis" })
+                                        <div class="col-sm-6">
+                                            <select class="form-control" id="isaxis" onchange="changeParam()">
+                                                <option value="" selected disabled>--Select Is Axis--</option>
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+                                        <script>
+                                            function changeParam() {
+                                                var valId = $("#isaxis").val();
+                                                $("#IsAxis").val(valId);
+                                            }
+                                        </script>
+                                        <div class="row row-space">
+                                            <label class="col-sm-5 control-label">Axis Details</label>
+                                            <div class="col-sm-6">
+                                                @Html.DropDownList("Axis", null, "--Select Axis--", new { @id = "EditAxis", @class = "form-control1 Axis", @name = "Axis", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['Axis']" })
+
+                                            </div>
+                                        </div>
+                                        <div class="row row-space">
+                                            <label class="col-sm-5 control-label">Unit</label>
+                                            <div class="col-sm-6">
+                                                @Html.DropDownList("Unit", null, "--Select Unit--", new { @id = "EditUnit", @class = "form-control1 unit", @name = "unit", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['Unit']" })
+
+                                            </div>
+                                        </div>
+
+                                        <div class="row row-space">
+                                            <label class="col-sm-5 control-label">Lower Sensor Limit</label>
+                                            <div class="col-sm-6">
+                                                @Html.TextBoxFor(model => model.sensordatalink.LSL, new { @id = "EditlowerSens", @class = "form-control", style = "width:89.7%", @placeholder = "Enter Lower Sensor Limit"@*, @type = "Number", min = 0*@})
+                                                @Html.HiddenFor(model => model.sensordatalink.LSL, new { @id = "Lowerlimit" })
+                                                <span id="errorMessage" style="color:red"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row row-space">
+                                            <label class="col-sm-5 control-label">Upper Sensor Limit</label>
+                                            <div class="col-sm-6">
+                                                @Html.TextBoxFor(model => model.sensordatalink.USL, new { @id = "EditUppersensor", @class = "form-control", style = "width:89.7%", @placeholder = "Enter Upper Sensor Limit"@*, @type = "Number", min = 0*@})
+                                                @Html.HiddenFor(model => model.sensordatalink.USL, new { @id = "UpperLimit" })
+                                            </div>
+                                        </div>
+
+                                        <label class="col-sm-5 control-label adjust-label">Parameter Type</label>
+                                        <div class="col-sm-6">
+                                            @Html.HiddenFor(model => model.sensordatalink.IsSensor, new { @id = "Issensor" })
+                                            <select class="form-control" id="issensor" onchange="changeLockLogic()">
+                                                <option value="" selected disabled>--Select Parameter Type--</option>
+                                                <option value="0">Parameter</option>
+                                                <option value="1">Sensor</option>
+                                            </select>
+                                        </div>
+                                        <script>
+                                            function changeLockLogic() {
+                                                var valId = $("#issensor").val();
+                                                $("#Issensor").val(valId);
+                                            }
+                                        </script>
+
+                                        <div class="row row-space">
+                                            <label class="col-sm-5 control-label">Log Frequency</label>
+                                            <div class="col-sm-6">
+                                                @Html.TextBoxFor(model => model.sensordatalink.LogFrequency, new { @id = "EditLogfrequency", @class = "form-control", style = "width:89.7%", @placeholder = "Enter Log Frequency", @required = "required", @type = "number", min = 0 })
+                                                @Html.HiddenFor(model => model.sensordatalink.LogFrequency, new { @id = "Logfrequency" })
+                                            </div>
+                                        </div>
+                                        <div class="row row-space">
+                                            <label class="col-sm-5 control-label">Log Frequency Unit</label>
+                                            <div class="col-sm-6">
+                                                @Html.DropDownList("Unit", null, "--Select Log Frequency Unit--", new { @id = "EditLogFrequencyUnit", @class = "form-control1 unit", @name = "unit", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['Unit']" })
+
+                                            </div>
+                                        </div>
+                                        <label class="col-sm-5 control-label adjust-label">Is Cycle</label>
+                                        <div class="col-sm-6">
+                                            @Html.HiddenFor(model => model.sensordatalink.IsCycle, new { @id = "IsCycle" })
+                                            <select class="form-control" id="iscycle" onchange="changecycle()">
+                                                <option value="" selected disabled>--Select Cycle --</option>
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+                                        <script>
+                                            function changecycle() {
+                                                var valId = $("#iscycle").val();
+                                                $("#IsCycle").val(valId);
+                                            }
+                                        </script>
+                                    </div>
+
+                                </div>
+
+                            </form>
+                            <div class="generate-btn">
+                                <button type="submit" class="btn btn-new float-right savebtn" style="margin-top: 50px;"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Update</button>
+
+                            </div>
+                            <div class="generate-btn">
+                                <a id="" href="/SensorDataLink/Index" type="submit" class="btn btn-new float-left" style="position:absolute;left:0px;margin-top: 50px;"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+
+                            </div>
+                        </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+
+<script>
+    $(".sensor").on("click", function (e) {
+        var SID = $(this).attr("id");
+        $.getJSON("/SensorDataLink/GetSensorById", { Id: SID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#EditparameterName").val((item.paramname));
+                $("#EditparameterDesc").val((item.paramdesc));
+                $("#EditlowerSens").val((item.lsl));
+                $("#EditUppersensor").val((item.usl));
+                //$("#EditLogfrequency").val((item.logfreq));
+                $("#Editelement").val((item.element));
+                $("#Editsubelement").val((item.subelement));
+                $("#EditDeterioration").val((item.deterioration));
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var isaxis = $('#IsAxis').val();
+        $("#isaxis").val(isaxis);
+        var issensor = $('#Issensor').val();
+        $("#issensor").val(issensor);
+        var issensor1 = $('#IsCycle').val();
+        $("#iscycle").val(issensor1);
+
+    });
+
+</script>
+@if (TempData["Message"] != null)
+{
+    <input type="hidden" id="Message" value="@TempData["Message"]" />
+    <script type="text/javascript">
+        $(function () {
+            var message = $("#Message").val();
+            if (message !== "") {
+                $("#errorMessage").html(message);
+
+
+            }
+        });
+    </script>
+}

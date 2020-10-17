@@ -1,0 +1,198 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="~/Content/calendar/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/customNew.css" rel="stylesheet" />
+</head>
+<body class="first-slide">
+
+
+    <div class="container">
+        <div id="loading" style="display:block">
+            <img src="~/images/loading1.gif" class="center img-responsive" style="width: 100px; position: absolute;top:50%;left:50%;z-index:99;">
+
+        </div>
+        <div class="col-sm-12" style="margin: 10px 0 -11px 0;">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8" style="text-align:center;">
+                @*<img src="~/images/TVS.png" style="width: 226px;">*@
+                <a href="~/dashboard/dashboard" class="site_title"><img src="~/images/CCSLogo.png" style="width: 100px;" /></a>
+            </div>
+
+        </div>
+        <div class="col-sm-12 dash-margin">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <h3 class="dash-h3">Machine Connectivity Status</h3>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="card col-sm-12 col-md-12">
+        <div class="MachinesHeader">
+        </div>
+    </div>
+
+    <div class="modal fade modal-lg" style="position: absolute;left: 250px;top: 150px;" data-keyboard="false" id="running" tabindex="-1">
+        <div class="dash-green dash-border ">
+            <img src="~/images/CNC_MACHINE.png" class="col-sm dash-green dash-border">
+            <button class="close" data-dismiss="modal" style="color:white">&times;</button>
+            <div class="MACDETNW1 col-sm-7 dash-green dash-border">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-lg" style="position: absolute;left: 250px;top: 150px;" data-keyboard="false" id="idle" tabindex="-1">
+        <div class="dash-amber dash-border">
+            <img src="~/images/CNC_MACHINE.png" class="col-sm dash-amber dash-border">
+            <button class="close" data-dismiss="modal" style="color:white">&times;</button>
+            <div class="MACDETNW1 col-sm-7 dash-amber dash-border">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-lg" style="position: absolute;left: 250px;top: 150px;" data-keyboard="false" id="breakdown" tabindex="-1">
+        <div class="dash-red dash-border">
+            <img src="~/images/CNC_MACHINE.png" class="col-sm dash-red dash-border">
+            <button class="close" data-dismiss="modal" style="color:white">&times;</button>
+            <div class="MACDETNW1 col-sm-7 dash-red dash-border">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-lg popup" style="position: absolute;left: 250px;top: 150px;" data-keyboard="false" id="poweroff" tabindex="-1">
+        <div class="dash-blue dash-border">
+            <img src="~/images/CNC_MACHINE.png" class="col-sm dash-blue dash-border">
+            <button class="close" data-dismiss="modal" style="color:white">&times;</button>
+            <div class="MACDETNW1 col-sm-7 dash-blue dash-border">
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="cycleType" value="1,1,0,0-1" />
+    <input type="hidden" id="cellIdSession" value="@Session["CellId"].ToString()" />
+    <script src="~/vendors/jquery/dist/jquery.js"></script>
+    <script src="~/vendors/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/moment/MCVDashboard_Andon.js"></script>
+</body>
+</html>
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+<script src="~/js/jquery.cookie.js"></script>
+
+@*<script>
+    var jq = jQuery.noConflict();
+    setTimeout(function () {
+        var dataLoadFromServer = $("#cycleType").val();
+        var nextUrl = "";
+        var pageStatus = "";
+        var cellId = $("#cellIdSession").val();
+        var cookieValue = jq.cookie("timerCookie");
+        var nextPageStatusCookie = jq.cookie("pageStatus");
+        if (cookieValue == "NaN" || typeof cookieValue == "undefined") {
+            jq.cookie('timerCookie', '');
+            jq.cookie('pageStatus', '');
+            window.location.reload();
+        }
+
+        if (nextPageStatusCookie == "") {
+
+            nextPageStatusCookie = dataLoadFromServer;
+        }
+        var arrySplitItemFromDb = dataLoadFromServer.split('-');
+        var arrySplitItemFromCookiee = nextPageStatusCookie.split('-');
+        if (arrySplitItemFromCookiee[0] == arrySplitItemFromDb[0]) {
+            $.ajax({
+                type: "POST",
+                data: { 'pageStatus': nextPageStatusCookie, 'cellId': cellId },
+                url: "/AndonDisplay/CookiePageRedirector",
+                async: false,
+                success: function (data) {
+                    var arry = data.split('%');
+                    nextUrl = arry[0];
+                    pageStatus = arry[1];
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("", "There is some issue in network");
+                }
+            });
+            if (cookieValue == null || cookieValue == "") {
+                var count = parseInt(1);
+                jq.cookie('timerCookie', count);
+                jq.cookie('pageStatus', nextPageStatusCookie);
+            }
+            else {
+                var cookieValueToIncrease = jq.cookie("timerCookie");
+                var intCookieValue = parseInt(cookieValueToIncrease) + 1;
+                jq.cookie('timerCookie', intCookieValue);
+            }
+            if (parseInt(cookieValue) > 1) {
+                jq.removeCookie("timerCookie");
+                jq.cookie('pageStatus', pageStatus);
+                window.location.href = nextUrl;
+            }
+            else {
+                window.location.reload();
+            }
+        } else {
+            nextPageStatusCookie = dataLoadFromServer;
+            $.ajax({
+                type: "POST",
+                data: { 'pageStatus': nextPageStatusCookie, 'cellId': cellId },
+                url: "/AndonDisplay/CookiePageRedirector",
+                async: false,
+                success: function (data) {
+                    var arry = data.split('%');
+                    nextUrl = arry[0];
+                    pageStatus = arry[1];
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("", "There is some issue in network");
+                }
+            });
+            if (cookieValue == null || cookieValue == "") {
+                var count = parseInt(1);
+                jq.cookie('timerCookie', count);
+                jq.cookie('pageStatus', nextPageStatusCookie);
+            }
+            else {
+                var cookieValueToIncrease = jq.cookie("timerCookie");
+                var intCookieValue = parseInt(cookieValueToIncrease) + 1;
+                jq.cookie('timerCookie', intCookieValue);
+            }
+            //if (parseInt(cookieValue) > 1) {
+            //    jq.removeCookie("timerCookie");
+            //    jq.cookie('pageStatus', pageStatus);
+            //    window.location.href = nextUrl;
+            //}
+            //else {
+            jq.removeCookie("timerCookie");
+            jq.cookie('pageStatus', pageStatus);
+            window.location.href = nextUrl;
+            //window.location.reload();
+            //}
+        }
+    }, 30000);
+</script>
+
+<script>
+    jq(function () {
+        var cellId = jq("#cellIdSession").val();
+        jq.ajax({
+            type: "POST",
+            data: { 'cellId': cellId, 'Page': 2 },
+            url: "/AndonDisplay/GetStatus",
+            async: false,
+            success: function (data) {
+                jq("#cycleType").val(data);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("", "There is some issue in network");
+            }
+        });
+    });
+</script>*@

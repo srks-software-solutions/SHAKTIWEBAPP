@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SRKSDemo - @ViewBag.Title</title>
+    <!-- Bootstrap -->
+    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/MConnextcss/custom.css" rel="stylesheet" />
+    
+    <link href="~/MConnextcss/swiper.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- NProgress -->
+    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../vendors/bootstrap-chosen.css">
+    <!-- Font Awesome -->
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- NProgress -->
+    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet" />
+    @*<link rel="stylesheet" type="text/css" href="../vendors/tooltip/tooltip.css">*@
+    <link href="~/vendors/tooltip/tooltip.css" rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    <link href="~/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="~/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="~/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <!-- bootstrap-datetimepicker -->
+    <link href="~/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <!-- timeicker -->
+    <link href="~/vendors/timepicker/timepicker.css" rel="stylesheet" />
+    <!-- Custom Theme Style -->
+    <link href="~/build/css/custom.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- ICONS -->
+    <link href="~/vendors/icons/fontawesome/fontawesome.css" rel="stylesheet" type="text/css" />
+    <link href="~/vendors/icons/linecons/linecons.css" rel="stylesheet" />
+    <link href="~/vendors/icons/spinnericon/spinnericon.css" rel="stylesheet" />
+    <link href="~/vendors/helpers/utils.css" rel="stylesheet" />
+    <link href="~/vendors/element/tile-box.css" rel="stylesheet" />
+
+    <!-- Compare -->
+    <link rel="stylesheet" href="~/vendors/lib/codemirror.css" />
+    <link rel="stylesheet" href="~/vendors/lib/mergely.css" />
+    <link rel="stylesheet" type="text/css" href="~/vendors/editor.css">
+</head>
+
+<body class="nav-sm">
+    <div class="container body">
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav>
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="~/dashboard/dashboard" class="site_title"><img src="~/images/CCSLogo.png" height="75" width="50" /></a>
+                    </div>
+
+                    <div class="nav toggle">
+                        <a href="~/dashboard/dashboard"><strong>SRKSDemo</strong></a>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                Welcome @ViewBag.Logout!
+                                <span class=" fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                @*<li><a href="javascript:;">Help</a></li>*@
+                                <li><a href='@Url.Action("Logout", "login")'><i class="fa fa-sign-out pull-right"></i>Log Out</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- /top navigation -->
+    <!-- page content -->
+    @RenderBody()
+    @RenderPage("~/Views/Shared/Error.cshtml")
+    <!-- /page content -->
+    <!-- jQuery -->
+    <script src="~/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="~/vendors/nprogress/nprogress.js"></script>
+    <!-- validator -->
+    <script src="~/vendors/validator/validator.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="~/build/js/custom.js" type="text/javascript"></script>
+
+    <!-- bootstrap-daterangepicker -->
+    <script src="~/vendors/moment/min/moment.min.js"></script>
+    <script src="~/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-datetimepicker -->
+    <script src="~/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- Compare -->
+    <script src="~/vendors/lib/codemirror.js"></script>
+    <script src="~/vendors/lib/mergely.js"></script>
+
+    <!-- Datatables -->
+    <script src="~/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="~/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="~/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="~/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="~/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="~/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="~/vendors/editor.js"></script>
+
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

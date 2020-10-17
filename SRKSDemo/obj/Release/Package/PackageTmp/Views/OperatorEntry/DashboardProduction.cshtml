@@ -1,0 +1,57 @@
+﻿@model SRKSDemo.Models.OperatorDashboard
+@{
+    ViewBag.Title = "SRKSDemo - Dashboard";
+    Layout = "~/Views/Shared/_OperatorLayout.cshtml";
+    var slno = 1;
+}
+<input id="SetupError" value="@Session["message"].ToString()" type="hidden" />
+<div class="">
+    <div class="x_panel">
+        <div>
+            @*@if (Session["message"].ToString() != "nullinsess")
+            {
+                
+                <span class="label lblerror">@Session["message"].ToString()</span>
+            }*@
+        </div>
+
+        <div class="x_content">
+            <table id="datatable-fixed-header" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Status</th>
+                        <th>Description</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Total Duration (Mins)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model.OpDashboardList)
+                        {
+                            <tr>
+                                <td>@slno</td>
+                                <td>@Html.DisplayFor(modelItem => item.MessageCode)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MessageDescription)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MessageStartTime)</td>
+                                @if (item.MessageEndTime.HasValue)
+                                {
+                                    <td>@Convert.ToDateTime(item.MessageEndTime).ToString("dd-MM-yyyy HH:mm:ss")</td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                                <td>@Html.DisplayFor(modelItem => item.TotalDurationinMin)</td>
+                            </tr>
+                            slno++;
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

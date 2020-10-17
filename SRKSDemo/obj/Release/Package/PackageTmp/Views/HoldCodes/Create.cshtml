@@ -1,0 +1,155 @@
+﻿@model SRKSDemo.Server_Model.tblholdcode
+@{
+    ViewBag.Title = "UnitWorks-Create";
+    Layout = "~/Views/Shared/_LayoutForMaster.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)  
+    <div class="wrp clearfix">@*style="background-color:red" box outside create role*@
+        <div class="fluid">
+            <div class="widget col-md- grid12">
+
+                <div class="widget-header" style="background-color: red">
+                    <div class="widget-title">
+                        <span style="font-style: oblique; font-size: 100%">Create Hold Code</span>
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div id="ErrorBlock">
+                    @if (Session["Error"] != null)
+                    {
+                        <pre>
+<span style="font-family:Calibri">@Session["Error"]</span>
+                    </pre>
+                    }
+                    @{
+                    Session["Error"] = null;
+                    }
+                </div>
+
+                <div class="widget-content pad20f">
+
+                    <table>
+                        <tr>
+                            <td style="padding-left: 30px">
+                                <input id="Level1r" name="radioname" type="radio" value="Level1r" style="height: 18px; width: 18px;" checked /><label style="color: black; font-family: Calibri; font-size: 25px; padding-top: 30px"><b>Level1</b></label>
+                            </td>
+                            <td style="padding-left: 40px">
+                                <input id="Level2r" name="radioname" type="radio" value="Level2r" style="height: 18px; width: 18px;" /><label style="color: black; font-family: Calibri; font-size: 25px; padding-top: 30px"><b>Level2</b></label>
+                            </td>
+                            <td style="padding-left: 40px">
+                                <input id="Level3r" name="radioname" type="radio" value="Level3r" style="height: 18px; width: 18px;" /><label style="color: black; font-family: Calibri; font-size: 25px; padding-top: 30px"><b>Level3</b></label>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; padding-top: 2%; width: 20%; color: blue; font-style: oblique">Hold Code</label>
+                    @Html.TextBoxFor(model => model.HoldCode, new { @id = "LossCode", @class = "form-control", @name = "LossCode", style = "width:89.7%", @placeholder = "Enter Hold Code", @required = "required" })
+
+                    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Hold Code Description</label>
+                    @Html.TextBoxFor(model => model.HoldCodeDesc, new { @id = "LossCodeDesc", @class = "form-control", @name = "LossCodeDesc", style = "width:89.7%", @placeholder = "Enter LossCode Description", @required = "required" })
+
+                    @*Hidden Field*@
+                    @Html.TextBoxFor(model => model.HoldCodesLevel, new { @id = "LossCodesLevel", @class = "form-control", @name = "LossCodesLevel", style = "width:89.7%;display:none" })
+
+                    <div id="level1div">
+                        <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Level1</label>
+                        @Html.DropDownList("Level1", null, "--Select Level1--", new { @id = "Level1", @class = "form-control", @name = "Level1", @style = "aria-expanded:false;width:89.7%", @value = ViewData["Level1"] })
+                    </div>
+                    <div id="level2div">
+                        <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">Level2</label>
+                        @Html.DropDownList("Level2", null, "--Select Level2--", new { @id = "Level2", @class = "form-control", @name = "Level2", @style = "aria-expanded:false;width:89.7%", @value = ViewData["Level2"] })
+                    </div>
+
+                     <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color: blue; font-style: oblique">SAP EndCode</label>
+                    @Html.TextBoxFor(model => model.EndCode, new { @id = "EndCode", @class = "form-control j_int", @name = "EndCode", style = "width:89.7%", @placeholder = "Enter SAP EndCode " ,@maxlength = 2  })
+
+
+                    <div style="width: 100%; display: block; height: inherit"></div>
+                    @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                    <div style="width: 20%; display: inline-block; height: inherit"></div>
+                    <input type="submit" value="Create" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit; margin-top: 2%; background-color: orange; color: black; font-size: 95%" />
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+        </div>
+        <!-- /widget -->
+    </div>
+    <!-- /Class-fluid-->
+    @Html.HiddenFor(Model => Model.HoldCodeID)    
+}
+
+<style>
+    input {
+        font-style: oblique;
+        color: blue;
+    }
+</style>
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/js/jValidations.js"></script>
+<script>
+    setTimeout(function () {
+        $('#ErrorBlock').fadeOut('slow');
+    }, 15000); // <-- time in milliseconds
+</script>
+<script>
+
+    $(document).ready(function () {
+        $("#LossCodesLevel").val(1); //Default LossCodeLevel
+        $("#level1div > #Level1").prop("required", false);
+        $("level2div > #Level2").prop("required", false);
+        $("#level1div").hide();
+        $("#level2div").hide();
+    });
+
+    $('input[type=radio][name=radioname]').change(function () {
+        if (this.value == 'Level1r') {
+            //alert(this.value)
+            $("#level1div > #Level1").prop("required", false);
+            $("#level1div").hide();
+            $("#level2div > #Level2").removeAttr("required");
+            $("#level2div").hide();
+            $("#LossCodesLevel").val(1);
+            $("select option").prop("selected", false);
+        }
+        else if (this.value == 'Level2r') {
+            //alert(this.value)
+            $("#level1div > #Level1").prop("required", true);
+            $("#level1div").show();
+            $("#level2div > #Level2").removeAttr("required");
+            $("#level2div").hide();
+            $("#LossCodesLevel").val(2);
+            $("select option").prop("selected", false);
+        }
+        else if (this.value == 'Level3r') {
+           // alert(this.value)
+            $("#level1div > #Level1").prop("required", true);
+            $("#level1div").show();
+            $("#level2div > #Level2").prop("required", true);
+            $("#level2div").show();
+            $("#LossCodesLevel").val(3);
+            $("select option").prop("selected", false);
+        }
+    });
+
+
+
+</script>
+<script>
+    $("#Level1").change(function (e) {
+        if ($('input:radio[name=radioname]:checked').val() == 'Level3r') {
+            $("#Level2").empty();
+            var selectedID = $("#Level1 option:selected").val();
+            $.getJSON("/HoldCodes/GetLevel2", { Id: selectedID }, function (data) {
+                $.each(data, function (index, item) {
+                    $("#Level2").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                });
+            });
+        }
+    });
+</script>

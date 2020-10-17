@@ -1,0 +1,190 @@
+﻿@{
+    ViewBag.Title = "UnitWorks - IDLE Selection";
+    Layout = "~/Views/Shared/_OperatorLayout1.cshtml";
+}
+<div class="mp_content">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3> IDLE / LOSS Window</h3>
+        </div>
+        @*<div class="col-sm-6">
+                <h3>CELL Idle Count:@ViewData["CellIdle"]</h3>
+            </div>*@
+    </div>
+    <form>
+        <input class="col-sm-1" type="checkbox" id="allcheck" style="zoom:1.5;"><h3>Apply Same Loss For All Machines </h3></input>
+    </form>
+    <div id="IdelPopUp">
+    </div>
+
+</div>
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {        
+        GetIdelMachinespopup();
+    });
+
+    function GetIdelMachinespopup() {
+        $('#IdelPopUp').html('');
+        $.getJSON("/OperatorEntryModel/GetMachinePopup", {}, function (result) {
+            var cssdata = '<form>';
+            var msg = result;
+            var count = msg.length;
+            var slno = 1;
+            if (msg != null) {
+                for (var i = 0; i < msg.length; i++) {
+                    var LossCode = msg[i].LLoss;
+                    cssdata += '<div class="row"><h3 class="col-sm-2">' + msg[i].machinename + ' </h3> <h3>Start Time:' + msg[i].starttimeidle + '  &nbsp;&nbsp;&nbsp;Idle No:'+slno+'</label></h3><div>';
+                    for (var j = 0; j < LossCode.length; j++) {
+                        if (LossCode[j].losslevel == 1) {
+                            cssdata += '<button type="button" name="buttonlevelOne"  class="col-sm-2 col-xs-2 f-s-18 btn btn-primary lossid" onclick="lastNode(' + LossCode[j].losscodeid + ', 1,' + msg[i].MachineID + ',' + count + ')" value="' + LossCode[j].losscodeid + '"> ' + LossCode[j].losscode + ' </button>';
+                        }
+                        if (LossCode[j].losslevel == 2) {
+                            cssdata += '<button type="button" name="buttonlevelOne" class="col-sm-2 col-xs-2 f-s-18 btn btn-primary lossid" onclick="lastNode(' + LossCode[j].losscodeid + ', 2,' + msg[i].MachineID + ',' + count + ')" value="' + LossCode[j].losscodeid + '"> ' + LossCode[j].losscode + ' </button>';
+                        }
+                        if (LossCode[j].losslevel == 3) {
+                            cssdata += '<button type="button" name="buttonlevelOne"  class="col-sm-2 col-xs-2 f-s-18 btn btn-primary lossid" onclick="lastNode(' + LossCode[j].losscodeid + ', 3,' + msg[i].MachineID + ',' + count + ')" value="' + LossCode[j].losscodeid + '"> ' + LossCode[j].losscode + ' </button>';
+                        }
+
+                    }
+                    cssdata += '</div></div>';
+                    slno = slno + 1;
+                }
+            }
+            cssdata += '</form>';
+            $('#IdelPopUp').append(cssdata);
+        });
+    }
+</script>
+
+
+<script type="text/javascript">
+
+    function lastNode(LossCodeID, Level, MachineID,count) {
+
+        var sorf = "";
+        $.ajax({
+            type: "POST",
+            url: "/OperatorEntryModel/ServerPing",
+            async: false,
+            success: function (data) {
+                var status = data;
+                if (status == "Connected") {
+                    sorf = "Connected";
+                }
+                else {
+                    sorf = "NotConnected";
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                //if (textStatus == 'Unauthorized') {
+                //    alert('custom message. Error: ' + errorThrown);
+                //} else {
+                //    alert('custom message. Error: ' + errorThrown);
+                //}
+                sorf = "NotConnected";
+                toastr.warning("", "There is some issue in network");
+            }
+        });
+
+        if (sorf == "Connected") {
+            //unblock();
+            $("#LossSelect").val(LossCodeID);
+        var dat = JSON.stringify({
+            'id': LossCodeID,
+            'lev': Level
+        });
+            var request = '/OperatorEntryModel/lastNodeIdleCheck/' + LossCodeID + '?lev=' + Level;
+        $.get(
+            request,
+            function (data) {
+                var response = String(data);
+                var response = response.split('/');
+                var LastNode = response[0].toString();
+                var buttonClickID = response[1].toString();
+                if (LastNode == "true") {
+                    if (confirm('Are you sure?')) {
+                        if (document.getElementById('allcheck').checked == true) {
+                            if (count > 1) {
+                                window.location.href = '@Url.Action("SaveIdle", "OperatorEntryModel")' + '?LossSelect=' + buttonClickID + '&machineid=' + MachineID + '&Flage=' + true + ''+'&Count='+count;
+                            }
+                            else {
+                                window.location.href = '@Url.Action("SaveIdle", "OperatorEntryModel")' + '?LossSelect=' + buttonClickID + '&machineid=' + MachineID + '&Flage=' + false + '' + '&Count=' + count;
+                            }
+                        }
+                        else {
+                            window.location.href = '@Url.Action("SaveIdle", "OperatorEntryModel")' + '?LossSelect=' + buttonClickID + '&machineid=' + MachineID + '&Flage=' + false + '' + '&Count=' + count;
+                        }
+
+                    }
+                } else
+                {
+                  //  $.post('/OperatorEntry/SettingWindow/?l=' + buttonClickID);
+                    //window.location.href = '/OperatorEntry/SettingWindow /?l = ' + buttonClickID;
+                    //$("form").attr("action", '/OperatorEntry/SettingWindow/?l =' + buttonClickID);
+                    $("form").attr("action", '/OperatorEntryModel/IDLEPopup');
+                    $("form").attr("name", "buttonlevelOne");
+                    $("form").attr("value", buttonClickID);
+                    $("form").attr("mode", "post");
+                    $("form").submit();
+                }
+            });
+        }
+        else {
+            toastr.error("", "No Internet Connectivity");
+            //block();
+        }
+
+
+    }
+</script>
+<script>
+    function block() {
+        $(".btn").attr('disabled', 'disabled');
+    }
+
+    function unblock() {
+        $(".btn").removeAttr('disabled', 'disabled');
+    }
+
+</script>
+<link href="~/Content/toaster.css" rel="stylesheet" />
+<script src="~/Scripts/toaster.js"></script>
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "5000",
+        "hideDuration": "7000",
+        "timeOut": "5000",
+        "extendedTimeOut": "5000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "5000",
+        "hideDuration": "7000",
+        "timeOut": "5000",
+        "extendedTimeOut": "5000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+</script>

@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ifacility - shakti</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/CCSLogo.png" />
+    <!-- bootstrap -->
+    <link href="~/css/bootstrap/bootstrap.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/css/font-awesome-4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/toastr.css">
+
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/css/pe-icon-7-filled.css">
+    <link rel="stylesheet" type="text/css" href="~/css/pe-icon-7-stroke.css">
+
+    <script type="text/javascript" src="~/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery-visibility.js"></script>
+
+    <style>
+        div.header {
+            -webkit-text-size-adjust: 100%;
+            font-size: 2vw;
+            color: blue;
+        }
+    </style>
+    <style type="text/css">
+        th {
+            background-color: orange;
+        }
+    </style>
+
+</head>
+<body onload="startTime()">
+
+    <div id="wrapper" style="width: 100%;">
+        <div id="top">
+            @if (ViewBag.roleid < 3)
+            {
+                <div class="main-logo">
+                    <a href="~/dashboard/dashboard" onclick="return true;">
+                        <img src="~/images/CCSLogo.png" style="width: 20%; height: 20%" />
+                    </a>
+                    @*<p style="color:green;font-size:100%;">@Html.ActionLink("Tata", "Index", "Dashboard", new { @Styles="font-size:70%"})</p>*@
+                </div>
+            }
+            @if (ViewBag.roleid == 3)
+            {
+
+                <div class="main-logo">
+                    <a href="~/HMIScree/Index" onclick="return true;">
+                        <img src="~/images/CCSLogo.png" style="width: 20%; height: 20%" />
+                    </a>
+                </div>
+
+            }
+            @if (ViewBag.roleid == 4)
+            {
+                <div class="main-logo">
+                    <a href="~/MimicsDashboard/Index" onclick="return true;">
+                        <img src="~/images/CCSLogo.png" style="width: 20%; height: 20%" />
+                    </a>
+                    @*<p style="color:green;font-size:100%;">@Html.ActionLink("Tata", "Index", "Dashboard", new { @Styles="font-size:70%"})</p>*@
+                </div>
+            }
+
+            <div class="m-nav"><i class="fa fa-bars"></i></div>
+            <div class="profile-nav">
+                <div style="display: inline; color: white">
+                    Welcome  @ViewBag.Logout
+                </div>
+
+                @*@if (ViewBag.roleid == 3)
+                    {*@
+                <div style="display: inline; color: white;">
+                    @*@Html.ActionLink("Logout", "Logout", "Login", new { @class="btn red btn-primary", @style="color:white"})*@
+                    <b><a href="~/Login/Logout" class="btn red">Logout</a>  </b>
+                </div>
+                @* }*@
+            </div>
+        </div>
+
+        <!-- /top -->
+        <!-- /sidebar -->
+
+        @RenderBody()
+
+        <!-- /content -->
+        <footer class="footer">
+            <a href="http://www.srkssolutions.com/">2016 � SRKS Software Solutions</a>
+        </footer>
+    </div>
+    <!-- /wrapper -->
+
+</body>
+</html>
+
+<script type="text/javascript" src="~/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="~/js/prefixfree.min.js"></script>
+<script type="text/javascript" src="~/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="~/js/jquery-ui.js"></script>
+<script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/js/excanvas.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.flot.js"></script>
+<script type="text/javascript" src="~/js/jquery.flot.resize.js"></script>
+<script type="text/javascript" src="~/js/jquery.sparkline.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.hashchange.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.easytabs.min.js"></script>
+<script type="text/javascript" src="~/js/toastr.min.js"></script>
+@*turnoff autocomplete in all input fields*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).on('focus', ':input', function () {
+            $(this).attr('autocomplete', 'off');
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(window).load(function () {
+
+        //for dummy loading screen
+        $('#loading').fadeOut(1000);
+
+        //for dropdown collapse
+        $('.collapsible > a').click(function () {
+            $(this).parent().toggleClass('open');
+            if ($(this).parent().siblings().hasClass('open')) {
+                $(this).parent().siblings().removeClass('open');
+            }
+            return false;
+        });
+    });
+</script>
+<script type="text/javascript">
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        var date = today.getDate() + "/" + today.getMonth() + "/" + today.getFullYear();
+        document.getElementById('time').innerHTML = date + " " + h + ":" + m + ":" + s;
+        var t = setTimeout(function () { startTime() }, 500);
+    }
+
+    function checkTime(i) {
+        if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+        return i;
+    }
+</script>
+@section Scripts {
+    @Scripts.Render("~/Scripts/datatables")
+}

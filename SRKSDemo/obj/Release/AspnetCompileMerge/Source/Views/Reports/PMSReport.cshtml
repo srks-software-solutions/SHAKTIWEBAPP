@@ -1,0 +1,174 @@
+﻿
+@{
+    ViewBag.Title = "PMS Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>PMS Report Generation</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            @using (Html.BeginForm("PMSReport", "Reports", FormMethod.Post, new { @class = "form-horizontal form-label-left", enctype = "multipart/form-data" }))
+            {
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            @*<label class="col-sm-new-1 control-label">Plant</label>*@
+                            <div class="col-sm-new-3">
+                                @Html.DropDownList("PlantID", null, "--Select Plant--", new { @id = "PlantID", @class = "form-control", @tabindex = "2", @name = "PlantID", @required = "required", @value = ViewData["PlantID"], @style = "color: black;border-color: black;" })
+                            </div>
+                            @*<label class="col-sm-new-1 control-label">Shop</label>*@
+                            <div class="col-sm-new-3">
+                                @Html.DropDownList("ShopID", null, "--Select Shop--", new { @id = "ShopID", @class = "form-control", @tabindex = "2", @name = "ShopID", @required = "required", @value = ViewData["ShopID"], @style = "color: black;border-color: black;" })
+                            </div>
+                            @*<label class="col-sm-new-1 control-label">Cell</label>*@
+                            <div class="col-sm-new-3">
+                                @Html.DropDownList("CellID", null, "--Select Cell--", new { @id = "CellID", @class = "form-control", @tabindex = "2", @name = "CellID", @value = ViewData["CellID"], @style = "color: black;border-color: black;" })
+                            </div>
+                            @*<label class="col-sm-new-1 control-label">Machine</label>*@
+                            <div class="col-sm-new-3">
+                                @Html.DropDownList("MachineID", null, "Select Machine", new { @id = "MachineID", @class = "form-control", @name = "MachineName", @required = "required", @value = ViewData["MachineID"], @style = "color: black;border-color: black;" })
+                            </div>
+                            <div class="col-md-2 col-sm-6 col-xs-12">
+                                <div class="">
+                                    <div class='input-group date myDatepicker3' style="color: black;border-color: black;">
+                                        <input type="text" id="Year" name="Year" class="form-control" style="color: black;border-color: black;" />
+                                        <span class="input-group-addon" style="border-color: black;">
+                                            <span class="glyphicon glyphicon-calendar" style="color: black;"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div><input type="radio" id="MAR-APR" name="radiobtn" value="1" />JAN-DEC<br /></div>
+
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-new col-sm-new-2 Generate">GENERATE</button>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<!-- FastClick -->
+@*<script src="~/vendors/fastclick/lib/fastclick.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>*@
+<!-- validator -->
+<script src="~/vendors/validator/validator.js"></script>
+
+<script src="~/vendors/chosen-select.js" type="text/javascript"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="~/vendors/moment/min/moment.min.js"></script>
+<script src="~/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap-datetimepicker -->
+<script src="~/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<link href="~/css/fileinput.css" rel="stylesheet" />
+<link href="~/css/fileinput.min.css" rel="stylesheet" />
+
+
+<script type="text/javascript">
+    $('.myDatepicker3').datetimepicker({
+        format: 'YYYY',
+        maxDate: moment()
+    });
+</script>
+
+<script>
+    //Cascading
+    $("#PlantID").on("change", function () {
+        $("#ShopID").empty();
+        $("#CellID").empty();
+        $("#MachineID").empty();
+        var selectedID = $("#PlantID option:selected").val();
+        $.getJSON("/ShiftPlanner/GetShop", { PlantID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#ShopID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                //$("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#ShopID").prepend("<option value='' selected='selected'>Select Shop--</option>");
+            $("#CellID").prepend("<option value='' selected='selected'>Select Cell--</option>");
+            $("#MachineID").prepend("<option value='' selected='selected'>Select Machine--</option>");
+        });
+    });
+
+    $("#ShopID").on("change", function () {
+        $("#CellID").empty();
+        $("#MachineID").empty();
+        var selectedID = $("#ShopID option:selected").val();
+        $.getJSON("/ShiftPlanner/GetCell", { ShopID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#CellID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#CellID").prepend("<option value='' selected='selected'>Select Cell--</option>");
+            $("#MachineID").prepend("<option value='' selected='selected'>Select Machine--</option>");
+        });
+    });
+
+    $("#CellID").on("change", function () {
+        $("#MachineID").empty();
+        var selectedID = $("#CellID option:selected").val();
+        //alert(selectedID);
+        $.getJSON("/ShiftPlanner/GetWC_Cell", { CellID: selectedID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#MachineID").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+            });
+            $("#MachineID").prepend("<option value='' selected='selected'>Select Machine--</option>");
+        });
+    });
+</script>
+
+@*<script>
+        var firstMonth;
+        var secondMonth;
+        var thirdmonth;
+        $(document).on("change", "#MAR-APR", function (e) {
+            firstMonth = $("#MAR-APR").val();
+        });
+        $(document).on("change", "#JUNE-JULY", function (e) {
+            secondMonth = $("#JUNE-JULY").val();
+        });
+        $(document).on("change", "#DEC-JAN", function (e) {
+            thirdmonth = $("#DEC-JAN").val();
+        });
+        $(document).on("click", ".Generate", function (e) {
+            var year = $("#Year").val();
+            var nextyear = parseInt(year) + 1;
+            var startMonth;
+            var endMonth;
+            var plantid = $("#PlantID").val();
+            var shopid = $("#ShopID").val();
+            var cellid = $("#CellID").val();
+            var machineid = $("#MachineID").val();
+            if (firstMonth == 1) {
+                startMonth = ("01-03-" + year);
+                endMonth = ("01-04-" + nextyear);
+            }
+            if (secondMonth == 2) {
+                startMonth = ("01-06-" + year);
+                endMonth = ("01-07-" + nextyear);
+            }
+            if (thirdmonth == 3) {
+                //startMonth = ("01-12-" + year);
+                //endMonth = ("01-01-" + nextyear);
+            }
+            $.get("/Reports/PMSReports", { plantid: plantid, shopid: shopid, cellid: cellid, machineid: machineid, startMonth: startMonth, endMonth: endMonth }, function (res) {
+                if (res == "Success") {
+                    window.location.href = "/Reports/PMSReport";
+                }
+            });
+        });
+    </script>*@
+

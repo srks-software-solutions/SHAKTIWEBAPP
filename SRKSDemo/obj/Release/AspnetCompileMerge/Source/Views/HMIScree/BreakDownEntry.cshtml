@@ -1,0 +1,301 @@
+﻿@model IList<i_facilitylibrary.DAL.tbllossescode>
+@{
+    ViewBag.Title = "BreakDownEntry";
+    Layout = "~/Views/Shared/_SuperTable.cshtml";
+    var s = Session["ItsLastLevel"];
+    int count = 0;
+
+
+}
+
+<style>
+    div.parent {
+        border: 2px solid red;
+        width: 100%;
+        color: blue;
+        border: none;
+        height: 25vh;
+    }
+
+    .child {
+        width: 20%;
+        height: 50%;
+        float: left;
+        margin-top: 2%;
+        font-size: 2vw;
+        color: blue;
+        text-align: center;
+        line-height: 60px;
+        background-color: #eeee00;
+        /*padding-left: 10px;*/
+        margin-left: 3.2vw;
+        border-radius: 10px;
+        font-family: Calibri;
+        font-style: oblique;
+        color: black;
+        overflow: hidden;
+    }
+
+    .fnt {
+        text-align: center;
+        padding-bottom: 50%;
+    }
+
+    .child1 {
+        width: 20%;
+        height: 20%;
+        float: left;
+        margin-top: 2%;
+        -webkit-text-size-adjust: 100%;
+        font-size: 1.5vw;
+        color: blue;
+        /*display: inline;*/
+        text-align: center;
+        vertical-align: middle;
+        line-height: normal;
+        /*flex-align: center;*/
+        background-color: #eeee00;
+        padding-left: 10px;
+        margin-left: 3.2vw;
+        border-radius: 10px;
+        font-family: Calibri;
+        font-style: oblique;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+</style>
+<div style="margin-left:40%;padding-top:1%">
+    @{ if (ViewBag.roleid == 3)
+        { <span style="font-size: 1.5vw; color: orange">@ViewBag.macDispName</span>
+        @*<span style="font-size: 1.5vw; color: orange">@ViewBag.BreakdownStartTime</span>*@
+    }
+    else
+    { <span style="font-size: 1.5vw; color: black">@ViewBag.macDispName</span>
+    @*<span style="font-size: 1.5vw; color: black">@ViewBag.BreakdownStartTime</span>*@
+}
+
+    }
+</div>
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="wrp clearfix">
+        <div class="fluid">
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title">
+                        @if (ViewBag.BreakdownCode == null)
+                        {
+                            <span>@ViewBag.breadScrum <div style="display:inline ;width:15%"></div>Select Level @ViewBag.Level Breakdown Code</span>
+                        }
+                        else
+                        {
+                            <span>This is Level-@ViewBag.Level Breakdown Code</span>
+                        }
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+                    @* @if (ViewBag.BreakdownCode == null)
+                         {
+                             if (ViewBag.Level != 1)
+                             {
+                        <button id="PrevLevel" class ="child1"> Set Previous Level as Reason</button>
+                            <div style="display:inline-block;width:100%">&nbsp</div>
+                             }
+                         }*@
+                    <input type="text" id="HiddenID" name="HiddenID" style="display:none" />  @*value= '@breakId'*@
+                    <input type="text" id="EndBreakdown" name="EndBreakdown" style="display:none" />
+                    @if (ViewBag.BreakdownCode == null)
+                    {
+                        <div class="parent" style="text-align:center;">
+                            @foreach (var item in Model)
+                            {
+                                <div class="child">
+                                    @{
+                                        var breakCode = item.LossCode;
+                                        var breakId = item.LossCodeID;
+                                        @*@Html.ActionLink((string)breakCode, "BreakDownEntry",new { Bid = item.BreakDownCodeID }, new { @id = item.BreakDownCodeID, @class = " clickablelink ", @style="  line-height:60px;linecolor:black;width:100%;height:100%;padding-bottom:1000px;padding-right:1000px;margin-top:30%"})*@
+                                        @Html.ActionLink((string)breakCode, "BreakDownEntry", new { Bid = item.LossCodeID }, new { @id = item.LossCodeID, @class = "mychild", @style = "text-decoration:none;color:black;font-size:large;font-weight:800" })
+                                    }
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <span>
+                            Breakdown code is : <span style="color:blue"> @ViewBag.BreakdownCode </span>
+                        </span>
+                        <br />
+                        <span>
+                            Breakdown Start Time is : <span style="color:blue"> @ViewBag.BreakdownStartTime </span>
+                        </span>
+                        <br />
+                        <button id="endBreakdown" class="child1">End Breakdown</button>
+                    }
+
+                    @*Button to Go to controller*@
+                    <button id="toEdit" style="display:none"></button>
+                </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="dialog-confirm" title="Plan Override Confirmation?" style="height: 5%">
+        <p>
+            <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+            @*@ViewBag.OverLappingPlanDetails*@
+            @Html.Raw(@ViewBag.ItsLastLevel)
+        </p>
+    </div>
+}
+<script type="text/javascript" src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/Content1/SuperTable/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/jquery.dataTables.js"></script>
+<script>
+        $(".child").click(function (e) {
+            e.preventDefault(e);
+            var UrlToRedirect = $(this).children(".mychild").attr("href");
+            window.location = UrlToRedirect;
+        });
+</script>
+
+
+<script>
+    //This ones for setting previous Level as reason
+    $("#PrevLevel").click(function (e) {
+        $("#HiddenID").val('@ViewBag.BreakdownId');
+        //just to be sure
+        var empty = "";
+        $("#EndBreakdown").val(empty);
+        $("#toEdit").click();
+    });
+</script>
+
+<script>
+    //This ones to end the Breakdown
+    $("#endBreakdown").click(function (e) {
+        e.preventDefault();
+        $("#EndBreakdown").val("true");
+        $("#HiddenID").val('@ViewBag.BreakdownId');
+        $("#toEdit").click();
+    });
+</script>
+
+<script>
+        var count = 0;
+    //This model window is from https://jqueryui.com/dialog/#modal-confirmation
+    $(function () {
+        var a = '@ViewBag.ItsLastLevel';
+        if (($.trim(a)).length > 0) {
+            $("#dialog-confirm").dialog({
+                resizable: true,
+                height: 175,
+                modal: true,
+                buttons: {
+                    "Set as Reason": function ()
+                    {
+                        @*$("#HiddenID").val('@ViewBag.BreakDownID');
+                        var empty = "";
+                        $("#EndBreakdown").val(empty);
+                        $("#toEdit").click();*@
+                    },
+                    Cancel: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        }
+        });
+
+        $(function () {
+            $("span:contains('Set as Reason')").click(function (e) {
+                count++;
+                if (count <= 1) {
+                    $("#HiddenID").val('@ViewBag.BreakDownID');
+                    var empty = "";
+                    $("#EndBreakdown").val(empty);
+                    $("#toEdit").click();
+                }
+                else {}
+            });
+        });
+</script>
+
+@*<script src="~/js/jquery-2.1.4.min.js"></script>
+    <script>setTimeout(function () { window.location.reload(); }, 60000 * 1)</script>*@
+@*<script>
+        $(".child").click(function (e) {
+            var thisvar = this;
+            //e.preventDefault();
+            var itsID = $(this > ".clickablelink").attr("id");
+            alert(itsID);
+            var path = ' @Url.Action("IsItLastLevel", "HMIScree")';
+            $.getJSON(path, { id: itsID }, function (data) {
+                alert(data)
+                if (data == "no") {
+                    //Code to display module window saying its last level do u want to submit
+                    var Message = "This is the Last Level. Do you Want to Set this as Reason ? "
+                    $("#modeldata").html($.parseHTML(Message));
+                    $("#dialog").dialog();
+                }
+                if (data == "yes") {
+                    alert("Going somewhere");
+                    $(this).siblings(".clickablelink").click();
+                }
+            });
+        });
+    </script>*@
+
+
+@*//script to checkfor ShiftEnd.*@
+@*<script type="text/javascript">
+
+        var roleid = parseInt('@Session["RoleID"]');
+        //alert(roleid)
+        if (roleid == 3) {
+            function checkShiftEnd() {
+                var j = "breakdownlist";
+                debugger;
+                var path = ' @Url.Action("checkShiftEnd", "HMIScree")';
+
+                $.getJSON(path, { rep: j }, function (data) {
+                    if (data != null) {
+                        var MsgData = $.parseJSON(data);
+                        if (MsgData == "yes") {
+                            //alert("yes")
+                            window.open('http://www.google.com', '_blank').close();
+                        }
+                        else { //alert("no")
+                        }
+                    }
+                    else { // alert("Not Found");
+                    }
+                });
+            } setInterval(checkShiftEnd, 59000);
+        }
+    </script>*@
+
+@*<script>
+        $("#raiseTicket").attr("visibility", "hidden");
+        //$("#submit").click
+        var attr = $("#submit").attr('disabled');
+        alert("blah:",attr)
+        // For some browsers, `attr` is undefined; for others,
+        // `attr` is false.  Check for both.
+        if (typeof attr !== typeof undefined && attr !== false) {
+            alert("blah:1")
+            $("#raiseTicket").attr("visibility", "visible");
+        }
+
+    </script>*@

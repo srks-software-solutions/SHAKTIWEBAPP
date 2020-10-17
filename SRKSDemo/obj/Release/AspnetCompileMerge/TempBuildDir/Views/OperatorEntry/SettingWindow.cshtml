@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "UnitWorks - VirtualHMI";
+    Layout = "~/Views/Shared/_OperatorLayout.cshtml";
+}
+<input id="SetupError" value="@Convert.ToString(Session["setuperror"])" type="hidden" />
+
+<div class="mp_content">
+    <div>
+        @if (Session["message"].ToString() != "nullinsess")
+        {
+            <span class="label lblerror">@Session["message"].ToString()</span>
+        }
+    </div>
+    <h3>
+        Setting
+    </h3>
+    <form method="post" action="/OperatorEntry/SettingWindow">
+
+        <div>
+            @foreach (var level in ViewBag.lossCodes)
+            {
+                if (ViewBag.level == 2)
+                {
+                    if (level.LossCodesLevel == ViewBag.level && level.LossCodesLevel1ID == ViewBag.lossCodeID)
+                    {
+                        @*<button type="submit" name ="button" class="btn btn-primary"  action="/OperatorEntry/SettingWindow"  value="@level.LossCodeID"> @level.LossCode </button>*@
+                        <button type="button" name="buttonlevelTwo" class="col-sm-2 col-xs-2 f-s-18 btn btn-primary lossid" onclick="lastNode(@level.LossCodeID)" value="@level.LossCodeID"> @level.LossCodeDesc </button>
+                    }
+                }
+                if (ViewBag.level == 3)
+                {
+                    if (level.LossCodesLevel == ViewBag.level && level.LossCodesLevel2ID == ViewBag.lossCodeID)
+                    {
+                        <button type="button" name="button" class="col-sm-2 col-xs-2 f-s-18 btn btn-primary lossid" onclick="if (confirm('Are you sure?')) { window.location.href = '@Url.Action("SaveSetting", "OperatorEntry",new {  LossSelect= level.LossCodeID })'; }" value="@level.LossCodeID"> @level.LossCodeDesc </button>
+                    }
+                }
+            }
+            <input type="text" name="LossSelect" id="LossSelect" hidden="hidden" />
+        </div>
+    </form>
+</div>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<link href="~/css/jquery-ui.css" rel="stylesheet" />
+<script src="~/js/jquery-ui.js"></script>
+<link href="~/Content1/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" />
+<script src="~/Content1/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+        function lastNode(LossCodeID) {
+            $("#LossSelect").val(LossCodeID);
+            var request = '/OperatorEntry/lastNodeCheck/' + LossCodeID;
+            $.get(
+                request,
+                function (data) {
+                    var response = String(data);
+                    var response = response.split('/');
+                    var LastNode = response[0].toString();
+                    var buttonClickID = response[1].toString();
+                    //alert(LastNode);
+                   // alert(buttonClickID);
+
+                   // confirm('Are you sure?');
+
+                    if (LastNode == "true") {
+
+
+                        if (confirm('Are you sure?')) {
+                            //window.location.href = 'www.google.com';
+
+                            window.location.href = '@Url.Action("SaveSetting", "OperatorEntry")' + '?LossSelect=+' + buttonClickID;
+
+                        }
+                    } else
+
+                    {
+                      //  $.post('/OperatorEntry/SettingWindow/?l=' + buttonClickID);
+                        //window.location.href = '/OperatorEntry/SettingWindow /?l = ' + buttonClickID;
+
+                        //$("form").attr("action", '/OperatorEntry/SettingWindow/?l =' + buttonClickID);
+                        $("form").attr("action", '/OperatorEntry/SettingWindow');
+                        $("form").attr("name", "buttonlevelTwo");
+                        $("form").attr("value", buttonClickID);
+                        $("form").attr("mode", "post");
+                        $("form").submit();
+                    }
+                });
+        }
+</script>

@@ -1,0 +1,39 @@
+﻿@model SRKSDemo.Server_Model.tblrole
+@{
+    ViewBag.Title = "Create";
+}
+
+<style>
+    input {
+        font-style: oblique;
+        color: blue;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+
+    <label for="input-1" class="stacked-label" style="resize: horizontal; width: 20%; color:blue;font-style:oblique">Role Name</label>
+    @Html.TextBoxFor(model => model.RoleName, new { @id = "RoleName", @class = "form-control", @name = "Role Name", style = "width:89.7%", @placeholder = "Enter Role Name", @required = "required" })
+
+    <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; color:blue;font-style:oblique">Role Display Name</label>
+                @Html.TextBoxFor(model => model.RoleDisplayName, new { @id = "RoleDisplayName", @class = "form-control", @name = "RoleDisplayName", style = "width:89.7%", @placeholder = "Enter Role Display Name", @required = "required" })
+
+                <label for="input-2" class="stacked-label" style="resize: horizontal; width: 20%; color:blue;font-style:oblique">Role Description</label>
+                @Html.TextBoxFor(model => model.RoleDesc, new { @id = "RoleDesc", @class = "form-control", @name = "RoleDesc", style = "width:89.7%", @placeholder = "Enter Role Description", @required = "required" })
+
+                <div style="width: 3%; display: inline-block; height: inherit"></div>
+                @Html.ActionLink(" Back ", "Index", new { }, new { @class = "btn stacked-input fa fa-reply fa-1x", @style = "text-decoration:none;display:inline-block;color:black" })
+                <div style="width: 20%; display: inline-block; height: inherit"></div>
+                <input type="submit" value="Create" class="btn orange btn-lg" style="width: 30%; display: inline-block; height: inherit;margin-top:2%;background-color:orange;color:black;font-size:95%" />
+
+                @Html.HiddenFor(Model => Model.CreatedOn)
+                @Html.HiddenFor(Model => Model.CreatedBy)
+                @Html.HiddenFor(Model => Model.IsDeleted)
+                @Html.HiddenFor(Model => Model.Role_ID)
+}
+
+

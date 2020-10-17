@@ -1,0 +1,323 @@
+﻿@model IList<SRKSDemo.PMSData>
+@{
+                /**/
+
+                ViewBag.title = "Preventive Maintainance Scheduling";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+                var model = Model;
+}
+
+<div class="right_col" role="main">
+    <div class="page-title">
+        <div class="title_left">
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="x_content ">
+        <div class="x_content">
+            <div class="x_title">
+                <h2>Preventive Maintainance Scheduling  </h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="divcreate">
+                <form class="form-horizontal form-label-left" novalidate>
+                    <div class="row row-space">
+                        <label class="col-sm-1 control-label">Plant Name</label>
+                        <div class="col-sm-3">
+                            <select id="PlantID" class="form-control">
+                                <option selected="selected" value="0">--Select Plant--</option>
+                            </select>
+                            @*@Html.DropDownList("Plant", null, "--Select Plant--", new { @id = "PlantID", @class = "form-control ", @name = "Plant", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['Plant']" })*@
+                        </div>
+                        <label class="col-sm-1 control-label">Shop Name</label>
+                        <div class="col-sm-3">
+                            <select id="shop" class="form-control">
+                                <option selected="selected" value="0">--Select Shop--</option>
+                            </select>
+                            @*@Html.DropDownList("shop", null, "--Select Department--", new { @id = "shop", @class = "form-control", @name = "shop", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['shop']" })*@
+                        </div>
+                        <label class="col-sm-1 control-label">Cell Name</label>
+                        <div class="col-sm-3">
+                            <select id="cell" class="form-control">
+                                <option selected="selected" value="0">--Select Cell--</option>
+                            </select>
+                            @*@Html.DropDownList("cell", null, "--Select cell--", new { @id = "cell", @class = "form-control ", @name = "cell", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['cell']" })*@
+                            <span id="plantError" style="color:red"></span>
+                        </div>
+                        <button type="submit" id="btnGetDetails" class="btn btn-new float-right get"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Get Details</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                @*<div class="x_title">
+                        <h2>Create PreventiveMaintainanceScheduling  Details</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>*@
+                <div class="table-responsive" id="tblsection" style="display:none">
+                    <table class="table table-striped jambo_table bulk_action border">
+                        <thead style="background-color: white; color: grey;">
+                            <tr class="headings">
+                                <th class="column-title" style="border:1px solid Black;text-align:center">Plant </th>
+                                <th class="column-title" style="border:1px solid Black ;text-align:center">Shop </th>
+                                <th class="column-title" style="border:1px solid Black;text-align:center">Cell </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="even pointer border">
+                                <td style="border:1px solid Black ;text-align:center" id="PlantName">121000040</td>
+                                <td style="border:1px solid Black ;text-align:center" id="ShopName">May 23, 2014 11:47:56 PM </td>
+                                <td style="border:1px solid Black ;text-align:center" id="CellName">121000210</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-responsive" id="divPMS" style="display:none;border:1px solid black">
+                    <table class="table table-striped jambo_table bulk_action">
+                        <thead style="background-color: white; color: grey;">
+                            <tr class="headings">
+                                <th class="column-title" style="color:black; border:1px solid Black">Machine Name</th>
+                                <th class="column-title" style="color:black; border:1px solid Black">Month </th>
+                                <th class="column-title" style="color:black; border:1px solid Black">Week</th>
+                                <th class="column-title" style="color:black; border:1px solid Black">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="pmsdata">
+                            <tr class="even pointer ">
+
+                                <td style="color:black; border:1px solid Black">Machine name</td>
+
+
+                                <td style="border:1px solid Black">
+                                    <select style="color:black" class="Month"></select>
+                                </td>
+                                <td style="border:1px solid Black">
+                                    <select style="color:black" class="Week"></select>
+                                </td>
+                                <td style="border:1px solid Black"><button style="background-color: green; color: white; font-size: 20px;border-radius: 50%; border: 1px; height: 30px; width: 30px;"> + </button></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="generate-btn">
+                        <a id="" href="/PreventiveMaintainanceScheduling/Index" type="submit" class="btn btn-new" style="margin-left:7px"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                        <button type="submit" class="btn btn-new float-right savebtn"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+                    </div>
+                </div>
+
+                @*<div id="tblsection" class="col-sm-12" style="display:none">
+
+                        <div class="row">
+                            <div class="col-sm-4 " style="text-align:center">Plant</div>
+                            <div class="col-sm-4 control-label" style="text-align:center">Shop</div>
+                            <div class="col-sm-4 control-label" style="text-align:center">cell</div>
+                        </div>
+
+
+                        <div class="row row-space form-control">
+
+                            <div class="col-sm-4 " id="PlantName" style="text-align:center"></div>
+                            <div class="col-sm-4 " id="ShopName" style="text-align:center"></div>
+                            <div class="col-sm-4  " id="CellName" style="text-align:center"></div>
+                        </div>
+
+                    </div>*@
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- /page content -->
+
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+<script src="~/js/moment/PMS.js"></script>
+@*<script type="text/javascript">
+        $(function () {
+            $(document).on('click', '.btn-add', function (e) {
+                e.preventDefault();
+                var id = $(this).attr('id');
+                var name = $(this).attr('name');
+                var monthValue = $("#month_" + name).val();
+                var weekvalue = $("#week_" + name).val();
+                if (monthValue !== "" && weekvalue !== "") {
+
+                    $.get("/PreventiveMaintainanceScheduling/InsertData", { id: name, monthValue: monthValue, weekvalue: weekvalue }, function (data) {
+                        if (data !== null && data !== "") {
+                            //$(curEntry).attr("id", data);
+                            console.log('refresh');
+                            window.location.reload(true);
+                        }
+                    });
+                }
+            })
+
+            $(document).on('click', '.btn-remove', function (e) {
+                var name = $(this).attr('name');
+                $.getJSON("/PreventiveMaintainanceScheduling/DeleteData", { Id: name }, function (res) {
+
+
+                });
+                console.log('refresh');
+                window.location.reload(true);
+            });
+
+            $(document).on('change', ".monthdropdown", function (e) {
+                var id = $(this).attr('id');
+                var monthValue = $("#" + id).val();
+                var arry = id.split('_');
+                monthid = arry[1];
+                $.getJSON("/PreventiveMaintainanceScheduling/UpdateData", { pmid: monthid, monthValue: monthValue }, function (res) {
+
+                });
+                console.log('refresh');
+                window.location.reload(true);
+            });
+
+            $(document).on('change', ".weekdropdown", function (e) {
+                var id = $(this).attr('id');
+                var arry = id.split('_');
+                weekid = arry[1];
+                var weekvalue = $("#" + id).val();
+                $.getJSON("/PreventiveMaintainanceScheduling/UpdateData1", { pmid: weekid, weekvalue: weekvalue }, function (res) {
+
+                });
+                console.log('refresh');
+                window.location.reload(true);
+            });
+
+            $(document).on('click', '.btn-add1', function (e) {
+                e.preventDefault();
+                var id = $(this).attr('id');
+                var name = $(this).attr('name');
+                var monthValue = $("#month_" + name).val();
+                var weekvalue = $("#week_" + name).val();
+                if (monthValue !== "" && weekvalue !== "") {
+                    $.get("/PreventiveMaintainanceScheduling/InsertData", { id: name, monthValue: monthValue, weekvalue: weekvalue }, function (data) {
+                        if (data !== null && data !== "") {
+                            console.log('refresh');
+                            window.location.reload(true);
+                        }
+                    });
+                }
+            });
+
+            $(document).on('change', ".monthdropdownList", function (e) {
+                var id = $(this).attr('id');
+                var name = $('.btn-add1').attr('name');
+                var monthValue = $("#" + id).val();
+                $.getJSON("/PreventiveMaintainanceScheduling/UpdateData", { pmid: name, monthValue: monthValue }, function (res) {
+                });
+            });
+
+            $(document).on('change', ".weekdropdownList", function (e) {
+                var id = $(this).attr('id');
+                var weekvalue = $("#" + id).val();
+                var name = $('.btn-add1').attr('name');
+                $.getJSON("/PreventiveMaintainanceScheduling/UpdateData1", { pmid: name, weekvalue: weekvalue }, function (res) {
+                });
+            });
+
+            $(document).on('change', ".monthiddropdown", function (e) {
+                var id = $(this).attr('id');
+                var monthValue = $("#" + id).val();
+                var arry = id.split('_');
+                monthid = arry[1];
+                $.getJSON("/PreventiveMaintainanceScheduling/UpdateData", { pmid: monthid, monthValue: monthValue }, function (res) {
+
+                });
+            });
+
+            $(document).on('change', ".weekiddropdown", function (e) {
+                var id = $(this).attr('id');
+                var arry = id.split('_');
+                weekid = arry[1];
+                var weekvalue = $("#" + id).val();
+                $.getJSON("/PreventiveMaintainanceScheduling/UpdateData1", { pmid: weekid, weekvalue: weekvalue }, function (res) {
+
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#PlantID").on("change", function (e) {
+                var PID = $(this).val();
+                $.getJSON("/BottelNeckMachine/FetchShop", { PID: PID }, function (data) {
+                    $("#shop").empty();
+                    $("#shop").append("<option value = ''> --Select Department-- </option>");
+                    $.each(data, function (index, item) {
+                        $("#shop").append("<option value = '" + item.Value + "'>" + item.Text + "</option>");
+                    });
+                });
+            });
+
+            $("#shop").on("change", function (e) {
+
+                var SID = $(this).val();
+                var PID = $("#PlantID").val();
+                $.getJSON("/BottelNeckMachine/FetchCell", { PID: PID, SID: SID }, function (data) {
+                    $("#cell").empty();
+                    $("#cell").append("<option value=''> --Select Cell-- </option>");
+                    $.each(data, function (index, item) {
+                        $("#cell").append("<option value = '" + item.Value + "'>" + item.Text + "</option>");
+                    });
+                });
+            });
+
+        });
+
+    </script>*@
+
+
+@if (TempData["Message"] != null)
+{
+    <input type="hidden" id="Message" value="@TempData["Message"]" />
+    <script type="text/javascript">
+        $(function () {
+            var message = $("#Message").val();
+            if (message !== "") {
+                $("#errorMessage").html(message);
+
+
+            }
+        });
+    </script>
+}
+@*<script>
+        function cellnameDuplicateCheck(CellID) {
+            var CellID = $("#cell").val();
+            $.ajax({
+                type: "POST",
+                data: { 'CellID': CellID },
+                url: "/PreventiveMaintainanceScheduling/cellnameDuplicateCheck",
+                async: false,
+                success: function (data) {
+                    if (data === "notok") {
+                        $("#plantError").html('The selected Cell does not have any machines for this plant and shop,please select another cell');
+                        $("#btnGetDetails").attr('disabled', 'disabled');
+                    } else {
+                        $("#plantError").html('');
+                        $("#btnGetDetails").removeAttr('disabled', 'disabled');
+                    }
+                },
+            }),
+        }
+    </script>*@
+
+

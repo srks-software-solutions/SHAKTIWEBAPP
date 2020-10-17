@@ -1,0 +1,182 @@
+﻿
+@model List<SRKSDemo.Server_Model.tblrolemodulelink>
+@{
+    ViewBag.Title = "CreateRoleModule";
+    int count = 0;
+
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="container body">
+        <div class="main_container">
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Role Module Create Detail</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li>
+                                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <div class="row shoporderedit">
+                                        <div class="col-md-6 col-md-offset-2">
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="type">
+                                                    Role
+                                                </label>
+
+                                                @*<div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @Html.DropDownList("RoleId1", (SelectList)ViewData["Role"], "--Select Role--", new { @id = "RoleId1", @class = "dropdown form-control black dropdown-toggle", @name = "RoleId1", @required = "required", @style = "data-toggle:dropdown; aria-expanded:false" });
+                                                </div>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table id="datatable-fixed-header" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                        <thead>
+
+                                            <tr>
+                                                <th>Module Name</th>
+                                                <th>IsAll</th>
+                                                <th>Enabel Edit</th>
+                                                <th>Enable Add</th>
+                                                <th>Enable Delete</th>
+                                                <th>Enable Read Only</th>
+                                                <th>Enable Report</th>
+                                                <th>Is Visible</th>
+                                            </tr>
+
+                                        </thead>
+                                        @for (int i = 0; i <Model.Count; i++)
+                                         
+                                        {
+                                            count = Model.Count;
+
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(item => item[i].tblmodule, new { @class = "form-control", @readonly = "readonly" })
+                                                        @Html.TextBoxFor(item => item[i].ModuleID, new { @class = "form-control", @readonly = "readonly", @style = "display:none" })
+                                                    </td>
+                                                    <td><div class="checkbox checkbox-primary"><input id="check1" type="checkbox"><label for="check1"></label></div></td>
+                                                    <td><div class="checkbox checkbox-primary"><input id="check2" type="checkbox"><label for="check2"></label></div></td>
+                                                    <td><div class="checkbox checkbox-primary"><input id="check3" type="checkbox"><label for="check3"></label></div></td>
+                                                    <td><div class="checkbox checkbox-primary"><input id="check4" type="checkbox"><label for="check4"></label></div></td>
+                                                    <td><div class="checkbox checkbox-primary"><input id="check5" type="checkbox"><label for="check5"></label></div></td>
+                                                    <td><div class="checkbox checkbox-primary"><input id="check6" type="checkbox"><label for="check6"></label></div></td>
+                                                    <td><div class="checkbox checkbox-primary"><input id="check7" type="checkbox"><label for="check7"></label></div></td>
+                                                </tr>
+                                            </tbody>
+                                        }
+                                    </table>
+
+
+                                    <a role="button" href="@Url.Action("Index", "RoleModule")" class="btn btn-new" style="margin-top: 10px;"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+
+                                    <button type="submit" class="btn btn-new float-right" style="margin-top: 10px;"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- jQuery -->
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+<!-- iCheck -->
+<script src="~/vendors/iCheck/icheck.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.chosen-select').chosen();
+    });
+</script>
+<script>
+
+    $('#myDatepicker2').datetimepicker({
+        format: 'YYYY/MM/DD'
+    });
+</script>
+<!-- Bootstrap Timepicker -->
+<!--<link rel="stylesheet" type="text/css" href="~/~/assets/widgets/timepicker/timepicker.css">-->
+<script type="text/javascript" src="~/vendors/timepicker/timepicker.js"></script>
+<script type="text/javascript">
+    /* Timepicker */
+
+    $(function () {
+        "use strict";
+        $('.timepicker-example').timepicker();
+    });
+
+    $(document).ready(function () {
+        $("[data-toggle=tooltip]").tooltip();
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var $divs = $('#divs > div');
+        $divs.first().show()
+
+    });
+    $(document).ready(function () {
+        $('#radio1').click(function () {
+            $('#div2').hide();
+            $('#div1').show();
+        });
+        $('#radio2').click(function () {
+            $('#div1').hide();
+            $('#div2').show();
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var $divs = $('#divs1 > div');
+        $divs.first().show()
+
+    });
+    $(document).ready(function () {
+        $('#radio3').click(function () {
+            $('#div4').hide();
+            $('#div3').show();
+        });
+        $('#radio4').click(function () {
+            $('#div3').hide();
+            $('#div4').show();
+        });
+    });
+</script>
+<script type="text/javascript">
+    var chk1 = $("#check1");
+    var chk2 = $("#check2");
+    var chk3 = $("#check3");
+    var chk4 = $("#check4");
+    var chk5 = $("#check5");
+    var chk6 = $("#check6");
+    var chk7 = $("#check7");
+
+    chk1.on('change', function () {
+        chk2.prop('checked', this.checked);
+        chk3.prop('checked', this.checked);
+        chk4.prop('checked', this.checked);
+        chk5.prop('checked', this.checked);
+        chk6.prop('checked', this.checked);
+        chk7.prop('checked', this.checked);
+    });
+</script>
+

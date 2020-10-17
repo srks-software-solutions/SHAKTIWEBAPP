@@ -1,0 +1,122 @@
+﻿@model SRKSDemo.Models.sensormachinemodel
+@{
+    ViewBag.Title = " Sensor Machine";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container body">
+    <div class="main_container">
+        <div class="right_col" role="main">
+            <div class="">
+
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Sensor Machine</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                @using (Html.BeginForm("EditMachineSensor", "MachineSensor", FormMethod.Post))
+                                {
+
+                                    <div class="x_content">
+                                        <form class="form-horizontal form-label-left" novalidate>
+                                            <div class="row row-space">
+                                                @Html.HiddenFor(model => model.machinesensor.MSID, new { @id = "msid" })
+                                                @Html.HiddenFor(model => model.machinesensor.MachineId, new { @id = "machineid" })
+                                                @Html.HiddenFor(model => model.machinesensor.Sid, new { @id = "sid" })
+                                                <label class="col-sm-5 control-label">Machine Name</label>
+                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                    @Html.DropDownList("MachineName", null, "--Select MachineName--", new { @id = "machine", @class = "form-control1 machine", @name = "machine", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['MachineName']", @onchange="getmachine();" })
+
+                                                </div>
+                                                <label class="col-sm-5 control-label">Sensor Group Name</label>
+                                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                                    @Html.DropDownList("SensorGroupName", null, "--Select SensorGroupName--", new { @id = "sensor", @class = "form-control1 sensor", @name = "sensor", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['SensorGroupName']", @onchange = "getsensor();" })
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="row row-space">
+                                                <label class="col-sm-5 control-label">Sensor Module IP Address</label>
+                                                <div class="col-sm-6">
+                                                    @*<input type="text" class="form-control1" id="" placeholder="Plant Description">*@
+                                                    @Html.TextBoxFor(model => model.machinesensor.IPAddress, new { @id = "EditIPAddress", @class = "form-control", style = "width:89.7%", @placeholder = "Enter sensor IPAddress" })
+                                                    @Html.HiddenFor(model => model.machinesensor.IPAddress, new { @id = "IPAddress" })
+                                                </div>
+                                            </div>
+                                            <div class="row row-space">
+                                                <label class="col-sm-5 control-label">Port Number</label>
+                                                <div class="col-sm-6">
+                                                    @*<input type="text" class="form-control1" id="" placeholder="Plant Display Name">*@
+                                                    @Html.TextBoxFor(model => model.machinesensor.PortNo, new { @id = "EditPortNo", @class = "form-control", style = "width:89.7%", @placeholder = "Enter Port Number", @required = "required" })
+                                                    @Html.HiddenFor(model => model.machinesensor.PortNo, new { @id = "PortNo" })
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="generate-btn">
+                                            <a id="" href="/MachineSensor/IndexMachineSensor" type="submit" class="btn btn-new"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                                            <button type="submit" class="btn btn-new float-right"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Update</button>
+
+                                        </div>
+                                    </div>
+                                    @Html.HiddenFor(model => model.machinesensor.CreatedBy, new { @id = "CreatedBy" })
+                                    @Html.HiddenFor(model => model.machinesensor.CreatedOn, new { @id = "CreatedOn" })
+                                    @Html.HiddenFor(model => model.machinesensor.ModifiedBy, new { @id = "ModifiedBy" })
+                                    @Html.HiddenFor(model => model.machinesensor.ModifiedOn, new { @id = "ModifiedOn" })
+                                    @Html.HiddenFor(model => model.machinesensor.IsDeleted, new { @id = "IsDeleted" })
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+    $(".sensor").on("click", function (e) {
+        var MSID = $(this).attr("id")
+        $.getJSON("/MachineSensor/GetmachinesensorById", { Id: MSID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#EditIPAddress").val((item.ipaddress));
+                $("#EditPortNo").val((item.portno));
+            });
+        });
+    });
+</script>
+<script>
+    function getmachine() {
+        var id = $("#machine").val();
+        $("#machineid").val(id);
+    }
+</script>
+<script>
+    function getsensor() {
+        var id = $("#sensor").val();
+        $("#sid").val(id);
+    }
+</script>
+
+@if (TempData["Message"] != null)
+{
+    <input type="hidden" id="Message" value="@TempData["Message"]" />
+    <script type="text/javascript">
+        $(function () {
+            var message = $("#Message").val();
+            if (message !== "") {
+                $("#errorMessage").html(message);
+
+
+            }
+        });
+    </script>
+}

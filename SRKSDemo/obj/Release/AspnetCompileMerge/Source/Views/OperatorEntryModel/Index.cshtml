@@ -1,0 +1,2038 @@
+﻿@model IList<SRKSDemo.OperatorEntryModelClass.MainDetails>
+@{
+    ViewBag.Title = "Operator Entry";
+    Layout = null;
+}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Operator Enrty</title>
+
+    <link href="~/NewOperatorEntryJS/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/NewOperatorEntryJS/css/custom.css" rel="stylesheet" />
+    <link href="~/NewOperatorEntryJS/css/w3.css" rel="stylesheet" />
+    <link href="~/NewOperatorEntryJS/loading-bar/loading-bar.css" rel="stylesheet" />
+
+
+    @*<style>
+            <html lang="en" >
+            <head >
+            <meta charset="UTF-8" >
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+            <meta http-equiv="X-UA-Compatible" content="ie=edge" >
+            <title > Document</title >
+            <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" >
+            -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" >
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" > </script >
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js" > </script >
+            <link rel="stylesheet" href="css/bootstrap.min.css" >
+            <link rel="stylesheet" href="css/custom.css" >
+
+        </style>*@
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            background-color: #D8D8D8;
+            overflow-x: hidden;
+        }
+
+        .right-side-button {
+            position: absolute;
+            right: 8px;
+            top: 2px;
+            margin-top: 7px;
+        }
+
+        .machine-details {
+            font-size: 12px;
+            margin-top: 17px;
+            font-family: cursive;
+        }
+
+        .rectangle {
+            height: 50px;
+            width: 60px;
+            background-color: #555;
+        }
+
+        .input-box {
+            border-radius: 5px;
+            border: 1px solid grey;
+            width: 206px;
+            height: 30px;
+            margin-left: 6px;
+        }
+
+        .rejection-input {
+            width: 58px;
+            height: 36px;
+            border-radius: 10px;
+            border: 1px solid grey;
+        }
+
+        /*.startbtn {
+            border: 1px solid #00818a;
+            padding: 10px;
+            border-radius: 3px;
+            margin-left: -30px;
+            font-weight: bold;
+            font-family: Source Sans Pro, Arial, sans-serif;
+            font-size: 18px;
+        }
+
+        .rejectionbtn {
+            border: 1px solid #a7d129;
+            padding: 10px;
+            border-radius: 3px;
+            margin-left: -50px;
+            font-weight: bold;
+            font-family: Source Sans Pro, Arial, sans-serif;
+            font-size: 18px;
+        }
+
+        .rewrkbtn {
+            border: 1px solid magenta;
+            padding: 10px;
+            border-radius: 3px;
+            margin-left: -33px;
+            font-weight: bold;
+            font-family: Source Sans Pro, Arial, sans-serif;
+            font-size: 18px;
+        }
+
+        .brkdwnbtn {
+            border: 1px solid #1f4287;
+            padding: 10px;
+            margin-left: -43px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-family: Source Sans Pro, Arial, sans-serif;
+            font-size: 18px;
+        }*/
+        .partDetails {
+            font-size: 13px;
+        }
+
+        .btn-responsive {
+            white-space: normal !important;
+            word-wrap: break-word;
+        }
+
+        .startbtn {
+            border: 1px solid #00818a;
+            background: white;
+            color: black;
+        }
+
+        .rejectionbtn {
+            border: 1px solid #a7d129;
+            background: white;
+            color: black;
+        }
+
+        .rewrkbtn {
+            border: 1px solid magenta;
+            background: white;
+            color: black;
+        }
+
+        .brkdwnbtn {
+            border: 1px solid #1f4287;
+            background: white;
+            color: black;
+        }
+
+        .content {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 10px;
+            margin-top: 0px;
+        }
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm" style="background-color: navy">
+        <h6 style="color:white; border-right: 1px solid white; padding-right: 13px; style=" font-size: 18px;""> Operator Details </h6>
+        <span style="color:white;  margin-left: 15px; margin-top: 2px; style=" font-size: 18px;""> Operator Name :@ViewBag.Operatorname </span>
+        <span style="color:white;  margin-left: 15px; margin-top: 2px; style=" font-size: 18px;""> Operator ID :@ViewBag.OperatorIDs </span>
+        <span style="color:white;  margin-left: 15px; margin-top: 2px; style=" font-size: 18px;""> Shift :@ViewBag.Shift </span>
+        <span style="color:white;  margin-left: 15px; margin-top: 2px; style=" font-size: 18px;""> Login Time :@ViewBag.LoginTime  </span>
+        <div>
+            <a class="btn btn-danger right-side-button" href="~/login/Logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+        </div>
+
+    </nav>
+
+    <div class="row" style=" margin-top: 10px;">
+
+        <!-- <div class="col-sm-4">
+            <div class="card w3-card">
+                <div class="card-body" >
+                    <p class="card-title" style="text-align: center; font-size: 12px;"> Machine Name</p>
+                    <div>
+                        <img src="images/machine.png" style="height: 111px; width: 105px;  border-radius: 10px; padding: 10px;margin-left: 140px;">
+                    </div>
+
+                    <div>
+                        <a style="border: 1px solid gray; padding: 10px; border-radius: 3px; margin-left: 13px;"> Start </a>
+                        <a style="border: 1px solid gray; padding: 10px; border-radius: 3px; margin-left: 5px;"> Rejection </a>
+                        <a style="border: 1px solid gray; padding: 10px; border-radius: 3px; margin-left: 5px;"> Rework </a>
+                        <a style="border: 1px solid gray; padding: 10px; border-radius: 3px; margin-left: 5px;"> Breakdown </a>
+                    </div>
+
+                    <div style="margin-left: 0px;">
+                        <button type="button" class="btn badge badge-info" style="padding: 5px;"> Start </button>
+                        <button type="button" class="btn badge badge-info" style="padding: 5px;"> Rejection </button>
+                        <button type="button" class="btn badge badge-info" style="padding: 5px;"> Rework </button>
+                        <button type="button" class="btn badge badge-info" style="padding: 5px;"> Breakdown </button>
+                    </div>
+
+                    <div style="margin-top: 17px;margin-left: 3px;">
+                        <a style=" background-color: blue; color:white; font-size:12px; padding: 5px;" > Power Off </a>
+                        <a style=" background-color: red; color:white; font-size:12px; padding: 5px;" > &nbsp;&nbsp;Stop&nbsp;&nbsp;&nbsp;</a>
+                        <a style=" background-color: yellow; color:black; font-size:12px; padding: 5px;" > &nbsp;&nbsp;&nbsp;Idle&nbsp;&nbsp; </a>
+                        <a style=" background-color: green; color:white; font-size:12px; padding: 5px;" > Production </a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        @foreach (var Row in Model)
+        {
+            var Colo = Row.MachineStatusColor;
+            var Machineid = Row.MachineId;
+
+            <div class="col-sm-4" style="margin-left: 9px;">
+                <div class="card">
+
+                    <div class="card-title ">
+                        <div id="Mach_@Machineid">
+                            @if (Colo == "YELLOW")
+                            {
+                                <center><a style="border: 1px solid gray; padding: 5px; background:@Colo ; color: black; font-family: Source Sans Pro, Arial, sans-serif; border-radius: 3px; font-size: 30px;" id="Color_@Row.MachineId"> Machine Name - @Row.MachineName </a><br><br></center>
+                            }
+                            else
+                            {
+                                <center><a style="border: 1px solid gray; padding: 5px; background:@Colo ; color: White; font-family: Source Sans Pro, Arial, sans-serif; border-radius: 3px; font-size: 30px;" id="Color_@Row.MachineId"> Machine Name - @Row.MachineName </a><br><br></center>
+                            }
+                        </div>
+                    </div>
+                    <div class="card-body ">
+                        <!-- <span class="card-title" style="font-size: 10px; font-weight: 800; font-family: Source Sans Pro, Arial, sans-serif;"> Part No : 1</span>
+                        <span class="card-title" style="font-size: 12px; position: absolute; right: 28px; margin-top: 6px; font-weight: 800; font-family: Source Sans Pro, Arial, sans-serif;"> Work Order : 1</span> -->
+
+                        <div class="row">
+                            <div class="col-sm-6 ">
+                                <b class="partDetails">Part No : @Row.PartNumber </b>
+                            </div>
+                            <div class="col-sm-6">
+                                <b class="partDetails"> Operation No  : @Row.OperationNo </b>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6"> <b class="partDetails">WO No : @Row.WONumber </b> </div>
+                            <div class="col-sm-6"> <b class="partDetails"> WO Qty : @Row.WOQty </b> </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12"> <b class="partDetails">WO Start Time : @Row.WOStartTime  </b> </div>
+                        </div>
+                        <div id="ReBreak1_@Machineid">
+                        </div>
+
+
+                        <table class="table" style="margin-top: 10px;">
+                            <thead>
+                                <tr style=" font-size: 16px;">
+                                    <th></th>
+                                    <th>Target</th>
+                                    <th>Actual</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style=" font-size: 16px;">
+                                    <td><b>Part Count/Hr </b></td>
+                                    <td id="PT_@Machineid"> <b>@Row.PartsCountTarget</b></td>
+                                    <td id="PA_@Machineid"> <b>@Row.PartsCountActual</b></td>
+                                </tr>
+                                <tr style=" font-size: 16px;">
+                                    <td><b>Shift Count </b></td>
+                                    <td id="ST_@Machineid"> <b>@Row.ShiftCountTarget</b></td>
+                                    <td id="SA_@Machineid"> <b>@Row.ShiftCountAtcual</b></td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                        <div style="margin-top: 28px; margin-left: 23px;" id="Finish">
+
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <button class="btn startbtn " onclick="openStartModal(@Machineid)" data-toggle="modal" data-target="#startBtn" id="StartMain_@Machineid"> Start </button>
+                                </div>
+                                <div class="col-sm-3">
+                                    <button class="btn rejectionbtn btn-responsive" onclick="openRejectionModal(@ViewBag.OperatorIDs,@Machineid);" data-toggle="modal" data-target="#"> Rejection</button>
+                                </div>
+                                <div class="col-sm-3">
+                                    <button class="btn rewrkbtn " onclick="ReworkModel(@Machineid);" data-toggle="modal" data-target="#reworkBtn">  Rework </button>
+
+                                </div>
+                                @*<button class="btn brkdwnbtn brkdwn_@Machineid" id="breakdowncodeid" onclick="breakdownModal(@Machineid)" data-toggle="modal"> Breakdown </button>*@
+
+                                <div class="col-sm-2" id="BreakDown_@Machineid">
+                                    <button class="btn brkdwnbtn brkdwn1_@Machineid" id="breakdowncodeid" onclick="breakdownModal1(@Machineid)" data-toggle="modal" data-target="#breakdownBtn"> Breakdown1 </button>
+                                </div>
+
+                                @*<a style="border: 1px solid #00818a; padding: 10px; border-radius: 3px; margin-left: 0px; font-weight: bold; font-family: Source Sans Pro, Arial, sans-serif; font-size: 18px;" onclick="openStartModal(@Machineid)" data-toggle="modal" data-target="#startBtn" id="StartMain_@Machineid"> Start </a>
+                                    <a style="border: 1px solid #a7d129; padding: 10px; border-radius: 3px; margin-left: 5px; font-weight: bold; font-family: Source Sans Pro, Arial, sans-serif; font-size: 18px;" onclick="openRejectionModal()" data-toggle="modal" data-target="#rejectionBtn"> Rejection </a>
+                                    <a style="border: 1px solid magenta; padding: 10px; border-radius: 3px; margin-left: 5px; font-weight: bold; font-family: Source Sans Pro, Arial, sans-serif; font-size: 18px;" onclick="reworkModal()" data-toggle="modal" data-target="#reworkBtn">  Rework </a>
+                                    <a style="border: 1px solid #1f4287; padding: 10px; border-radius: 3px; margin-left: 5px; font-weight: bold; font-family: Source Sans Pro, Arial, sans-serif; font-size: 18px;" onclick="breakdownModal(@Machineid)" data-toggle="modal" data-target="#breakdownBtn"> Breakdown </a>*@
+                            </div>
+                        </div>
+
+                        <div id="StackChart_@Machineid" style="width: 500px; height: 100px;"></div>
+
+
+                        <div class="row" style="margin-left: 88px;">
+                            <span class="red" style="background-color:red; color:white;">&nbsp; BreakDown &nbsp;</span>
+                            &nbsp;
+                            <span class="blue" style="background-color:blue; color:white;">&nbsp; PowerOff &nbsp;</span>
+                            &nbsp;
+                            <span class="yellow" style="background-color:yellow; color:black;">&nbsp; Idle &nbsp;</span>
+                            &nbsp;
+                            <span class="green" style="background-color:green; color:white;">&nbsp; Production &nbsp;</span>
+                            &nbsp;
+                        </div>
+
+                        @*<div style="margin-top: 33px;margin-left: 36px;">
+                                <a style=" background-color: #0000d2; color:white;padding: 0px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   </a>
+                                <a style=" background-color: #f33e3e; color:white;padding: 0px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                <a style=" background-color: #e5ff0b; color:black;padding: 0px; margin-left: -5px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>
+                                <a style=" background-color: #00A572; color:white;padding: 0px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </a>
+                            </div>*@
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+        }
+
+        <div class="modal fade" id="startBtn" tabindex="-1" role="dialog" aria-labelledby="start" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-lg" role="document">
+                <div class="modal-content" style="width: 70%; position: absolute; left:16%;">
+                    <div class="modal-header" style="    background-color: navy; color: white;">
+                        <h5 class="modal-title" id="welcomeModal">Start Work Order</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="color: white;">×</span>
+                        </button>
+                    </div>
+                    <div id="WOStart">
+                        @*<div class="modal-body">
+                                <div style="margin-left: 116px;">
+                                    <input type="hidden" class="StartButton" id="NoMach" value="" />
+                                    <p>
+                                        Shift   <span style="margin-left: 76px;">:</span>
+                                        <select style="width: 206px;height: 34px;border-radius: 5px;" id="ShiftDet"></select>
+                                    </p>
+                                    <p> Part No  <span style="margin-left: 30px;">:</span><input class="input-box" type="text" id="PartVal"> </p>
+                                    <p> WO No  <span style="margin-left: 48px;">:</span> <input class="input-box" style="margin-left: 0px;" type="text" id="WOVal"> </p>
+                                    <p> Operation No  <span style="margin-left: 13px;">:</span> <input class="input-box" style="margin-left: 0px;" type="text" id="OPVal"> </p>
+                                    <p> WO Qty  <span style="margin-left: 55px;">:</span> <input class="input-box" style="margin-left: 0px;" type="text" id="WOQVal"> </p>
+                                </div>
+                                <div style="text-align: center; margin-top: 34px;" id="FinishSub">
+                                    <button type="button" class="btn btn-outline-info" style="width:22%" data-dismiss="modal" id="startsub" onclick="InsertToDb();">Start</button>
+                                    <button type="button" class="btn btn-outline-info" style="width:22%" data-dismiss="modal" id="Idelsub">IDLE</button>
+                                    <button type="button" class="btn btn-outline-info" style="width:22%" data-dismiss="modal" id="holdsub">HOLD</button>
+                                </div>
+                            </div>*@
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <input id="hdnClickedItem" type="hidden" />
+        <div class="modal fade" id="rejectionBtn" tabindex="-1" role="dialog" aria-labelledby="rejectionBtn" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-lg" role="document">
+                <div class="modal-content" style="width: 70%; position: absolute; left:16%;">
+                    <div class="modal-header" style="    background-color: navy; color: white;">
+                        <h5 class="modal-title">Rejection Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label> Shift Timing : </label> <input class="rejection-input" type="text"> <input class="rejection-input" type="text"> <input class="rejection-input" type="text">
+                        <div style="text-align: center; margin-top: 34px;">
+                            <button type="button" class="btn btn-outline-info" style="width:22%" data-dismiss="modal">Update</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="reworkBtn" tabindex="-1" role="dialog" aria-labelledby="reworkBtn" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-lg" role="document">
+                <div class="content" id="ReworkDet"></div>
+                @*<div class="modal-content" style="width: 70%; position: absolute; left:16%;">
+                    <div class="modal-header" style="    background-color: navy; color: white;">
+                        <h5 class="modal-title">Rework Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="color: white;">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group" style="text-align: center;">*@
+
+                <!-- <textarea class="form-control" rows="3" id="comment"></textarea> -->
+                @*<p>
+                    Rework Reason
+                    <select style="width: 206px;height: 34px;border-radius: 5px;" id="ReworkReason">*@
+                @*<option value="0">Select Rework Reason</option>
+                    <option value="1">Damage</option>
+                    <option value="2">Shift Change</option>*@
+                @*</select>
+                        </div>
+                        <div style="text-align: center; margin-top: 34px;">
+                            <button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal">Start</button>
+                            <button type="button" class="btn btn-info" style="width:22%" data-dismiss="modal">Finish</button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="breakdownBtn" tabindex="-1" role="dialog" aria-labelledby="reworkBtn" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-lg" role="document">
+            <div class="content" id="BreakDown"></div>
+            @*<div class="modal-content" style="width: 70%; position: absolute; left:16%;">
+                    <div class="modal-header" style="    background-color: navy; color: white;">
+                        <h5 class="modal-title">Breakdown Reason</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="color: white;">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group" style="text-align: center;">
+
+                            <!-- <textarea class="form-control" rows="3" id="comment"></textarea> -->
+                            <div id="reason1">
+                                <p>
+                                    Reason 1
+                                    <select style="width: 206px;height: 34px;border-radius: 5px;">
+                                        <option value="0">Select Reason</option>
+                                        <option value="1">Damage</option>
+                                        <option value="2">Shift Change</option>
+                                    </select>
+                            </div>
+                            <div id="reason2">
+                                <p>
+                                    Reason 2
+                                    <select style="width: 206px;height: 34px;border-radius: 5px;">
+                                        <option value="0">Select Reason</option>
+                                        <option value="1">Damage</option>
+                                        <option value="2">Shift Change</option>
+                                    </select>
+                            </div>
+                            <div id="reason3">
+                                <p>
+                                    Reason 3
+                                    <select style="width: 206px;height: 34px;border-radius: 5px;">
+                                        <option value="0">Select Reason</option>
+                                        <option value="1">Damage</option>
+                                        <option value="2">Shift Change</option>
+                                    </select>
+                            </div>
+
+                        </div>
+                        <div style="text-align: center; margin-top: 34px;">
+                            <button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="openLogin()">Start</button>
+                        </div>
+                    </div>
+                    <!-- <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div> -->
+                </div>*@
+        </div>
+    </div>
+
+    <div class="modal fade" id="loginBtn" tabindex="-1" role="dialog" aria-labelledby="reworkBtn" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-lg" role="document">
+            <div class="content" id="Maintances"></div>
+            @*<div class="modal-content" style="width: 70%; position: absolute; left:16%;">
+                    <div class="modal-header" style="    background-color: navy; color: white;">
+                        <h5 class="modal-title">Maintenance Login</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="color: white;">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="email">User Name:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="username" placeholder="Enter user name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="pwd">Password:</label>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                                </div>
+                            </div>
+
+                        </form>
+                        <div style="text-align: center; margin-top: 34px;">
+                            <button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="machineAcceptance()">Login</button>
+                        </div>
+                    </div>
+
+                </div>*@
+        </div>
+    </div>
+
+    <div class="modal fade" id="machineAcceptanceBtn" tabindex="-1" role="dialog" aria-labelledby="reworkBtn" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-lg" role="document">
+            <div class="content" id="MachineAcceptance"></div>
+            @*<div class="modal-content" style="width: 70%; position: absolute; left:16%;">
+                    <div class="modal-header" style="    background-color: navy; color: white;">
+                        <h5 class="modal-title">Maintenance Acceptance</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="color: white;">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="email">Machine Name:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="pwd">Reason</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="pwd">Date & Time</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="pwd">Operator Name</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="pwd">Maintenance Operator Name:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+                        </form>
+
+
+
+
+                        <div style="text-align: center; margin-top: 34px;">
+                            <button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="machineClosure()">Accept</button>
+                            <button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="reject()">Reject</button>
+                        </div>
+                    </div>
+
+                </div>*@
+        </div>
+    </div>
+
+    <div class="modal fade" id="RejectReasonBtn" tabindex="-1" role="dialog" aria-labelledby="RejectReason" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-lg" role="document">
+            <div class="content" id="MaintReject"></div>
+            @*<div class="modal-content" style="width: 70%; position: absolute; left:16%;">
+                <div class="modal-header" style="    background-color: navy; color: white;">
+                    <h5 class="modal-title">Rejected Reason</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" style="color: white;">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group" style="text-align: center;">
+                            <div id="reason3">
+                                <p>
+                                    Enter the reason
+                                    <select style="width: 206px;height: 34px;border-radius: 5px;">
+                                        <option value="0">Select Reason</option>
+                                        <option value="1">Damage</option>*@
+            @*<option value="2">Shift Change</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </form>
+                    <div style="text-align: center; margin-top: 34px;">
+                        <button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal">Save</button>
+
+                    </div>
+                </div>*@
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div> -->
+        </div>
+    </div>
+    @*</div>*@
+
+    <div class="modal fade" id="maintenaceClousreBtn" tabindex="-1" role="dialog" aria-labelledby="maintenaceClousreBtn" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-lg" role="document">
+            <div class="content" id="MaintClosure"></div>
+            @*<div class="modal-content" style="width: 70%; position: absolute; left:16%;">
+                    <div class="modal-header" style="    background-color: navy; color: white;">
+                        <h5 class="modal-title"> Maintenance Closure </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="color: white;">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="email">Machine Name:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="pwd">Reason</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="pwd">Date & Time</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="pwd">Acceptence Time</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="pwd">Operator Name</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="pwd">Maintenance Operator Name:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-4" for="email">Remarks</label>
+                                <div class="col-sm-6">
+                                    <textarea type="text" class="form-control" row="2" placeholder="Enter the remarks here"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                        <div style="text-align: center; margin-top: 34px;">
+                            <button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="productionLoginModal()">Finish</button>
+                        </div>
+                    </div>
+
+                </div>*@
+        </div>
+    </div>
+    <div class="modal fade" id="productionloginBtn" tabindex="-1" role="dialog" aria-labelledby="reworkBtn" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-lg" role="document">
+            <div class="content" id="ProdLogin"></div>
+            @*<div class="modal-content" style="width: 70%; position: absolute; left:16%;">
+                <div class="modal-header" style="    background-color: navy; color: white;">
+                    <h5 class="modal-title">Production Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" style="color: white;">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="email">User Name:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="username" placeholder="Enter user name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="pwd">Password:</label>
+                            <div class="col-sm-6">
+                                <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                            </div>
+                        </div>
+                    </form>
+                    <div style="text-align: center; margin-top: 34px;">
+                        <button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="productionDetailsModal()">Login</button>
+                    </div>
+                </div>*@
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div> -->
+            @*</div>*@
+        </div>
+    </div>
+    <div class="modal fade" id="productionDetailsBtn" tabindex="-1" role="dialog" aria-labelledby="productionDetailsBtn" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-lg" role="document">
+            <div class="content" id="ProdDet"></div>
+            @*<div class="modal-content" style="width: 70%; position: absolute; left:16%;">
+                <div class="modal-header" style="    background-color: navy; color: white;">
+                    <h5 class="modal-title"> Production Details </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" style="color: white;">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="email">Machine Name:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="pwd">Reason</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="pwd">Date & Time</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="pwd">Acceptence Time</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="pwd">Closure Time</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="pwd">Operator Name</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="pwd">Maintenance Operator Name:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="email">Maintenance Remarks</label>
+                            <div class="col-sm-6">
+                                <textarea readonly type="text" class="form-control" row="2"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="email">Production Remarks</label>
+                            <div class="col-sm-6">
+                                <textarea type="text" class="form-control" row="2" placeholder="Enter the remarks here"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                    <div style="text-align: center; margin-top: 34px;">
+                        <button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal">Accept</button>
+                        <button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="productionRejectionModal()">Reject</button>
+                    </div>
+                </div>*@
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div> -->
+            @*</div>*@
+        </div>
+    </div>
+
+    <div class="modal fade" id="prodRejectReasonBtn" tabindex="-1" role="dialog" aria-labelledby="RejectReason" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-zoom modal-lg" role="document">
+            <div class="content" id="RejectReason"></div>
+            @*<div class="modal-content" style="width: 70%; position: absolute; left:16%;">
+                    <div class="modal-header" style="    background-color: navy; color: white;">
+                        <h5 class="modal-title">Rejected Reason</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="color: white;">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group" style="text-align: center;">
+                                <div id="reason3">
+                                    <p>
+                                        Enter the reason
+                                        <select style="width: 206px;height: 34px;border-radius: 5px;">
+                                            <option value="0">Select Reason</option>
+                                            <option value="1">Damage</option>
+                                            <option value="2">Shift Change</option>
+                                        </select>
+                                </div>
+                            </div>
+                        </form>
+                        <div style="text-align: center; margin-top: 34px;">
+                            <button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal">Save</button>
+
+                        </div>
+                    </div>
+
+                </div>*@
+        </div>
+    </div>
+
+    <input type="hidden" id="result" value="@ViewBag.Result " />
+
+    <script src="~/js/jquery.min.js"></script>
+    @*<script type="text/javascript" src="js/jquery.js"></script>*@
+    <!-- <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script> -->
+    @*<script src="js/tether.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>*@
+    @*<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>*@
+    @*<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+    <script src="~/js/bootstrap4.js"></script>
+    <script src="~/js/jquery321.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    @*<script src="js/ie10-viewport-bug-workaround.js"></script>
+        <script src="js/Bootstrap_tutorial.js"></script>*@
+    @*<script src="~/js/moment/operatormodule.js"></script>*@
+
+
+
+    <script src="~/js/breakdown.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    @*<script src="https://code.highcharts.com/modules/exporting.js"></script>*@
+    @*<script src="https://code.highcharts.com/modules/export-data.js"></script>*@
+    @*<script src="~/js/StackBarChart.js"></script>*@
+    <script src="~/js/MachineStatus.js"></script>
+    <script type="text/javascript">
+        //    $(function(){
+        //        alert('123');
+        //    })
+
+
+
+
+
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+
+
+
+        function openStartModal(id) {
+            $("#hdnClickedItem").val(id);
+            $.ajax({
+                data: { id },
+                url: '/OperatorEntryModel/OperatorEntryDetails',
+                type: 'GET',
+                success: function (dataDet) {
+                    $("#WOStart").html('');
+                    if (dataDet != "FAIL") {
+                        var Result = JSON.parse(dataDet);
+                        for (var i = 0; i < Result.length; i++) {
+                            $("#WOStart").append('<div class="modal-body"><div style="margin-left: 116px;"><input type="hidden" class="StartButton" id="NoMach" value="" />' +
+                                '<p>Shift   <span style="margin-left: 76px;">:</span><input class="input-box" type="text" id="ShiftDet_' + id + '" value=' + Result[i].ShiftID + ' readonly>' +
+                                '</p><p> Part No  <span style="margin-left: 55px;">:</span><input class="input-box" type="text"  id="PartVal_' + id + '" value=' + Result[i].PartNo + ' readonly> </p>' +
+                                '<p> WO No  <span style="margin-left: 59px;">:</span> <input class="input-box" style="margin-left: 0px;" type="text" id="WOVal_' + id + '" value=' + Result[i].WONO + ' readonly> </p>' +
+                                '<p> Operation No  <span style="margin-left: 13px;">:</span> <input class="input-box" style="margin-left: 0px;" type="text" id="OPVal_' + id + '" value=' + Result[i].OperationNo + ' readonly> </p>' +
+                                '<p> WO Qty  <span style="margin-left: 55px;">:</span> <input class="input-box" style="margin-left: 0px;" type="text" id="WOQVal_' + id + '"  value=' + Result[i].WOQTY + ' readonly> </p>' +
+                                '<p> Part Per Cycle  <span style="margin-left: 9px;">:</span> <input class="input-box" style="margin-left: 0px;" type="text" id="PPC_' + id + '" onkeypress="return isNumber(event)"  value=' + Result[i].PartPerCycle + ' readonly> </p>' +
+                                '</div><div style="text-align: center; margin-top: 34px;" id="SubMain_' + id + '">' +
+                                '<button type="button" class="btn btn-outline-info" style="width:22%" data-dismiss="modal" id="finishsub_' + id + '" onclick="UpdateToDb(' + id + ');">Finish</button>' +
+                                '<p id="Hold"></p></div ></div > ');
+                            //$("#HoldDet_" + id).hide();
+                            //GetHOLDDet();
+                            //GetSHIFTDet();
+                            //var shiftval = Result[i].ShiftID;
+                            //$("#ShiftDet_" + id).val(shiftval);
+
+                        }
+                    }
+                    else {
+                        $("#WOStart").append('<div class="modal-body"><div style="margin-left: 116px;"><input type="hidden" class="StartButton" id="NoMach" value="" />' +
+                            '<p>Shift   <span style="margin-left: 76px;">:&nbsp;</span><select style="width: 206px;height: 34px;border-radius: 5px;" id="ShiftDet_' + id + '"></select>' +
+                            '<p> Operation No  <span style="margin-left: 13px;">:</span> <input class="input-box" style="margin-left: 0px;" type="text"  value =@ViewBag.OperationNo /*onchange = "GetPartDet(this.id)"*/ id="OPVal_' + id + '"> </p>' +
+                            '</p><p> Part No  <span style="margin-left: 55px;">:</span><select style="width: 206px;height: 34px;border-radius: 5px;margin-left: 6px;" id="PartVal_' + id + '"></select>' +
+                            '</p><p> WO No  <span style="margin-left: 59px;">:</span> <input class="input-box" style="margin-left: 0px;" type="text" id="WOVal_' + id + '"> </p>' +
+                            '<p> WO Qty  <span style="margin-left: 55px;">:</span> <input class="input-box" style="margin-left: 0px;" type="text" id="WOQVal_' + id + '"> </p>' +
+                            '<p>Part Per Cycle  <span style="margin-left: 9px;">:</span> <input class="input-box" style="margin-left: 0px;"value="1" type="text" id="PPC_' + id + '"> </p>' +
+                            '</div><div style="text-align: center; margin-top: 34px;" id="SubMain_"' + id + '>' +
+                            '<button type="button" class="btn btn-outline-info" style="width:22%" data-dismiss="modal" id="startsub_"' + id + ' onclick="InsertToDb(' + id + ');">Start</button></div></div>');
+                        GetSHIFTDet();
+                        GetPartDet(@ViewBag.OperationNo);
+                        //GetPartDet();
+                    }
+
+                },
+                fail: function (dataDet) {
+
+                }
+
+
+            });
+
+
+            //$("#PPC_"+id).inputFilter(function (value) {
+            //    return /^\d*$/.test(value);
+            //});
+
+            //function GetHOLDDet(id) {
+            //    $.ajax({
+            //        url: '/OperatorEntryModel/GetHoldDet',
+            //        type: 'GET',
+            //        success: function (data) {
+            //            var Mesg = JSON.parse(data);
+            //            $("#HoldDet_" + id).html('');
+            //            $("#HoldDet_" + id).append(("<option value=0>---Select Hold Code---</option>"))
+            //            for (var i = 0; i <= Mesg.length; i++) {
+            //                $("#HoldDet_" + id).append(("<option value='" + Mesg[i].HoldCodeID + "'>" + Mesg[i].HoldCode + "</option>"))
+            //            }
+            //        }
+            //    });
+
+            //    $()
+
+            //    $("#HoldDet_" + id).show();
+            //}
+
+            function GetSHIFTDet() {
+                $.ajax({
+                    url: '/OperatorEntryModel/GetShiftDet',
+                    type: 'GET',
+                    success: function (data) {
+                        var Mesg = JSON.parse(data);
+                        $("#ShiftDet_" + id).html('');
+                        $("#ShiftDet_" + id).append(("<option value=0>--Select Shift--</option>"))
+                        for (var i = 0; i <= Mesg.length; i++) {
+                            $("#ShiftDet_" + id).append(("<option value='" + Mesg[i].ShiftID + "'>" + Mesg[i].ShiftName + "</option>"))
+                        }
+                    }
+                });
+            }
+
+            function GetPartDet(val) {
+                var op = $("#hdnClickedItem").val();
+                //var arry = val.split('_');
+                //var op = arry[1];
+                var opNo = val;
+                $.ajax({
+                    url: '/OperatorEntryModel/GetPartNoDet?opNo=' + opNo,
+                    data: { 'opNo': opNo },
+                    type: 'GET',
+                    async: false,
+                    success: function (data) {
+                        var Mesg = JSON.parse(data);
+                        $("#PartVal_").html('');
+                        $("#PartVal_"+ op).append(("<option value=0>--Select PartNo--</option>"))
+                        for (var i = 0; i <= Mesg.length; i++) {
+                            $("#PartVal_" + op).append(("<option value='" + Mesg[i].PartID + "'>" + Mesg[i].FGCode + "</option>"))
+                        }
+                    }
+                });
+            }
+
+            $("#NoMach").val(id);
+            $('#startBtn').modal('show');
+        }
+
+        // function openRejectionModal(){
+        //     $('#rejectionBtn').modal('show');
+        // }
+
+        function ReworkModel(id) {
+
+            var MachineID = id;
+            $.ajax({
+                type: 'GET',
+                data: { MachineID },
+                url: '/OperatorEntryModel/ReWorkCheck',
+                success: function (data) {
+                    var ReowkDet = JSON.parse(data);
+                    var Rlenght = ReowkDet.length;
+                    if (Rlenght > 1) {
+                        $("#ReworkDet").append('<div class="modal-content" style="width: 70%; position: absolute; left:16%;"><div class="modal-header" style = "    background-color: navy; color: white;" >' +
+                            '<h5 class="modal-title">Rework Details</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: white;">×</span>' +
+                            '</button></div ><div class="modal-body"><div class="form-group" style="text-align: center;"><p>Rework Reason<select style="width: 206px;height: 34px;border-radius: 5px;" id="ReworkReason_' + MachineID + '">' +
+                            '</select></div><div style="text-align: center; margin-top: 34px;"><button type="button" class="btn btn-success" onclick="ReowrkStore(' + MachineID + ');" style="width:22%" data-dismiss="modal">Start</button>' +
+                            '</div></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div></div>');
+                        $("#ReworkReason_" + MachineID).html('');
+                        $("#ReworkReason_" + MachineID).append(("<option value=0>--Select ReWork Reason--</option>"))
+                        for (var i = 0; i <= ReowkDet.length; i++) {
+                            $("#ReworkReason_" + MachineID).append(("<option value='" + ReowkDet[i].ReWorkID + "'>" + ReowkDet[i].ReworkName + "</option>"))
+                        }
+                    }
+                    else {
+
+                        $("#ReworkDet").append('<div class="modal-content" style="width: 70%; position: absolute; left:16%;"><div class="modal-header" style = "    background-color: navy; color: white;" >' +
+                            '<h5 class="modal-title">Rework Details</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: white;">×</span>' +
+                            '</button></div ><div class="modal-body"><div class="form-group" style="text-align: center;"><p>Rework Reason<input class= "input-box" type = "text" value = ' + ReowkDet[0] + ' readonly >' +
+                            '</div><div style="text-align: center; margin-top: 34px;"><button type="button" class="btn btn-success" onclick="ReowrkStoreFinish(' + MachineID + ');" style="width:22%" data-dismiss="modal">Finish</button>' +
+                            '</div></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div></div>');
+
+                    }
+                }
+            });
+
+
+            //$('#reworkBtn').modal('show');
+            $('.rewrkbtn' + id + '').removeAttr('data-target', '#reworkBtn');
+            $('.rewrkbtn' + id + '').attr('data-target', '#reworkBtn');
+        }
+
+
+        function ReowrkStore(Machid) {
+            var ReworkID = $("#ReworkReason_" + Machid).val();
+            $.ajax({
+                type: 'Post',
+                data: { Machid, ReworkID },
+                url: '/OperatorEntryModel/ReworkReasonStartStore',
+                success: function (data) {
+                    BreakRework1();
+                }
+            });
+        }
+
+
+        function ReowrkStoreFinish(Machid) {
+            $.ajax({
+                type: 'Post',
+                data: { Machid },
+                url: '/OperatorEntryModel/ReworkReasonEndStore',
+                success: function (data) {
+                    BreakRework1();
+                }
+            });
+        }
+
+        //function breakdownModal(id) {
+
+        //}
+
+        //function openLogin() {
+        //    $('#breakdownBtn').modal('hide');
+        //    $('#loginBtn').modal('show');
+        //}
+
+        function machineAcceptance() {
+            //$('#loginBtn').modal('hide');
+            //$('#machineAcceptanceBtn').modal('show');
+        }
+
+        function reject() {
+            //$('#machineAcceptanceBtn').modal('hide');
+            //$('#RejectReasonBtn').modal('show');
+        }
+
+        function machineClosure() {
+            //$('#machineAcceptanceBtn').modal('hide');
+            //$('#maintenaceClousreBtn').modal('show');
+        }
+
+        function productionLoginModal() {
+            //$('#maintenaceClousreBtn').modal('hide');
+            //$('#productionloginBtn').modal('show');
+        }
+
+        function productionDetailsModal() {
+            $('#productionloginBtn').modal('hide');
+            $('#productionDetailsBtn').modal('show');
+
+        }
+
+        function productionRejectionModal() {
+            $('#productionDetailsBtn').modal('hide');
+            $('#prodRejectReasonBtn').modal('show');
+
+        }
+
+    </script>
+
+
+    <script>
+
+        //function GetPartDet(val) {
+        //    var arry = val.split('_');
+        //    var op = arry[1];
+        //    var opNo = $('#OPVal_' + op).val();
+        //    $.ajax({
+        //        url: '/OperatorEntryModel/GetPartNoDet',
+        //        data: { 'opNo': opNo },
+        //        type: 'GET',
+        //        async: false,
+        //        success: function (data) {
+        //            var Mesg = JSON.parse(data);
+        //            $("#PartVal_").html('');
+        //            $("#PartVal_" + op).append(("<option value=0>--Select PartNo--</option>"))
+        //            for (var i = 0; i <= Mesg.length; i++) {
+        //                $("#PartVal_" + op).append(("<option value='" + Mesg[i].PartID + "'>" + Mesg[i].FGCode + "</option>"))
+        //            }
+        //        }
+        //    });
+        //}
+
+        function InsertToDb(id) {
+            var machineID = id;
+            var Shift = $("#ShiftDet_"+id).val();
+            //var PartNo = $("#PartVal_" + id).val();
+            var PartNo = $("#PartVal_" + id).find(":selected").text();
+            var OPNO = $("#OPVal_" + id).val();
+            var WONo = $("#WOVal_" + id).val();
+            var WOQValue = $("#WOQVal_" + id).val();
+            var PartPerCycle = $("#PPC_" + id).val();
+            var OperatorID=@ViewBag.OperatorIDs;
+            $.ajax({
+                url:"/OperatorEntryModel/InsertData",
+                type: "POST",
+                data: { machineID, Shift, PartNo, OPNO, WONo, WOQValue, OperatorID, PartPerCycle },
+                success: function (data) {
+                    if (data == "Success") {
+                        location.reload(true);
+                        //window.location.reload('/OperatorEntryModel/Index');
+                        //$("#FinishMain").show();
+                        //$("#holdsub").show();
+                        //$("#Idelsub").show();
+                        //$("#startsub").hide();
+                        //$("#StartMain").hide();
+                        //$(".Finishmainclass").show();
+                    }
+                    else {
+                        alert("Already Work Order Running");
+                    }
+                }
+            })
+        }
+        //function pagebreakdownModal(id){
+        //    breakdownModal(id);
+        //}
+
+        function UpdateToDb(id) {
+            var machineID = id;
+            var PartNo = $("#PartVal_" + id).val();
+            //var PartNo = $("#PartVal_" + id).find(":selected").text();
+            var OPNO = $("#OPVal_" + id).val();
+            var WONo = $("#WOVal_" + id).val();
+            var WOQValue = $("#WOQVal_" + id).val();
+            var OperatorID=@ViewBag.OperatorIDs;
+            $.ajax({
+                url:"/OperatorEntryModel/UpdateData",
+                type: "POST",
+                data: { machineID, PartNo, OPNO, WONo, WOQValue, OperatorID },
+                success: function (data) {
+                    if (data == "Success") {
+                        location.reload(true);
+                        //window.location.reload('/OperatorEntryModel/Index');
+                        //$("#FinishMain").show();
+                        //$("#holdsub").show();
+                        //$("#Idelsub").show();
+                        //$("#startsub").hide();
+                        //$("#StartMain").hide();
+                        //$(".Finishmainclass").show();
+                    }
+                    else {
+                        alert("Before Ending the WorkOrder end the ReWork Order");
+                    }
+                }
+            })
+        }
+    </script>
+
+    <script>
+        $(document).ready(function (e) {
+            $.ajax({
+                type: 'GET',
+                url: '/OperatorEntryModel/GetMachineBaseStart',
+                success: function (data) {
+                    var DataMachStart = JSON.parse(data);
+                    for (var i = 0; i < DataMachStart.length; i++) {
+                        if (DataMachStart[i].TrueorFalse == "True") {
+                            $("#StartMain_" + DataMachStart[i].MachineID).html('Finish');
+
+                        }
+                    }
+                }
+            });
+
+            $.get("/OperatorEntryModel/getmachindet", {}, function (msg) {
+                if (msg != '') {
+                    var data = JSON.parse(msg);
+                    for (var i = 0; i < data.length; i++) {
+                        var machineid = data[i].MachineId;
+                        breakdownModal(machineid);
+                        BreakRework(machineid);
+
+                    }
+                }
+            });
+
+            $.get("/OperatorEntryModel/DocumnetLoadReasons", {}, function (data) {
+                var Result = JSON.parse(data);
+
+                for (var i = 0; i < Result.length; i++) {
+                    var con = Result[i].Content;
+                    var Machineid = Result[i].Machineid;
+                    if (con == "BreakReason") {
+                        $("#BreakDown_" + Machineid).html('');
+                        $("#BreakDown_" + Machineid).append('<button class="btn brkdwnbtn brkdwn1_' + Machineid + '" id="breakdowncodeid1" onclick="breakdownModal1(' + Machineid + ')" data-toggle="modal" data-target="#breakdownBtn"> Breakdown1 </button>');
+                    }
+                    else if (con == "MaintLogin") {
+                        $("#BreakDown_" + Machineid).html('');
+                        $("#BreakDown_" + Machineid).append('<button class="btn brkdwnbtn brkdwn1_' + Machineid + '" id="breakdowncodeid1" onclick="breakdownModal1(' + Machineid + ')" data-toggle="modal" data-target="#loginBtn"> Breakdown1 </button>');
+                    }
+                    else if (con == "MaintClosureLogin") {
+                        $("#BreakDown_" + Machineid).html('');
+                        $("#BreakDown_" + Machineid).append('<button class="btn brkdwnbtn brkdwn1_' + Machineid + '" id="breakdowncodeid1" onclick="breakdownModal1(' + Machineid + ')" data-toggle="modal" data-target="#loginBtn"> Breakdown1 </button>');
+                    }
+                    else if (con == "ProdLogin") {
+                        $("#BreakDown_" + Machineid).html('');
+                        $("#BreakDown_" + Machineid).append('<button class="btn brkdwnbtn brkdwn1_' + Machineid + '" id="breakdowncodeid1" onclick="breakdownModal1(' + Machineid + ')" data-toggle="modal" data-target="#productionloginBtn"> Breakdown1 </button>');
+                    }
+                }
+
+            });
+            
+
+
+            BreakRework1();
+
+            //$("#FinishMain").hide();
+            //$("#holdsub").hide();
+            //$("#Idelsub").hide();
+            //$(".Finishmainclass").hide();
+
+
+
+
+
+            $(document).on('change', '.brkdwnreason1', function (e) {
+                var id = this.id;
+                var dataid = id.split('_')[1];
+
+
+                var Level1 = $("#" + id + " option:selected").val();
+                $.ajax({
+                    type: 'GET',
+                    data: { Level1 },
+                    url: '/OperatorEntryModel/BreakDownDetLeve1',
+                    success: function (data) {
+                        var result = JSON.parse(data);
+                        var ddlPlant = $("#Reject2_" + dataid);
+                        ddlPlant.empty().append('<option selected="selected" value="0">--Select Reason2--</option>');
+                        for (var i = 0; i < result.length; i++) {
+                            ddlPlant.append(("<option value='" + result[i].BreakdownID + "'>" + result[i].BreakdownCode + "</option>"))
+                        }
+                    }
+                });
+            });
+
+            $(document).on('change', '.brkdwnreason2', function (e) {
+                var id = this.id;
+                var dataid = id.split('_')[1];
+                var Level2 = $("#" + id + " option:selected").val();
+                $.ajax({
+                    type: 'Get',
+                    data: { Level2 },
+                    url: '/OperatorEntryModel/BreakDownDetLeve2',
+                    success: function (data) {
+                        var result = JSON.parse(data);
+                        var ddlPlant = $("#Reject3_" + dataid);
+                        ddlPlant.empty().append('<option selected="selected" value="0">--Select Reason3--</option>');
+                        for (var i = 0; i < result.length; i++) {
+                            ddlPlant.append(("<option value='" + result[i].BreakdownID + "'>" + result[i].BreakdownCode + "</option>"))
+                        }
+                    }
+                });
+            });
+        });
+
+
+
+
+
+    </script>
+    <script>
+        //window.setTimeout('clickit()',5000);
+        //function clickit(){
+        //    location.href = document.getElementById("autoid");
+        //}
+        function clickit() {
+
+            var url = window.location.href;
+            var a = url.indexOf("?");
+            if (a > -1) {
+                var LoginId = url.split("?");
+                if (LoginId.length > 0) {
+                    LoginId = url.split("?")[1].split("=")[1];
+                    if (LoginId != 0) {
+
+
+                        //var btndata= document.getElementById("brkdwn_"+LoginId+"");
+
+                        //$("#breakdowncodeid").click();
+
+                        //$('.brkdwn_'+LoginId+'').click();
+                        //$('.brkdwn_'+LoginId+'').trigger('click');
+                        //window.location.href="/OperatorEntryModel/index";
+
+                    }
+                }
+            }
+        }
+
+    </script>
+
+    @*<script src="~/js/jquery.min.js"></script>
+        <script src="~/NewOperatorEntryJS/loading-bar/loading-bar.js"></script>
+        <script type="text/javascript">
+            $(function () {
+
+                $.ajax({
+                    url: '/OperatorEntryModel/MainDetailsData',
+                    type: 'GET',
+                    success: function (data) {
+                        //alert(1)
+
+                        var msg = data.parse();
+                        if (msg != '') {
+                            var Result = "";
+                            for (var i = 0; i < msg.length; i++) {
+                                var Data = msg[i];
+                                for (var j = 0; j <= Data.length; j++) {
+                                    if (Data.MachineID == Data.MainDetailsList.MachineID) {
+                                        Result = Result + "<div class='card - body'>< span class='card-title' style = 'font-size: 10px; font-weight: 800; font-family: Source Sans Pro, Arial, sans-serif;'> Part No:" + Data.MainDetailsList.PartNumber + "</span >" +
+                                            "<span class='card-title' style='font-size: 12px; position: absolute; right: 28px; margin-top: 6px; font-weight: 800; font-family: Source Sans Pro, Arial, sans-serif;'> Work Order : " + Data.MainDetailsList.WONumber + "</span>" +
+                                            "<div style='margin - top: 20px; '>< a style = 'border: 1px solid gray; padding: 5px; background:' " + Data.MainDetailsList.MachineStatusColor + "'; color: white; font-family: Source Sans Pro, Arial, sans-serif; border-radius: 3px; ' > Machine Name - " + Data.MainDetailsList.MachineName + " </a >" +
+                                            "<p style='margin-top:20px; font-weight: bold; font-family: Source Sans Pro, Arial, sans-serif;'> Part Count/Hr : " + Data.MainDetailsList.PartsCount + " </p>" +
+                                            "<p style='font-weight: bold; font-family: Source Sans Pro, Arial, sans-serif;'> Shift Count :" + Data.MainDetailsList.ShiftCount + " </p></div >" +
+                                            "<div style='margin - top: 28px; margin - left: 23px; '>< a style = 'border: 1px solid #00818a; padding: 10px; border-radius: 3px; margin-left: 0px; font-weight: bold; font-family: Source Sans Pro, Arial, sans-serif;' > Start </a >" +
+                                            "<a style='border: 1px solid #a7d129; padding: 10px; border-radius: 3px; margin-left: 5px; font-weight: bold; font-family: Source Sans Pro, Arial, sans-serif;'> Rejection </a>" +
+                                            "<a style='border: 1px solid magenta; padding: 10px; border-radius: 3px; margin-left: 5px; font-weight: bold; font-family: Source Sans Pro, Arial, sans-serif;'> Rework </a>" +
+                                            "<a style='border: 1px solid #1f4287; padding: 10px; border-radius: 3px; margin-left: 5px; font-weight: bold; font-family: Source Sans Pro, Arial, sans-serif;'> Breakdown </a></div >" +
+                                            "<div style='margin - top: 33px; margin - left: 36px; '>< a style = 'background-color: #d3a8ef; color:white;  padding: 0px;' > & nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;& nbsp;   </a >" +
+                                            "<a style='background-color: #f77171; color:white;  padding: 0px;'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>" +
+                                            "<a style='background-color: #e5ff0b; color:black;  padding: 0px; margin-left: -5px;'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a>" +
+                                            "<a style='background-color: #00A572; color:white;  padding: 0px;'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </a> </div >";
+                                    }
+                                }
+                            }
+                            $("#MachineDash").append();
+                        }
+                        else {
+                            $("#MachineDash").append(Result);
+                        }
+                    }
+                });
+
+            });
+        </script>*@
+
+    <script>
+        setInterval(function () {
+            $.ajax({
+                type: "GET",
+                url: "/OperatorEntryModel/GetPartsCount",
+                success: function (data) {
+                    var Result = JSON.parse(data);
+                    var count=@ViewBag.NoMachines;
+                    for (var i = 0; i < count ;i++) {
+                        var machineid = Result[i].MachineID;
+                        $("#PA_"+machineid).html(Result[i].PartsCountActual);
+                        $("#PT_"+machineid).html(Result[i].PartsCountTarget);
+                        $("#SA_"+machineid).html(Result[i].ShiftCountAtcual);
+                        $("#ST_"+machineid).html(Result[i].ShiftCountTarget);
+                    }
+                }
+             });
+        }, 1000*60); //1 Minute
+
+    </script>
+
+
+    <script>
+
+            setInterval(function () {
+                $.ajax({
+                    url: "/OperatorEntryModel/CheckIdle", //Returns {"updated": "true"} or {"updated": "false"}
+                    dataType: "json",
+                    success: function (data) {
+                        if (data == 1) {
+                            window.location.href = '@Url.Action("IDLEPopup", "OperatorEntryModel")';
+                        }
+                    } //success
+                });
+            },1000*120); // 2 minutes
+
+    </script>
+
+
+    <script>
+        function breakdownModal(id) {
+            var Machineid = id;
+            //$('.brkdwn_'+id+'').attr('data-target','#breakdownBtn');
+            $.ajax({
+                type: 'GET',
+                data: { Machineid },
+                url: '/OperatorEntryModel/BreakDownDet',
+                success: function (data) {
+                    if (data != "") {
+                        $('.brkdwn_' + id + '').removeAttr('data-target', '#loginBtn');
+                        $('.brkdwn_' + id + '').attr('data-target', '#breakdownBtn');
+                        //$('#breakdowncodeid').attr('data-target','#breakdownBtn');
+                        //$('#breakdownBtn').modal('show');
+                        $("#BreakDown").html('');
+                        $("#BreakDown").append('<div class="modal-content" style="width: 70%; position: absolute; left:16%;"><div class="modal-header" style ="background-color: navy; color: white;" >' +
+                            '<h5 class="modal-title">Breakdown Reason</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+                            '<span aria-hidden="true" style="color: white;">×</span></button></div><div class="modal-body"><div class="form-group" style="text-align: center;"><div id="reason1">' +
+                            '<p>Reason 1<select style="width: 206px;height: 34px;border-radius: 5px;" class="brkdwnreason1" id="Reject1_' + id + '"></select></div><div id="reason2"><p>Reason 2<select style="width: 206px;height: 34px;border-radius: 5px;" class="brkdwnreason2" id="Reject2_' + id + '">' +
+                            '</select></div><div id="reason3"><p>Reason 3<select style="width: 206px;height: 34px;border-radius: 5px;" class="brkdwnreason3" id="Reject3_' + id + '"></select>' +
+                            '</div></div><div style="text-align: center; margin-top: 34px;"><button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="openLogin(' + id + ')">Start</button>' +
+                            '</div></div></div>');
+                        if (data == 'Login') {
+                            $('.brkdwn_' + id + '').removeAttr('data-target', '#breakdownBtn');
+                            $('.brkdwn_' + id + '').attr('data-target', '#loginBtn');
+                            LoginMan(id);
+
+                        }
+                        else if (data == 'ProdLogin') {
+                            $('.brkdwn_' + id + '').removeAttr('data-target', '#breakdownBtn');
+                            $('.brkdwn_' + id + '').attr('data-target', '#loginBtn');
+                            LoginManProd(id);
+                        }
+                        else {
+                            clrsession();
+                            var maintdata = JSON.parse(data);
+                            if (maintdata.result == 'maintAccept') {
+
+                                if (maintdata.AcceptTime != '' && maintdata.finish != '' && maintdata.finish != '0') {
+                                    $('.brkdwn_' + id + '').removeAttr('data-target', '#breakdownBtn');
+                                    $('.brkdwn_' + id + '').removeAttr('data-target', '#maintenaceClousreBtn');
+                                    $('.brkdwn_' + id + '').removeAttr('data-target', '#machineAcceptanceBtn');
+                                    $('.brkdwn_' + id + '').attr('data-target', '#loginBtn');
+                                    LoginManProd(id);
+
+                                }
+                                else if (maintdata.AcceptTime != '') {
+
+                                    $('.brkdwn_' + id + '').removeAttr('data-target', '#breakdownBtn');
+                                    $('.brkdwn_' + id + '').removeAttr('data-target', '#loginBtn');
+                                    $('.brkdwn_' + id + '').removeAttr('data-target', '#machineAcceptanceBtn');
+                                    $('.brkdwn_' + id + '').attr('data-target', '#maintenaceClousreBtn');
+                                    getmaintAccept(id, maintdata);
+                                }
+                                else {
+
+                                    $('.brkdwn_' + id + '').removeAttr('data-target', '#breakdownBtn');
+                                    $('.brkdwn_' + id + '').removeAttr('data-target', '#loginBtn');
+                                    $('.brkdwn_' + id + '').attr('data-target', '#machineAcceptanceBtn');
+                                    GetmaintainancePop(id, maintdata);
+                                }
+
+
+
+                            }
+                            else if (maintdata.result == 'ProdAccept') {
+                                if (maintdata.AcceptTime != '' && maintdata.finish != '' && maintdata.finish != '0') {
+
+                                    $('.brkdwn_' + id + '').removeAttr('data-target', '#breakdownBtn');
+                                    $('.brkdwn_' + id + '').removeAttr('data-target', '#maintenaceClousreBtn');
+                                    $('.brkdwn_' + id + '').removeAttr('data-target', '#machineAcceptanceBtn');
+                                    $('.brkdwn_' + id + '').attr('data-target', '#loginBtn');
+                                    LoginManProd(id);
+                                }
+                                else if (maintdata.AcceptTime != '') {
+                                    $('.brkdwn_' + id + '').removeAttr('data-target', '#breakdownBtn');
+                                    $('.brkdwn_' + id + '').removeAttr('data-target', '#loginBtn');
+                                    $('.brkdwn_' + id + '').removeAttr('data-target', '#machineAcceptanceBtn');
+                                    $('.brkdwn_' + id + '').attr('data-target', '#maintenaceClousreBtn');
+                                    getmaintAcceptProd(id, maintdata);
+                                }
+                                else {
+
+                                    $('.brkdwn_' + id + '').removeAttr('data-target', '#breakdownBtn');
+                                    $('.brkdwn_' + id + '').removeAttr('data-target', '#loginBtn');
+                                    $('.brkdwn_' + id + '').attr('data-target', '#machineAcceptanceBtn');
+                                    GetmaintainancePopProd(id, maintdata);
+                                }
+
+
+                            }
+
+                            else {
+                                getreasons(id, data);
+                            }
+                        }
+
+                    }
+
+
+                    else {
+                        $('.brkdwn_' + id + '').removeAttr('data-target', '#breakdownBtn');
+                        $('.brkdwn_' + id + '').attr('data-target', '#loginBtn');
+                        LoginMan(id);
+                        //$('#breakdowncodeid').attr('data-target','#loginBtn');
+                        //$('.brkdwnbtn').attr("data-target","#loginBtn");
+                        //$('#loginBtn').click();
+                    }
+                }
+            });
+
+
+
+        }
+        function getreasons(id, data) {
+            var result = JSON.parse(data);
+            var ddlPlant = $("#Reject1_" + id);
+            ddlPlant.empty().append('<option selected="selected" value="0">--Select Reason1--</option>');
+            for (var i = 0; i < result.length; i++) {
+                ddlPlant.append(("<option value='" + result[i].BreakdownID + "'>" + result[i].BreakdownCode + "</option>"))
+            }
+        }
+
+        function openLogin(id) {
+
+            var r1 = $("#Reject1_" + id).val();
+            var r2 = $("#Reject2_" + id).val();
+            var r3 = $("#Reject3_" + id).val();
+            if (r3 != "0" && r3 != null) {
+                var BreakDownID = r3;
+                $.ajax({
+                    type: 'Post',
+                    data: { BreakDownID, id },
+                    url: '/OperatorEntryModel/BreakDownReasonStore',
+                    success: function (data) {
+                        if (data != "") {
+
+                        }
+                        else {
+                            alert("Please Start the Wrok order");
+                        }
+                    }
+                });
+            }
+            else if (r2 != "0") {
+                var BreakDownID = r2;
+                $.ajax({
+                    type: 'Post',
+                    data: { BreakDownID, id },
+                    url: '/OperatorEntryModel/BreakDownReasonStore',
+                    success: function (data) {
+                        if (data != "") {
+
+                        }
+                        else {
+                            alert("Please Start the Wrok order");
+                        }
+                    }
+                });
+            }
+            else if (r1 != '0') {
+                var BreakDownID = r1;
+                $.ajax({
+                    type: 'Post',
+                    data: { BreakDownID, id },
+                    url: '/OperatorEntryModel/BreakDownReasonStore',
+                    success: function (data) {
+                        if (data != "") {
+
+                        }
+                        else {
+                            alert("Please Start the Wrok order");
+                        }
+                    }
+                });
+
+            }
+
+            breakdownModal(id);
+
+            //$('#breakdownBtn').modal('hide');
+            //$('#loginBtn').modal('show');
+        }
+
+
+        function LoginMan(id) {
+            $("#Maintances").html('');
+
+            var css = '';
+            css += '<div class="modal-content" style="width: 70%; position: absolute; left:16%;"><div class="modal-header" style="    background-color: navy; color: white;">';
+            css += '<h5 class="modal-title">Maintenance Login</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: white;">×</span></button></div>';
+            css += '<div class="modal-body"><form class="form-horizontal"><div class="form-group"><div class="form-group"><label class="control-label col-sm-4" for="email">User Name:</label><div class="col-sm-6">';
+            css += '<input type="text" class="form-control"  placeholder="Enter user name" id="UserName_' + id + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Password:</label>';
+            css += '<div class="col-sm-6"><input type="password" class="form-control"  placeholder="Enter password" id="Password_' + id + '"></div></div></form><div style="text-align: center; margin-top: 34px;">';
+            css += '<button type="button" class="btn btn-success" class="btnloginmnt mnt_' + id + '" style="width:22%" data-dismiss="modal" onclick="getmaintainancelogin(' + id + ')">Login</button></div></div>';
+            $(css).appendTo($("#Maintances"));
+            //$("#Maintances").append('<div class="modal-content" style="width: 70%; position: absolute; left:16%;">< div class= "modal-header" style ="background-color: navy; color: white;" >' +
+            //    '<h5 class="modal-title">Maintenance Login</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: white;">×</span>' +
+            //    '</button></div ><div class="modal-body"><form class="form-horizontal"><div class="form-group"><label class="control-label col-sm-4" for="email">User Name:</label>' +
+            //    '<div class="col-sm-6"><input type="text" class="form-control" id="username" placeholder="Enter user name" id="UserName_' + id + '"></div></div><div class="form-group">' +
+            //    '<label class="control-label col-sm-4" for="pwd">Password:</label><div class="col-sm-6"><input type="password" class="form-control" id="pwd" placeholder="Enter password" id="Password_' + id + '">' +
+            //    '</div></div></form><div style="text-align: center; margin-top: 34px;"><button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="machineAcceptance(' + id + ')">Login</button>' +
+            //    '</div></div></div>');
+
+            //getmaintainancelogin(id);
+        }
+
+        function GetmaintainancePop(id, Result) {
+
+            $("#MachineAcceptance").html('');
+            $("#MachineAcceptance").append('<div class="modal-content" style="width: 70%; position: absolute; left:16%;"><div class= "modal-header" style = "background-color: navy; color: white;" >' +
+                '<h5 class="modal-title">Maintenance Acceptance</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: white;">×</span>' +
+                '</button></div ><div class="modal-body"><form class="form-horizontal"><div class="form-group"><label class="control-label col-sm-4" for="email">Machine Name:</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" disabled id="MachineName_' + id + '" value="' + Result.MachineName + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Reason</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly id="Reason_' + id + '" value="' + Result.Reason + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Date & Time</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly id="datetime_' + id + '" value="' + Result.DateTimeDis + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Operator Name</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly id="OperatName_' + id + '" value="' + Result.Operatorname + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Maintenance Operator Name:</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly id="MAint_' + id + '" value="' + Result.MaintName + '"></div></div></form><div style="text-align: center; margin-top: 34px;">' +
+                '<button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="MaintAccept(' + id + ')">Accept</button><button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="MaintReject(' + id + ')">Reject</button>' +
+                '</div></div></div>');
+        }
+
+        function getmaintainancelogin(id) {
+            var UserName = $("#UserName_" + id).val();
+            var Password = $("#Password_" + id).val();
+            var Machineid = id;
+            $.ajax({
+                type: 'POST',
+                data: { UserName, Password, Machineid },
+                url: '/OperatorEntryModel/LoginCheckMaint',
+                success: function (data) {
+                    if (data != 'Fail') {
+                        //$('.mnt_'+id+'').attr('data-target','#machineAcceptanceBtn');
+                        window.location.reload(true);
+                        //var btn= $(".")
+                        //window.location.href= "/OperatorEntryModel/Index?login="+id+"";
+                        var Result = JSON.parse(data);
+                        $("#MachineAcceptance").html('');
+                        $("#MachineAcceptance").append('<div class="modal-content" style="width: 70%; position: absolute; left:16%;"><div class= "modal-header" style = "background-color: navy; color: white;" >' +
+                            '<h5 class="modal-title">Maintenance Acceptance</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: white;">×</span>' +
+                            '</button></div ><div class="modal-body"><form class="form-horizontal"><div class="form-group"><label class="control-label col-sm-4" for="email">Machine Name:</label>' +
+                            '<div class="col-sm-6"><input type="text" class="form-control" disabled id="MachineName_' + id + '" value="' + Result.MachineName + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Reason</label>' +
+                            '<div class="col-sm-6"><input type="text" class="form-control" readonly id="Reason_' + id + '" value="' + Result.Reason + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Date & Time</label>' +
+                            '<div class="col-sm-6"><input type="text" class="form-control" readonly id="datetime_' + id + '" value="' + Result.DateTimeDis + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Operator Name</label>' +
+                            '<div class="col-sm-6"><input type="text" class="form-control" readonly id="OperatName_' + id + '" value="' + Result.Operatorname + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Maintenance Operator Name:</label>' +
+                            '<div class="col-sm-6"><input type="text" class="form-control" readonly id="MAint_' + id + '" value="' + Result.MaintName + '"></div></div></form><div style="text-align: center; margin-top: 34px;">' +
+                            '<button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="MaintAccept(' + id + ')">Accept</button><button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="reject(' + id + ')">Reject</button>' +
+                            '</div></div></div>');
+                    }
+                    else {
+                        alert("Relogin");
+                    }
+
+                }
+
+            });
+
+        }
+
+
+        function MaintAccept(id) {
+            var Machineid = id;
+            $.ajax({
+                type: 'POST',
+                data: { Machineid },
+                url: '/OperatorEntryModel/UpdateMaint',
+                success: function (data) {
+                    if (data != 'Fail') {
+
+                    }
+                }
+            });
+        }
+
+
+        function MaintFinish(id) {
+            var RemartsData = $("#MaintText_" + id).val();
+            $.ajax({
+                type: 'POST',
+                data: { id, RemartsData },
+                url: '/OperatorEntryModel/UpdateRemarks',
+                success: function (data) {
+                    if (data != 'Fail') {
+                        //breakdownModal(id);
+                    }
+                }
+            });
+        }
+
+        function MaintFinishProd(id) {
+            var RemartsData = $("#MaintText_" + id).val();
+            $.ajax({
+                type: 'POST',
+                data: { id, RemartsData },
+                url: '/OperatorEntryModel/UpdateRemarksProd',
+                success: function (data) {
+                    if (data != 'Fail') {
+                        //breakdownModal(id);
+                    }
+                }
+            });
+        }
+
+        function getmaintAccept(id, result) {
+            //var result = JSON.parse(data);
+            $("#MaintClosure").html('');
+            $("#MaintClosure").append('<div class="modal-content" style="width: 70%; position: absolute; left:16%;"><div class= "modal-header" style ="background-color: navy; color: white;" >' +
+                '<h5 class="modal-title"> Maintenance Closure </h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: white;">×</span>' +
+                '</button></div ><div class="modal-body"><form class="form-horizontal"><div class="form-group"><label class="control-label col-sm-4" for="email">Machine Name:</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" disabled value=' + result.MachineName + '></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Reason</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly value=' + result.Reason + '></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Date & Time</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly value=' + result.DateTimeDis + '></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Acceptence Time</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly value=' + result.AcceptTime + '></div> </div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Operator Name</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly value=' + result.Operatorname + '></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Maintenance Operator Name:</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly value=' + result.MaintName + '></div></div><div class="form-group"><label class="control-label col-sm-4" for="email">Remarks</label>' +
+                '<div class="col-sm-6"><textarea type="text" class="form-control" row="2" placeholder="Enter the remarks here" id="MaintText_' + id + '"></textarea></div></div></form><div style="text-align: center; margin-top: 34px;">' +
+                '<button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="MaintFinish(' + id + ')">Finish</button> </div></div></div>');
+        }
+
+        function LoginManProd(id) {
+            $("#Maintances").html('');
+
+            var css = '';
+            css += '<div class="modal-content" style="width: 70%; position: absolute; left:16%;"><div class="modal-header" style="    background-color: navy; color: white;">';
+            css += '<h5 class="modal-title">Production Login</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: white;">×</span></button></div>';
+            css += '<div class="modal-body"><form class="form-horizontal"><div class="form-group"><div class="form-group"><label class="control-label col-sm-4" for="email">User Name:</label><div class="col-sm-6">';
+            css += '<input type="text" class="form-control"  placeholder="Enter user name" id="UserName_' + id + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Password:</label>';
+            css += '<div class="col-sm-6"><input type="password" class="form-control"  placeholder="Enter password" id="Password_' + id + '"></div></div></form><div style="text-align: center; margin-top: 34px;">';
+            css += '<button type="button" class="btn btn-success" class="btnloginmnt prod' + id + '" style="width:22%" data-dismiss="modal" onclick="getmaintainanceloginProd(' + id + ')">Login</button></div></div>';
+            $(css).appendTo($("#Maintances"));
+
+
+
+            //$("#Maintances").append('<div class="modal-content" style="width: 70%; position: absolute; left:16%;">< div class= "modal-header" style ="background-color: navy; color: white;" >' +
+            //    '<h5 class="modal-title">Maintenance Login</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: white;">×</span>' +
+            //    '</button></div ><div class="modal-body"><form class="form-horizontal"><div class="form-group"><label class="control-label col-sm-4" for="email">User Name:</label>' +
+            //    '<div class="col-sm-6"><input type="text" class="form-control" id="username" placeholder="Enter user name" id="UserName_' + id + '"></div></div><div class="form-group">' +
+            //    '<label class="control-label col-sm-4" for="pwd">Password:</label><div class="col-sm-6"><input type="password" class="form-control" id="pwd" placeholder="Enter password" id="Password_' + id + '">' +
+            //    '</div></div></form><div style="text-align: center; margin-top: 34px;"><button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="machineAcceptance(' + id + ')">Login</button>' +
+            //    '</div></div></div>');
+
+            //getmaintainancelogin(id);
+        }
+
+        function getmaintainanceloginProd(id) {
+            var UserName = $("#UserName_" + id).val();
+            var Password = $("#Password_" + id).val();
+            var Machineid = id;
+            $.ajax({
+                type: 'POST',
+                data: { UserName, Password, Machineid },
+                url: '/OperatorEntryModel/LoginCheckProd',
+                success: function (data) {
+                    if (data != 'Fail') {
+                        window.location.reload(true);
+                        $('.mnt_' + id + '').attr('data-target', '#machineAcceptanceBtn');
+                        var Result = JSON.parse(data);
+                        $("#MachineAcceptance").html('');
+                        $("#MachineAcceptance").append('<div class="modal-content" style="width: 70%; position: absolute; left:16%;"><div class= "modal-header" style = "background-color: navy; color: white;" >' +
+                            '<h5 class="modal-title">Producation Acceptance</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: white;">×</span>' +
+                            '</button></div ><div class="modal-body"><form class="form-horizontal"><div class="form-group"><label class="control-label col-sm-4" for="email">Machine Name:</label>' +
+                            '<div class="col-sm-6"><input type="text" class="form-control" disabled id="MachineName_' + id + '" value="' + Result.MachineName + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Reason</label>' +
+                            '<div class="col-sm-6"><input type="text" class="form-control" readonly id="Reason_' + id + '" value="' + Result.Reason + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Date & Time</label>' +
+                            '<div class="col-sm-6"><input type="text" class="form-control" readonly id="datetime_' + id + '" value="' + Result.DateTimeDis + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Operator Name</label>' +
+                            '<div class="col-sm-6"><input type="text" class="form-control" readonly id="OperatName_' + id + '" value="' + Result.Operatorname + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Maintenance Operator Name:</label>' +
+                            '<div class="col-sm-6"><input type="text" class="form-control" readonly id="MAint_' + id + '" value="' + Result.MaintName + '"></div></div></form><div style="text-align: center; margin-top: 34px;">' +
+                            '<button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="MaintAccept(' + id + ')">Accept</button><button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="RejectReason(' + id + ')">Reject</button>' +
+                            '</div></div></div>');
+                    }
+                    else {
+                        alert("Relogin");
+                    }
+
+                }
+
+            });
+
+        }
+
+        function GetmaintainancePopProd(id, Result) {
+
+            $("#MachineAcceptance").html('');
+            $("#MachineAcceptance").append('<div class="modal-content" style="width: 70%; position: absolute; left:16%;"><div class= "modal-header" style = "background-color: navy; color: white;" >' +
+                '<h5 class="modal-title">Production Acceptance</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: white;">×</span>' +
+                '</button></div ><div class="modal-body"><form class="form-horizontal"><div class="form-group"><label class="control-label col-sm-4" for="email">Machine Name:</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" disabled id="MachineName_' + id + '" value="' + Result.MachineName + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Reason</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly id="Reason_' + id + '" value="' + Result.Reason + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Date & Time</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly id="datetime_' + id + '" value="' + Result.DateTimeDis + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Operator Name</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly id="OperatName_' + id + '" value="' + Result.Operatorname + '"></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Production Operator Name:</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly id="MAint_' + id + '" value="' + Result.MaintName + '"></div></div></form><div style="text-align: center; margin-top: 34px;">' +
+                '<button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="MaintAcceptProd(' + id + ')">Accept</button><button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="ProdReject(' + id + ')">Reject</button>' +
+                '</div></div></div>');
+        }
+
+        function MaintAcceptProd(id) {
+            var Machineid = id;
+            $.ajax({
+                type: 'POST',
+                data: { Machineid },
+                url: '/OperatorEntryModel/UpdateMaintProd',
+                success: function (data) {
+                    if (data != 'Fail') {
+
+                    }
+                }
+            });
+        }
+        function getmaintAcceptProd(id, result) {
+            //var result = JSON.parse(data);
+            $("#MaintClosure").html('');
+            $("#MaintClosure").append('<div class="modal-content" style="width: 70%; position: absolute; left:16%;"><div class= "modal-header" style ="background-color: navy; color: white;" >' +
+                '<h5 class="modal-title"> Production Closure </h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: white;">×</span>' +
+                '</button></div ><div class="modal-body"><form class="form-horizontal"><div class="form-group"><label class="control-label col-sm-4" for="email">Machine Name:</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" disabled value=' + result.MachineName + '></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Reason</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly value=' + result.Reason + '></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Date & Time</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly value=' + result.DateTimeDis + '></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Acceptence Time</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly value=' + result.AcceptTime + '></div> </div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Operator Name</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly value=' + result.Operatorname + '></div></div><div class="form-group"><label class="control-label col-sm-4" for="pwd">Maintenance Operator Name:</label>' +
+                '<div class="col-sm-6"><input type="text" class="form-control" readonly value=' + result.MaintName + '></div></div><div class="form-group"><label class="control-label col-sm-4" for="email">Remarks</label>' +
+                '<div class="col-sm-6"><textarea type="text" class="form-control" row="2" placeholder="Enter the remarks here" id="MaintText_' + id + '"></textarea></div></div></form><div style="text-align: center; margin-top: 34px;">' +
+                '<button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="MaintFinishProd(' + id + ')">Finish</button> </div></div></div>');
+        }
+
+        function RejectReason(id) {
+            var Mainineid = id;
+            $.ajax({
+                type: "Get",
+                data: { Mainineid },
+                url: '/OperatorEntryModel/RejectReasonDet',
+                success: function (data) {
+                    var Result = JSON.parse(data);
+                    $("#RejectReason").html('');
+                    $("#RejectReason").append('<div class="modal-content" style="width: 70%; position: absolute; left:16%;">< div class= "modal-header" style = "    background-color: navy; color: white;" >' +
+                        '<h5 class="modal-title">Rejected Reason</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: white;">×</span>' +
+                        '</button></div ><div class="modal-body"><form class="form-horizontal"><div class="form-group" style="text-align: center;"><div id="reason3"><p>Enter the reason<select style="width: 206px;height: 34px;border-radius: 5px;" id="Reject_' + id + '">' +
+                        '</select></div></div></form><div style="text-align: center; margin-top: 34px;"> <button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal">Save</button>' +
+                        '</div></div></div>');
+
+                    $("#Reject_" + id).html('');
+                    for (var i = 0; i < Result.length; i++) {
+                        $("#Reject_" + id).append("<option value='" + Result[i].RID + "'>" + result[i].RejectName + "</option>");
+                    }
+                }
+            });
+        }
+        function clrsession() {
+            $.get("/OperatorEntryModel/clrsessionuser", {}, function (msg) {
+                if (msg != '') {
+
+                }
+            });
+        }
+        function openRejectionModal(OPID, MachID) {
+            var machineId = MachID;
+            var operatorId = OPID;
+            window.location = '/OperatorEntry1/EntryWindow?machineId=' + machineId + '&operatorId=' + OPID;
+            //$.ajax({
+            //    url: '/OperatorEntry1/EntryWindow',
+            //    type: 'GET',
+            //    async: false,
+            //    data: { machineId, operatorId},
+            //    success: function (data) {
+
+            //    },
+            //    failure: function (xhr, textStatus, errorThrown) {
+            //        alert('request failed');
+            //    }
+            //});
+        }
+    </script>
+
+
+    <script>
+        function MaintReject(Mid) {
+
+            var machineid = Mid;
+            $("#MaintReject").append('<div class="modal-content" style="width: 70%; position: absolute; left:16%;"><div class="modal-header" style="    background-color: navy; color: white;">' +
+                '<h5 class="modal-title">Rejected Reason</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: white;">×</span>' +
+                '</button></div><div class="modal-body"><form class="form-horizontal"><div class="form-group" style="text-align: center;"><div id="reason3"><p>Enter the reason<select style="width: 206px;height: 34px;border-radius: 5px;" id="MReject_' + machineid + '">' +
+                '</select></div></div></form><div style="text-align: center; margin-top: 34px;"><button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="MainRejectsave(' + machineid + ')">Save</button></div>' +
+                '</div> </div>');
+
+            $.ajax({
+                url: '/OperatorEntryModel/MaintReject',
+                type: 'GET',
+                async: false,
+                data: { machineid },
+                success: function (data) {
+                    var Result = JSON.parse(data);
+                    $("#MReject_" + machineid).html('');
+                    for (var i = 0; i < Result.length; i++) {
+                        $("#MReject_" + machineid).append("<option value='" + Result[i].RID + "'>" + Result[i].RejectName + "</option>");
+                    }
+                }
+            });
+
+            $('.brkdwn_' + machineid + '').removeAttr('data-target', '#machineAcceptanceBtn');
+            $('.brkdwn_' + machineid + '').attr('data-target', '#RejectReasonBtn');
+        }
+
+
+        function MainRejectsave(machineid) {
+            var rejectid = $("#MReject_" + machineid).val();
+            $.ajax({
+                url: '/OperatorEntryModel/RejectMaintance',
+                type: 'GET',
+                async: false,
+                data: { machineid, rejectid },
+                success: function (data) {
+                    if (data == "true") {
+                        $('.brkdwn_' + machineid + '').removeAttr('data-target', '#RejectReasonBtn');
+                        $('.brkdwn_' + machineid + '').attr('data-target', '#breakdownBtn');
+                    }
+                }
+            });
+        }
+
+
+        function ProdReject(Mid) {
+
+            var machineid = Mid;
+            $("#MaintReject").append('<div class="modal-content" style="width: 70%; position: absolute; left:16%;"><div class="modal-header" style="    background-color: navy; color: white;">' +
+                '<h5 class="modal-title">Rejected Reason</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="color: white;">×</span>' +
+                '</button></div><div class="modal-body"><form class="form-horizontal"><div class="form-group" style="text-align: center;"><div id="reason3"><p>Enter the reason<select style="width: 206px;height: 34px;border-radius: 5px;" id="PReject_' + machineid + '">' +
+                '</select></div></div></form><div style="text-align: center; margin-top: 34px;"><button type="button" class="btn btn-success" style="width:22%" data-dismiss="modal" onclick="ProdRejectsave(' + machineid + ');">Save</button></div>' +
+                '</div> </div>');
+
+            $.ajax({
+                url: '/OperatorEntryModel/ProdReject',
+                type: 'GET',
+                async: false,
+                data: { machineid },
+                success: function (data) {
+                    var Result = JSON.parse(data);
+                    $("#PReject_" + machineid).html('');
+                    for (var i = 0; i < Result.length; i++) {
+                        $("#PReject_" + machineid).append("<option value='" + Result[i].RID + "'>" + Result[i].RejectName + "</option>");
+                    }
+                }
+            });
+            $('.brkdwn_' + machineid + '').removeAttr('data-target', '#machineAcceptanceBtn');
+            $('.brkdwn_' + machineid + '').attr('data-target', '#RejectReasonBtn');
+        }
+
+        function ProdRejectsave(machineid) {
+            var Rid = $("#PReject_" + machineid).val();
+            $.ajax({
+                url: '/OperatorEntryModel/RejectProduction',
+                type: 'GET',
+                async: false,
+                data: { machineid, Rid },
+                success: function (data) {
+                    if (data == "true") {
+                        $('.brkdwn_' + machineid + '').removeAttr('data-target', '#RejectReasonBtn');
+                        $('.brkdwn_' + machineid + '').attr('data-target', '#loginBtn');
+
+                    }
+                }
+            });
+        }
+
+    </script>
+
+    <script>
+        setInterval(function () {
+            $.ajax({
+                type: "GET",
+                url: "/OperatorEntryModel/MachineColor",
+                success: function (data) {
+                    var Result = JSON.parse(data);
+                    for (var i = 0; i < Result.length; i++) {
+                        var MAid = Result[i].MachineID;
+                        var Color = Result[i].Colour;
+                        var MachineName = Result[i].MchineName;
+                        $("#Mach_" + MAid).html('');
+                        if (Color == "YELLOW") {
+                            $("#Mach_" + MAid).append('<center><a style="border: 1px solid gray; padding: 5px; background:' + Color + ' ; color: Black; font-family: Source Sans Pro, Arial, sans-serif; border-radius: 3px; font-size: 30px;"> Machine Name - ' + MachineName + ' </a><br><br></center>');
+                        }
+                        else {
+                            $("#Mach_" + MAid).append('<center><a style="border: 1px solid gray; padding: 5px; background:' + Color + ' ; color: White; font-family: Source Sans Pro, Arial, sans-serif; border-radius: 3px; font-size: 30px;"> Machine Name - ' + MachineName + ' </a><br><br></center>');
+                        }
+                    }
+                }
+            });
+
+
+            $.get("/OperatorEntryModel/MachineStatusMode", {}, function (msg) {
+                if (msg != '') {
+                    MachineChart(msg);
+                }
+            });
+
+
+        }, 1000 * 5);
+
+    </script>
+
+
+    <script>
+        function BreakRework12(id) {
+            $.ajax({
+                type: "GET",
+                data: { id },
+                url: "/OperatorEntryModel/ReworkBreakdownStartTime",
+                success: function (data) {
+                    var Result = JSON.parse(data);
+                    var ccsData = '';
+                    for (var i = 0; i < Result.length; i++) {
+                        $("#ReBreak_" + MachID).html('');
+                        var MachID = Result[i].MachineID;
+                        var Rstart = Result[i].ReworkStart;
+                        var Bstart = Result[i].BreakDownStart;
+                        if (Rstart == 1) {
+                            ccsData += '<div class="row"><div class="col-sm-12"> <b class="partDetails">Rework Start Time :' + Result[i].ReworkStartTime + '  </b> </div></div>';
+                        }
+                        else if (Rstart == 2) {
+                            ccsData += '<div class="row"><div class="col-sm-12"> <b class="partDetails">Rework Finished  </b> </div></div>';
+                        }
+                        if (Bstart == 1) {
+                            ccsData += '<div class="row"><div class="col-sm-12"> <b class="partDetails">BreakDown Start Time :' + Result[i].BreakDownStartTime + '  </b> </div></div>';
+                        }
+                        else if (Bstart == 2) {
+                            ccsData += '<div class="row"><div class="col-sm-12"> <b class="partDetails">BreakDown Finished  </b> </div></div>';
+                        }
+                        $("#ReBreak_" + MachID).append(ccsData);
+                    }
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+﻿@model  SRKSDemo.Server_Model.tbluser
+@{
+    ViewBag.Title = "SRKSDemo - Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login </title>
+    <!-- Bootstrap -->
+
+    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- NProgress -->
+    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet" />
+    <!-- Animate.css -->
+    <link href="~/vendors/animate.css/animate.min.css" rel="stylesheet" />
+    <!-- Custom Theme Style -->
+    @*  <link href="../build/css/custom.css" rel="stylesheet">*@
+    <link href="~/build/css/custom.css" rel="stylesheet" />
+    <style>
+        .btn-lg-extra {
+            padding: 10px 180px;
+            font-size: 18px;
+            line-height: 10px;
+            margin-top: 9px;
+        }
+    </style>
+</head>
+<body class="login">
+    <div class="login_wrapper">
+        <div class="animated form login_form wow">
+            <div id="loginbox" class="login-area mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <center><img src="~/images/CCSLogo.png" height="200" width="200" /></center>
+            </div>
+
+            <div id="loginbox" class="login-area mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title text-center" style="color :red"><i>i</i>-<strong>facility</strong></div>
+                    </div>
+                    <div class="panel-body padding10">
+
+
+                        @using (Html.BeginForm())
+
+                      
+
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <form id="loginform" class="form-horizontal" role="form">
+                                <div class="input-group form-group1">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    @Html.TextBoxFor(m => m.UserName, new { @id = "login-username", @class = "form-control", @name = "username", @placeholder = "Username", @required = "required" })
+                                    @Html.ValidationMessageFor(model => model.UserName)
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    @Html.TextBoxFor(m => m.Password, new { @id = "login-password", @type = "password", @class = "form-control", @name = "password", @placeholder = "Password", @required = "required" })
+                                    @Html.ValidationMessageFor(model => model.Password)
+                                </div>
+                                <div class="input-group">
+                                    <div class="col-sm-10 form-control-sm">
+                                        <button id="btn-login" type="submit" class="btn btn-primary btn-lg-extra">Login</button>
+                                    </div>
+                                </div>
+                            </form>
+                        }
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

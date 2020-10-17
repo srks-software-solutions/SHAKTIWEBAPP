@@ -1,0 +1,287 @@
+﻿@*@model Tata.Models.tbllossofentry*@
+@model IEnumerable<i_facilitylibrary.DAL.tbllossescode>
+@{
+    ViewBag.Title = "DownCodeEntry";
+    Layout = "~/Views/Shared/Layoutmimics.cshtml";
+
+    var ja = Session["showIdlePopUp"];
+    if (Session["showIdlePopUp"] != null) //for the firsttime
+    {
+        Session["showIdlePopUp"] = Convert.ToInt32(Session["showIdlePopUp"]) + 1;
+    }
+    else
+    {
+        Session["showIdlePopUp"] = 1;
+    }
+    var j = Session["showIdlePopUp"];
+}
+
+<style>
+    div.parent {
+        border: 2px solid red;
+        width: 100%;
+        color: blue;
+        border: none;
+        height: 25vh;
+    }
+
+    .child {
+        width: 20%;
+        height: 50%;
+        float: left;
+        margin-top: 2%;
+        /*-webkit-text-size-adjust: 100%;*/
+        font-size: 1.5vw;
+        color: blue;
+        /*display: inline;*/
+        text-align: center;
+        vertical-align: middle;
+        line-height: 60px;
+        flex-align: center;
+        background-color: #eeee00;
+        padding-left: 10px;
+        margin-left: 3.2vw;
+        border-radius: 10px;
+        font-family: Calibri;
+        font-style: oblique;
+    }
+
+    .child1 {
+        width: 20%;
+        height: 20%;
+        float: left;
+        margin-top: 2%;
+        -webkit-text-size-adjust: 100%;
+        font-size: 1.5vw;
+        color: blue;
+        /*display: inline;*/
+        text-align: center;
+        vertical-align: middle;
+        line-height: normal;
+        flex-align: center;
+        background-color: #eeee00;
+        padding-left: 10px;
+        margin-left: 3.2vw;
+        border-radius: 10px;
+        font-family: Calibri;
+        font-style: oblique;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+</style>
+<div style="margin-left:40%;padding-top:1%">
+    @{ if (ViewBag.roleid == 3)
+        { <span style="font-size: 1.5vw; color: orange">@ViewBag.macDispName</span>}
+    else
+    { <span style="font-size: 1.5vw; color: black">@ViewBag.macDispName</span>
+}
+    }
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="wrp clearfix ">
+        <div class="fluid">
+            <div class="widget grid12">
+                <div class="widget-header">
+                    <div class="widget-title">
+                        @if (ViewBag.LossCode == null)
+                        {
+                            <span>@ViewBag.breadScrum <div style="display:inline ;width:15%"></div>Select Level @ViewBag.Level Idle Code</span>
+                        }
+                        else
+                        {
+                            <span>This is Level-@ViewBag.Level Idle Code</span>
+                        }
+                    </div>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content pad20f">
+
+                    @* @if (ViewBag.Level != 1)
+                          {
+                        <button id="PrevLevel" class ="child1"> Set Previous Level as Reason</button>
+                            <div style="display:inline-block;width:100%">&nbsp</div>
+                          }*@
+
+                    @if (ViewBag.PrevLossName != null && ViewBag.PrevLossName != "999")
+                    {
+                        <span style="font-size:larger;font-weight:700">
+                            IDLE Code is : <span style="color:blue"> @ViewBag.PrevLossName </span>
+                        </span>
+                        <br />
+                        <span style="font-size:larger;font-weight:700">
+                            IDLE Start Time is : <span style="color:blue"> @ViewBag.PrevLossStartTime </span>
+                        </span>
+                        <br />
+                    }
+
+                    <input type="text" id="HiddenID" name="HiddenID" style="display:none" />  @*value= '@breakId'*@
+                    <input type="text" id="EndIdle" name="EndIdle" style="display:none" />
+
+                    <div class="parent" style="text-align:center">
+                        @foreach (var item in Model)
+                        {
+                            <div class="child">
+                                @{
+                                    var LossCode = item.LossCode;
+                                    var LossId = item.LossCodeID;
+                                    @Html.ActionLink((string)LossCode, "DownCodeEntry", new { Bid = item.LossCodeID }, new { @id = item.LossCodeID, @class = "mychild", @style = "text-decoration:none;color:black;font-size:large;font-weight:800" })
+                                    @*@breakCode*@
+
+                                }
+                            </div>
+                        }
+                    </div>
+
+                    @*Button to Go to controller*@
+                    <button id="toEdit" style="display:none"></button>
+
+                    @*<label for="input" class="stacked-label" style="resize: horizontal; width: 30%; font-style: oblique; color: blue">Select Idle Code</label>
+                        @Html.DropDownList("MessageCodeID", (SelectList)ViewData["MessageCodeID"], "--Select Idle Code--", new { @id = "MessageCodeID", @class = "form-control", @name = "MessageCodeID", @required = "required", @style = "width: 45%;" })
+                        @Html.ValidationMessageFor(model => model.MessageCodeID)
+                        <br />
+                        @if (TempData["Error"] != null)
+                        {
+                            <p style="color: red; font-weight: 900;">@TempData["Error"]</p>
+                        }
+                        <input type="hidden" id="bringToFront" value="Session['Rotation']" />
+
+                        <div style="width: 3%; display: inline-block; height: inherit"></div>
+                        <div style="width: 10%; display: inline-block; height: inherit"></div>
+                        <input type="submit" value="Submit" class="btn orange btn-lg" style="width: 25%; display: inline-block; height: inherit; margin-top: 2%; background-color: orange; color: black; font-size: 95%" />*@
+
+                </div>
+                <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="dialog-confirm" title="Plan Override Confirmation?" style="height: 5%">
+        <p>
+            <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+            @*@ViewBag.OverLappingPlanDetails*@
+            @Html.Raw(@ViewBag.ItsLastLevel)
+        </p>
+    </div>
+}
+
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/js/jquery-visibility.js"></script>
+
+@*<script>setTimeout(function () { window.location.reload(); }, 10000)</script>*@
+<script>
+        function JsonPageRefresher() {
+            $.getJSON("/HMIScree/JsonIdleEndChecker", function (data) {
+                if (data == "true") {
+                    window.location.reload();
+                }
+            })
+        }
+        setInterval(JsonPageRefresher, 5000); //1000 == 1 seconds.
+</script>
+
+<script>
+        $(".child").click(function (e) {
+            e.preventDefault(e);
+            var UrlToRedirect = $(this).children(".mychild").attr("href");
+            window.location = UrlToRedirect;
+        });
+</script>
+
+<script>
+    //This ones for setting previous Level as reason
+    $("#PrevLevel").click(function (e) {
+        $("#HiddenID").val('@ViewBag.LossId');
+        //just to be sure
+        var empty = "";
+        $("#EndIdle").val(empty);
+        $("#toEdit").click();
+    });
+</script>
+
+@*<script>
+        //This ones to end the Breakdown
+        $("#endBreakdown").click(function (e) {
+            e.preventDefault();
+            $("#EndIdle").val("true");
+            $("#HiddenID").val('@ViewBag.LossId');
+            $("#toEdit").click();
+        });
+    </script>*@
+
+<script>
+    //This model window is from https://jqueryui.com/dialog/#modal-confirmation
+    $(function () {
+        var a = '@ViewBag.ItsLastLevel';
+        if (($.trim(a)).length > 0) {
+            $("#dialog-confirm").dialog({
+                resizable: true,
+                height: 175,
+                modal: true,
+                buttons: {
+                    "Set as Reason": function () {
+                        $("#HiddenID").val('@ViewBag.LossId');
+                        var empty = "";
+                        $("#EndIdle").val(empty);
+                        $("#toEdit").click();
+                    },
+                    Cancel: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+
+
+@*//to bring it to focus only once*@
+<script>
+
+    if (parseInt('@Session["showIdlePopUp"]') == 1) {
+        if (!document.hasFocus()) {
+            window.focus();
+            window.open('http://www.google.com', '_blank').close();
+        }
+    }
+</script>
+
+
+@*//script to checkfor ShiftEnd.*@
+<script type="text/javascript">
+    var roleid = parseInt('@Session["RoleID"]');
+    //alert(roleid)
+    if (roleid == 3) {
+        function checkShiftEnd() {
+            var j = "breakdownlist";
+            debugger;
+            var path = ' @Url.Action("checkShiftEnd", "HMIScree")';
+
+            $.getJSON(path, { rep: j }, function (data) {
+                if (data != null) {
+                    var MsgData = $.parseJSON(data);
+                    if (MsgData == "yes") {
+                        window.open('http://www.google.com', '_blank').close();
+                    }
+                    else {
+                        //alert("no")
+                    }
+                }
+                else {
+                    // alert("Not Found");
+                }
+            });
+
+        } setInterval(checkShiftEnd, 59000);
+    }
+</script>

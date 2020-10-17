@@ -1,0 +1,296 @@
+﻿@model SRKSDemo.PmCheckList
+@{
+    ViewBag.Title = "Check List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>check List </h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form class="form-horizontal form-label-left" id="fromDiv" novalidate>
+                            <div class="control-group" id="fields">
+
+                                <div class="row row-space">
+                                    @Html.HiddenFor(model => model.pmchecklist.PlantID, new { @id = "Plantid" })
+                                    <label class="control-label col-md-1 col-sm-3 col-xs-12">Plant Name</label>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        @Html.DropDownList("Plant", null, "--Select Plant--", new { @id = "Plant", @class = "form-control1 Plant", @name = "Plant", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['Plant']", @onchange = "getchangeplant(this.value);" })
+                                    </div>
+                                    <script src="~/js/jquery-2.1.4.min.js"></script>
+                                    <script>
+                                        function getchangeplant(value) {
+                                            $.getJSON("/PmCheckList/FetchShop", { PID: value }, function (data) {
+                                                $("#shop").empty();
+                                                $("#shop").append("<option value=''> --Select Shop-- </option>");
+                                                $.each(data, function (index, item) {
+                                                    $("#shop").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                                                });
+                                            });
+                                        }
+                                    </script>
+                                    <label class="control-label col-md-1 col-sm-3 col-xs-12">Shop Name</label>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        @Html.DropDownList("shop", null, "--Select Shop--", new { @id = "shop", @class = "form-control1 shop", @name = "shop", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['shop']", @onchange = "getchangeshop(this.value);" })
+
+                                    </div>
+                                    <label class="control-label col-md-1 col-sm-3 col-xs-12">Cell Name</label>
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        @Html.DropDownList("cell", null, "--Select cell--", new { @id = "cell", @class = "form-control1 cell", @name = "cell", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['cell']", @onchange = "getchangecell(this.value);" })
+
+                                        <span id="errorMessage" style="color:red"></span>
+                                    </div>
+                                </div>
+                                <div class="controls">
+
+                                    <div class="form">
+                                        <div class="entry input-group col-sm-12">
+                                            <div class="item form-group">
+                                                <div class="row row-space">
+
+                                                    <label class="control-label col-md-1 col-sm-3 col-xs-12">Type Of CheckPoint</label>
+                                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                                        @Html.DropDownList("TypeOfCheckPoint", null, "--Select TypeOfCheckPoint--", new { @id = "TypeOfCheckPoint", @class = "form-control1 TypeOfCheckPoint", @name = "TypeOfCheckPoint", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = "@ViewData['TypeOfCheckPoint']" })
+
+                                                    </div>
+                                                    <label class="control-label col-md-1 col-sm-3 col-xs-12">CheckList</label>
+                                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                                        @Html.TextBoxFor(model => model.pmchecklist.CheckList, new { @id = "CheckList", @class = "form-control1 CheckList", @name = "CheckList", style = "width:89.7%", @placeholder = "Enter CheckList", @required = "required" })
+                                                    </div>
+                                                    <label class="control-label col-md-1 col-sm-3 col-xs-12">How</label>
+                                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                                        @Html.TextBoxFor(model => model.pmchecklist.How, new { @id = "How", @class = "form-control1 How", @name = "How", style = "width:89.7%", @placeholder = "Enter How", @required = "required" })
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row row-space">
+                                                    <label class="control-label col-md-1 col-sm-3 col-xs-12">Value</label>
+                                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                                        @Html.TextBoxFor(model => model.pmchecklist.Value, new { @id = "Value", @class = "form-control1 Value", @name = "Value", style = "width:89.7%", @placeholder = "Enter Value", @required = "required" })
+                                                    </div>
+                                                    <label class="control-label col-md-1 col-sm-3">Frequency</label>
+                                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                                        @Html.TextBoxFor(model => model.pmchecklist.Frequency, new { @id = "Frequency", @class = "form-control1 Frequency", @name = "Frequency", style = "width:89.7%", @placeholder = "Enter Frequency", @required = "required" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-success btn-round btn-add" type="button">
+                                                    <span class="glyphicon glyphicon-plus"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                    </div>
+                    <div class="generate-btn">
+                        <a id="" href="/PmCheckList/Index" type="submit" class="btn btn-new"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                        <button type="submit" class="btn btn-new float-right submitmain"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+
+                    </div>
+                </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- /page content -->
+    <script src="~/js/jquery-2.1.4.min.js"></script>
+
+
+   
+
+    <script type="text/javascript">
+        $(function () {
+            $(document).on('click', '.btn-add', function (e) {
+                e.preventDefault();
+
+                var Plant = $("#Plant").val();
+                var shop = $("#shop").val();
+                var cell = $("#cell").val();
+                var Value = $(this).closest(".input-group").find('.Value:first').val();
+                var CheckList = $(this).closest(".input-group").find('.CheckList:first').val();
+                var Frequency = $(this).closest(".input-group").find('.Frequency:first').val();
+                var How = $(this).closest(".input-group").find('.How:first').val();
+                var TypeOfCheckPoint = $(this).closest(".input-group").find('.TypeOfCheckPoint:first').val();
+
+                if (Plant !== "" && shop !== "" && cell !== "" && TypeOfCheckPoint !== "" || Plant == undefined && shop == undefined && cell == undefined) {
+                    Plant = Plant;
+                    shop = shop;
+                    cell = cell;
+                    var curEntry = $(this).parents('.entry:first');
+                    var controlForm = $('.controls .form:first'),
+                        currentEntry = $(this).parents('.entry:first'),
+                        newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+                    $.getJSON("/PmCheckList/InsertData", { Plant: Plant, shop: shop, cell: cell, Value: Value, CheckList: CheckList, Frequency: Frequency, How: How, TypeOfCheckPoint: TypeOfCheckPoint }, function (data) {
+                        if (data !== null && data !== 0) {
+                            $(curEntry).attr("id", data);
+                        }
+                    });
+
+                    // newEntry.find('.TypeOfCheckPoint').attr('id', 'TypeOfCheckPoint');
+                    newEntry.find('.TypeOfCheckPoint').val("");
+                    newEntry.find('.Value').val("");
+                    newEntry.find('.CheckList').val("");
+                    newEntry.find('.Frequency').val("");
+                    newEntry.find('.How').val("");
+                    controlForm.find('.entry:not(:last) .btn-add')
+                        .removeClass('btn-add').addClass('btn-remove')
+                        .removeClass('btn-success').addClass('btn-danger')
+                        .html('<span class="glyphicon glyphicon-minus"></span>');
+                }
+            }).on('click', '.btn-remove', function (e) {
+                var Val = $(this).parents('.entry:first').attr("id");
+                $.getJSON("/PmCheckList/DeleteData", { id: Val }, function (data) {
+
+                });
+                $(this).parents('.entry:first').remove();
+
+                e.preventDefault();
+                return false;
+            });
+        });
+    </script>
+
+
+
+    <script>
+        $(".submitmain").on("click", function (e) {
+            e.preventDefault();
+            var Plant = $("#fromDiv").last(".entry input-group").find('.Plant:last').val();
+            var shop = $("#fromDiv").last(".entry input-group").find('.shop:last').val();
+            var cell = $("#fromDiv").last(".entry input-group").find('.cell:last').val();
+            var Value = $("#fromDiv").last(".entry input-group").find('.Value:last').val();
+            var CheckList = $("#fromDiv").last(".entry input-group").find('.CheckList:last').val();
+            var Frequency = $("#fromDiv").last(".entry input-group").find('.Frequency:last').val();
+            var How = $("#fromDiv").last(".entry input-group").find('.How:last').val();
+            var TypeOfCheckPoint = $("#fromDiv").last(".entry input-group").find('.TypeOfCheckPoint:last').val();
+            if (Plant != "" && shop != "" && cell != "" && Value != "" && CheckList != "" && Frequency != "" && TypeOfCheckPoint != "") {
+                $.getJSON("/PmCheckList/InsertData", { Plant: Plant, shop: shop, cell: cell, Value: Value, CheckList: CheckList, Frequency: Frequency, How: How, TypeOfCheckPoint: TypeOfCheckPoint }, function (data) {
+                    if (data != null && data != 0) {
+                       alert("Data Saved successfully");
+                        window.location.href = "/PmCheckList/Index";
+                    }
+                });
+
+            }
+            else {
+                alert("Enter all data before submission");
+            }
+
+        });
+
+    </script>
+    <script>
+        function getchangeshop(value) {
+            $.getJSON("/PmCheckList/FetchCell", { SID: value }, function (data) {
+                $("#cell").empty();
+                $("#cell").append("<option value=''> --Select Cell-- </option>");
+                $.each(data, function (index, item) {
+                    $("#cell").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                });
+            });
+        }
+    </script>
+    <script>
+        function getchangecell(value) {
+            $.getJSON("/PmCheckList/FetchCheckPoint", { CID: value }, function (data) {
+                $("#TypeOfCheckPoint").empty();
+                $("#TypeOfCheckPoint").append("<option value=''> --Select TypeOfCheckPoint-- </option>");
+                $.each(data, function (index, item) {
+                    $("#TypeOfCheckPoint").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                });
+            });
+        }
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+
+            $("#shop").empty();
+            $("#shop").append("<option value=''> --Select Shop-- </option>");
+            $("#cell").empty();
+            $("#cell").append("<option value=''> --Select Cell-- </option>");
+            $("#TypeOfCheckPoint").empty();
+            $("#TypeOfCheckPoint").append("<option value=''> --Select TypeOfCheckPoint-- </option>");
+
+            $("#Plant").on("change", function (e) {
+                var PID = $(this).val();
+                $.getJSON("/PmCheckList/FetchShop", { PID: PID }, function (data) {
+                    $("#shop").empty();
+                    $("#shop").append("<option value=''> --Select Shop-- </option>");
+                    $.each(data, function (index, item) {
+                        $("#shop").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                    });
+                });
+            });
+
+            $("#shop").on("change", function (e) {
+
+                var SID = $(this).val();
+                var PID = $("#Plant").val();
+                $.getJSON("/PmCheckList/FetchCell", { PID: PID, SID: SID }, function (data) {
+                    $("#cell").empty();
+                    $("#cell").append("<option value=''> --Select Cell-- </option>");
+                    $.each(data, function (index, item) {
+                        $("#cell").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                    });
+                });
+            });
+
+            $("#cell").on("change", function (e) {
+                var CID = $(this).val();
+                var SID = $("#shop").val();
+                var PID = $("#Plant").val();
+                $.getJSON("/PmCheckList/FetchCheckPoint", { SID: SID, PID: PID, CID: CID }, function (data) {
+                    $("#TypeOfCheckPoint").empty();
+                    $("#TypeOfCheckPoint").append("<option value=''> --Select TypeOfCheckPoint-- </option>");
+                    $.each(data, function (index, item) {
+                        $("#TypeOfCheckPoint").append("<option value='" + item.Value + "'>" + item.Text + "</option>");
+                    });
+                });
+            });
+        });
+    </script>
+
+
+    @if (TempData["Message"] != null)
+    {
+        <input type="hidden" id="Message" value="@TempData[" Message"]" />
+        <script type="text/javascript">
+            $(function () {
+                var message = $("#Message").val();
+                if (message !== "") {
+                    $("#errorMessage").html(message);
+
+
+                }
+            });
+        </script>
+    }
+

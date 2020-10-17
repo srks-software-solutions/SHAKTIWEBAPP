@@ -1,0 +1,865 @@
+﻿@model IList<SRKSDemo.Server_Model.tblshiftdetail>
+@{
+    ViewBag.Title = "Shift Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    input {
+        font-style: oblique;
+        color: blue;
+    }
+</style>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script src="~/Content1/jquery.datetimepicker.js" type="text/javascript"></script>
+@{
+    List<SelectListItem> NextDay = new List<SelectListItem>();
+
+    NextDay.Add(new SelectListItem
+    {
+        Text = "NO",
+        Value = "0",
+    });
+    NextDay.Add(new SelectListItem
+    {
+        Text = "YES",
+        Value = "1",
+    });
+
+}
+
+@{
+    List<SelectListItem> IsGShift = new List<SelectListItem>();
+
+    IsGShift.Add(new SelectListItem
+    {
+        Text = "NO",
+        Value = "0",
+    });
+    IsGShift.Add(new SelectListItem
+    {
+        Text = "YES",
+        Value = "1",
+    });
+}
+<div class="container body">
+    <div class="main_container">
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Shift Detail</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                @using (Html.BeginForm("Edit", "ShiftDetails", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+
+
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <div class="item form-group">
+                                                <label class="control-label col-md-6 col-sm-3 col-xs-12" for="type">
+                                                    Shift Method Name
+                                                </label>
+
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @Html.DropDownList("ShiftMethod", null, "--Select ShiftMethod--", new { @id = "ShiftMethod", @class = "form-control", @name = "ShiftMethod", @required = "required", @style = "aria-expanded:false;width:89.7%", @value = ViewData["ShiftMethod"] })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="modelcount" name="modelcount" value=" @Model.Count;" />
+                                        <div class="widget-content pad20f" id="shift1">
+                                            <div class="col-sm-6">
+                                                <div class="item form-group">
+                                                    <label class="control-label col-md-4 col-sm-3 col-xs-12" for="product">
+                                                        Shift Details Name
+                                                    </label>
+                                                    <div class="col-md-7 col-sm-6 col-xs-12">
+                                                        @Html.TextBoxFor(model => model[0].ShiftDetailsName, new { @id = "ShiftDetName", @name = "ShiftDetName", @class = "form-control second SRKSRequired", @placeholder = "Enter ShiftDetails Name", @required = "required" })
+                                                        @*<input type="text" id="product" name="product" placeholder="Shift Details Name" class="form-control col-md-7 col-xs-12">*@
+                                                    </div>
+                                                </div>
+                                                <div class="item form-group">
+                                                    <label class="control-label col-md-4 col-sm-3 col-xs-12" for="type">
+                                                        Does Shift Span to Next Day
+                                                    </label>
+                                                    <div class="col-md-7 col-sm-6 col-xs-12">
+                                                        @Html.HiddenFor(model => model[0].NextDay, new { @id = "NextDays" })
+                                                        @Html.DropDownListFor(model => model[0].NextDay, NextDay, new { @id = "NextDay1", @name = "NextDay1", @class = "form-control second SRKSRequired", @required = "required", @value = ViewData["NextDay"], @onchange = "nextday();" })
+
+                                                    </div>
+                                                </div>
+                                                <div class="item form-group">
+                                                    <label class="control-label col-md-4 col-sm-3 col-xs-12" for="Joborder">
+                                                        Shift Start Time
+                                                    </label>
+                                                    <div class="col-md-7 col-sm-6 col-xs-12">
+                                                        <div class="bootstrap-timepicker dropdown">
+                                                            @Html.HiddenFor(model => model[0].ShiftStartTime, new { @id = "ShiftStartTime0", @name = "ShiftStartTime", @class = "timepicker-example form-control  SRKSRequired", @required = "required" })
+                                                            <input class="timepicker-example form-control SRKSRequired" type="text" required="required" id="Hdn0ShiftStartTime" onchange="updateST0();" oninput="updateST0();" onfocusout="updateST0();">
+                                                            <script>
+                                                                function updateST0() {
+                                                                    var val = $("#Hdn0ShiftStartTime").val();
+                                                                    val = time24FormatConverter(val);
+                                                                    $("#ShiftStartTime0").val(val);
+                                                                }
+
+                                                                $(function () {
+                                                                    var val = $("#ShiftStartTime0").val();
+                                                                    val = tConvert(val);
+                                                                    $("#Hdn0ShiftStartTime").val(val);
+                                                                })
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="item form-group">
+                                                    <label class="control-label col-md-4 col-sm-3 col-xs-12" for="print">
+                                                        Shift Details Description
+                                                    </label>
+                                                    <div class="col-md-7 col-sm-6 col-xs-12">
+                                                        @Html.TextBoxFor(model => model[0].ShiftDetailsDesc, new { @id = "ShiftDetDesc", @name = "ShiftDetDesc", @class = "form-control second SRKSRequired", @placeholder = "Enter ShiftDetails Description", @required = "required" })
+                                                        @*<input type="text" id="print" name="print" placeholder="Shift Details Description" class="form-control col-md-7 col-xs-12">*@
+                                                    </div>
+                                                </div>
+                                                <div class="item form-group">
+                                                    <label class="control-label col-md-4 col-sm-3 col-xs-12" for="type">
+                                                        Is it General Shift
+                                                    </label>
+                                                    <div class="col-md-7 col-sm-6 col-xs-12">
+                                                        @Html.HiddenFor(model => model[0].IsGShift, new { @id = "IsGShifts" })
+                                                        @Html.DropDownListFor(model => model[0].IsGShift, IsGShift, new { @id = "IsGShift", @name = "IsGShift", @class = "form-control second SRKSRequired", @required = "required", @value = ViewData["IsGShift"], @onchange = "Isgshift();" })
+
+                                                    </div>
+                                                </div>
+                                                <div class="item form-group">
+                                                    <label class="control-label col-md-4 col-sm-3 col-xs-12" for="Joborder">
+                                                        Shift End Time
+                                                    </label>
+                                                    <div class="col-md-7 col-sm-6 col-xs-12">
+                                                        <div class="bootstrap-timepicker dropdown">
+                                                            @Html.HiddenFor(model => model[0].ShiftEndTime, new { @id = "ShiftEndTime0", @name = "ShiftEndTime", @class = " timepicker-example form-control SRKSRequired", @placeholder = "Enter ShiftEnd Time", @required = "required" })
+                                                            <input class="timepicker-example form-control SRKSRequired" type="text" required="required" id="Hdn0ShiftEndTime" onchange="updateET0();" oninput="updateET0();" onfocusout="updateET0();">
+                                                        </div>
+                                                        <script>
+                                                            function updateET0() {
+                                                                var val = $("#Hdn0ShiftEndTime").val();
+                                                                val = time24FormatConverter(val);
+                                                                $("#ShiftEndTime0").val(val);
+                                                            }
+                                                            $(function () {
+                                                                var val = $("#ShiftEndTime0").val();
+                                                                val = tConvert(val);
+                                                                $("#Hdn0ShiftEndTime").val(val);
+                                                            })
+                                                        </script>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @Html.HiddenFor(model => model[0].ShiftDetailsID, new { @id = "ShiftDetailsID", @name = "ShiftDetailsID" })
+                                        @if (Model.Count >= 2)
+                                        {
+                                            @Html.HiddenFor(model => model[1].ShiftDetailsID, new { @id = "ShiftDetailsID", @name = "ShiftDetailsID" })
+                                            <div class="widget-content pad20f" id="shift2">
+                                                <div class="col-sm-6">
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="product">
+                                                            Shift Details Name
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            @Html.TextBoxFor(model => model[1].ShiftDetailsName, new { @id = "ShiftDetailsName", @class = "form-control second SRKSRequired", @name = "ShiftDetailsName", @placeholder = "Enter ShiftDetails Name", })
+                                                            @*<input type="text" id="product" name="product" placeholder="Shift Details Name" class="form-control col-md-7 col-xs-12">*@
+                                                        </div>
+                                                    </div>
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="type">
+                                                            Does Shift Span to Next Day
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            @Html.HiddenFor(model => model[1].NextDay, new { @id = "NextDays1" })
+                                                            @Html.DropDownListFor(model => model[1].NextDay, NextDay, new { @id = "NextDay2", @name = "NextDay2", @class = "form-control second pad SRKSRequired", @required = "required", @value = ViewData["NextDay"], @onchange = "nextday1();" })
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="Joborder">
+                                                            Shift Start Time
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            <div class="bootstrap-timepicker dropdown">
+                                                                @Html.HiddenFor(model => model[1].ShiftStartTime, new { @id = "ShiftStartTime1", @class = "timepicker-example form-control SRKSRequired", @name = "ShiftStartTime", @placeholder = "Enter ShiftStart Time", })
+                                                                <input class="timepicker-example form-control SRKSRequired" type="text" required="required" id="Hdn1ShiftStartTime" onchange="updateST1();" oninput="updateST1();" onfocusout="updateST1();">
+                                                            </div>
+                                                            <script>
+                                                                function updateST1() {
+                                                                    var val = $("#Hdn1ShiftStartTime").val();
+                                                                    val = time24FormatConverter(val);
+                                                                    $("#ShiftStartTime1").val(val);
+                                                                }
+                                                                $(function () {
+                                                                    var val = $("#ShiftStartTime1").val();
+                                                                    val = tConvert(val);
+                                                                    $("#Hdn1ShiftStartTime").val(val);
+                                                                })
+                                                            </script>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="print">
+                                                            Shift Details Description
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            @Html.TextBoxFor(model => model[1].ShiftDetailsDesc, new { @id = "ShiftDetailsDesc", @class = "form-control second SRKSRequired", @name = "ShiftDetailsDesc", @placeholder = "Enter ShiftDetails Description", })
+                                                            @*<input type="text" id="print" name="print" placeholder="Shift Details Description" class="form-control col-md-7 col-xs-12">*@
+                                                        </div>
+                                                    </div>
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="type">
+                                                            Is it General Shift
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            @Html.HiddenFor(model => model[1].IsGShift, new { @id = "IsGShifts1" })
+                                                            @Html.DropDownListFor(model => model[1].IsGShift, IsGShift, new { @id = "IsGShift2", @name = "IsGShift2", @class = "form-control second pad SRKSRequired", @required = "required", @value = ViewData["IsGShift"], @onchange = "isgshift1();" })
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="Joborder">
+                                                            Shift End Time
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            <div class="bootstrap-timepicker dropdown">
+                                                                @Html.HiddenFor(model => model[1].ShiftEndTime, new { @id = "ShiftEndTime1", @class = "timepicker-example form-control SRKSRequired", @name = "ShiftEndTime", @placeholder = "Enter ShiftEnd Time", })
+                                                                <input class="timepicker-example form-control SRKSRequired" type="text" required="required" id="Hdn1ShiftEndTime" onchange="updateET1();" oninput="updateET1();" onfocusout="updateET1();">
+                                                            </div>
+                                                            <script>
+                                                                function updateET1() {
+                                                                    var val = $("#Hdn1ShiftEndTime").val();
+                                                                    val = time24FormatConverter(val);
+                                                                    $("#ShiftEndTime1").val(val);
+                                                                }
+                                                                $(function () {
+                                                                    var val = $("#ShiftEndTime1").val();
+                                                                    val = tConvert(val);
+                                                                    $("#Hdn1ShiftEndTime").val(val);
+                                                                })
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        @if (Model.Count >= 3)
+                                        {
+                                            @Html.HiddenFor(model => model[2].ShiftDetailsID, new { @id = "ShiftDetailsID", @name = "ShiftDetailsID" })
+                                            <div class="widget-content pad20f" id="shift3">
+                                                <div class="col-sm-6">
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="product">
+                                                            Shift Details Name
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            @*<input type="text" id="product" name="product" placeholder="Shift Details Name" class="form-control col-md-7 col-xs-12">*@
+                                                            @Html.TextBoxFor(model => model[2].ShiftDetailsName, new { @id = "ShiftDetailsName", @class = "form-control second SRKSRequired", @name = "ShiftDetailsName", @placeholder = "Enter ShiftDetails Name", })
+                                                        </div>
+                                                    </div>
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="type">
+                                                            Does Shift Span to Next Day
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            @Html.HiddenFor(model => model[2].NextDay, new { @id = "NextDays2" })
+                                                            @Html.DropDownListFor(model => model[2].NextDay, NextDay, new { @id = "NextDay3", @name = "NextDay3", @class = "form-control second pad SRKSRequired", @value = ViewData["NextDay"], @onchange = "nextday2();" })
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="Joborder">
+                                                            Shift Start Time
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            <div class="bootstrap-timepicker dropdown">
+                                                                @Html.HiddenFor(model => model[2].ShiftStartTime, new { @id = "ShiftStartTime2", @class = "timepicker-example form-control SRKSRequired", @name = "ShiftStartTime", @placeholder = "Enter ShiftStart Time" })
+                                                                <input class="timepicker-example form-control SRKSRequired" type="text" required="required" id="Hdn2ShiftStartTime" onchange="updateST2();" oninput="updateST2();" onfocusout="updateST2();">
+                                                            </div>
+                                                            <script>
+                                                                function updateST2() {
+                                                                    var val = $("#Hdn2ShiftStartTime").val();
+                                                                    val = time24FormatConverter(val);
+                                                                    $("#ShiftStartTime2").val(val);
+                                                                }
+                                                                $(function () {
+                                                                    var val = $("#ShiftStartTime2").val();
+                                                                    val = tConvert(val);
+                                                                    $("#Hdn2ShiftStartTime").val(val);
+                                                                })
+                                                            </script>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="print">
+                                                            Shift Details Description
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            @Html.TextBoxFor(model => model[2].ShiftDetailsDesc, new { @id = "ShiftDetailsDesc", @class = "form-control second SRKSRequired", @name = "ShiftDetailsDesc", @placeholder = "Enter ShiftDetails Description", })
+                                                            @*<input type="text" id="print" name="print" placeholder="Shift Details Description" class="form-control col-md-7 col-xs-12">*@
+                                                        </div>
+                                                    </div>
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="type">
+                                                            Is it General Shift
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            @Html.HiddenFor(model => model[2].IsGShift, new { @id = "IsGShifts2" })
+                                                            @Html.DropDownListFor(model => model[2].IsGShift, IsGShift, new { @id = "IsGShift3", @name = "IsGShift3", @class = "form-control second SRKSRequired", @required = "required", @value = ViewData["IsGShift"], @onchange = "isgshift2();" })
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="Joborder">
+                                                            Shift End Time
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            <div class="bootstrap-timepicker dropdown">
+                                                                @Html.HiddenFor(model => model[2].ShiftEndTime, new { @id = "ShiftEndTime2", @class = "timepicker-example form-control SRKSRequired", @name = "ShiftEndTime", @placeholder = "Enter ShiftEnd Time", })
+                                                                <input class="timepicker-example form-control SRKSRequired" type="text" required="required" id="Hdn2ShiftEndTime" onchange="updateET2();" oninput="updateET2();" onfocusout="updateET2();">
+                                                            </div>
+                                                            <script>
+                                                                function updateET2() {
+                                                                    var val = $("#Hdn2ShiftEndTime").val();
+                                                                    val = time24FormatConverter(val);
+                                                                    $("#ShiftEndTime2").val(val);
+                                                                }
+                                                                $(function () {
+                                                                    var val = $("#ShiftEndTime2").val();
+                                                                    val = tConvert(val);
+                                                                    $("#Hdn2ShiftEndTime").val(val);
+                                                                })
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        @if (Model.Count == 4)
+                                        {
+                                            @Html.HiddenFor(model => model[3].ShiftDetailsID, new { @id = "ShiftDetailsID", @name = "ShiftDetailsID" })
+                                            <div class="widget-content pad20f" id="shift4">
+                                                <div class="col-sm-6">
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="product">
+                                                            Shift Details Name
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            @Html.TextBoxFor(model => model[3].ShiftDetailsName, new { @id = "ShiftDetailsName", @class = "form-control second SRKSRequired", @name = "ShiftDetailsName", @placeholder = "Enter ShiftDetails Name" })
+                                                            @*<input type="text" id="product" name="product" placeholder="Shift Details Name" class="form-control col-md-7 col-xs-12">*@
+                                                        </div>
+                                                    </div>
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="type">
+                                                            Does Shift Span to Next Day
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            @Html.HiddenFor(model => model[3].NextDay, new { @id = "NextDays3" })
+                                                            @Html.DropDownListFor(model => model[3].NextDay, NextDay, new { @id = "NextDay4", @name = "NextDay4", @class = "form-control second pad SRKSRequired", @value = ViewData["NextDay"], @onchange = "nextday3();" })
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="Joborder">
+                                                            Shift Start Time
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            <div class="bootstrap-timepicker dropdown">
+                                                                @Html.HiddenFor(model => model[3].ShiftStartTime, new { @id = "ShiftStartTime3", @class = "timepicker-example form-control SRKSRequired", @name = "ShiftStartTime", @placeholder = "Enter ShiftStart Time", })
+                                                                <input class="timepicker-example form-control SRKSRequired" type="text" required="required" id="Hdn3ShiftStartTime" onchange="updateST3();" oninput="updateST3();" onfocusout="updateST3();">
+                                                            </div>
+                                                            <script>
+                                                                function updateST3() {
+                                                                    var val = $("#Hdn3ShiftStartTime").val();
+                                                                    val = time24FormatConverter(val);
+                                                                    $("#ShiftStartTime3").val(val);
+                                                                }
+                                                                $(function () {
+                                                                    var val = $("#ShiftStartTime3").val();
+                                                                    val = tConvert(val);
+                                                                    $("#Hdn3ShiftStartTime").val(val);
+                                                                })
+                                                            </script>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="print">
+                                                            Shift Details Description
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            @Html.TextBoxFor(model => model[3].ShiftDetailsDesc, new { @id = "ShiftDetailsDesc", @class = "form-control second SRKSRequired", @name = "ShiftDetailsDesc", @placeholder = "Enter ShiftDetails Description" })
+                                                            @*<input type="text" id="print" name="print" placeholder="Shift Details Description" class="form-control col-md-7 col-xs-12">*@
+                                                        </div>
+                                                    </div>
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="type">
+                                                            Is it General Shift
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            @Html.HiddenFor(model => model[3].IsGShift, new { @id = "IsGShifts3" })
+                                                            @Html.DropDownListFor(model => model[3].IsGShift, IsGShift, new { @id = "IsGShift4", @name = "IsGShift4", @class = "form-control second SRKSRequired", @required = "required", @value = ViewData["IsGShift"], @onchange = "isgshift3();" })
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="item form-group">
+                                                        <label class="control-label col-md-4 col-sm-3 col-xs-12" for="Joborder">
+                                                            Shift End Time
+                                                        </label>
+                                                        <div class="col-md-7 col-sm-6 col-xs-12">
+                                                            <div class="bootstrap-timepicker dropdown">
+                                                                @Html.HiddenFor(model => model[3].ShiftEndTime, new { @id = "ShiftEndTime3", @class = "timepicker-example form-control SRKSRequired", @name = "ShiftEndTime", @placeholder = "Enter ShiftEnd Time" })
+                                                                <input class="timepicker-example form-control SRKSRequired" type="text" required="required" id="Hdn3ShiftEndTime" onchange="updateET3();" oninput="updateET3();" onfocusout="updateET3();">
+                                                            </div>
+                                                            <script>
+                                                                function updateET3() {
+                                                                    var val = $("#Hdn3ShiftEndTime").val();
+                                                                    val = time24FormatConverter(val);
+                                                                    $("#ShiftEndTime3").val(val);
+                                                                }
+                                                                $(function () {
+                                                                    var val = $("#ShiftEndTime3").val();
+                                                                    val = tConvert(val);
+                                                                    $("#Hdn3ShiftEndTime").val(val);
+                                                                })
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+
+                                    <a role="button" href="@Url.Action("Index", "ShiftDetails")" class="btn btn-new" style="margin-top: 10px; margin-left: 5px;"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                                    <input type="submit" value="Update" onclick="return timeCheck();" id="submitsrks" class="btn btn-new float-right" />
+                                    @*<button type="submit" class="btn btn-new float-right" style="margin-top: 10px;"><i class="fa fa-floppy-o" aria-hidden="true"></i> Update</button>*@
+                                    <input type="hidden" id="selectedOption" value="@Model.Count" />
+
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/jquery-2.1.4.min.js"></script>
+
+    <script>
+        function isgshift3() {
+            var IsBottelNeck = $('#IsGShift4').val();
+            $("#IsGShifts3").val(IsBottelNeck);
+        }
+        function nextday3() {
+            var IsFirstMachine = $('#NextDay4').val();
+            $("#NextDays3").val(IsFirstMachine);
+        }
+        function isgshift2() {
+            var IsBottelNeck = $('#IsGShift3').val();
+            $("#IsGShifts2").val(IsBottelNeck);
+        }
+        function nextday2() {
+            var IsFirstMachine = $('#NextDay3').val();
+            $("#NextDays2").val(IsFirstMachine);
+        }
+
+        function isgshift1() {
+            var IsBottelNeck = $('#IsGShift2').val();
+            $("#IsGShifts1").val(IsBottelNeck);
+        }
+        function nextday1() {
+            var IsFirstMachine = $('#NextDay2').val();
+            $("#NextDays1").val(IsFirstMachine);
+        }
+        function Isgshift() {
+            var IsBottelNeck = $('#IsGShift').val();
+            $("#IsGShifts").val(IsBottelNeck);
+
+        }
+
+        function nextday() {
+            var IsFirstMachine = $('#NextDay1').val();
+            $("#NextDays").val(IsFirstMachine);
+        }
+
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            var modelcount = $("#modelcount").val;
+            //alert(modelcount);
+            if (modelcount == 1) {
+                $("#shift1").show();
+                $("#shift2").hide();
+                $("#shift3").hide();
+                $("#shift4").hide();
+            }
+            else if (modelcount == 2) {
+                $("#shift1").show();
+                $("#shift2").show();
+                $("#shift3").hide();
+                $("#shift4").hide();
+                //adding required field to elements in shift2
+
+                //$("#shift2 > .form-control").attr("required", required); //didnot work
+                $("#shift2 > .form-control").prop("required", true);
+                $("#shift3 > .form-control").prop("required", false);
+                $("#shift4 > .form-control").prop("required", false);
+            }
+            else if (modelcount == 3) {
+                $("#shift1").show();
+
+                $("#shift2").show();
+                $("#shift3").show();
+                $("#shift4").hide();
+                $("#shift2 > .form-control").prop("required", true);
+                $("#shift3 > .form-control").prop("required", true);
+                $("#shift4 > .form-control").prop("required", false);
+            }
+            else if (modelcount == 4) {
+                $("#shift1").show();
+                $("#shift2").show();
+                $("#shift3").show();
+                $("#shift4").show();
+                $("#shift2 > .form-control").prop("required", true);
+                $("#shift3 > .form-control").prop("required", true);
+                $("#shift4 > .form-control").prop("required", true);
+            }
+        });
+
+        $(document).ready(function () {
+            $("#ShiftMethod").change(function (evt) {
+                var selectedID = $("#ShiftMethod option:selected").val();
+                $.getJSON("/ShiftDetails/GetShifts", { shiftsCount: selectedID }, function (data) {
+                    var NumberOfShifts = data;
+                    // alert(NumberOfShifts)
+                    //based on this data hide or show those 4 Shifts.
+                    if (NumberOfShifts == 1) {
+                        $("#shift1").show();
+                        $("#shift2").hide();
+                        $("#shift3").hide();
+                        $("#shift4").hide();
+                    }
+                    else if (NumberOfShifts == 2) {
+                        $("#shift1").show();
+                        $("#shift2").show();
+                        $("#shift3").hide();
+                        $("#shift4").hide();
+                        //adding required field to elements in shift2
+
+                        //$("#shift2 > .form-control").attr("required", required); //didnot work
+                        $("#shift2 > .form-control").prop("required", true);
+                        $("#shift3 > .form-control").prop("required", false);
+                        $("#shift4 > .form-control").prop("required", false);
+                    }
+                    else if (NumberOfShifts == 3) {
+                        $("#shift1").show();
+                        $("#shift2").show();
+                        $("#shift3").show();
+                        $("#shift4").hide();
+                        $("#shift2 > .form-control").prop("required", true);
+                        $("#shift3 > .form-control").prop("required", true);
+                        $("#shift4 > .form-control").prop("required", false);
+                    }
+                    else if (NumberOfShifts == 4) {
+                        $("#shift1").show();
+                        $("#shift2").show();
+                        $("#shift3").show();
+                        $("#shift4").show();
+                        $("#shift2 > .form-control").prop("required", true);
+                        $("#shift3 > .form-control").prop("required", true);
+                        $("#shift4 > .form-control").prop("required", true);
+                    }
+                });
+            });
+
+            var IsBottelNeck = $('#IsGShifts3').val();
+            $("#IsGShift4").val(IsBottelNeck);
+            var IsFirstMachine = $('#NextDays3').val();
+            $("#NextDay4").val(IsFirstMachine);
+            var IsBottelNeck = $('#IsGShifts2').val();
+            $("#IsGShift3").val(IsBottelNeck);
+            var IsFirstMachine = $('#NextDays2').val();
+            $("#NextDay3").val(IsFirstMachine);
+            var IsBottelNeck = $('#IsGShifts1').val();
+            $("#IsGShift2").val(IsBottelNeck);
+            var IsFirstMachine = $('#NextDays1').val();
+            $("#NextDay2").val(IsFirstMachine);
+            var IsFirstMachine = $('#NextDays').val();
+            $("#NextDay1").val(IsFirstMachine);
+        });
+    </script>
+    <script>
+        function time24FormatConverter(time) {
+            var hours = Number(time.match(/^(\d+)/)[1]);
+            var minutes = Number(time.match(/:(\d+)/)[1]);
+            var AMPM = time.match(/\s(.*)$/)[1];
+            if (AMPM == "PM" && hours < 12) hours = hours + 12;
+            if (AMPM == "AM" && hours == 12) hours = hours - 12;
+            var sHours = hours.toString();
+            var sMinutes = minutes.toString();
+            if (hours < 10) sHours = "0" + sHours;
+            if (minutes < 10) sMinutes = "0" + sMinutes;
+            return (sHours + ":" + sMinutes + ":00");
+        }
+        function tConvert(time) {
+            // Check correct time format and split into components
+            time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+            if (time.length > 1) { // If time format correct
+                time = time.slice(1);  // Remove full string match value
+                time[5] = +time[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
+                time[0] = +time[0] % 12 || 12; // Adjust hours
+            }
+            return time.join(''); // return adjusted time or original string
+        }
+    </script>
+    <link href="~/css/toaster.css" rel="stylesheet" />
+    <script src="~/Scripts/toaster.js"></script>
+    <script>
+
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+
+    </script>
+    <script>
+        function timeCheck() {
+            var checker = $("#selectedOption").val();
+            var status = "ok";
+            if (checker == 1) {
+                var NextDay1 = $("#NextDay1").val();
+
+                if (NextDay1 == 0) {
+                    var st = $("#ShiftStartTime0").val();
+                    var et = $("#ShiftEndTime0").val();
+                    status = statusRe(st, et);
+                }
+                else {
+                    status = "ok";
+                }
+
+                if (status == "ok") {
+                } else {
+                    toastr.warning("", "End Date should be greater then Start Date in First row");
+                }
+            }
+            else if (checker == 2) {
+                var NextDay1 = $("#NextDay1").val();
+
+                if (NextDay1 == 0) {
+                    var st = $("#ShiftStartTime0").val();
+                    var et = $("#ShiftEndTime0").val();
+                    status = statusRe(st, et);
+                }
+                else {
+                    status = "ok";
+                }
+
+                if (status == "ok") {
+                    var NextDay2 = $("#NextDay2").val();
+
+                    if (NextDay2 == 0) {
+                        var st = $("#ShiftStartTime1").val();
+                        var et = $("#ShiftEndTime1").val();
+                        status = statusRe(st, et);
+                    }
+                    else {
+                        status = "ok";
+                    }
+                    if (status == "ok") {
+                    } else {
+                        toastr.warning("", "End Date should be greater then Start Date in Second row");
+                    }
+                }
+                else {
+                    toastr.warning("", "End Date should be greater then Start Date in First row");
+                }
+            }
+            else if (checker == 3) {
+                var NextDay1 = $("#NextDay1").val();
+
+                if (NextDay1 == 0) {
+                    var st = $("#ShiftStartTime0").val();
+                    var et = $("#ShiftEndTime0").val();
+                    status = statusRe(st, et);
+                }
+                else {
+                    status = "ok";
+                }
+
+                if (status == "ok") {
+                    var NextDay2 = $("#NextDay2").val();
+
+                    if (NextDay2 == 0) {
+                        var st = $("#ShiftStartTime1").val();
+                        var et = $("#ShiftEndTime1").val();
+                        status = statusRe(st, et);
+                    }
+                    else {
+                        status = "ok";
+                    }
+
+                    if (status == "ok") {
+                        {
+                            var NextDay3 = $("#NextDay3").val();
+
+                            if (NextDay3 == 0) {
+                                var st = $("#ShiftStartTime2").val();
+                                var et = $("#ShiftEndTime2").val();
+                                status = statusRe(st, et);
+                            }
+                            else {
+                                status = "ok";
+                            }
+
+                            if (status == "ok") {
+                            } else {
+                                toastr.warning("", "End Date should be greater then Start Date in Thrid row");
+                            }
+                        }
+                    }
+                    else {
+                        toastr.warning("", "End Date should be greater then Start Date in Second row");
+                    }
+                }
+                else {
+                    toastr.warning("", "End Date should be greater then Start Date in First row");
+                }
+
+            }
+            else {
+                var NextDay1 = $("#NextDay1").val();
+
+                if (NextDay1 == 0) {
+                    var st = $("#ShiftStartTime0").val();
+                    var et = $("#ShiftEndTime0").val();
+                    status = statusRe(st, et);
+                }
+                else {
+                    status = "ok";
+                }
+
+                if (status == "ok") {
+                    var NextDay2 = $("#NextDay2").val();
+
+                    if (NextDay2 == 0) {
+                        var st = $("#ShiftStartTime1").val();
+                        var et = $("#ShiftEndTime1").val();
+                        status = statusRe(st, et);
+                    }
+                    else {
+                        status = "ok";
+                    }
+
+
+                    if (status == "ok") {
+                        {
+                            var NextDay3 = $("#NextDay3").val();
+
+                            if (NextDay3 == 0) {
+                                var st = $("#ShiftStartTime2").val();
+                                var et = $("#ShiftEndTime2").val();
+                                status = statusRe(st, et);
+                            }
+                            else {
+                                status = "ok";
+                            }
+                            if (status == "ok") {
+                                var NextDay4 = $("#NextDay4").val();
+                                if (NextDay4 == 0) {
+                                    var st = $("#ShiftStartTime3").val();
+                                    var et = $("#ShiftEndTime3").val();
+                                    status = statusRe(st, et);
+                                }
+                                else {
+                                    status = "ok";
+                                }
+
+                                if (status == "ok") {
+                                } else {
+                                    toastr.warning("", "End Date should be greater then Start Date in Fourth row");
+                                }
+                            }
+                            else {
+                                toastr.warning("", "End Date should be greater then Start Date in Thrid row");
+                            }
+                        }
+                    }
+                    else {
+                        toastr.warning("", "End Date should be greater then Start Date in Second row");
+                    }
+
+                }
+                else {
+                    toastr.warning("", "End Date should be greater then Start Date in First row");
+                }
+            }
+
+            if (status == "ok") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function statusRe(st, et) {
+            var arry1 = st.split(':');
+            var arry2 = et.split(':');
+            st = arry1[0] + '.' + arry1[1];
+            et = arry2[0] + '.' + arry2[1];
+
+            if (parseFloat(et) > parseFloat(st)) {
+                status = "ok";
+            }
+            else {
+                status = "notok";
+            }
+            return status;
+        }
+    </script>

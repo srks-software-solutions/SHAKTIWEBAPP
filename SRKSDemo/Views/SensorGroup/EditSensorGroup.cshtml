@@ -1,0 +1,94 @@
+﻿@model SRKSDemo.Models.sensormodel
+@{
+    ViewBag.Title = " Sensor Group";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container body">
+    <div class="main_container">
+        <div class="right_col" role="main">
+            <div class="">
+
+                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Sensor Group </h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li>
+                                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                @using (Html.BeginForm("EditSensorGroup", "SensorGroup", FormMethod.Post))
+                                {
+
+                                    <div class="x_content">
+                                        <form class="form-horizontal form-label-left" novalidate>
+                                            <div class="row row-space">
+                                                @Html.HiddenFor(model => model.sensorgroup.SID, new { @id = "sid" })
+                                                <label class="col-sm-5 control-label">Sensor Group Name</label>
+                                                <div class="col-sm-6">
+                                                    @*<input type="text" class="form-control1" id="" placeholder="Plant Name">*@
+
+                                                    @Html.TextBoxFor(model => model.sensorgroup.SensorGroupName, new { @id = "EditsensorName", @class = "form-control", style = "width:89.7%", @placeholder = "Enter sensor Name", @required = "required" })
+                                                    @Html.HiddenFor(model => model.sensorgroup.SensorGroupName, new { @id = "sensename" })
+                                                    <span id="messageSpan" style="color:red"></span>
+                                                </div>
+                                                <div class="col-sm-5">
+
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <span id="plantErroredit" class="errorMessage"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row row-space">
+                                                <label class="col-sm-5 control-label">Sensor Group Description</label>
+                                                <div class="col-sm-6">
+                                                    @*<input type="text" class="form-control1" id="" placeholder="Plant Description">*@
+                                                    @Html.TextBoxFor(model => model.sensorgroup.SensorDesc, new { @id = "EditsensorDesc", @class = "form-control", style = "width:89.7%", @placeholder = "Enter sensor Description", @required = "required" })
+                                                    @Html.HiddenFor(model => model.sensorgroup.SensorDesc, new { @id = "sensedesc" })
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="generate-btn">
+                                            <a id="" href="/SensorGroup/IndexSensorGroup" type="submit" class="btn btn-new"><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;Back</a>
+                                            <button type="submit" class="btn btn-new float-right"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Update</button>
+
+                                        </div>
+                                    </div>
+                                    @Html.HiddenFor(model => model.sensorgroup.CreatedBy, new { @id = "CreatedBy" })
+                                    @Html.HiddenFor(model => model.sensorgroup.CreatedOn, new { @id = "CreatedOn" })
+                                    @Html.HiddenFor(model => model.sensorgroup.ModifiedBy, new { @id = "ModifiedBy" })
+                                    @Html.HiddenFor(model => model.sensorgroup.ModifiedOn, new { @id = "ModifiedOn" })
+                                    @Html.HiddenFor(model => model.sensorgroup.IsDeleted, new { @id = "IsDeleted" })
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="~/js/jquery-2.1.4.min.js"></script>
+<script>
+    $(".sensor").on("click", function (e) {
+        //$(".control").click();
+
+        e.preventDefault();
+        var SID = $(this).attr("id")
+        //alert(CellCategoryID)
+        $.getJSON("/SensorGroup/GetSensorById", { Id: SID }, function (data) {
+            $.each(data, function (index, item) {
+                $("#EditsensorName").val((item.sensorname));
+                $("#EditsensorDesc").val((item.sensordesc));
+            });
+        });
+    });
+</script>
+
+

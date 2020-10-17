@@ -1,0 +1,29 @@
+﻿@model IEnumerable<SRKSDemo.Server_Model.tbltoollifeoperator>
+
+@{
+    ViewBag.Title = "UnitWorks - VirtualHMI";
+    Layout = "~/Views/Shared/_OperatorLayout.cshtml";
+}
+
+<div class="">
+    <div class="x_panel">
+        <div class="x_content">
+            <table id="datatable-fixed-header" class="table table-striped table-bordered dt-responsive nowrap ToolLifeData" cellspacing="0" width="100%">
+                @Html.Partial("ToolLifeData", Model)
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    //function resetCounter() {
+    //    var id = $("#sbmtModal").val();
+    //    var resetreason = $("#resetreason").val();
+    //    window.location = "/OperatorEntry/ResetToolLifeCounter?id=" + id + "&resetreason=" + resetreason + "";
+    //}
+    //function btnReset(val) {
+    //    $("#sbmtModal").val(val);
+    //}
+    window.setInterval(function () {
+        $('.ToolLifeData').load('/OperatorEntry/ToolLifeData');
+    }, 5000);
+</script>
