@@ -9333,7 +9333,9 @@ namespace SRKSDemo.Controllers
                     worksheet.Cells["D" + Row].Value = HierarchyData[1]; // Shop Name
                     worksheet.Cells["E" + Row].Value = HierarchyData[2]; //Cell Name
                     worksheet.Cells["F" + Row].Value = HierarchyData[3]; //Cell Name
-                    //worksheet.Cells["G" + Row].Value = HierarchyData[4]; //WC Name
+
+                    // worksheet.Cells["F" + Row].Value = MachineID; //wc no
+                    //worksheet.Cells["G" + Row].Value = HierarchyData[3]; //WC Name
 
                     if (string.IsNullOrEmpty(dataHolder.Rows[i][1].ToString()) == false)
                     {
@@ -10349,6 +10351,9 @@ namespace SRKSDemo.Controllers
             double TotalDay = toDate.Subtract(frmDate).TotalDays;
 
             FileInfo templateFile = new FileInfo(@"C:\SRKS_ifacility\MainTemplate\LossDetailsReport.xlsx");
+
+
+          //  FileInfo templateFile = new FileInfo(@"C:\SRKS_ifacility\MainTemplate\IDLE_Report.xlsx");
             ExcelPackage templatep = new ExcelPackage(templateFile);
             ExcelWorksheet Templatews = templatep.Workbook.Worksheets[1];
             ExcelWorksheet TemplateGraph = templatep.Workbook.Worksheets[2];
